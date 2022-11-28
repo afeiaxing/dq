@@ -22,6 +22,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
+    
     [QYZYAppConfig configWithapplication:application didFinishLaunchingWithOptions:launchOptions];
     
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
