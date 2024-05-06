@@ -1,1 +1,1 @@
-../../../../QYZY/Util/AFNetworking/UIKit+AFNetworking/AFNetworkActivityIndicatorManager.h
+../../../AFNetworking/UIKit+AFNetworking/AFNetworkActivityIndicatorManager.h

@@ -1,1 +1,1 @@
-../../../../QYZY/Util/AFNetworking/AFNetworking/AFNetworking.h
+../../../AFNetworking/AFNetworking/AFNetworking.h

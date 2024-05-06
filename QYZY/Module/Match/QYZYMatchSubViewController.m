@@ -44,6 +44,18 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    QYZYMatchHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(QYZYMatchHomeCell.class) forIndexPath:indexPath];
+    QYZYMatchDetailModel *model = [QYZYMatchDetailModel new];
+    model.leagueName = @"西甲";
+    model.matchTime = @"12321213";
+    model.hostTeamName = @"皇马";
+    model.guestTeamName = @"巴萨";
+    model.hostTeamScore = @"1";
+    model.guestTeamScore = @"2";
+    model.statusLable = @"1";
+    cell.detailModel = model;
+    return cell;
+    
     if (self.matches.count) {
         QYZYMatchHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(QYZYMatchHomeCell.class) forIndexPath:indexPath];
         if (self.matches.count > indexPath.row) {
@@ -59,20 +71,22 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 10;
     return self.matches.count ? self.matches.count : 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return  82;
     return self.matches.count ? 82 : self.view.frame.size.height;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.matches.count) {
+//    if (self.matches.count) {
         QYZYMatchDetailViewController *vc = [[QYZYMatchDetailViewController alloc] init];
         vc.matchId = self.matches[indexPath.row].matchId;
         vc.hidesBottomBarWhenPushed = YES;
         [UIViewController.currentViewController.navigationController pushViewController:vc animated:YES];
-    }
+//    }
 }
 
 @end

@@ -6,8 +6,6 @@
 //
 
 #import "QYZYAppConfig.h"
-#import "QYZYCustomRequestFilter.h"
-#import "QYZYDomainProvider.h"
 #import "IQKeyboardManager.h"
 #import "QYZYBlockManager.h"
 #import "QYZYRIMManager.h"
@@ -37,22 +35,10 @@
 
 #pragma mark - network
 + (void)configNetwork {
-    [QYZYDomainProvider.shareInstance addDomains:[self getLocalDomains]];
-    [QYZYDomainProvider.shareInstance addDomainDowngradeModels:@[
-        [[QYZYDomainDowngradeModel alloc] initWithRank:0    url:@"/qiutx-support/domains/v2/pull" type:XMDomainDowngradeTypeService],
-        [[QYZYDomainDowngradeModel alloc] initWithRank:100  url:[self getHuaweiCloudDoaminURL] type:XMDomainDowngradeTypeOBS],
-        [[QYZYDomainDowngradeModel alloc] initWithRank:200  url:[self getUnpkgDoaminURL] type:XMDomainDowngradeTypeOBS],
-        [[QYZYDomainDowngradeModel alloc] initWithRank:1000 url:[self getCNpmDoaminURL] type:XMDomainDowngradeTypeNpm],
-        [[QYZYDomainDowngradeModel alloc] initWithRank:2000 url:[self getTaobaoNpmDoaminURL] type:XMDomainDowngradeTypeNpm],
-        [[QYZYDomainDowngradeModel alloc] initWithRank:3000 url:[self getTencentNpmDoaminURL] type:XMDomainDowngradeTypeNpm],
-        [[QYZYDomainDowngradeModel alloc] initWithRank:4000 url:[self getYarnNpmDoaminURL] type:XMDomainDowngradeTypeNpm]
-    ]];
-    [QYZYDomainProvider.shareInstance checkDomains];
+
     
     YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
-    config.baseUrl = [QYZYDomainProvider.shareInstance getDomainInstantlyForWeight:false].domain; //@"https://ios.qiu994.com";
-    QYZYCustomRequestFilter *filter = [QYZYCustomRequestFilter new];
-    [config addUrlFilter:filter];
+    config.baseUrl = @"https://ios.qiu994.com";
     
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
@@ -63,28 +49,6 @@
     }];
 }
 
-+ (NSArray <QYZYDomain *> *)getLocalDomains {
-#if EnableRequestEncrpt
-    return @[
-        // https://tlsapi.qiu994.com
-        [QYZYDomain domainWithEnCryptedDomain:@"pW+fvLdTRkR6+/oY+5i9Id2KcdeK1ImNhbkAeiZI+dA=" enCryptedCDNType:XMDomainCDNTypeFName CDNToken:@"eba9b9516a601422b1c20e093f52f9a9" authType:@"" openFlag:true weight:40]
-    ];
-#else
-    return @[
-        // https://api.dq87774.com
-        [QYZYDomain domainWithEnCryptedDomain:@"dsWZu9x7TALaTWz0zgz8m6ceP27PTE1j5jai0Bk/u3s=" enCryptedCDNType:XMDomainCDNTypeFName CDNToken:@"eba9b9516a601422b1c20e093f52f9a9" authType:@"" openFlag:true weight:40],
-        // https://api.k396w.com
-        [QYZYDomain domainWithEnCryptedDomain:@"+7cKHXQY4EbT8/kvI3JWuXEzFmgzm8O74zK/XS/xI50=" enCryptedCDNType:XMDomainCDNTypeAName CDNToken:@"JmQ8uEKn6g96nSsWccw" authType:@"A" openFlag:true weight:7],
-        // https://api-al.k396w.com
-        [QYZYDomain domainWithEnCryptedDomain:@"+PZGz+2TPCk0m0SgZfjCC6sOT4HtH9SLr80GBzW1OC4=" enCryptedCDNType:XMDomainCDNTypeAName CDNToken:@"JmQ8uEKn6g96nSsWccw" authType:@"A" openFlag:true weight:7],
-        // https://api.kjwinm.cn
-        [QYZYDomain domainWithEnCryptedDomain:@"zGj6sIyYe8ol/oGq4kImoAv8Vg0cXE/PaqZJNu2tRf0=" enCryptedCDNType:XMDomainCDNTypeHName CDNToken:@"JmQ8uEKn6g96nSsWccw" authType:@"A" openFlag:true weight:6],
-        // https://api-al.hzmgrn.com
-        [QYZYDomain domainWithEnCryptedDomain:@"mthxGFbN8Wopxp6cQbHLoeAmEwmAUFaoHe2hnk5STbM=" enCryptedCDNType:XMDomainCDNTypeAName CDNToken:@"JmQ8uEKn6g96nSsWccw" authType:@"A" openFlag:true weight:40]
-    ];
-#endif
-
-}
 
 + (NSString *)getHuaweiCloudDoaminURL {
 #if EnableRequestEncrpt

@@ -19,14 +19,14 @@
 }
 
 - (void)configNavigation {
-    [self.navigationBar setBackgroundImage:[UIImage qmui_imageWithColor:rgb(41, 69, 192)] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationBar setBackgroundImage:[UIImage qmui_imageWithColor:UIColor.whiteColor] forBarMetrics:UIBarMetricsDefault];
     self.navigationBar.translucent = false;
     self.navigationBar.titleTextAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"PingFangSC-Medium" size:16],NSForegroundColorAttributeName : rgb(196, 220, 255)};
     
     if (@available(iOS 15.0, *)) {
         UINavigationBarAppearance *app = [[UINavigationBarAppearance alloc] init];
         [app configureWithDefaultBackground];
-        app.backgroundColor = rgb(41, 69, 192);
+        app.backgroundColor = UIColor.whiteColor;// rgb(41, 69, 192);
         app.shadowColor = UIColor.clearColor;
         app.backgroundEffect = nil;
         UINavigationBar.appearance.scrollEdgeAppearance = app;

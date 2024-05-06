@@ -2,9 +2,11 @@
 # platform :ios, '9.0'
 
 target 'QYZY' do
-	pod 'AFNetworking', :path => './QYZY/Util/AFNetworking'
+#	pod 'AFNetworking', :path => './QYZY/Util/AFNetworking'
+pod 'AFNetworking'
   pod 'YYModel',  '1.0.4'
-  pod 'YTKNetwork', :path => './QYZY/Util/YTKNetwork'
+#  pod 'YTKNetwork', :path => './QYZY/Util/YTKNetwork'
+  pod 'YTKNetwork'
   pod 'SDWebImage', '5.13.2'
   pod 'Masonry'
   pod 'MBProgressHUD', '~> 1.2.0'

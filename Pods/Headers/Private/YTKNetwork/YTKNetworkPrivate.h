@@ -1,1 +1,1 @@
-../../../../QYZY/Util/YTKNetwork/YTKNetwork/YTKNetworkPrivate.h
+../../../YTKNetwork/YTKNetwork/YTKNetworkPrivate.h

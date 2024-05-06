@@ -1,1 +1,1 @@
-../../../../QYZY/Util/AFNetworking/AFNetworking/AFSecurityPolicy.h
+../../../AFNetworking/AFNetworking/AFSecurityPolicy.h

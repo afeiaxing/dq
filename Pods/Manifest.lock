@@ -360,7 +360,7 @@ PODS:
   - ZFPlayer/Core (4.1.3)
 
 DEPENDENCIES:
-  - AFNetworking (from `./QYZY/Util/AFNetworking`)
+  - AFNetworking
   - DZNEmptyDataSet
   - FDFullscreenPopGesture
   - FGIAPService
@@ -378,7 +378,7 @@ DEPENDENCIES:
   - SDWebImage (= 5.13.2)
   - UMCAnalytics
   - UMCCommon (~> 2.1.4)
-  - YTKNetwork (from `./QYZY/Util/YTKNetwork`)
+  - YTKNetwork
   - YYCache
   - YYModel (= 1.0.4)
   - YYText
@@ -387,6 +387,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - AFNetworking
     - DZNEmptyDataSet
     - FDFullscreenPopGesture
     - FGIAPService
@@ -404,19 +405,14 @@ SPEC REPOS:
     - SDWebImage
     - UMCAnalytics
     - UMCCommon
+    - YTKNetwork
     - YYCache
     - YYModel
     - YYText
     - ZFPlayer
 
-EXTERNAL SOURCES:
-  AFNetworking:
-    :path: "./QYZY/Util/AFNetworking"
-  YTKNetwork:
-    :path: "./QYZY/Util/YTKNetwork"
-
 SPEC CHECKSUMS:
-  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   FGIAPService: d0848b3a193fd2a66563218cf87b615b68e9e155
@@ -440,6 +436,6 @@ SPEC CHECKSUMS:
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
   ZFPlayer: bf4a4746e970c4faee9ea7f142c032be1405750f
 
-PODFILE CHECKSUM: f23874eee463327e857ad95d2cc3494078faad1e
+PODFILE CHECKSUM: 351dc5de6967345ee81bb93f5463ffdf770a6c98
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.15.2

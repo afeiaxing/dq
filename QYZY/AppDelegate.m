@@ -14,7 +14,6 @@
 #import "QYZYAppConfig.h"
 #import "JPUSHService.h"
 #import "QYZYCustomNavigationController.h"
-#import "QYZYCustomRequestFilter.h"
 #import "QYZYUserManager.h"
 
 @implementation AppDelegate
@@ -29,8 +28,6 @@
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = [self setupTabbarVC];
     [self.window makeKeyAndVisible];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(exitUser:) name:QYZYUserExitNotification object:nil];
     
     return YES;
 }
@@ -67,12 +64,12 @@
     [tabbaeVC addChildViewController:[[QYZYCustomNavigationController alloc] initWithRootViewController:vc]];
 }
 
-- (void)exitUser:(NSNotification *)note {
-    [QYZYUserManager.shareInstance saveUserModel:nil];
-    NSString *info = note.userInfo[QYZYUserExitNotificationInfoKey];
-    [UIView qyzy_showMsg:info];
-    self.window.rootViewController = [self setupTabbarVC];
-}
+//- (void)exitUser:(NSNotification *)note {
+//    [QYZYUserManager.shareInstance saveUserModel:nil];
+//    NSString *info = note.userInfo[QYZYUserExitNotificationInfoKey];
+//    [UIView qyzy_showMsg:info];
+//    self.window.rootViewController = [self setupTabbarVC];
+//}
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [JPUSHService registerDeviceToken:deviceToken];

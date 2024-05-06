@@ -1,1 +1,1 @@
-../../../../QYZY/Util/AFNetworking/AFNetworking/AFURLSessionManager.h
+../../../AFNetworking/AFNetworking/AFURLSessionManager.h

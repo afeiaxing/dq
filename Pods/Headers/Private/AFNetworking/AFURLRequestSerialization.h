@@ -1,1 +1,1 @@
-../../../../QYZY/Util/AFNetworking/AFNetworking/AFURLRequestSerialization.h
+../../../AFNetworking/AFNetworking/AFURLRequestSerialization.h

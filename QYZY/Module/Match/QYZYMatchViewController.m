@@ -54,7 +54,7 @@
 - (void)setup {
     self.currentDateString = [NSDate getDateStringWithDate:NSDate.date formatter:@"yyyy-MM-dd"];
     self.leftItem = nil;
-    self.categoryView.frame = CGRectMake(0, 0, 180, 32);
+    self.categoryView.frame = CGRectMake(0, 0, 300, 32);
     self.navigationItem.titleView = self.categoryView;
     [self.view addSubview:self.containerView];
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -124,26 +124,33 @@
 
 - (JXCategoryTitleView *)categoryView {
     if (!_categoryView) {
-        _categoryView = [[JXCategoryTitleView alloc] init];
-        _categoryView.titles = @[@"足球",@"篮球"];
-        _categoryView.titleColor = rgb(196, 220, 255);
-        _categoryView.titleSelectedColor = rgb(12, 35, 137);
-        _categoryView.titleFont = [UIFont fontWithName:@"PingFangSC-Regular" size:16];
-        _categoryView.titleSelectedFont = [UIFont fontWithName:@"PingFangSC-Semibold" size:16];
-        _categoryView.cellWidth = 87;
+        _categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 48)];
+        _categoryView.titles = @[@"BASKETBALL",@"LEAGUES"];
+        _categoryView.titleColor = rgb(130, 134, 163);
+        _categoryView.titleSelectedColor = rgb(17, 17, 17);
+        _categoryView.titleFont = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
+        _categoryView.titleSelectedFont = [UIFont fontWithName:@"PingFangSC-Semibold" size:18];
+        _categoryView.cellWidth = 150;
         _categoryView.cellSpacing = 0;
         _categoryView.delegate = self;
         _categoryView.listContainer = self.containerView;
-        _categoryView.backgroundColor = rgb(12, 35, 137);
-        _categoryView.layer.masksToBounds = NO;
-        _categoryView.layer.cornerRadius = 4.0;
+        _categoryView.backgroundColor = UIColor.whiteColor;//rgb(12, 35, 137);
+//        _categoryView.layer.masksToBounds = NO;
+//        _categoryView.layer.cornerRadius = 4.0;
         
-        JXCategoryIndicatorBackgroundView *indicator = [[JXCategoryIndicatorBackgroundView alloc] init];
-        indicator.indicatorColor = rgb(254, 254, 255);
-        indicator.indicatorWidth = 87;
-        indicator.indicatorHeight = 28;
-        indicator.indicatorCornerRadius = 4;
+        JXCategoryIndicatorLineView *indicator = [[JXCategoryIndicatorLineView alloc] init];
+        indicator.indicatorColor = rgb(41, 69, 192);
+        indicator.indicatorWidth = 15;
+        indicator.indicatorHeight = 3;
+        indicator.indicatorCornerRadius = 1.5;
         indicator.indicatorWidthIncrement = 0;
+        indicator.verticalMargin = 2;
+//        JXCategoryIndicatorBackgroundView *indicator = [[JXCategoryIndicatorBackgroundView alloc] init];
+//        indicator.indicatorColor = rgb(254, 254, 255);
+//        indicator.indicatorWidth = 87;
+//        indicator.indicatorHeight = 28;
+//        indicator.indicatorCornerRadius = 4;
+//        indicator.indicatorWidthIncrement = 0;
         _categoryView.indicators = @[indicator];
     }
     return _categoryView;
