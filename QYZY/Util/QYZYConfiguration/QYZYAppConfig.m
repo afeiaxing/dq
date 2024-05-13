@@ -49,61 +49,6 @@
     }];
 }
 
-
-+ (NSString *)getHuaweiCloudDoaminURL {
-#if EnableRequestEncrpt
-    return @"https://bfw-pic-new.obs.cn-south-1.myhuaweicloud.com/cdn/appstore_prod.json";
-#else
-    return @"https://bfw-pic-new.obs.cn-south-1.myhuaweicloud.com/cdn/app_prod.json";
-#endif
-    
-}
-
-+ (NSString *)getUnpkgDoaminURL {
-#if EnableRequestEncrpt
-    return @"https://unpkg.com/@yuming2022/appstore-dnpkg-prod";
-#else
-    return @"https://unpkg.com/@yuming2022/app-dnpkg-prod";
-#endif
-    
-}
-
-+ (NSString *)getCNpmDoaminURL {
-#if EnableRequestEncrpt
-    return @"https://r.cnpmjs.org/@yuming2022/appstore-dnpkg-prod";
-#else
-    return @"https://r.cnpmjs.org/@yuming2022/app-dnpkg-prod";
-#endif
-    
-}
-
-+ (NSString *)getTaobaoNpmDoaminURL {
-#if EnableRequestEncrpt
-    return @"https://registry.npmmirror.com/@yuming2022/appstore-dnpkg-prod";
-#else
-    return @"https://registry.npmmirror.com/@yuming2022/app-dnpkg-prod";
-#endif
-    
-}
-
-+ (NSString *)getTencentNpmDoaminURL {
-#if EnableRequestEncrpt
-    return @"https://mirrors.cloud.tencent.com/npm/@yuming2022/appstore-dnpkg-prod";
-#else
-    return @"https://mirrors.cloud.tencent.com/npm/@yuming2022/app-dnpkg-prod";
-#endif
-    
-}
-
-+ (NSString *)getYarnNpmDoaminURL {
-#if EnableRequestEncrpt
-    return @"https://registry.yarnpkg.com/@yuming2022/appstore-dnpkg-prod";
-#else
-    return @"https://registry.yarnpkg.com/@yuming2022/app-dnpkg-prod";
-#endif
-    
-}
-
 #pragma mark - RongIM
 + (void)configRongIM {
     [QYZYRIMManager.shareInstace requestKeyData];
