@@ -54,8 +54,9 @@
 - (void)setup {
     self.currentDateString = [NSDate getDateStringWithDate:NSDate.date formatter:@"yyyy-MM-dd"];
     self.leftItem = nil;
-    self.categoryView.frame = CGRectMake(0, 0, 300, 32);
-    self.navigationItem.titleView = self.categoryView;
+    self.categoryView.frame = CGRectMake(0, 0, 240, 32);
+//    self.navigationItem.titleView = self.categoryView;
+    [self.navigationController.navigationBar addSubview:self.categoryView];
     [self.view addSubview:self.containerView];
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
@@ -130,7 +131,7 @@
         _categoryView.titleSelectedColor = rgb(17, 17, 17);
         _categoryView.titleFont = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
         _categoryView.titleSelectedFont = [UIFont fontWithName:@"PingFangSC-Semibold" size:18];
-        _categoryView.cellWidth = 150;
+        _categoryView.cellWidth = 100;
         _categoryView.cellSpacing = 0;
         _categoryView.delegate = self;
         _categoryView.listContainer = self.containerView;
