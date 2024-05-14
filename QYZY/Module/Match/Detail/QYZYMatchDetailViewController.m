@@ -203,6 +203,7 @@
     weakSelf(self);
     [self.viewModel requestMatchDetailWithMatchId:self.matchId completion:^(QYZYMatchMainModel * _Nonnull detailModel) {
         strongSelf(self);
+        detailModel = [QYZYMatchMainModel new];
         if (detailModel) {
             self.mainModel = detailModel;
             [self updateHeaderWithDetailModel:detailModel];

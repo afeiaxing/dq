@@ -15,6 +15,8 @@
 
 #import "QYZYAnalyzeSectionTool.h"
 
+#import "QYZYDataTools.h"
+
 @interface QYZYMatchAnalyzeViewController ()<UITableViewDelegate, UITableViewDataSource,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 @property (nonatomic, strong) NSArray *groups;
 @property (nonatomic, strong) NSMutableArray *sections;
@@ -105,6 +107,7 @@
                                          completion:^(QYZYSubMatchModel * _Nonnull model) {
         strongSelf(self);
         [self.tableView.mj_header endRefreshing];
+        model = [QYZYDataTools getQYZYSubMatchModel];
         self.guessMatchModel = model;
         self.guessMatchModel.sportId = self.detailModel.sportId;
         [self.tableView reloadData];
@@ -113,6 +116,7 @@
     [self.viewModel requestMatchAnalyzeIntegralWithMatchId:self.detailModel.matchId hostTeamId:self.detailModel.hostTeamId guestTeamId:self.detailModel.guestTeamId completion:^(QYZYMatchAnalyzeRankModel * _Nonnull analyzeRankModel) {
         strongSelf(self);
         [self.tableView.mj_header endRefreshing];
+        analyzeRankModel = [QYZYDataTools getQYZYMatchAnalyzeRankModel];
         if (analyzeRankModel) {
             self.rankModel = analyzeRankModel;
             [self.tableView reloadData];
@@ -123,6 +127,7 @@
     [self.viewModel requestMatchFutureRecordsWithMatchId:self.detailModel.matchId teamId:self.detailModel.hostTeamId completion:^(NSArray<QYZYMatchMainModel *> * _Nonnull matches) {
         strongSelf(self);
         [self.tableView.mj_header endRefreshing];
+        matches = [QYZYDataTools getQYZYMatchMainModels];
         if (matches) {
             self.hostFutureArray = matches;
             [self.tableView reloadData];
@@ -132,6 +137,7 @@
     [self.viewModel requestMatchFutureRecordsWithMatchId:self.detailModel.matchId teamId:self.detailModel.guestTeamId completion:^(NSArray<QYZYMatchMainModel *> * _Nonnull matches) {
         strongSelf(self);
         [self.tableView.mj_header endRefreshing];
+        matches = [QYZYDataTools getQYZYMatchMainModels];
         if (matches) {
             self.guestFutureArray = matches;
             [self.tableView reloadData];

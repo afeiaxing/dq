@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -313,6 +313,8 @@
 		B1D8D8DD28EC4095004F2ADA /* QYZYCustomerserviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D8D8DC28EC4095004F2ADA /* QYZYCustomerserviceViewController.m */; };
 		B1D8D8E028EC4B9B004F2ADA /* QYZYCancellationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D8D8DF28EC4B9B004F2ADA /* QYZYCancellationViewController.m */; };
 		B1D8D8E328EC4DE7004F2ADA /* QYZYMycollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D8D8E228EC4DE7004F2ADA /* QYZYMycollectionViewController.m */; };
+		F39766022BF3988300E4C861 /* AXNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F39766012BF3988300E4C861 /* AXNetWorkManager.m */; };
+		F39766082BF3993A00E4C861 /* QYZYDataTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F39766072BF3993A00E4C861 /* QYZYDataTools.m */; };
 		F52A4E0828EC18FA002358BC /* QYZYSettingPaswwordApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F52A4E0728EC18FA002358BC /* QYZYSettingPaswwordApi.m */; };
 		F550C7D128F98449000FD3DB /* QYZYCreateRechargeOrderApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F550C7D028F98449000FD3DB /* QYZYCreateRechargeOrderApi.m */; };
 		F550C7D528F99854000FD3DB /* QYZYGetSetPasswordTicketApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F550C7D428F99854000FD3DB /* QYZYGetSetPasswordTicketApi.m */; };
@@ -357,7 +359,6 @@
 		F58DF60C28EB0CB900CFF18A /* QYZYSettingPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F58DF60A28EB0CB900CFF18A /* QYZYSettingPasswordViewController.m */; };
 		F58DF60D28EB0CB900CFF18A /* QYZYSettingPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F58DF60B28EB0CB900CFF18A /* QYZYSettingPasswordViewController.xib */; };
 		F5CB2BB428E9D31D00DD2AC8 /* UIView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F5CB2BB328E9D31D00DD2AC8 /* UIView+Extensions.m */; };
-		F5E6210A28E57C9500EBB324 /* QYZYNetworkUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E6210928E57C9500EBB324 /* QYZYNetworkUtil.m */; };
 		F5F8E6DF28F919C100816621 /* QYZYChargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F8E6DD28F919C100816621 /* QYZYChargeViewController.m */; };
 		F5F8E6E028F919C100816621 /* QYZYChargeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5F8E6DE28F919C100816621 /* QYZYChargeViewController.xib */; };
 		F5F8E6E328F91BE900816621 /* QYZYChargeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F8E6E228F91BE900816621 /* QYZYChargeModel.m */; };
@@ -943,6 +944,10 @@
 		B1D8D8DF28EC4B9B004F2ADA /* QYZYCancellationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYCancellationViewController.m; sourceTree = "<group>"; };
 		B1D8D8E128EC4DE7004F2ADA /* QYZYMycollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYMycollectionViewController.h; sourceTree = "<group>"; };
 		B1D8D8E228EC4DE7004F2ADA /* QYZYMycollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYMycollectionViewController.m; sourceTree = "<group>"; };
+		F39766002BF3988300E4C861 /* AXNetWorkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXNetWorkManager.h; sourceTree = "<group>"; };
+		F39766012BF3988300E4C861 /* AXNetWorkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXNetWorkManager.m; sourceTree = "<group>"; };
+		F39766062BF3993A00E4C861 /* QYZYDataTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYZYDataTools.h; sourceTree = "<group>"; };
+		F39766072BF3993A00E4C861 /* QYZYDataTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYZYDataTools.m; sourceTree = "<group>"; };
 		F52A4E0628EC18FA002358BC /* QYZYSettingPaswwordApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYSettingPaswwordApi.h; sourceTree = "<group>"; };
 		F52A4E0728EC18FA002358BC /* QYZYSettingPaswwordApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYSettingPaswwordApi.m; sourceTree = "<group>"; };
 		F550C7CF28F98449000FD3DB /* QYZYCreateRechargeOrderApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYCreateRechargeOrderApi.h; sourceTree = "<group>"; };
@@ -1017,8 +1022,6 @@
 		F5CB2BB228E9D31D00DD2AC8 /* UIView+Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Extensions.h"; sourceTree = "<group>"; };
 		F5CB2BB328E9D31D00DD2AC8 /* UIView+Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extensions.m"; sourceTree = "<group>"; };
 		F5D6AE8428EA8FB100E16E77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Info.plist; sourceTree = "<group>"; };
-		F5E6210828E57C9500EBB324 /* QYZYNetworkUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYNetworkUtil.h; sourceTree = "<group>"; };
-		F5E6210928E57C9500EBB324 /* QYZYNetworkUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYNetworkUtil.m; sourceTree = "<group>"; };
 		F5E6210C28E5976D00EBB324 /* QYZYPasswordLoginApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYPasswordLoginApi.h; sourceTree = "<group>"; };
 		F5E6210D28E5976D00EBB324 /* QYZYPasswordLoginApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYPasswordLoginApi.m; sourceTree = "<group>"; };
 		F5F8E6DC28F919C100816621 /* QYZYChargeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYChargeViewController.h; sourceTree = "<group>"; };
@@ -2161,6 +2164,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		F39765FF2BF3985E00E4C861 /* AXNetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				F39766002BF3988300E4C861 /* AXNetWorkManager.h */,
+				F39766012BF3988300E4C861 /* AXNetWorkManager.m */,
+			);
+			path = AXNetworkManager;
+			sourceTree = "<group>";
+		};
 		F55103EA28E33795001E9BC5 = {
 			isa = PBXGroup;
 			children = (
@@ -2170,6 +2182,7 @@
 				660EC5918427802E49A54B33 /* Frameworks */,
 			);
 			sourceTree = "<group>";
+			wrapsLines = 1;
 		};
 		F55103F428E33795001E9BC5 /* Products */ = {
 			isa = PBXGroup;
@@ -2302,6 +2315,7 @@
 		F551042928E34263001E9BC5 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				F39765FF2BF3985E00E4C861 /* AXNetworkManager */,
 				55A531EC29052E1B0008C110 /* QYZYCalendar */,
 				55D2972028EAB7ED00C80738 /* QYZYIAPManager */,
 				55E2395528E834D8003ED27E /* QYZYRCManager */,
@@ -2311,7 +2325,8 @@
 				F560B58D28E6A40000989DE4 /* QYZYUserManager */,
 				55B04A6428E593CB00A82F1F /* JXPagerView */,
 				F560B58228E5BEB400989DE4 /* QYZYConfiguration */,
-				F5E620FF28E44A6400EBB324 /* QYZYNetworking */,
+				F39766062BF3993A00E4C861 /* QYZYDataTools.h */,
+				F39766072BF3993A00E4C861 /* QYZYDataTools.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -2426,15 +2441,6 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		F5E620FF28E44A6400EBB324 /* QYZYNetworking */ = {
-			isa = PBXGroup;
-			children = (
-				F5E6210828E57C9500EBB324 /* QYZYNetworkUtil.h */,
-				F5E6210928E57C9500EBB324 /* QYZYNetworkUtil.m */,
-			);
-			path = QYZYNetworking;
-			sourceTree = "<group>";
-		};
 		F5E6210B28E595ED00EBB324 /* Api */ = {
 			isa = PBXGroup;
 			children = (
@@ -2482,7 +2488,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				CLASSPREFIX = QYZY;
+				CLASSPREFIX = AX;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					F55103F228E33795001E9BC5 = {
@@ -2648,6 +2654,7 @@
 				55A5320229052E3C0008C110 /* FSCalendarScrollView.m in Sources */,
 				55E0D51D28F8289400DDAAB6 /* QYZYMatchOverViewController.m in Sources */,
 				AE68007C28E943660084E652 /* QYZYTotalNewsSubViewController.m in Sources */,
+				F39766022BF3988300E4C861 /* AXNetWorkManager.m in Sources */,
 				F560B5AA28E8834000989DE4 /* QYZYHotNewsViewController.m in Sources */,
 				55E0D50F28F806DA00DDAAB6 /* QYZYMatchMainModel.m in Sources */,
 				F5F8E6E728F9205900816621 /* QYZYChargeCollectionViewCell.m in Sources */,
@@ -2695,6 +2702,7 @@
 				9B21D03028EA844200AC6F0D /* QYZYEmptyCell.m in Sources */,
 				B1B744CA28E845AA00DD300E /* QYZYRankApi.m in Sources */,
 				9B8D5B7428EC2DE200B480BA /* QYZYReportModel.m in Sources */,
+				F39766082BF3993A00E4C861 /* QYZYDataTools.m in Sources */,
 				55E2393528E7E77F003ED27E /* QYZYLiveRankViewController.m in Sources */,
 				9BC0D59A29066A7F0063BCC7 /* QYZYBasketballScoreView.m in Sources */,
 				55EADDE028E71967008324AE /* QYZYLiveMoreViewController.m in Sources */,
@@ -2932,7 +2940,6 @@
 				5541D0DA290270680055001C /* QYZYMineCell.m in Sources */,
 				9BC0D5A0290685360063BCC7 /* QYZYSituationFooterView.m in Sources */,
 				AEF7068028EBDD81003FEEFD /* QYZYNewsCommentSubModel.m in Sources */,
-				F5E6210A28E57C9500EBB324 /* QYZYNetworkUtil.m in Sources */,
 				B11C0A5628E9A702001997E8 /* QYZYPhotoManager.m in Sources */,
 				55BF55BE28E98E2500DB476B /* QYZYChatGiftView.m in Sources */,
 			);
@@ -3191,7 +3198,6 @@
 					"\"WebKit\"",
 					"-weak_framework",
 					"\"UserNotifications\"",
-					"-ld64",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dq44;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3328,7 +3334,6 @@
 					"\"WebKit\"",
 					"-weak_framework",
 					"\"UserNotifications\"",
-					"-ld64",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dq44;
 				PRODUCT_NAME = "$(TARGET_NAME)";
