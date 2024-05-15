@@ -7,7 +7,6 @@
 
 #import "AppDelegate.h"
 #import "QYZYMineViewController.h"
-#import "QYZYCircleViewController.h"
 #import "QYZYNewsViewController.h"
 #import "QYZYLiveViewController.h"
 #import "QYZYMatchViewController.h"
@@ -34,25 +33,24 @@
 
 - (UITabBarController *)setupTabbarVC {
     UITabBarController * tabbarVC = [[UITabBarController alloc]init];
-    tabbarVC.tabBar.barTintColor = rgb(35, 57, 180);
+    tabbarVC.tabBar.barTintColor = UIColor.whiteColor;
     if (@available(iOS 15.0, *)) {
         tabbarVC.tabBar.scrollEdgeAppearance = tabbarVC.tabBar.standardAppearance;
     }
     
     UITabBarItem *item = [UITabBarItem appearance];
-    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : rgba(196, 220, 255,1)} forState:UIControlStateNormal];
-    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : rgba(174, 182, 200,1)} forState:UIControlStateSelected];
+    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : rgba(130, 134, 163,1)} forState:UIControlStateNormal];
+    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : rgba(255, 88, 0,1)} forState:UIControlStateSelected];
     
-    tabbarVC.tabBar.tintColor = rgba(196, 220, 255,1);
-    tabbarVC.tabBar.unselectedItemTintColor = rgba(174, 182, 200,1);
+//    tabbarVC.tabBar.tintColor = rgba(130, 134, 163,1);
+//    tabbarVC.tabBar.unselectedItemTintColor = rgba(255, 88, 0,1);
     
-    [self addChildVCWithTabbarVC:tabbarVC vc:QYZYMatchViewController.new title:@"赛事" selectedImage:@"tabSaichengH" image:@"tabSaichengN"];
-    [self addChildVCWithTabbarVC:tabbarVC vc:QYZYLiveViewController.new title:@"直播" selectedImage:@"tabZhiboH" image:@"tabZhiboN"];
-    [self addChildVCWithTabbarVC:tabbarVC vc:QYZYNewsViewController.new title:@"资讯" selectedImage:@"tabZixunH" image:@"tabZixunN"];
-    [self addChildVCWithTabbarVC:tabbarVC vc:QYZYCircleViewController.new title:@"发现" selectedImage:@"tabFaxianH" image:@"tabFaxianN"];
-    [self addChildVCWithTabbarVC:tabbarVC vc:QYZYMineViewController.new title:@"我的" selectedImage:@"tabWodeH" image:@"tabWodeN"];
+    [self addChildVCWithTabbarVC:tabbarVC vc:QYZYMatchViewController.new title:@"For You" selectedImage:@"tabSaichengH" image:@"tabSaichengN"];
+    [self addChildVCWithTabbarVC:tabbarVC vc:QYZYLiveViewController.new title:@"Top Games" selectedImage:@"tabZhiboH" image:@"tabZhiboN"];
+    [self addChildVCWithTabbarVC:tabbarVC vc:QYZYNewsViewController.new title:@"News" selectedImage:@"tabZixunH" image:@"tabZixunN"];
+    [self addChildVCWithTabbarVC:tabbarVC vc:QYZYMineViewController.new title:@"Profile" selectedImage:@"tabWodeH" image:@"tabWodeN"];
     
-    tabbarVC.selectedIndex = 1;
+    tabbarVC.selectedIndex = 0;
     
     return tabbarVC;
 }

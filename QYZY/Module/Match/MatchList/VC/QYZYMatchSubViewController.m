@@ -10,6 +10,8 @@
 #import "QYZYMatchHomeCell.h"
 #import "QYZYTableEmptyCell.h"
 
+#import "AXMatchListTableViewCell.h"
+
 @interface QYZYMatchSubViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
@@ -30,7 +32,7 @@
         strongSelf(self);
         !self.requestBlock ? : self.requestBlock();
     }];
-    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(QYZYMatchHomeCell.class) bundle:nil] forCellReuseIdentifier:NSStringFromClass(QYZYMatchHomeCell.class)];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(AXMatchListTableViewCell.class) bundle:nil] forCellReuseIdentifier:NSStringFromClass(AXMatchListTableViewCell.class)];
     [self.tableView registerClass:QYZYTableEmptyCell.class forCellReuseIdentifier:NSStringFromClass(QYZYTableEmptyCell.class)];
 }
 
@@ -44,30 +46,33 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    QYZYMatchHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(QYZYMatchHomeCell.class) forIndexPath:indexPath];
-    QYZYMatchDetailModel *model = [QYZYMatchDetailModel new];
-    model.leagueName = @"西甲";
-    model.matchTime = @"12321213";
-    model.hostTeamName = @"皇马";
-    model.guestTeamName = @"巴萨";
-    model.hostTeamScore = @"1";
-    model.guestTeamScore = @"2";
-    model.statusLable = @"1";
-    cell.detailModel = model;
+    AXMatchListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchListTableViewCell.class) forIndexPath:indexPath];
+    cell.indexrow = indexPath.row;
     return cell;
-    
-    if (self.matches.count) {
-        QYZYMatchHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(QYZYMatchHomeCell.class) forIndexPath:indexPath];
-        if (self.matches.count > indexPath.row) {
-            cell.detailModel = self.matches[indexPath.row];
-        }
-        return cell;
-    }
-    else {
-        QYZYTableEmptyCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(QYZYTableEmptyCell.class) forIndexPath:indexPath];
-        cell.contentView.backgroundColor = UIColor.whiteColor;
-        return cell;
-    }
+//    QYZYMatchHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(QYZYMatchHomeCell.class) forIndexPath:indexPath];
+//    QYZYMatchDetailModel *model = [QYZYMatchDetailModel new];
+//    model.leagueName = @"西甲";
+//    model.matchTime = @"12321213";
+//    model.hostTeamName = @"皇马";
+//    model.guestTeamName = @"巴萨";
+//    model.hostTeamScore = @"1";
+//    model.guestTeamScore = @"2";
+//    model.statusLable = @"1";
+//    cell.detailModel = model;
+//    return cell;
+//
+//    if (self.matches.count) {
+//        QYZYMatchHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(QYZYMatchHomeCell.class) forIndexPath:indexPath];
+//        if (self.matches.count > indexPath.row) {
+//            cell.detailModel = self.matches[indexPath.row];
+//        }
+//        return cell;
+//    }
+//    else {
+//        QYZYTableEmptyCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(QYZYTableEmptyCell.class) forIndexPath:indexPath];
+//        cell.contentView.backgroundColor = UIColor.whiteColor;
+//        return cell;
+//    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -76,9 +81,11 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return  82;
+    return  150;
     return self.matches.count ? 82 : self.view.frame.size.height;
 }
+
+// TODO: 设置sectionView
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 //    if (self.matches.count) {

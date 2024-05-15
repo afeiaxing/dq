@@ -21,6 +21,8 @@
 @property (nonatomic, strong) FSCalendarView *calendarView;
 @property (nonatomic, strong) NSDate *calendarDate;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) UIView *navigationLine;
+
 @end
 
 @implementation QYZYMatchViewController
@@ -57,6 +59,14 @@
     self.categoryView.frame = CGRectMake(0, 0, 240, 32);
 //    self.navigationItem.titleView = self.categoryView;
     [self.navigationController.navigationBar addSubview:self.categoryView];
+    
+    [self.navigationController.navigationBar addSubview:self.navigationLine];
+    [self.navigationLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.offset(0);
+        make.height.mas_equalTo(1);
+        make.top.equalTo(self.navigationLine.mas_bottom).offset(0);
+    }];
+    
     [self.view addSubview:self.containerView];
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
@@ -140,12 +150,12 @@
 //        _categoryView.layer.cornerRadius = 4.0;
         
         JXCategoryIndicatorLineView *indicator = [[JXCategoryIndicatorLineView alloc] init];
-        indicator.indicatorColor = rgb(41, 69, 192);
-        indicator.indicatorWidth = 15;
-        indicator.indicatorHeight = 3;
-        indicator.indicatorCornerRadius = 1.5;
+        indicator.indicatorColor = rgb(255, 88, 0);
+        indicator.indicatorWidth = 105;
+        indicator.indicatorHeight = 4;
+//        indicator.indicatorCornerRadius = 1.5;
         indicator.indicatorWidthIncrement = 0;
-        indicator.verticalMargin = 2;
+//        indicator.verticalMargin = 2;
 //        JXCategoryIndicatorBackgroundView *indicator = [[JXCategoryIndicatorBackgroundView alloc] init];
 //        indicator.indicatorColor = rgb(254, 254, 255);
 //        indicator.indicatorWidth = 87;
@@ -222,6 +232,14 @@
 //        [_bgView addGestureRecognizer:tap];
     }
     return _bgView;
+}
+
+- (UIView *)navigationLine{
+    if (!_navigationLine) {
+        _bgView = [[UIView alloc] init];
+        _bgView.backgroundColor = rgba(30, 30, 30, 1);
+    }
+    return _navigationLine;
 }
 
 @end

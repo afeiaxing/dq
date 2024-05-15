@@ -8,14 +8,17 @@
 #import "QYZYSubMainViewController.h"
 #import "QYZYMatchSubViewController.h"
 #import "QYZYMatchViewModel.h"
+#import "JXCategoryTitleBackgroundView.h"
 
 @interface QYZYSubMainViewController ()<JXCategoryViewDelegate,JXCategoryListContainerViewDelegate>
-@property (nonatomic ,strong) JXCategoryTitleView *categoryView;
+@property (nonatomic ,strong) JXCategoryTitleBackgroundView *categoryView;
 @property (nonatomic ,strong) JXCategoryListContainerView *containerView;
 @property (nonatomic ,strong) QYZYMatchViewModel *viewModel;
+@property (nonatomic ,strong) QYZYMatchSubViewController *allVC;
 @property (nonatomic ,strong) QYZYMatchSubViewController *finishedVC;
 @property (nonatomic ,strong) QYZYMatchSubViewController *goingVC;
 @property (nonatomic ,strong) QYZYMatchSubViewController *uncomingVC;
+@property (nonatomic ,strong) QYZYMatchSubViewController *favoriteVC;
 @end
 
 @implementation QYZYSubMainViewController
@@ -57,9 +60,11 @@
         [self.finishedVC endRefresh];
         [self.uncomingVC endRefresh];
         if (matchModel) {
+            self.allVC.matches = matchModel.going.matches;
             self.goingVC.matches = matchModel.going.matches;
             self.finishedVC.matches = matchModel.finished.matches;
             self.uncomingVC.matches = matchModel.uncoming.matches;
+            self.favoriteVC.matches = matchModel.going.matches;
         }
     }];
 }
@@ -75,38 +80,43 @@
 
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     if (index == 0) {
+        return self.allVC;
+    } else if (index == 1) {
         return self.goingVC;
-    }
-    else if (index == 1) {
-        return self.finishedVC;
-    }
-    else {
+    } else if (index == 2) {
         return self.uncomingVC;
+    } else if (index == 2) {
+        return self.finishedVC;
+    } else {
+        return self.favoriteVC;
     }
 }
 
 #pragma mark - get
-- (JXCategoryTitleView *)categoryView {
+- (JXCategoryTitleBackgroundView *)categoryView {
     if (!_categoryView) {
-        _categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 48)];
-        _categoryView.titles = @[@"进行中",@"已结束",@"未开赛"];
-        _categoryView.titleColor = UIColor.whiteColor;
-        _categoryView.titleSelectedColor = rgb(41, 69, 192);
+        _categoryView = [[JXCategoryTitleBackgroundView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 48)];
+        _categoryView.titles = @[@"All",@"Live",@"Scheduled",@"Result",@"Favorite"];
+        _categoryView.titleColor = rgb(153, 153, 153);
+        _categoryView.titleSelectedColor = rgb(255, 88, 0);
         _categoryView.titleFont = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
-        _categoryView.titleSelectedFont = [UIFont fontWithName:@"PingFangSC-Semibold" size:16];
-        _categoryView.cellWidth = 78;
+        _categoryView.titleSelectedFont = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
+        _categoryView.cellWidth = 60;
         _categoryView.cellSpacing = 0;
-        _categoryView.backgroundColor = rgb(41, 69, 192);
+        _categoryView.borderLineWidth = 1;
+        _categoryView.selectedBorderColor = rgb(255, 88, 0);
+        _categoryView.backgroundCornerRadius = 10;
+//        _categoryView.backgroundColor = UIColor.whiteColor;
         _categoryView.listContainer = self.containerView;
         _categoryView.delegate = self;
         
-        JXCategoryIndicatorBackgroundView *indicator = [[JXCategoryIndicatorBackgroundView alloc] init];
-        indicator.indicatorColor = rgb(254, 254, 255);
-        indicator.indicatorWidth = 78;
-        indicator.indicatorHeight = 28;
-        indicator.indicatorCornerRadius = 14;
-        indicator.indicatorWidthIncrement = 0;
-        _categoryView.indicators = @[indicator];
+//        JXCategoryIndicatorBackgroundView *indicator = [[JXCategoryIndicatorBackgroundView alloc] init];
+//        indicator.indicatorColor = UIColor.whiteColor;
+//        indicator.indicatorWidth = 78;
+//        indicator.indicatorHeight = 28;
+//        indicator.indicatorCornerRadius = 1;
+//        indicator.indicatorWidthIncrement = 1;
+//        _categoryView.indicators = @[indicator];
     }
     return _categoryView;
 }
@@ -163,5 +173,30 @@
     }
     return _uncomingVC;
 }
+
+- (QYZYMatchSubViewController *)allVC {
+    if (!_allVC) {
+        _allVC = [[QYZYMatchSubViewController alloc] init];
+        weakSelf(self);
+        _allVC.requestBlock = ^{
+            strongSelf(self);
+            [self requestData];
+        };
+    }
+    return _allVC;
+}
+
+- (QYZYMatchSubViewController *)favoriteVC {
+    if (!_favoriteVC) {
+        _favoriteVC = [[QYZYMatchSubViewController alloc] init];
+        weakSelf(self);
+        _favoriteVC.requestBlock = ^{
+            strongSelf(self);
+            [self requestData];
+        };
+    }
+    return _favoriteVC;
+}
+
 
 @end
