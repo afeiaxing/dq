@@ -15,18 +15,23 @@
 
 @interface QYZYMatchDetailViewController ()<JXCategoryViewDelegate,JXCategoryListContainerViewDelegate>
 @property (nonatomic ,strong) UIView *statusView;
-@property (nonatomic ,strong) UIImageView *bgImageView;
+@property (nonatomic ,strong) UIView *navigationView;
 @property (nonatomic ,strong) UIView *headerBgView;
-@property (nonatomic ,strong) UILabel *leagueLabel;
+@property (nonatomic, strong) UILabel *topHostName;
+@property (nonatomic, strong) UILabel *topAwayName;
+@property (nonatomic, strong) UIImageView *topHostLogo;
+@property (nonatomic, strong) UIImageView *topAwayLogo;
+
+@property (nonatomic, strong) UILabel *hostFlag;
+@property (nonatomic, strong) UILabel *awayFlag;
+
 @property (nonatomic ,strong) UILabel *timeLabel;
-@property (nonatomic ,strong) UILabel *statusLabel;
 @property (nonatomic ,strong) UIImageView *hostImageView;
 @property (nonatomic ,strong) UIImageView *guestImageView;
 @property (nonatomic ,strong) UILabel *hostLabel;
 @property (nonatomic ,strong) UILabel *guestLabel;
 @property (nonatomic ,strong) UIButton *playButton;
 @property (nonatomic ,strong) UILabel *scoreLabel;
-@property (nonatomic ,strong) UILabel *halfScoreLabel;
 
 @property (nonatomic ,strong) QYZYMatchViewModel *viewModel;
 @property (nonatomic ,strong) QYZYMatchMainModel *mainModel;
@@ -83,90 +88,112 @@
         make.left.top.right.equalTo(self.view);
         make.height.mas_equalTo(StatusBarHeightConstant);
     }];
-    CGFloat width = CGRectGetWidth(self.view.bounds);
-    [self.view addSubview:self.bgImageView];
-    [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self.view);
+    [self.view addSubview:self.navigationView];
+    [self.navigationView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.offset(0);
         make.top.equalTo(self.statusView.mas_bottom);
-        make.height.mas_equalTo(9.0/16.0*width);
+        make.height.mas_equalTo(NavigationBarHeight);
     }];
+    
+    [self.navigationView addSubview:self.topHostName];
+    [self.topHostName mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.offset(-50);
+        make.centerY.offset(0);
+    }];
+    
+    [self.navigationView addSubview:self.topHostLogo];
+    [self.topHostLogo mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.topHostName.mas_left).offset(-8);
+        make.centerY.offset(0);
+        make.width.height.mas_equalTo(15);
+    }];
+    
+    [self.navigationView addSubview:self.topAwayLogo];
+    [self.topAwayLogo mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.offset(50);
+        make.centerY.offset(0);
+        make.width.height.mas_equalTo(15);
+    }];
+    
+    [self.navigationView addSubview:self.topAwayName];
+    [self.topAwayName mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.topAwayLogo.mas_right).offset(8);
+        make.centerY.offset(0);
+    }];
+    
+    CGFloat headerBGHeight = 204;
     [self.view addSubview:self.headerBgView];
     [self.headerBgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.right.equalTo(self.view);
-        make.height.mas_equalTo(9.0/16.0*width + StatusBarHeightConstant);
+        make.left.right.equalTo(self.view);
+        make.top.equalTo(self.navigationView.mas_bottom);
+        make.height.mas_equalTo(headerBGHeight);
     }];
+    
     [self.view addSubview:self.webView];
     [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self.view);
-        make.top.equalTo(self.statusView.mas_bottom);
-        make.height.mas_equalTo(9.0/16.0*width);
+        make.edges.equalTo(self.headerBgView);
     }];
+    
     [self.view addSubview:self.backButton];
     [self.backButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).offset(8);
         make.top.equalTo(self.view).offset(StatusBarHeightConstant + 8);
         make.height.width.mas_equalTo(28);
     }];
-    [self.headerBgView addSubview:self.leagueLabel];
-    [self.leagueLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.headerBgView);
-        make.top.equalTo(self.headerBgView).offset(StatusBarHeightConstant + 6);
-        make.height.mas_equalTo(17);
+    
+    [self.headerBgView addSubview:self.hostFlag];
+    [self.hostFlag mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.offset(50);
+        make.top.offset(54);
+        make.size.mas_equalTo(CGSizeMake(32, 10));
     }];
-    [self.headerBgView addSubview:self.timeLabel];
-    [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.leagueLabel);
-        make.top.equalTo(self.leagueLabel.mas_bottom);
-        make.height.mas_equalTo(16);
+    
+    [self.headerBgView addSubview:self.awayFlag];
+    [self.awayFlag mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.offset(-50);
+        make.centerY.width.height.equalTo(self.hostFlag);
     }];
-    [self.headerBgView addSubview:self.statusLabel];
-    [self.statusLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.headerBgView);
-        make.top.equalTo(self.timeLabel.mas_bottom).offset(17);
-        make.height.mas_equalTo(24);
-        make.width.mas_equalTo(30);
-    }];
-    [self.headerBgView addSubview:self.playButton];
-    [self.playButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.leagueLabel);
-        make.bottom.equalTo(self.headerBgView).offset(-10);
-        make.size.mas_equalTo(CGSizeMake(80, 24));
-    }];
+    
     [self.headerBgView addSubview:self.hostImageView];
     [self.hostImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.headerBgView).offset(38);
+        make.centerX.equalTo(self.hostFlag);
         make.width.height.mas_equalTo(50);
-        make.bottom.equalTo(self.headerBgView).offset(-80);
+        make.top.equalTo(self.hostFlag.mas_bottom).offset(8);
     }];
     [self.headerBgView addSubview:self.hostLabel];
     [self.hostLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.hostImageView.mas_bottom).offset(5);
-        make.height.mas_equalTo(18);
+        make.top.equalTo(self.hostImageView.mas_bottom).offset(6);
         make.centerX.equalTo(self.hostImageView);
     }];
     [self.headerBgView addSubview:self.guestImageView];
     [self.guestImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.headerBgView).offset(-38);
-        make.width.height.mas_equalTo(50);
-        make.bottom.equalTo(self.headerBgView).offset(-80);
+        make.centerX.equalTo(self.awayFlag);
+        make.top.width.height.equalTo(self.hostImageView);
+        make.top.equalTo(self.hostFlag.mas_bottom).offset(8);
     }];
     [self.headerBgView addSubview:self.guestLabel];
     [self.guestLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.guestImageView.mas_bottom).offset(5);
-        make.height.mas_equalTo(18);
+        make.centerY.equalTo(self.hostLabel);
         make.centerX.equalTo(self.guestImageView);
     }];
+    
+    [self.headerBgView addSubview:self.timeLabel];
+    [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.offset(0);
+        make.top.offset(78);
+    }];
+    
+    [self.headerBgView addSubview:self.playButton];
+    [self.playButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.offset(0);
+        make.bottom.equalTo(self.headerBgView).offset(-10);
+        make.size.mas_equalTo(CGSizeMake(80, 24));
+    }];
+    
     [self.headerBgView addSubview:self.scoreLabel];
     [self.scoreLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.headerBgView);
-        make.bottom.equalTo(self.hostImageView.mas_bottom);
-        make.height.mas_equalTo(32);
-    }];
-    [self.headerBgView addSubview:self.halfScoreLabel];
-    [self.halfScoreLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.headerBgView);
-        make.top.equalTo(self.scoreLabel.mas_bottom).offset(6);
-        make.height.mas_equalTo(16);
+        make.top.equalTo(self.timeLabel.mas_bottom).offset(10);
     }];
     
     [self.view addSubview:self.categoryView];
@@ -224,28 +251,14 @@
 }
 
 - (void)updateHeaderWithDetailModel:(QYZYMatchMainModel *)detailModel {
-    if ([detailModel.sportId isEqualToString:@"1"]) {
-        self.headerBgView.backgroundColor = rgb(15, 100, 51);
-        self.leagueLabel.text = [NSString stringWithFormat:@"%@%@",detailModel.leagueNick,detailModel.round ?: @""];
-    } else {
-        self.headerBgView.backgroundColor = rgb(33, 67, 132);
-        self.leagueLabel.text = [NSString stringWithFormat:@"%@%@",detailModel.leagueNick,detailModel.groupName ?: @""];
-    }
     self.timeLabel.text = [self time_timestampToString:detailModel.matchTime.integerValue];
     [self.hostImageView sd_setImageWithURL:[NSURL URLWithString:detailModel.hostTeamLogo]];
     self.hostImageView.backgroundColor = detailModel.hostTeamLogo.length ? UIColor.clearColor : rgba(255, 255, 255, 0.15);
-    self.hostLabel.text = detailModel.hostTeamName;
+    self.hostLabel.text = @"Los Angeles Lakers";
     [self.guestImageView sd_setImageWithURL:[NSURL URLWithString:detailModel.guestTeamLogo]];
     self.guestImageView.backgroundColor = detailModel.guestTeamLogo.length ? UIColor.clearColor : rgba(255, 255, 255, 0.15);
-    self.guestLabel.text = detailModel.guestTeamName;
+    self.guestLabel.text = @"Boston Celtics";
     self.scoreLabel.text = [NSString stringWithFormat:@"%@ - %@",detailModel.hostTeamScore ?: @"0", detailModel.guestTeamScore ?: @"0"];
-    self.halfScoreLabel.text = [NSString stringWithFormat:@"(%@-%@)",detailModel.hostTeamHalfScore ?: @"0", detailModel.guestTeamHalfScore ?: @"0"];
-    self.statusLabel.text = [self getStatusCode:detailModel.matchStatusCode.integerValue timePlayed:detailModel.timePlayed.integerValue MatchTime:@(detailModel.matchTime.integerValue) status:detailModel.matchStatus.integerValue detailModel:detailModel];
-    NSStringDrawingOptions options = NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading;
-    CGFloat width = [self.statusLabel.text boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, 24) options:options attributes:@{NSFontAttributeName : self.statusLabel.font} context:nil].size.width;
-    [self.statusLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(width + 12);
-    }];
 }
 
 - (void)timerLoadDetailData {
@@ -315,29 +328,84 @@
     return _backButton;
 }
 
-- (UIImageView *)bgImageView {
-    if (!_bgImageView) {
-        _bgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"live_detail_bg"]];
-        _bgImageView.contentMode = UIViewContentModeScaleAspectFill;
+- (UIView *)navigationView{
+    if (!_navigationView) {
+        _navigationView = [UIView new];
+        _navigationView.backgroundColor = UIColor.blackColor;
     }
-    return _bgImageView;
+    return _navigationView;;
+}
+
+- (UIImageView *)topHostLogo{
+    if (!_topHostLogo) {
+        _topHostLogo = [UIImageView new];
+        _topHostLogo.backgroundColor = UIColor.purpleColor;
+    }
+    return _topHostLogo;
+}
+
+- (UIImageView *)topAwayLogo{
+    if (!_topAwayLogo) {
+        _topAwayLogo = [UIImageView new];
+        _topAwayLogo.backgroundColor = UIColor.purpleColor;
+    }
+    return _topAwayLogo;
+}
+
+- (UILabel *)topHostName{
+    if (!_topHostName) {
+        _topHostName = [UILabel new];
+        _topHostName.text = @"LAL";
+        _topHostName.textColor = UIColor.whiteColor;
+        _topHostName.font = [UIFont systemFontOfSize:14];
+    }
+    return _topHostName;
+}
+
+- (UILabel *)topAwayName{
+    if (!_topAwayName) {
+        _topAwayName = [UILabel new];
+        _topAwayName.text = @"BOS";
+        _topAwayName.textColor = UIColor.whiteColor;
+        _topAwayName.font = [UIFont systemFontOfSize:14];
+    }
+    return _topAwayName;
 }
 
 - (UIView *)headerBgView {
     if (!_headerBgView) {
         _headerBgView = [[UIView alloc] init];
-        _headerBgView.backgroundColor = rgb(15, 100, 51);
+        _headerBgView.backgroundColor = UIColor.purpleColor;;
     }
     return _headerBgView;
 }
 
-- (UILabel *)leagueLabel {
-    if (!_leagueLabel) {
-        _leagueLabel = [[UILabel alloc] init];
-        _leagueLabel.textColor = UIColor.whiteColor;
-        _leagueLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:13];
+- (UILabel *)hostFlag{
+    if (!_hostFlag) {
+        _hostFlag = [UILabel new];
+        _hostFlag.text = @"Home";
+        _hostFlag.textColor = UIColor.whiteColor;
+        _hostFlag.textAlignment = NSTextAlignmentCenter;
+        _hostFlag.layer.cornerRadius = 5;
+        _hostFlag.layer.borderColor = UIColor.whiteColor.CGColor;
+        _hostFlag.layer.borderWidth = 1;
+        _hostFlag.font = [UIFont systemFontOfSize:8];
     }
-    return _leagueLabel;
+    return _hostFlag;
+}
+
+- (UILabel *)awayFlag{
+    if (!_awayFlag) {
+        _awayFlag = [UILabel new];
+        _awayFlag.text = @"Away";
+        _awayFlag.textColor = UIColor.whiteColor;
+        _awayFlag.textAlignment = NSTextAlignmentCenter;
+        _awayFlag.layer.cornerRadius = 5;
+        _awayFlag.layer.borderColor = UIColor.whiteColor.CGColor;
+        _awayFlag.layer.borderWidth = 1;
+        _awayFlag.font = [UIFont systemFontOfSize:8];
+    }
+    return _awayFlag;
 }
 
 - (UILabel *)timeLabel {
@@ -347,19 +415,6 @@
         _timeLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:12];
     }
     return _timeLabel;
-}
-
-- (UILabel *)statusLabel {
-    if (!_statusLabel) {
-        _statusLabel = [[UILabel alloc] init];
-        _statusLabel.backgroundColor = rgba(255, 255, 255, 0.15);
-        _statusLabel.layer.cornerRadius = 12;
-        _statusLabel.layer.masksToBounds = YES;
-        _statusLabel.textColor = rgba(255, 255, 255, 0.7);
-        _statusLabel.textAlignment = NSTextAlignmentCenter;
-        _statusLabel.font = [UIFont fontWithName:@"PingFangHK-Regular" size:12];
-    }
-    return _statusLabel;
 }
 
 - (UIButton *)playButton {
@@ -419,15 +474,6 @@
         _scoreLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:32];
     }
     return _scoreLabel;
-}
-
-- (UILabel *)halfScoreLabel {
-    if (!_halfScoreLabel) {
-        _halfScoreLabel = [[UILabel alloc] init];
-        _halfScoreLabel.textColor = UIColor.whiteColor;
-        _halfScoreLabel.font = [UIFont fontWithName:@"PingFangHK-Regular" size:12];
-    }
-    return _halfScoreLabel;
 }
 
 - (QYZYMatchViewModel *)viewModel {

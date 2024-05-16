@@ -9,6 +9,8 @@
 #import "QYZYSubMainViewController.h"
 #import "QYZYMatchCell.h"
 #import "FSCalendarView.h"
+#import "AXMatchFilterViewController.h"
+#import "AXMatchSettingViewController.h"
 
 @interface QYZYMatchViewController ()<JXCategoryViewDelegate,JXCategoryListContainerViewDelegate,FSCalendarDelegate>
 @property (nonatomic, strong) JXCategoryTitleView *categoryView;
@@ -22,6 +24,8 @@
 @property (nonatomic, strong) NSDate *calendarDate;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) UIView *navigationLine;
+@property (nonatomic, strong) UIButton *filterBtn;
+@property (nonatomic, strong) UIButton *settingBtn;
 
 @end
 
@@ -62,10 +66,25 @@
     
     [self.navigationController.navigationBar addSubview:self.navigationLine];
     [self.navigationLine mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.offset(0);
+        make.left.right.bottom.offset(0);
         make.height.mas_equalTo(1);
-        make.top.equalTo(self.navigationLine.mas_bottom).offset(0);
     }];
+    
+    [self.navigationController.navigationBar addSubview:self.settingBtn];
+    [self.settingBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.offset(-12);
+        make.width.height.mas_equalTo(28);
+        make.centerY.equalTo(self.categoryView);
+    }];
+    
+    [self.navigationController.navigationBar addSubview:self.filterBtn];
+    [self.filterBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.settingBtn.mas_left).offset(-12);
+        make.width.height.mas_equalTo(28);
+        make.centerY.equalTo(self.categoryView);
+    }];
+    
+    [self.navigationController.navigationBar addSubview:self.filterBtn];
     
     [self.view addSubview:self.containerView];
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -133,6 +152,20 @@
     }
 }
 
+// MARK: private
+- (void)handleFilterBtnEvent{
+    AXMatchFilterViewController *vc = [AXMatchFilterViewController new];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:true];
+}
+
+- (void)handleSettingBtnEvent{
+    AXMatchSettingViewController *vc = [AXMatchSettingViewController new];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:true];
+}
+
+// MARK: setter & getter
 - (JXCategoryTitleView *)categoryView {
     if (!_categoryView) {
         _categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 48)];
@@ -199,6 +232,7 @@
         _selectButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_selectButton setImage:[UIImage imageNamed:@"match_home_sel"] forState:UIControlStateNormal];
         [_selectButton addTarget:self action:@selector(selectAction) forControlEvents:UIControlEventTouchUpInside];
+        _selectButton.hidden = true;
     }
     return _selectButton;
 }
@@ -236,10 +270,28 @@
 
 - (UIView *)navigationLine{
     if (!_navigationLine) {
-        _bgView = [[UIView alloc] init];
-        _bgView.backgroundColor = rgba(30, 30, 30, 1);
+        _navigationLine = [[UIView alloc] init];
+        _navigationLine.backgroundColor = rgba(231, 232, 241, 1);
     }
     return _navigationLine;
+}
+
+- (UIButton *)filterBtn{
+    if (!_filterBtn) {
+        _filterBtn = [UIButton new];
+        [_filterBtn setImage:[UIImage imageNamed:@"match_filter"] forState:UIControlStateNormal];
+        [_filterBtn addTarget:self action:@selector(handleFilterBtnEvent) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _filterBtn;
+}
+
+- (UIButton *)settingBtn{
+    if (!_settingBtn) {
+        _settingBtn = [UIButton new];
+        [_settingBtn setImage:[UIImage imageNamed:@"match_setting"] forState:UIControlStateNormal];
+        [_settingBtn addTarget:self action:@selector(handleSettingBtnEvent) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _settingBtn;
 }
 
 @end

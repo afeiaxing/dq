@@ -12,6 +12,7 @@
 
 #import "AXMatchListTableViewCell.h"
 #import "AXMatchListOddsCell.h"
+#import "AXMatchListSectionHeader.h"
 
 @interface QYZYMatchSubViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -36,6 +37,8 @@
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(AXMatchListTableViewCell.class) bundle:nil] forCellReuseIdentifier:NSStringFromClass(AXMatchListTableViewCell.class)];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(AXMatchListOddsCell.class) bundle:nil] forCellReuseIdentifier:NSStringFromClass(AXMatchListOddsCell.class)];
     [self.tableView registerClass:QYZYTableEmptyCell.class forCellReuseIdentifier:NSStringFromClass(QYZYTableEmptyCell.class)];
+    [self.tableView registerClass:AXMatchListSectionHeader.class forHeaderFooterViewReuseIdentifier:NSStringFromClass(AXMatchListSectionHeader.class)];
+    self.tableView.sectionFooterHeight = CGFLOAT_MIN;
 }
 
 - (void)setMatches:(NSArray *)matches {
@@ -84,17 +87,37 @@
 //    }
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 3;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 30;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return CGFLOAT_MIN;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
-    return self.matches.count ? self.matches.count : 1;
+    return 10;
+//    return self.matches.count ? self.matches.count : 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return  150;
-    return self.matches.count ? 82 : self.view.frame.size.height;
+//    return self.matches.count ? 82 : self.view.frame.size.height;
 }
 
-// TODO: 设置sectionView
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    return nil;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    AXMatchListSectionHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass(AXMatchListSectionHeader.class)];
+    header.sectionNum = section;
+    return header;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 //    if (self.matches.count) {
