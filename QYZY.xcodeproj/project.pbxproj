@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -300,6 +300,8 @@
 		B1D8D8DD28EC4095004F2ADA /* QYZYCustomerserviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D8D8DC28EC4095004F2ADA /* QYZYCustomerserviceViewController.m */; };
 		B1D8D8E028EC4B9B004F2ADA /* QYZYCancellationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D8D8DF28EC4B9B004F2ADA /* QYZYCancellationViewController.m */; };
 		B1D8D8E328EC4DE7004F2ADA /* QYZYMycollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D8D8E228EC4DE7004F2ADA /* QYZYMycollectionViewController.m */; };
+		CB08230A2BF5A9D100027C81 /* AXMatchListOddsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0823082BF5A9D100027C81 /* AXMatchListOddsCell.m */; };
+		CB08230D2BF5AB6400027C81 /* AXMatchListOddsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB08230C2BF5AB6400027C81 /* AXMatchListOddsCell.xib */; };
 		F37E5D9F2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5D9B2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCellModel.m */; };
 		F37E5DA02BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5D9C2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCell.m */; };
 		F37E5DA12BF4D7A10049FAE1 /* JXCategoryTitleBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5D9D2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundView.m */; };
@@ -912,6 +914,9 @@
 		B1D8D8DF28EC4B9B004F2ADA /* QYZYCancellationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYCancellationViewController.m; sourceTree = "<group>"; };
 		B1D8D8E128EC4DE7004F2ADA /* QYZYMycollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYMycollectionViewController.h; sourceTree = "<group>"; };
 		B1D8D8E228EC4DE7004F2ADA /* QYZYMycollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYMycollectionViewController.m; sourceTree = "<group>"; };
+		CB0823072BF5A9D100027C81 /* AXMatchListOddsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchListOddsCell.h; sourceTree = "<group>"; };
+		CB0823082BF5A9D100027C81 /* AXMatchListOddsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchListOddsCell.m; sourceTree = "<group>"; };
+		CB08230C2BF5AB6400027C81 /* AXMatchListOddsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AXMatchListOddsCell.xib; sourceTree = "<group>"; };
 		F37E5D992BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleBackgroundCell.h; sourceTree = "<group>"; };
 		F37E5D9A2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleBackgroundView.h; sourceTree = "<group>"; };
 		F37E5D9B2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryTitleBackgroundCellModel.m; sourceTree = "<group>"; };
@@ -2118,6 +2123,9 @@
 				F37E5DAC2BF4DD0B0049FAE1 /* AXMatchListTableViewCell.h */,
 				F37E5DAD2BF4DD0B0049FAE1 /* AXMatchListTableViewCell.m */,
 				F37E5DAE2BF4DD0B0049FAE1 /* AXMatchListTableViewCell.xib */,
+				CB0823072BF5A9D100027C81 /* AXMatchListOddsCell.h */,
+				CB0823082BF5A9D100027C81 /* AXMatchListOddsCell.m */,
+				CB08230C2BF5AB6400027C81 /* AXMatchListOddsCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2505,6 +2513,7 @@
 				F560B59B28E7F0AA00989DE4 /* QYZYTotalNewsViewController.xib in Resources */,
 				9B9A76D028E93C8A00809C8D /* QYZYCircleCell.xib in Resources */,
 				F37E5DB02BF4DD0B0049FAE1 /* AXMatchListTableViewCell.xib in Resources */,
+				CB08230D2BF5AB6400027C81 /* AXMatchListOddsCell.xib in Resources */,
 				55D2973828EB026F00C80738 /* QYZYLiveNoticeViewController.xib in Resources */,
 				555CE94928F6C9E90085F1D4 /* QYZYMatchSubViewController.xib in Resources */,
 				55B10194290151370056CF17 /* QYZYMatchHomeCell.xib in Resources */,
@@ -2841,6 +2850,7 @@
 				9BC0D5C12906B50A0063BCC7 /* QYZYPlayerDataModel.m in Sources */,
 				AE68007428E93E0D0084E652 /* QYZYNewsDetailViewController.m in Sources */,
 				F551044028E3FD96001E9BC5 /* NSArray+Extensions.m in Sources */,
+				CB08230A2BF5A9D100027C81 /* AXMatchListOddsCell.m in Sources */,
 				55E0D52228F831D400DDAAB6 /* QYZYMatchOverCell.m in Sources */,
 				9B8D5B6E28EC2AA100B480BA /* QYZYReportContentCell.m in Sources */,
 				55EADDB228E6E2D0008324AE /* QYZYLiveDetailViewController.m in Sources */,

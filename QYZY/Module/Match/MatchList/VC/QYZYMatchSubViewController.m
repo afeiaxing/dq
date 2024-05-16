@@ -11,6 +11,7 @@
 #import "QYZYTableEmptyCell.h"
 
 #import "AXMatchListTableViewCell.h"
+#import "AXMatchListOddsCell.h"
 
 @interface QYZYMatchSubViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -33,6 +34,7 @@
         !self.requestBlock ? : self.requestBlock();
     }];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(AXMatchListTableViewCell.class) bundle:nil] forCellReuseIdentifier:NSStringFromClass(AXMatchListTableViewCell.class)];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(AXMatchListOddsCell.class) bundle:nil] forCellReuseIdentifier:NSStringFromClass(AXMatchListOddsCell.class)];
     [self.tableView registerClass:QYZYTableEmptyCell.class forCellReuseIdentifier:NSStringFromClass(QYZYTableEmptyCell.class)];
 }
 
@@ -46,9 +48,16 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    AXMatchListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchListTableViewCell.class) forIndexPath:indexPath];
-    cell.indexrow = indexPath.row;
-    return cell;
+    BOOL isUpcoming = indexPath.row %2 == 0;
+    if (isUpcoming) {
+        AXMatchListOddsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchListOddsCell.class) forIndexPath:indexPath];
+        return cell;
+    } else {
+        AXMatchListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchListTableViewCell.class) forIndexPath:indexPath];
+        cell.indexrow = indexPath.row;
+        return cell;
+    }
+    
 //    QYZYMatchHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(QYZYMatchHomeCell.class) forIndexPath:indexPath];
 //    QYZYMatchDetailModel *model = [QYZYMatchDetailModel new];
 //    model.leagueName = @"西甲";
@@ -76,7 +85,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return 20;
     return self.matches.count ? self.matches.count : 1;
 }
 

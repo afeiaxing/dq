@@ -84,16 +84,27 @@
 }
 
 // MARK: setter & getter
+/**
+ ** 隐藏或者展示逻辑
+ * 让球盘口Label - 展示（进行中），隐藏（已结束）
+ * OT1Label -- 展示（has OT1），隐藏（not has OT1）
+ * OT2Label -- 展示（has OT2），隐藏（not has OT2）
+ */
 - (void)setIndexrow:(NSInteger)indexrow{
-    BOOL isQ1 = indexrow == 0;  // 0 -> 第一节
-    BOOL isQ2 = indexrow == 1;  // 1 -> 第二节
-    BOOL isQ3 = indexrow == 2;  // 2 -> 第三节
-    BOOL isQ4 = indexrow == 3;  // 3 -> 第四节
-    BOOL isOT1 = indexrow == 4;  // 4 -> 加时1
-    BOOL isOT2 = indexrow == 5;  // 5 -> 加时2
-    BOOL isOT3 = indexrow == 6;  // 6 -> 加时3
-    BOOL isResult = indexrow == 7;  // 7 -> 结束
-    BOOL isUpcoming = indexrow > 7;  // >7 -> 未开赛
+    BOOL isResult = indexrow == 1;  // 已结束无OT
+    BOOL isResultWithOT1 = indexrow == 3;    // 已结束有OT1
+    BOOL isResultWithOT2 = indexrow == 5;    // 已结束有OT2
+    
+    BOOL isQ1 = indexrow == 7;  // 0 -> 第一节
+    BOOL isQ2 = indexrow == 9;  // 1 -> 第二节
+    BOOL isQ3 = indexrow == 11;  // 2 -> 第三节
+    BOOL isQ4 = indexrow == 13;  // 3 -> 第四节
+    BOOL isOT1 = indexrow == 15;  // 4 -> 加时1
+    BOOL isOT2 = indexrow == 17;  // 5 -> 加时2
+    BOOL isOT3 = indexrow == 19;  // 6 -> 加时3
+    
+    self.topHandicap.hidden = isResult || isResultWithOT1 || isResultWithOT2;
+    self.bottomHandicap.hidden = isResult || isResultWithOT1 || isResultWithOT2;
     
     if (isQ1) {
         [self handleLabelHidden:@[self.ot1Title, self.ot2Title, self.hostOT1Score, self.hostOT2Score, self.awayOT1Score, self.awayOT2Score] hide:true];
