@@ -22,6 +22,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="146"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ap_logo2" translatesAutoresizingMaskIntoConstraints="NO" id="Vsy-ts-6kO">
+                        <rect key="frame" x="143" y="113.66666666666667" width="218" height="28.000000000000014"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="Zyz-XA-5dQ"/>
+                            <constraint firstAttribute="width" constant="218" id="dgS-Oq-cmf"/>
+                        </constraints>
+                    </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SxD-RZ-3As">
                         <rect key="frame" x="12" y="5" width="20" height="20"/>
                         <constraints>
@@ -43,13 +50,13 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6W6-j8-d5l">
-                        <rect key="frame" x="348" y="7.6666666666666679" width="15" height="15"/>
+                        <rect key="frame" x="343" y="5" width="20" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="15" id="PNW-dw-rlC"/>
-                            <constraint firstAttribute="height" constant="15" id="rCB-qc-bhU"/>
+                            <constraint firstAttribute="width" constant="20" id="PNW-dw-rlC"/>
+                            <constraint firstAttribute="height" constant="20" id="rCB-qc-bhU"/>
                         </constraints>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="login_agree_on" title=""/>
+                        <buttonConfiguration key="configuration" style="plain" image="match_list_collect" title=""/>
                     </button>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g4D-gY-UDt">
                         <rect key="frame" x="20" y="51" width="20" height="20"/>
@@ -167,11 +174,6 @@
                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RhS-B4-DH8">
-                        <rect key="frame" x="152" y="119" width="211" height="19"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.58431372550000005" green="0.61568627450000002" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
@@ -180,6 +182,7 @@
                     <constraint firstItem="P3r-H5-7B3" firstAttribute="centerY" secondItem="SxD-RZ-3As" secondAttribute="centerY" id="4En-Gq-7MQ"/>
                     <constraint firstItem="bjR-PG-ACi" firstAttribute="centerX" secondItem="i3z-c4-Tzh" secondAttribute="centerX" id="4jx-19-Gsm"/>
                     <constraint firstItem="g4D-gY-UDt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="5Yb-1K-FKb"/>
+                    <constraint firstItem="i3z-c4-Tzh" firstAttribute="trailing" secondItem="Vsy-ts-6kO" secondAttribute="trailing" id="Bhm-0R-CR1"/>
                     <constraint firstItem="9dd-f4-vFI" firstAttribute="centerY" secondItem="g4D-gY-UDt" secondAttribute="centerY" id="EiC-O7-YrT"/>
                     <constraint firstItem="i3z-c4-Tzh" firstAttribute="top" secondItem="fLc-ey-k6G" secondAttribute="bottom" constant="6" id="EpE-9r-Qo0"/>
                     <constraint firstAttribute="bottom" secondItem="h3G-4H-g57" secondAttribute="bottom" constant="4" id="F0X-fc-rwl"/>
@@ -211,6 +214,7 @@
                     <constraint firstItem="SxD-RZ-3As" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="gOR-SY-7dE"/>
                     <constraint firstItem="ye6-KS-S9m" firstAttribute="centerY" secondItem="g4D-gY-UDt" secondAttribute="centerY" id="gwn-gD-aHR"/>
                     <constraint firstItem="Uun-Z8-ZYS" firstAttribute="leading" secondItem="OMm-VG-cQL" secondAttribute="trailing" constant="5" id="j5W-Vn-xvG"/>
+                    <constraint firstItem="Vsy-ts-6kO" firstAttribute="centerY" secondItem="OMm-VG-cQL" secondAttribute="centerY" id="keU-Xz-Qhl"/>
                     <constraint firstItem="h3G-4H-g57" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="kh7-7d-R5v"/>
                     <constraint firstItem="MT6-oM-As2" firstAttribute="centerY" secondItem="miT-Yj-zNC" secondAttribute="centerY" id="mcn-j7-F5E"/>
                     <constraint firstItem="MjK-NW-yFS" firstAttribute="centerX" secondItem="miT-Yj-zNC" secondAttribute="centerX" id="mx2-zg-Y0j"/>
@@ -228,7 +232,6 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
-                <outlet property="apLogo" destination="RhS-B4-DH8" id="HuU-zO-akp"/>
                 <outlet property="awayHandicap" destination="Wqf-a1-idy" id="m5V-LO-O90"/>
                 <outlet property="awayLogo" destination="1qU-Sz-n6c" id="clW-YV-C9z"/>
                 <outlet property="awayMoneyline" destination="aUh-aV-dE4" id="IlX-oj-mYr"/>
@@ -253,7 +256,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="login_agree_on" width="12" height="12"/>
+        <image name="ap_logo2" width="72.666664123535156" height="9.3333330154418945"/>
+        <image name="match_list_collect" width="26.666666030883789" height="26.666666030883789"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
