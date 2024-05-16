@@ -12,7 +12,6 @@
 #import <IQKeyboardManager.h>
 #import "QYZYLiveDetailViewModel.h"
 #import "QYZYChatGiftView.h"
-#import "QYZYChargeViewController.h"
 
 NSString *sendFailMsg = @"消息发送失败，请重试";
 NSString *reConnectMsg = @"重连中...";
@@ -71,7 +70,7 @@ NSString *reConnectMsg = @"重连中...";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willShowKeyboard:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willHideKeyboard:) name:UIKeyboardWillHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateLoginStatus) name:QYZYLoginSuccessNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestBalanceData) name:QYZYIAPPaySuccessNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestBalanceData) name:QYZYIAPPaySuccessNotification object:nil];
     
 }
 
@@ -313,7 +312,7 @@ NSString *reConnectMsg = @"重连中...";
         };
         _giftView.chargeBlock = ^() {
             strongSelf(self);
-            [self.navigationController pushViewController:QYZYChargeViewController.new animated:true];
+//            [self.navigationController pushViewController:QYZYChargeViewController.new animated:true];
         };
     }
     return _giftView;

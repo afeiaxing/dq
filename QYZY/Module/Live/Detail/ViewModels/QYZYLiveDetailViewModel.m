@@ -13,7 +13,6 @@
 #import "QYZYLiveChatFilterApi.h"
 #import "QYZYLiveGetGiftApi.h"
 #import "QYZYSendGiftApi.h"
-#import "QYZYAmountwithApi.h"
 
 @implementation QYZYLiveDetailViewModel
 - (void)requestPullInfoWithAnchorId:(NSString *)anchorId completion:(void(^)(NSDictionary *pullInfo))completion {
@@ -111,17 +110,17 @@
 }
 
 - (void)requestBalanceWithCompletion:(void(^)(QYZYAmountwithModel *model))completion {
-    QYZYAmountwithApi *amountApi = [QYZYAmountwithApi new];
-    [amountApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        QYZYAmountwithModel *model = [QYZYAmountwithModel yy_modelWithJSON:[request.responseObject objectForKey:@"data"]];
-        
-        QYZYUserModel *userModel = QYZYUserManager.shareInstance.userModel;
-        userModel.balance = model.balance;
-        [QYZYUserManager.shareInstance saveUserModel:userModel];
-        
-        !completion ? : completion(model);
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        !completion ? : completion(nil);
-    }];
+//    QYZYAmountwithApi *amountApi = [QYZYAmountwithApi new];
+//    [amountApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        QYZYAmountwithModel *model = [QYZYAmountwithModel yy_modelWithJSON:[request.responseObject objectForKey:@"data"]];
+//        
+//        QYZYUserModel *userModel = QYZYUserManager.shareInstance.userModel;
+//        userModel.balance = model.balance;
+//        [QYZYUserManager.shareInstance saveUserModel:userModel];
+//        
+//        !completion ? : completion(model);
+//    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        !completion ? : completion(nil);
+//    }];
 }
 @end

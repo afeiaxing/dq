@@ -6,7 +6,6 @@
 //
 
 #import "QYZYCommendInputView.h"
-#import "QYZYCircleDetailController.h"
 #import "QYZYPhoneLoginViewController.h"
 
 @interface QYZYCommendInputView ()<UITextViewDelegate>

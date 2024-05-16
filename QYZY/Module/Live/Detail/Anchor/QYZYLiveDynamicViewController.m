@@ -6,7 +6,7 @@
 //
 
 #import "QYZYLiveDynamicViewController.h"
-#import "QYZYCircleDetailController.h"
+//#import "QYZYCircleDetailController.h"
 #import "QYZYPersonalhomepageViewController.h"
 #import "QYZYCircleCell.h"
 #import "QYZYLiveDynamicApi.h"
@@ -90,10 +90,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.dyArray.count) {
-        QYZYCircleDetailController *vc = [[QYZYCircleDetailController alloc] init];
-        vc.model = self.dyArray[indexPath.row];
-        vc.hidesBottomBarWhenPushed = YES;
-        [UIViewController.currentViewController.navigationController pushViewController:vc animated:YES];
+//        QYZYCircleDetailController *vc = [[QYZYCircleDetailController alloc] init];
+//        vc.model = self.dyArray[indexPath.row];
+//        vc.hidesBottomBarWhenPushed = YES;
+//        [UIViewController.currentViewController.navigationController pushViewController:vc animated:YES];
     }
 }
 

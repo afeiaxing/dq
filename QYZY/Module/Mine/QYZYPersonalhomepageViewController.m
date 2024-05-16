@@ -9,12 +9,10 @@
 #import "QYZYPersonalHadeView.h"
 #import "QYZYTopBlocksModel.h"
 #import "QYZYHotNewsApi.h"
-#import "QYZYMIneApi.h"
 #import "QYZYPiecewiseTableViewCell.h"
 #import "QYZYNewsTableViewCell.h"
 #import "QYZYMineModel.h"
 #import "QYZYNewsDetailViewController.h"
-#import "QYZYPostApi.h"
 #import "QYZYCircleContentModel.h"
 #import "QYZYCircleCell.h"
 #import "QYZYNewsPostAttentionCancelApi.h"
@@ -54,28 +52,28 @@
 
 - (void)loadData {
     
-    QYZYMIneApi *minApi = [QYZYMIneApi new];
-    minApi.uid = (NSNumber *)self.authorId;
-    [minApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        QYZYMineModel *model = [QYZYMineModel yy_modelWithJSON:request.responseJSONObject[@"data"]];
-        self.userid = model.anchorId;
-        [self.hadeView updataUI:model];
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        NSLog(@"%@",request.error);
-    }];
+//    QYZYMIneApi *minApi = [QYZYMIneApi new];
+//    minApi.uid = (NSNumber *)self.authorId;
+//    [minApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        QYZYMineModel *model = [QYZYMineModel yy_modelWithJSON:request.responseJSONObject[@"data"]];
+//        self.userid = model.anchorId;
+//        [self.hadeView updataUI:model];
+//    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        NSLog(@"%@",request.error);
+//    }];
     
     
-    QYZYPostApi *postApi = [QYZYPostApi new];
-    postApi.authorId =  self.authorId;
-    postApi.pageNum = self.pageNum;
-    postApi.pageSize = 15;
-    [postApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        NSArray *array = [NSArray yy_modelArrayWithClass:[QYZYCircleContentModel class] json:request.responseObject[@"data"][@"list"]];
-        self.postArray = array;
-        [self updataTableViewCell];
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        NSLog(@"%@",request.error);
-    }];
+//    QYZYPostApi *postApi = [QYZYPostApi new];
+//    postApi.authorId =  self.authorId;
+//    postApi.pageNum = self.pageNum;
+//    postApi.pageSize = 15;
+//    [postApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        NSArray *array = [NSArray yy_modelArrayWithClass:[QYZYCircleContentModel class] json:request.responseObject[@"data"][@"list"]];
+//        self.postArray = array;
+//        [self updataTableViewCell];
+//    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        NSLog(@"%@",request.error);
+//    }];
     
     
     

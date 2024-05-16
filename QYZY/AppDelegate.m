@@ -6,7 +6,6 @@
 //
 
 #import "AppDelegate.h"
-#import "QYZYMineViewController.h"
 #import "QYZYLiveViewController.h"
 #import "QYZYMatchViewController.h"
 #import "QYZYAppConfig.h"
@@ -14,6 +13,7 @@
 #import "QYZYCustomNavigationController.h"
 #import "QYZYUserManager.h"
 #import "AXStreamViewController.h"
+#import "AXProfileViewController.h"
 
 @implementation AppDelegate
 
@@ -48,7 +48,7 @@
     [self addChildVCWithTabbarVC:tabbarVC vc:QYZYMatchViewController.new title:@"For You" selectedImage:@"tabSaichengH" image:@"tabSaichengN"];
     [self addChildVCWithTabbarVC:tabbarVC vc:AXStreamViewController.new title:@"Top Games" selectedImage:@"tabZhiboH" image:@"tabZhiboN"];
     [self addChildVCWithTabbarVC:tabbarVC vc:QYZYLiveViewController.new title:@"News" selectedImage:@"tabZixunH" image:@"tabZixunN"];
-    [self addChildVCWithTabbarVC:tabbarVC vc:QYZYMineViewController.new title:@"Profile" selectedImage:@"tabWodeH" image:@"tabWodeN"];
+    [self addChildVCWithTabbarVC:tabbarVC vc:AXProfileViewController.new title:@"Profile" selectedImage:@"tabWodeH" image:@"tabWodeN"];
     
     tabbarVC.selectedIndex = 0;
     
