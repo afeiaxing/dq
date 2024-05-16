@@ -213,8 +213,6 @@
 		AE65E0F72907E2A10053CA49 /* QYZYMatchOverHelpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE65E0F52907E2A10053CA49 /* QYZYMatchOverHelpCell.m */; };
 		AE65E0F82907E2A10053CA49 /* QYZYMatchOverHelpCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE65E0F62907E2A10053CA49 /* QYZYMatchOverHelpCell.xib */; };
 		AE68007428E93E0D0084E652 /* QYZYNewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE68007228E93E0D0084E652 /* QYZYNewsDetailViewController.m */; };
-		AE68007C28E943660084E652 /* QYZYTotalNewsSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE68007A28E943660084E652 /* QYZYTotalNewsSubViewController.m */; };
-		AE68007D28E943660084E652 /* QYZYTotalNewsSubViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE68007B28E943660084E652 /* QYZYTotalNewsSubViewController.xib */; };
 		AE68008128E94AF70084E652 /* QYZYTotalNewsLabelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE68008028E94AF70084E652 /* QYZYTotalNewsLabelModel.m */; };
 		AE68008428E94B610084E652 /* QYZYTotalNewsUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AE68008328E94B610084E652 /* QYZYTotalNewsUtil.m */; };
 		AE68008728E96E880084E652 /* QYZYTotalNewsApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AE68008628E96E880084E652 /* QYZYTotalNewsApi.m */; };
@@ -302,6 +300,7 @@
 		B1D8D8E328EC4DE7004F2ADA /* QYZYMycollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D8D8E228EC4DE7004F2ADA /* QYZYMycollectionViewController.m */; };
 		CB08230A2BF5A9D100027C81 /* AXMatchListOddsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0823082BF5A9D100027C81 /* AXMatchListOddsCell.m */; };
 		CB08230D2BF5AB6400027C81 /* AXMatchListOddsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB08230C2BF5AB6400027C81 /* AXMatchListOddsCell.xib */; };
+		CB32C7A92BF5FA9A00B2E277 /* AXStreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB32C7A82BF5FA9A00B2E277 /* AXStreamViewController.m */; };
 		F37E5D9F2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5D9B2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCellModel.m */; };
 		F37E5DA02BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5D9C2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCell.m */; };
 		F37E5DA12BF4D7A10049FAE1 /* JXCategoryTitleBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5D9D2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundView.m */; };
@@ -319,8 +318,6 @@
 		F551040928E33798001E9BC5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F551040828E33798001E9BC5 /* main.m */; };
 		F551041828E33D8A001E9BC5 /* QYZYMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F551041628E33D8A001E9BC5 /* QYZYMineViewController.m */; };
 		F551041928E33D8A001E9BC5 /* QYZYMineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F551041728E33D8A001E9BC5 /* QYZYMineViewController.xib */; };
-		F551042228E33DAA001E9BC5 /* QYZYNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F551042028E33DAA001E9BC5 /* QYZYNewsViewController.m */; };
-		F551042328E33DAA001E9BC5 /* QYZYNewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F551042128E33DAA001E9BC5 /* QYZYNewsViewController.xib */; };
 		F551042728E33DB6001E9BC5 /* QYZYLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F551042528E33DB6001E9BC5 /* QYZYLiveViewController.m */; };
 		F551042828E33DB6001E9BC5 /* QYZYLiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F551042628E33DB6001E9BC5 /* QYZYLiveViewController.xib */; };
 		F551043928E3467F001E9BC5 /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F551043828E3467F001E9BC5 /* NSString+Extensions.m */; };
@@ -330,14 +327,10 @@
 		F560B58528E5BF1300989DE4 /* QYZYAppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = F560B58428E5BF1300989DE4 /* QYZYAppConfig.m */; };
 		F560B58C28E6942A00989DE4 /* QYZYUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F560B58B28E6942A00989DE4 /* QYZYUserModel.m */; };
 		F560B59028E6A44100989DE4 /* QYZYUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F560B58F28E6A44100989DE4 /* QYZYUserManager.m */; };
-		F560B59628E7F09500989DE4 /* QYZYHotNewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F560B59428E7F09500989DE4 /* QYZYHotNewsViewController.xib */; };
-		F560B59A28E7F0AA00989DE4 /* QYZYTotalNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F560B59828E7F0AA00989DE4 /* QYZYTotalNewsViewController.m */; };
-		F560B59B28E7F0AA00989DE4 /* QYZYTotalNewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F560B59928E7F0AA00989DE4 /* QYZYTotalNewsViewController.xib */; };
 		F560B5A128E84D5300989DE4 /* QYZYNewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F560B59F28E84D5300989DE4 /* QYZYNewsTableViewCell.m */; };
 		F560B5A228E84D5300989DE4 /* QYZYNewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F560B5A028E84D5300989DE4 /* QYZYNewsTableViewCell.xib */; };
 		F560B5A628E8620C00989DE4 /* QYZYHotNewsApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F560B5A528E8620C00989DE4 /* QYZYHotNewsApi.m */; };
 		F560B5A928E8709200989DE4 /* QYZYTopBlocksModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F560B5A828E8709200989DE4 /* QYZYTopBlocksModel.m */; };
-		F560B5AA28E8834000989DE4 /* QYZYHotNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F560B59328E7F09500989DE4 /* QYZYHotNewsViewController.m */; };
 		F58DF5F028EA992F00CFF18A /* QYZYPhoneLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F58DF5ED28EA992E00CFF18A /* QYZYPhoneLoginViewController.m */; };
 		F58DF5F128EA992F00CFF18A /* QYZYPhoneLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F58DF5EF28EA992F00CFF18A /* QYZYPhoneLoginViewController.xib */; };
 		F58DF5F528EA99D300CFF18A /* QYZYPasswordLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F58DF5F328EA99D300CFF18A /* QYZYPasswordLoginViewController.m */; };
@@ -745,9 +738,6 @@
 		AE65E0F62907E2A10053CA49 /* QYZYMatchOverHelpCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QYZYMatchOverHelpCell.xib; sourceTree = "<group>"; };
 		AE68007128E93E0D0084E652 /* QYZYNewsDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYNewsDetailViewController.h; sourceTree = "<group>"; };
 		AE68007228E93E0D0084E652 /* QYZYNewsDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYNewsDetailViewController.m; sourceTree = "<group>"; };
-		AE68007928E943660084E652 /* QYZYTotalNewsSubViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYTotalNewsSubViewController.h; sourceTree = "<group>"; };
-		AE68007A28E943660084E652 /* QYZYTotalNewsSubViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYTotalNewsSubViewController.m; sourceTree = "<group>"; };
-		AE68007B28E943660084E652 /* QYZYTotalNewsSubViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QYZYTotalNewsSubViewController.xib; sourceTree = "<group>"; };
 		AE68007F28E94AF70084E652 /* QYZYTotalNewsLabelModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYTotalNewsLabelModel.h; sourceTree = "<group>"; };
 		AE68008028E94AF70084E652 /* QYZYTotalNewsLabelModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYTotalNewsLabelModel.m; sourceTree = "<group>"; };
 		AE68008228E94B610084E652 /* QYZYTotalNewsUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYTotalNewsUtil.h; sourceTree = "<group>"; };
@@ -917,6 +907,8 @@
 		CB0823072BF5A9D100027C81 /* AXMatchListOddsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchListOddsCell.h; sourceTree = "<group>"; };
 		CB0823082BF5A9D100027C81 /* AXMatchListOddsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchListOddsCell.m; sourceTree = "<group>"; };
 		CB08230C2BF5AB6400027C81 /* AXMatchListOddsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AXMatchListOddsCell.xib; sourceTree = "<group>"; };
+		CB32C7A72BF5FA9A00B2E277 /* AXStreamViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXStreamViewController.h; sourceTree = "<group>"; };
+		CB32C7A82BF5FA9A00B2E277 /* AXStreamViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXStreamViewController.m; sourceTree = "<group>"; };
 		F37E5D992BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleBackgroundCell.h; sourceTree = "<group>"; };
 		F37E5D9A2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleBackgroundView.h; sourceTree = "<group>"; };
 		F37E5D9B2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryTitleBackgroundCellModel.m; sourceTree = "<group>"; };
@@ -947,9 +939,6 @@
 		F551041528E33D8A001E9BC5 /* QYZYMineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYMineViewController.h; sourceTree = "<group>"; };
 		F551041628E33D8A001E9BC5 /* QYZYMineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYMineViewController.m; sourceTree = "<group>"; };
 		F551041728E33D8A001E9BC5 /* QYZYMineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QYZYMineViewController.xib; sourceTree = "<group>"; };
-		F551041F28E33DAA001E9BC5 /* QYZYNewsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYNewsViewController.h; sourceTree = "<group>"; };
-		F551042028E33DAA001E9BC5 /* QYZYNewsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYNewsViewController.m; sourceTree = "<group>"; };
-		F551042128E33DAA001E9BC5 /* QYZYNewsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QYZYNewsViewController.xib; sourceTree = "<group>"; };
 		F551042428E33DB6001E9BC5 /* QYZYLiveViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYLiveViewController.h; sourceTree = "<group>"; };
 		F551042528E33DB6001E9BC5 /* QYZYLiveViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYLiveViewController.m; sourceTree = "<group>"; };
 		F551042628E33DB6001E9BC5 /* QYZYLiveViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QYZYLiveViewController.xib; sourceTree = "<group>"; };
@@ -968,12 +957,6 @@
 		F560B58B28E6942A00989DE4 /* QYZYUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYUserModel.m; sourceTree = "<group>"; };
 		F560B58E28E6A44100989DE4 /* QYZYUserManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYUserManager.h; sourceTree = "<group>"; };
 		F560B58F28E6A44100989DE4 /* QYZYUserManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYUserManager.m; sourceTree = "<group>"; };
-		F560B59228E7F09500989DE4 /* QYZYHotNewsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYHotNewsViewController.h; sourceTree = "<group>"; };
-		F560B59328E7F09500989DE4 /* QYZYHotNewsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYHotNewsViewController.m; sourceTree = "<group>"; };
-		F560B59428E7F09500989DE4 /* QYZYHotNewsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QYZYHotNewsViewController.xib; sourceTree = "<group>"; };
-		F560B59728E7F0AA00989DE4 /* QYZYTotalNewsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYTotalNewsViewController.h; sourceTree = "<group>"; };
-		F560B59828E7F0AA00989DE4 /* QYZYTotalNewsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYTotalNewsViewController.m; sourceTree = "<group>"; };
-		F560B59928E7F0AA00989DE4 /* QYZYTotalNewsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QYZYTotalNewsViewController.xib; sourceTree = "<group>"; };
 		F560B59E28E84D5300989DE4 /* QYZYNewsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYNewsTableViewCell.h; sourceTree = "<group>"; };
 		F560B59F28E84D5300989DE4 /* QYZYNewsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYNewsTableViewCell.m; sourceTree = "<group>"; };
 		F560B5A028E84D5300989DE4 /* QYZYNewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QYZYNewsTableViewCell.xib; sourceTree = "<group>"; };
@@ -2079,6 +2062,23 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		CB32C7A62BF5FA7400B2E277 /* Stream */ = {
+			isa = PBXGroup;
+			children = (
+				CB32C7AA2BF5FA9D00B2E277 /* VC */,
+			);
+			path = Stream;
+			sourceTree = "<group>";
+		};
+		CB32C7AA2BF5FA9D00B2E277 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				CB32C7A72BF5FA9A00B2E277 /* AXStreamViewController.h */,
+				CB32C7A82BF5FA9A00B2E277 /* AXStreamViewController.m */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
 		F37E5D982BF4D7A10049FAE1 /* TitleBackground */ = {
 			isa = PBXGroup;
 			children = (
@@ -2193,6 +2193,7 @@
 		F551040F28E33837001E9BC5 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				CB32C7A62BF5FA7400B2E277 /* Stream */,
 				555CE93328F6B3020085F1D4 /* Match */,
 				F5E620F228E42E9000EBB324 /* Login */,
 				F551041428E338E3001E9BC5 /* Mine */,
@@ -2225,18 +2226,6 @@
 				F560B5A328E858D600989DE4 /* Apis */,
 				F560B59D28E84C7500989DE4 /* Models */,
 				F560B59C28E84C6500989DE4 /* Views */,
-				F551041F28E33DAA001E9BC5 /* QYZYNewsViewController.h */,
-				F551042028E33DAA001E9BC5 /* QYZYNewsViewController.m */,
-				F551042128E33DAA001E9BC5 /* QYZYNewsViewController.xib */,
-				F560B59228E7F09500989DE4 /* QYZYHotNewsViewController.h */,
-				F560B59328E7F09500989DE4 /* QYZYHotNewsViewController.m */,
-				F560B59428E7F09500989DE4 /* QYZYHotNewsViewController.xib */,
-				F560B59728E7F0AA00989DE4 /* QYZYTotalNewsViewController.h */,
-				F560B59828E7F0AA00989DE4 /* QYZYTotalNewsViewController.m */,
-				F560B59928E7F0AA00989DE4 /* QYZYTotalNewsViewController.xib */,
-				AE68007928E943660084E652 /* QYZYTotalNewsSubViewController.h */,
-				AE68007A28E943660084E652 /* QYZYTotalNewsSubViewController.m */,
-				AE68007B28E943660084E652 /* QYZYTotalNewsSubViewController.xib */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -2494,7 +2483,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5552AC0328F9363F00285B25 /* QYZYAnalyzeSubViewController.xib in Resources */,
-				F551042328E33DAA001E9BC5 /* QYZYNewsViewController.xib in Resources */,
 				F560B5A228E84D5300989DE4 /* QYZYNewsTableViewCell.xib in Resources */,
 				F5F8E6E828F9205900816621 /* QYZYChargeCollectionViewCell.xib in Resources */,
 				55BF55C828E99B4C00DB476B /* QYZYChatGiftCell.xib in Resources */,
@@ -2502,7 +2490,6 @@
 				555C687C28EC56BA00044A5E /* QYZYChargeView.xib in Resources */,
 				55E0D52328F831D400DDAAB6 /* QYZYMatchOverCell.xib in Resources */,
 				55B04A7C28E598A600A82F1F /* QYZYLiveMainHeaderView.xib in Resources */,
-				F560B59628E7F09500989DE4 /* QYZYHotNewsViewController.xib in Resources */,
 				55B04A9028E5CD6500A82F1F /* QYZYLiveMainHeaderCell.xib in Resources */,
 				555C688128EC588700044A5E /* QYZYChargeCell.xib in Resources */,
 				55E2395428E82E4D003ED27E /* QYZYLiveChatCell.xib in Resources */,
@@ -2510,7 +2497,6 @@
 				F551042828E33DB6001E9BC5 /* QYZYLiveViewController.xib in Resources */,
 				55E0D51E28F8289400DDAAB6 /* QYZYMatchOverViewController.xib in Resources */,
 				F551040628E33798001E9BC5 /* LaunchScreen.storyboard in Resources */,
-				F560B59B28E7F0AA00989DE4 /* QYZYTotalNewsViewController.xib in Resources */,
 				9B9A76D028E93C8A00809C8D /* QYZYCircleCell.xib in Resources */,
 				F37E5DB02BF4DD0B0049FAE1 /* AXMatchListTableViewCell.xib in Resources */,
 				CB08230D2BF5AB6400027C81 /* AXMatchListOddsCell.xib in Resources */,
@@ -2518,7 +2504,6 @@
 				555CE94928F6C9E90085F1D4 /* QYZYMatchSubViewController.xib in Resources */,
 				55B10194290151370056CF17 /* QYZYMatchHomeCell.xib in Resources */,
 				9B46F6B828E6F53400941F97 /* QYZYResultAnchorCell.xib in Resources */,
-				AE68007D28E943660084E652 /* QYZYTotalNewsSubViewController.xib in Resources */,
 				55E2393F28E7ECA6003ED27E /* QYZYLiveRankCell.xib in Resources */,
 				5541D0DB290270680055001C /* QYZYMineCell.xib in Resources */,
 				AE6800AA28E9C1F00084E652 /* QYZYNewsDetailHeadSectionView.xib in Resources */,
@@ -2622,9 +2607,7 @@
 				B189E9D128ED55D100F17247 /* QYZYQaViewController.m in Sources */,
 				55A5320229052E3C0008C110 /* FSCalendarScrollView.m in Sources */,
 				55E0D51D28F8289400DDAAB6 /* QYZYMatchOverViewController.m in Sources */,
-				AE68007C28E943660084E652 /* QYZYTotalNewsSubViewController.m in Sources */,
 				F39766022BF3988300E4C861 /* AXNetWorkManager.m in Sources */,
-				F560B5AA28E8834000989DE4 /* QYZYHotNewsViewController.m in Sources */,
 				55E0D50F28F806DA00DDAAB6 /* QYZYMatchMainModel.m in Sources */,
 				F5F8E6E728F9205900816621 /* QYZYChargeCollectionViewCell.m in Sources */,
 				9BC0D5BA2906B16C0063BCC7 /* QYZYPlayerDataCell.m in Sources */,
@@ -2663,7 +2646,6 @@
 				55B04A8F28E5CD6500A82F1F /* QYZYLiveMainHeaderCell.m in Sources */,
 				9B8D5B6B28EC270A00B480BA /* QYZYReportView.m in Sources */,
 				55A5320B290545F90008C110 /* QYZYMatchEventModel.m in Sources */,
-				F560B59A28E7F0AA00989DE4 /* QYZYTotalNewsViewController.m in Sources */,
 				AE68009828E9B1E60084E652 /* QYZYNewsDetailCurrentNewsModel.m in Sources */,
 				9B89964729077EF2007D3A79 /* QYZYPlayerDataHeaderCell.m in Sources */,
 				B189E9ED28ED70CB00F17247 /* QYZYButton.m in Sources */,
@@ -2744,6 +2726,7 @@
 				F551041828E33D8A001E9BC5 /* QYZYMineViewController.m in Sources */,
 				B189E9E328ED603400F17247 /* QYZYQaSectionView.m in Sources */,
 				552B0F3A28E6A62B00D81F45 /* QYZYLiveListApi.m in Sources */,
+				CB32C7A92BF5FA9A00B2E277 /* AXStreamViewController.m in Sources */,
 				55E0D52F28F83D6100DDAAB6 /* QYZYMatchOverEventApi.m in Sources */,
 				55BF55CB28E9ACCA00DB476B /* QYZYSendGiftApi.m in Sources */,
 				B1B744BE28E8352500DD300E /* QYZYRankViewController.m in Sources */,
@@ -2894,7 +2877,6 @@
 				B1B744A628E7E92C00DD300E /* QYZYMyreservationViewController.m in Sources */,
 				AE4DED7F28EABA1F00CD01C3 /* QYZYNewsPostAttentionApi.m in Sources */,
 				B1B744D028E8473D00DD300E /* QYZYRankViewModel.m in Sources */,
-				F551042228E33DAA001E9BC5 /* QYZYNewsViewController.m in Sources */,
 				9B9A770428E97E5E00809C8D /* QYZYCircleDetailCell.m in Sources */,
 				55A5320F290551480008C110 /* QYZYMatchOverEventCell.m in Sources */,
 				55E2395E28E83E60003ED27E /* QYZYRIMManager.m in Sources */,
