@@ -1,0 +1,86 @@
+//
+//  AXMatchStandingsViewController.m
+//  QYZY
+//
+//  Created by 22 on 2024/5/17.
+//
+
+#import "AXMatchStandingsViewController.h"
+#import "AXMatchStandingChartCell.h"
+#import "AXMatchStandingTeamStatsCell.h"
+#import "AXMatchStandingPBPCell.h"
+
+@interface AXMatchStandingsViewController ()<UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, strong) UITableView *tableview;
+
+@end
+
+@implementation AXMatchStandingsViewController
+
+// MARK: lifecycle
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self setupSubviews];
+}
+
+// MARK: UITableViewDelegate, UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 3;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0) {
+        return 278;
+    } else if (indexPath.row == 1) {
+        return 311;
+    } else {
+        return 426;
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0) {
+        AXMatchStandingChartCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchStandingChartCell.class) forIndexPath:indexPath];
+        
+        return cell;
+    } else if (indexPath.row == 0) {
+        AXMatchStandingTeamStatsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchStandingTeamStatsCell.class) forIndexPath:indexPath];
+        
+        return cell;
+    } else {
+        AXMatchStandingPBPCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchStandingPBPCell.class) forIndexPath:indexPath];
+        
+        return cell;
+    }
+}
+
+// MARK: private
+- (void)setupSubviews{
+    [self.view addSubview:self.tableview];
+    [self.tableview mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.offset(0);
+    }];
+}
+
+// MARK: JXCategoryListContentViewDelegate
+- (UIView *)listView {
+    return self.view;
+}
+
+// MARK: setter & getter
+- (UITableView *)tableview{
+    if (!_tableview) {
+        _tableview = [UITableView new];
+        [_tableview registerClass:AXMatchStandingChartCell.class forCellReuseIdentifier:NSStringFromClass(AXMatchStandingChartCell.class)];
+        [_tableview registerClass:AXMatchStandingTeamStatsCell.class forCellReuseIdentifier:NSStringFromClass(AXMatchStandingTeamStatsCell.class)];
+        [_tableview registerClass:AXMatchStandingPBPCell.class forCellReuseIdentifier:NSStringFromClass(AXMatchStandingPBPCell.class)];
+        _tableview.delegate = self;
+        _tableview.dataSource = self;
+        _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+    }
+    return _tableview;
+}
+
+@end

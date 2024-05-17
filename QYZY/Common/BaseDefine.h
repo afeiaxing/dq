@@ -19,6 +19,8 @@ typedef NS_ENUM(NSInteger ,QYZYMatchType) {
 #define rgba(r,g,b,a) [UIColor colorWithRed:(r) / 255.0 green:(g) / 255.0 blue:(b) / 255.0 alpha:a]
 #define rgb(r,g,b) rgba(r,g,b,1)
 
+#define  AXSelectColor rgb(255,88,0)
+
 #define weakSelf(type)  __weak typeof(type) weak##type = type;
 #define strongSelf(type)  __strong typeof(weak##type) type = weak##type;
 

@@ -12,6 +12,11 @@
 #import "QYZYBasketballOverviewController.h"
 #import "QYZYMatchViewModel.h"
 #import <WebKit/WebKit.h>
+#import "AXMatchBetViewController.h"
+#import "AXMatchChatViewController.h"
+#import "AXMatchStandingsViewController.h"
+#import "AXMatchLineupViewController.h"
+#import "AXMatchAnalysisViewController.h"
 
 @interface QYZYMatchDetailViewController ()<JXCategoryViewDelegate,JXCategoryListContainerViewDelegate>
 @property (nonatomic ,strong) UIView *statusView;
@@ -38,10 +43,15 @@
 @property (nonatomic ,strong) QYZYMatchMainModel *mainModel;
 @property (nonatomic ,strong) WKWebView *webView;
 @property (nonatomic ,strong) UIButton *backButton;
-@property (nonatomic ,strong) QYZYLiveChatViewController *chatVC;
+//@property (nonatomic ,strong) QYZYLiveChatViewController *chatVC;
 @property (nonatomic ,strong) QYZYMatchOverViewController *overVC;
 @property (nonatomic ,strong) QYZYBasketballOverviewController *basketballOverVc;
 @property (nonatomic ,strong) QYZYMatchAnalyzeViewController *analyzeVC;
+@property (nonatomic, strong) AXMatchBetViewController *betVC;
+@property (nonatomic, strong) AXMatchChatViewController *chatVC;
+@property (nonatomic, strong) AXMatchStandingsViewController *standingsVC;
+@property (nonatomic, strong) AXMatchLineupViewController *lineupVC;
+@property (nonatomic, strong) AXMatchAnalysisViewController *analysisVC;
 @property (nonatomic, strong) JXCategoryTitleView *categoryView;
 @property (nonatomic, strong) JXCategoryListContainerView *containerView;
 @property (nonatomic, strong) NSTimer *timer;
@@ -80,7 +90,6 @@
     self.view.backgroundColor = UIColor.whiteColor;
     [self setupSubViews];
     [self requestData];
-    [self removeOldDetailViewController];
 }
 
 - (void)setupSubViews {
@@ -210,23 +219,6 @@
     }];
 }
 
-- (void)removeOldDetailViewController {
-    __block UIViewController *oldDetailViewController = nil;
-    NSArray <__kindof UIViewController *> *viewControllers = UIViewController.currentViewController.navigationController.viewControllers;
-    [viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ((idx < viewControllers.count - 1) && [obj isKindOfClass:self.class]) {
-            oldDetailViewController = obj;
-            *stop = YES;
-        }
-    }];
-    if (oldDetailViewController) {
-        UIViewController *currentVC = UIViewController.currentViewController;
-        NSMutableArray *tempViewControllers = [NSMutableArray arrayWithArray:currentVC.navigationController.viewControllers];
-        [tempViewControllers removeObject:oldDetailViewController];
-        currentVC.navigationController.viewControllers = tempViewControllers;
-    }
-}
-
 - (void)requestData {
     weakSelf(self);
     [self.viewModel requestMatchDetailWithMatchId:self.matchId completion:^(QYZYMatchMainModel * _Nonnull detailModel) {
@@ -240,7 +232,7 @@
             } else if (detailModel.obliqueAnimUrl.length) {
                 [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:detailModel.obliqueAnimUrl]]];
             }
-            self.chatVC.chatId = detailModel.matchId;
+//            self.chatVC.chatId = detailModel.matchId;
             self.analyzeVC.detailModel = detailModel;
             if (detailModel.sportId.integerValue == 2) {
                 self.basketballOverVc.detailModel = detailModel;
@@ -276,16 +268,15 @@
 #pragma mark - delegate
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     if (index == 0) {
+        return self.betVC;
+    } else if (index == 1) {
         return self.chatVC;
-    }
-    else if (index == 1) {
-        if (self.mainModel.sportId.integerValue == 2) {
-            return self.basketballOverVc;
-        }
-        return self.overVC;
-    }
-    else {
-        return self.analyzeVC;
+    } else if (index == 2) {
+        return self.standingsVC;
+    } else if (index == 3) {
+        return self.lineupVC;
+    } else {
+        return self.analysisVC;
     }
 }
 
@@ -494,12 +485,39 @@
     return _webView;
 }
 
-- (QYZYLiveChatViewController *)chatVC {
+- (AXMatchBetViewController *)betVC{
+    if (!_betVC) {
+        _betVC = [[AXMatchBetViewController alloc] init];
+    }
+    return _betVC;
+}
+
+- (AXMatchChatViewController *)chatVC {
     if (!_chatVC) {
-        _chatVC = [[QYZYLiveChatViewController alloc] init];
-        _chatVC.anchorId = @"";
+        _chatVC = [[AXMatchChatViewController alloc] init];
     }
     return _chatVC;
+}
+
+- (AXMatchStandingsViewController *)standingsVC{
+    if (!_standingsVC) {
+        _standingsVC = [AXMatchStandingsViewController new];
+    }
+    return _standingsVC;
+}
+
+- (AXMatchLineupViewController *)lineupVC{
+    if (!_lineupVC) {
+        _lineupVC = [AXMatchLineupViewController new];
+    }
+    return _lineupVC;
+}
+
+- (AXMatchAnalysisViewController *)analysisVC{
+    if (!_analysisVC) {
+        _analysisVC = [AXMatchAnalysisViewController new];
+    }
+    return _analysisVC;
 }
 
 /// 赛况
@@ -532,8 +550,8 @@
     if (!_categoryView) {
         _categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 48)];
         _categoryView.titles = self.titleArray;
-        _categoryView.titleColor = rgb(34, 34, 34);
-        _categoryView.titleSelectedColor = rgb(41, 69, 192);
+        _categoryView.titleColor = rgb(17, 17, 17);
+        _categoryView.titleSelectedColor = AXSelectColor;
         _categoryView.titleFont = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
         _categoryView.titleSelectedFont = [UIFont fontWithName:@"PingFangSC-Semibold" size:16];
         _categoryView.cellWidth = 54;
@@ -542,8 +560,8 @@
         _categoryView.listContainer = self.containerView;
         
         JXCategoryIndicatorLineView *indicator = [[JXCategoryIndicatorLineView alloc] init];
-        indicator.indicatorColor = rgb(41, 69, 192);
-        indicator.indicatorWidth = 15;
+        indicator.indicatorColor = AXSelectColor;
+        indicator.indicatorWidth = 30;
         indicator.indicatorHeight = 3;
         indicator.indicatorCornerRadius = 1.5;
         indicator.indicatorWidthIncrement = 0;
