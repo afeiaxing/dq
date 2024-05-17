@@ -26,10 +26,11 @@
 @property (nonatomic, strong) UILabel *awayFlag;
 
 @property (nonatomic ,strong) UILabel *timeLabel;
-@property (nonatomic ,strong) UIImageView *hostImageView;
-@property (nonatomic ,strong) UIImageView *guestImageView;
-@property (nonatomic ,strong) UILabel *hostLabel;
-@property (nonatomic ,strong) UILabel *guestLabel;
+
+@property (nonatomic ,strong) UIImageView *hostLogo;
+@property (nonatomic ,strong) UIImageView *awayLogo;
+@property (nonatomic ,strong) UILabel *hostName;
+@property (nonatomic ,strong) UILabel *awayName;
 @property (nonatomic ,strong) UIButton *playButton;
 @property (nonatomic ,strong) UILabel *scoreLabel;
 
@@ -154,27 +155,27 @@
         make.centerY.width.height.equalTo(self.hostFlag);
     }];
     
-    [self.headerBgView addSubview:self.hostImageView];
-    [self.hostImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.headerBgView addSubview:self.hostLogo];
+    [self.hostLogo mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.hostFlag);
         make.width.height.mas_equalTo(50);
         make.top.equalTo(self.hostFlag.mas_bottom).offset(8);
     }];
-    [self.headerBgView addSubview:self.hostLabel];
-    [self.hostLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.hostImageView.mas_bottom).offset(6);
-        make.centerX.equalTo(self.hostImageView);
+    [self.headerBgView addSubview:self.hostName];
+    [self.hostName mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.hostLogo.mas_bottom).offset(6);
+        make.centerX.equalTo(self.hostLogo);
     }];
-    [self.headerBgView addSubview:self.guestImageView];
-    [self.guestImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.headerBgView addSubview:self.awayLogo];
+    [self.awayLogo mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.awayFlag);
-        make.top.width.height.equalTo(self.hostImageView);
+        make.top.width.height.equalTo(self.hostLogo);
         make.top.equalTo(self.hostFlag.mas_bottom).offset(8);
     }];
-    [self.headerBgView addSubview:self.guestLabel];
-    [self.guestLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.hostLabel);
-        make.centerX.equalTo(self.guestImageView);
+    [self.headerBgView addSubview:self.awayName];
+    [self.awayName mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.hostName);
+        make.centerX.equalTo(self.awayLogo);
     }];
     
     [self.headerBgView addSubview:self.timeLabel];
@@ -252,12 +253,12 @@
 
 - (void)updateHeaderWithDetailModel:(QYZYMatchMainModel *)detailModel {
     self.timeLabel.text = [self time_timestampToString:detailModel.matchTime.integerValue];
-    [self.hostImageView sd_setImageWithURL:[NSURL URLWithString:detailModel.hostTeamLogo]];
-    self.hostImageView.backgroundColor = detailModel.hostTeamLogo.length ? UIColor.clearColor : rgba(255, 255, 255, 0.15);
-    self.hostLabel.text = @"Los Angeles Lakers";
-    [self.guestImageView sd_setImageWithURL:[NSURL URLWithString:detailModel.guestTeamLogo]];
-    self.guestImageView.backgroundColor = detailModel.guestTeamLogo.length ? UIColor.clearColor : rgba(255, 255, 255, 0.15);
-    self.guestLabel.text = @"Boston Celtics";
+    [self.hostLogo sd_setImageWithURL:[NSURL URLWithString:detailModel.hostTeamLogo]];
+    self.hostLogo.backgroundColor = detailModel.hostTeamLogo.length ? UIColor.clearColor : rgba(255, 255, 255, 0.15);
+    self.hostName.text = @"Los Angeles Lakers";
+    [self.awayLogo sd_setImageWithURL:[NSURL URLWithString:detailModel.guestTeamLogo]];
+    self.awayLogo.backgroundColor = detailModel.guestTeamLogo.length ? UIColor.clearColor : rgba(255, 255, 255, 0.15);
+    self.awayName.text = @"Boston Celtics";
     self.scoreLabel.text = [NSString stringWithFormat:@"%@ - %@",detailModel.hostTeamScore ?: @"0", detailModel.guestTeamScore ?: @"0"];
 }
 
@@ -429,42 +430,43 @@
         _playButton.layer.cornerRadius = 12;
         _playButton.layer.masksToBounds = YES;
         [_playButton addTarget:self action:@selector(playAction) forControlEvents:UIControlEventTouchUpInside];
+        _playButton.hidden = true;
     }
     return _playButton;
 }
 
-- (UIImageView *)hostImageView {
-    if (!_hostImageView) {
-        _hostImageView = [[UIImageView alloc] init];
-        _hostImageView.backgroundColor = rgba(255, 255, 255, 0.15);
+- (UIImageView *)hostLogo {
+    if (!_hostLogo) {
+        _hostLogo = [[UIImageView alloc] init];
+        _hostLogo.backgroundColor = rgba(255, 255, 255, 0.15);
     }
-    return _hostImageView;
+    return _hostLogo;
 }
 
-- (UIImageView *)guestImageView {
-    if (!_guestImageView) {
-        _guestImageView = [[UIImageView alloc] init];
-        _guestImageView.backgroundColor = rgba(255, 255, 255, 0.15);
+- (UIImageView *)awayLogo {
+    if (!_awayLogo) {
+        _awayLogo = [[UIImageView alloc] init];
+        _awayLogo.backgroundColor = rgba(255, 255, 255, 0.15);
     }
-    return _guestImageView;
+    return _awayLogo;
 }
 
-- (UILabel *)hostLabel {
-    if (!_hostLabel) {
-        _hostLabel = [[UILabel alloc] init];
-        _hostLabel.textColor = UIColor.whiteColor;
-        _hostLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:12];
+- (UILabel *)hostName {
+    if (!_hostName) {
+        _hostName = [[UILabel alloc] init];
+        _hostName.textColor = UIColor.whiteColor;
+        _hostName.font = [UIFont fontWithName:@"PingFangSC-Regular" size:12];
     }
-    return _hostLabel;
+    return _hostName;
 }
 
-- (UILabel *)guestLabel {
-    if (!_guestLabel) {
-        _guestLabel = [[UILabel alloc] init];
-        _guestLabel.textColor = UIColor.whiteColor;
-        _guestLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:12];
+- (UILabel *)awayName {
+    if (!_awayName) {
+        _awayName = [[UILabel alloc] init];
+        _awayName.textColor = UIColor.whiteColor;
+        _awayName.font = [UIFont fontWithName:@"PingFangSC-Regular" size:12];
     }
-    return _guestLabel;
+    return _awayName;
 }
 
 - (UILabel *)scoreLabel {
@@ -500,6 +502,7 @@
     return _chatVC;
 }
 
+/// 赛况
 - (QYZYMatchOverViewController *)overVC {
     if (!_overVC) {
         _overVC = [[QYZYMatchOverViewController alloc] init];
@@ -508,6 +511,7 @@
     return _overVC;
 }
 
+/// 篮球赛况
 - (QYZYBasketballOverviewController *)basketballOverVc {
     if (!_basketballOverVc) {
         _basketballOverVc = [[QYZYBasketballOverviewController alloc] init];
@@ -516,6 +520,7 @@
     return _basketballOverVc;
 }
 
+/// 分析
 - (QYZYMatchAnalyzeViewController *)analyzeVC {
     if (!_analyzeVC) {
         _analyzeVC = [[QYZYMatchAnalyzeViewController alloc] init];
@@ -549,7 +554,7 @@
 }
 
 - (NSArray *)titleArray {
-    return @[@"在线聊球",@"比赛实况",@"数据分析"];
+    return @[@"Bet",@"Chat",@"Standings", @"Lineup", @"Analysis"];
 }
 
 - (JXCategoryListContainerView *)containerView {

@@ -42,7 +42,9 @@
 - (void)setupSubViews {
     [self.view addSubview:self.categoryView];
     [self.categoryView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.top.equalTo(self.view);
+        make.left.offset(12);
+        make.right.offset(-12);
+        make.top.offset(0);
         make.height.mas_equalTo(48);
     }];
     [self.view addSubview:self.containerView];
