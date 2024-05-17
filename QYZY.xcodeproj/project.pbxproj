@@ -267,6 +267,11 @@
 		CB08230D2BF5AB6400027C81 /* AXMatchListOddsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB08230C2BF5AB6400027C81 /* AXMatchListOddsCell.xib */; };
 		CB32C7A92BF5FA9A00B2E277 /* AXStreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB32C7A82BF5FA9A00B2E277 /* AXStreamViewController.m */; };
 		CB32C7AF2BF5FD9100B2E277 /* AXProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB32C7AE2BF5FD9100B2E277 /* AXProfileViewController.m */; };
+		CBFDA1BE2BF75CF000D80483 /* ORChartUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFDA1B42BF75CF000D80483 /* ORChartUtilities.m */; };
+		CBFDA1BF2BF75CF000D80483 /* ORLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFDA1B52BF75CF000D80483 /* ORLineChartView.m */; };
+		CBFDA1C02BF75CF000D80483 /* ORLineChartConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFDA1B62BF75CF000D80483 /* ORLineChartConfig.m */; };
+		CBFDA1C12BF75CF000D80483 /* ORLineChartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFDA1B72BF75CF000D80483 /* ORLineChartCell.m */; };
+		CBFDA1C22BF75CF000D80483 /* ORLineChartValue.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFDA1BB2BF75CF000D80483 /* ORLineChartValue.m */; };
 		F37E5D9F2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5D9B2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCellModel.m */; };
 		F37E5DA02BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5D9C2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCell.m */; };
 		F37E5DA12BF4D7A10049FAE1 /* JXCategoryTitleBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5D9D2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundView.m */; };
@@ -805,6 +810,16 @@
 		CB32C7A82BF5FA9A00B2E277 /* AXStreamViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXStreamViewController.m; sourceTree = "<group>"; };
 		CB32C7AD2BF5FD9100B2E277 /* AXProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXProfileViewController.h; sourceTree = "<group>"; };
 		CB32C7AE2BF5FD9100B2E277 /* AXProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXProfileViewController.m; sourceTree = "<group>"; };
+		CBFDA1B42BF75CF000D80483 /* ORChartUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORChartUtilities.m; sourceTree = "<group>"; };
+		CBFDA1B52BF75CF000D80483 /* ORLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORLineChartView.m; sourceTree = "<group>"; };
+		CBFDA1B62BF75CF000D80483 /* ORLineChartConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORLineChartConfig.m; sourceTree = "<group>"; };
+		CBFDA1B72BF75CF000D80483 /* ORLineChartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORLineChartCell.m; sourceTree = "<group>"; };
+		CBFDA1B82BF75CF000D80483 /* ORLineChartValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORLineChartValue.h; sourceTree = "<group>"; };
+		CBFDA1B92BF75CF000D80483 /* ORChartUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORChartUtilities.h; sourceTree = "<group>"; };
+		CBFDA1BA2BF75CF000D80483 /* ORLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORLineChartView.h; sourceTree = "<group>"; };
+		CBFDA1BB2BF75CF000D80483 /* ORLineChartValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORLineChartValue.m; sourceTree = "<group>"; };
+		CBFDA1BC2BF75CF000D80483 /* ORLineChartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORLineChartCell.h; sourceTree = "<group>"; };
+		CBFDA1BD2BF75CF000D80483 /* ORLineChartConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORLineChartConfig.h; sourceTree = "<group>"; };
 		F37E5D992BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleBackgroundCell.h; sourceTree = "<group>"; };
 		F37E5D9A2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleBackgroundView.h; sourceTree = "<group>"; };
 		F37E5D9B2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryTitleBackgroundCellModel.m; sourceTree = "<group>"; };
@@ -1909,6 +1924,23 @@
 			path = VC;
 			sourceTree = "<group>";
 		};
+		CBFDA1B32BF75CF000D80483 /* ORLineChart */ = {
+			isa = PBXGroup;
+			children = (
+				CBFDA1B42BF75CF000D80483 /* ORChartUtilities.m */,
+				CBFDA1B52BF75CF000D80483 /* ORLineChartView.m */,
+				CBFDA1B62BF75CF000D80483 /* ORLineChartConfig.m */,
+				CBFDA1B72BF75CF000D80483 /* ORLineChartCell.m */,
+				CBFDA1B82BF75CF000D80483 /* ORLineChartValue.h */,
+				CBFDA1B92BF75CF000D80483 /* ORChartUtilities.h */,
+				CBFDA1BA2BF75CF000D80483 /* ORLineChartView.h */,
+				CBFDA1BB2BF75CF000D80483 /* ORLineChartValue.m */,
+				CBFDA1BC2BF75CF000D80483 /* ORLineChartCell.h */,
+				CBFDA1BD2BF75CF000D80483 /* ORLineChartConfig.h */,
+			);
+			path = ORLineChart;
+			sourceTree = "<group>";
+		};
 		F37E5D982BF4D7A10049FAE1 /* TitleBackground */ = {
 			isa = PBXGroup;
 			children = (
@@ -2092,6 +2124,7 @@
 		F551042928E34263001E9BC5 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				CBFDA1B32BF75CF000D80483 /* ORLineChart */,
 				F39765FF2BF3985E00E4C861 /* AXNetworkManager */,
 				55A531EC29052E1B0008C110 /* QYZYCalendar */,
 				55D2972028EAB7ED00C80738 /* QYZYIAPManager */,
@@ -2487,6 +2520,7 @@
 				9B9A772028E9A8C800809C8D /* QYZYCommendListCell.m in Sources */,
 				55BF55B428E9739F00DB476B /* QYZYLiveBannerApi.m in Sources */,
 				AE65E0DF290780E00053CA49 /* QYZYMatchAnalyzeSuperCell.m in Sources */,
+				CBFDA1BF2BF75CF000D80483 /* ORLineChartView.m in Sources */,
 				9BC0D5AA29069BA70063BCC7 /* QYZYBasketballTeamStatApi.m in Sources */,
 				55B04A8B28E5C8E000A82F1F /* QYZYLiveMainHotApi.m in Sources */,
 				55A531FF29052E3C0008C110 /* FSCalendarCell.m in Sources */,
@@ -2495,6 +2529,7 @@
 				B1B744A328E7E73100DD300E /* QYZYMyreservationApi.m in Sources */,
 				F560B5A128E84D5300989DE4 /* QYZYNewsTableViewCell.m in Sources */,
 				9B9A772428E9B76400809C8D /* QYZYCommendInputView.m in Sources */,
+				CBFDA1C12BF75CF000D80483 /* ORLineChartCell.m in Sources */,
 				9B9A771C28E9A5E000809C8D /* QYZYCircleCommendModel.m in Sources */,
 				9BC0D56829063F9D0063BCC7 /* QYZYPlayerDataController.m in Sources */,
 				55EADDBA28E6E87B008324AE /* QYZYLiveDetailViewModel.m in Sources */,
@@ -2569,6 +2604,7 @@
 				AE68009528E9B1D70084E652 /* QYZYNewsDetailNewsModel.m in Sources */,
 				55BF55B728E9744100DB476B /* QYZYLiveBannerModel.m in Sources */,
 				B14A63C328EAFEC200476EAE /* QYZYAmountwithModel.m in Sources */,
+				CBFDA1C02BF75CF000D80483 /* ORLineChartConfig.m in Sources */,
 				5552AC0628F9393200285B25 /* QYZYAnalyzeHistoryApi.m in Sources */,
 				AE4DED8B28EAE0FA00CD01C3 /* QYZYNewsCommentModel.m in Sources */,
 				9B46F6B028E6F06200941F97 /* QYZYSearchAnchorModel.m in Sources */,
@@ -2635,6 +2671,7 @@
 				55A5320529052E3C0008C110 /* FSCalendarView.m in Sources */,
 				9B46F6B728E6F53400941F97 /* QYZYResultAnchorCell.m in Sources */,
 				9BC0D5A429068E330063BCC7 /* QYZYTeamNameCell.m in Sources */,
+				CBFDA1C22BF75CF000D80483 /* ORLineChartValue.m in Sources */,
 				555CE94828F6C9E90085F1D4 /* QYZYMatchSubViewController.m in Sources */,
 				9B21D03428EAB2D600AC6F0D /* QYZYMsgInspectionApi.m in Sources */,
 				AE65E0F72907E2A10053CA49 /* QYZYMatchOverHelpCell.m in Sources */,
@@ -2661,6 +2698,7 @@
 				AE78C0C329068D1E006A70A3 /* QYZYMatchHeaderView.m in Sources */,
 				9BC0D5A0290685360063BCC7 /* QYZYSituationFooterView.m in Sources */,
 				AEF7068028EBDD81003FEEFD /* QYZYNewsCommentSubModel.m in Sources */,
+				CBFDA1BE2BF75CF000D80483 /* ORChartUtilities.m in Sources */,
 				F37E5DAF2BF4DD0B0049FAE1 /* AXMatchListTableViewCell.m in Sources */,
 				B11C0A5628E9A702001997E8 /* QYZYPhotoManager.m in Sources */,
 				55BF55BE28E98E2500DB476B /* QYZYChatGiftView.m in Sources */,
