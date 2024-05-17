@@ -15,7 +15,9 @@
 #import "AXMatchListSectionHeader.h"
 
 @interface QYZYMatchSubViewController ()<UITableViewDelegate,UITableViewDataSource>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (nonatomic, strong) UITableView *tableView;
+
 @end
 
 @implementation QYZYMatchSubViewController
@@ -27,18 +29,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    weakSelf(self);
-    self.tableView.backgroundColor = rgb(248, 249, 254);
-    self.tableView.showsVerticalScrollIndicator = NO;
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        strongSelf(self);
-        !self.requestBlock ? : self.requestBlock();
+    [self setupSubviews];
+}
+
+- (void)setupSubviews{
+    [self.view addSubview:self.tableView];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.offset(0);
     }];
-    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(AXMatchListTableViewCell.class) bundle:nil] forCellReuseIdentifier:NSStringFromClass(AXMatchListTableViewCell.class)];
-    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(AXMatchListOddsCell.class) bundle:nil] forCellReuseIdentifier:NSStringFromClass(AXMatchListOddsCell.class)];
-    [self.tableView registerClass:QYZYTableEmptyCell.class forCellReuseIdentifier:NSStringFromClass(QYZYTableEmptyCell.class)];
-    [self.tableView registerClass:AXMatchListSectionHeader.class forHeaderFooterViewReuseIdentifier:NSStringFromClass(AXMatchListSectionHeader.class)];
-    self.tableView.sectionFooterHeight = CGFLOAT_MIN;
 }
 
 - (void)setMatches:(NSArray *)matches {
@@ -95,10 +93,6 @@
     return 30;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return CGFLOAT_MIN;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 10;
 //    return self.matches.count ? self.matches.count : 1;
@@ -107,10 +101,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return  150;
 //    return self.matches.count ? 82 : self.view.frame.size.height;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    return nil;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -126,6 +116,27 @@
         vc.hidesBottomBarWhenPushed = YES;
         [UIViewController.currentViewController.navigationController pushViewController:vc animated:YES];
 //    }
+}
+
+- (UITableView *)tableView{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        weakSelf(self);
+        _tableView.backgroundColor = rgb(248, 249, 254);
+        _tableView.showsVerticalScrollIndicator = NO;
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            strongSelf(self);
+            !self.requestBlock ? : self.requestBlock();
+        }];
+        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass(AXMatchListTableViewCell.class) bundle:nil] forCellReuseIdentifier:NSStringFromClass(AXMatchListTableViewCell.class)];
+        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass(AXMatchListOddsCell.class) bundle:nil] forCellReuseIdentifier:NSStringFromClass(AXMatchListOddsCell.class)];
+//        [_tableView registerClass:QYZYTableEmptyCell.class forCellReuseIdentifier:NSStringFromClass(QYZYTableEmptyCell.class)];
+        [_tableView registerClass:AXMatchListSectionHeader.class forHeaderFooterViewReuseIdentifier:NSStringFromClass(AXMatchListSectionHeader.class)];
+        _tableView.sectionFooterHeight = 0.1;
+    }
+    return _tableView;
 }
 
 @end
