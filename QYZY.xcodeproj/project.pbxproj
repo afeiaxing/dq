@@ -292,6 +292,10 @@
 		F37E5DF52BF852A10049FAE1 /* AXMatchStandingPBPStatsView.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5DF42BF852A00049FAE1 /* AXMatchStandingPBPStatsView.m */; };
 		F37E5DF82BF869AC0049FAE1 /* AXMatchStandingPBPSubCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5DF72BF869AC0049FAE1 /* AXMatchStandingPBPSubCell.m */; };
 		F37E5DFB2BF876F80049FAE1 /* AXMatchStandingPBPStatsSubCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5DFA2BF876F80049FAE1 /* AXMatchStandingPBPStatsSubCell.m */; };
+		F37E5DFF2BF88F790049FAE1 /* AXMatchLineupPerformersCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5DFE2BF88F790049FAE1 /* AXMatchLineupPerformersCell.m */; };
+		F37E5E022BF891610049FAE1 /* AXMatchLineupPerformersPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5E012BF891610049FAE1 /* AXMatchLineupPerformersPlayerView.m */; };
+		F37E5E052BF8A38C0049FAE1 /* AXMatchLineupPlayerStatsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5E042BF8A38C0049FAE1 /* AXMatchLineupPlayerStatsCell.m */; };
+		F37E5E082BF8A4840049FAE1 /* AXMatchLineupPlayerStatsView.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5E072BF8A4840049FAE1 /* AXMatchLineupPlayerStatsView.m */; };
 		F39766022BF3988300E4C861 /* AXNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F39766012BF3988300E4C861 /* AXNetWorkManager.m */; };
 		F39766082BF3993A00E4C861 /* QYZYDataTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F39766072BF3993A00E4C861 /* QYZYDataTools.m */; };
 		F52A4E0828EC18FA002358BC /* QYZYSettingPaswwordApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F52A4E0728EC18FA002358BC /* QYZYSettingPaswwordApi.m */; };
@@ -871,6 +875,14 @@
 		F37E5DF72BF869AC0049FAE1 /* AXMatchStandingPBPSubCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchStandingPBPSubCell.m; sourceTree = "<group>"; };
 		F37E5DF92BF876F80049FAE1 /* AXMatchStandingPBPStatsSubCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchStandingPBPStatsSubCell.h; sourceTree = "<group>"; };
 		F37E5DFA2BF876F80049FAE1 /* AXMatchStandingPBPStatsSubCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchStandingPBPStatsSubCell.m; sourceTree = "<group>"; };
+		F37E5DFD2BF88F790049FAE1 /* AXMatchLineupPerformersCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchLineupPerformersCell.h; sourceTree = "<group>"; };
+		F37E5DFE2BF88F790049FAE1 /* AXMatchLineupPerformersCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchLineupPerformersCell.m; sourceTree = "<group>"; };
+		F37E5E002BF891610049FAE1 /* AXMatchLineupPerformersPlayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchLineupPerformersPlayerView.h; sourceTree = "<group>"; };
+		F37E5E012BF891610049FAE1 /* AXMatchLineupPerformersPlayerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchLineupPerformersPlayerView.m; sourceTree = "<group>"; };
+		F37E5E032BF8A38C0049FAE1 /* AXMatchLineupPlayerStatsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchLineupPlayerStatsCell.h; sourceTree = "<group>"; };
+		F37E5E042BF8A38C0049FAE1 /* AXMatchLineupPlayerStatsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchLineupPlayerStatsCell.m; sourceTree = "<group>"; };
+		F37E5E062BF8A4840049FAE1 /* AXMatchLineupPlayerStatsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchLineupPlayerStatsView.h; sourceTree = "<group>"; };
+		F37E5E072BF8A4840049FAE1 /* AXMatchLineupPlayerStatsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchLineupPlayerStatsView.m; sourceTree = "<group>"; };
 		F39766002BF3988300E4C861 /* AXNetWorkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXNetWorkManager.h; sourceTree = "<group>"; };
 		F39766012BF3988300E4C861 /* AXNetWorkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXNetWorkManager.m; sourceTree = "<group>"; };
 		F39766062BF3993A00E4C861 /* QYZYDataTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYZYDataTools.h; sourceTree = "<group>"; };
@@ -2107,6 +2119,7 @@
 		F37E5DCA2BF77A600049FAE1 /* Lineup */ = {
 			isa = PBXGroup;
 			children = (
+				F37E5DFC2BF88EE00049FAE1 /* View */,
 				F37E5DCB2BF77A670049FAE1 /* VC */,
 			);
 			path = Lineup;
@@ -2155,6 +2168,21 @@
 				F37E5DF42BF852A00049FAE1 /* AXMatchStandingPBPStatsView.m */,
 				F37E5DF92BF876F80049FAE1 /* AXMatchStandingPBPStatsSubCell.h */,
 				F37E5DFA2BF876F80049FAE1 /* AXMatchStandingPBPStatsSubCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F37E5DFC2BF88EE00049FAE1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F37E5DFD2BF88F790049FAE1 /* AXMatchLineupPerformersCell.h */,
+				F37E5DFE2BF88F790049FAE1 /* AXMatchLineupPerformersCell.m */,
+				F37E5E002BF891610049FAE1 /* AXMatchLineupPerformersPlayerView.h */,
+				F37E5E012BF891610049FAE1 /* AXMatchLineupPerformersPlayerView.m */,
+				F37E5E032BF8A38C0049FAE1 /* AXMatchLineupPlayerStatsCell.h */,
+				F37E5E042BF8A38C0049FAE1 /* AXMatchLineupPlayerStatsCell.m */,
+				F37E5E062BF8A4840049FAE1 /* AXMatchLineupPlayerStatsView.h */,
+				F37E5E072BF8A4840049FAE1 /* AXMatchLineupPlayerStatsView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2598,6 +2626,7 @@
 				9BC0D5BA2906B16C0063BCC7 /* QYZYPlayerDataCell.m in Sources */,
 				AEF7068328EBDDAA003FEEFD /* QYZYNewsCommentSubParentModel.m in Sources */,
 				AE68008128E94AF70084E652 /* QYZYTotalNewsLabelModel.m in Sources */,
+				F37E5DFF2BF88F790049FAE1 /* AXMatchLineupPerformersCell.m in Sources */,
 				B1B744BB28E8264D00DD300E /* QYZYMyattentionTableViewCell.m in Sources */,
 				55B04A7028E593CB00A82F1F /* JXPagerMainTableView.m in Sources */,
 				9BC0D59D29066EB60063BCC7 /* QYZYScoreCollectionViewCell.m in Sources */,
@@ -2608,6 +2637,7 @@
 				55D2973728EB026F00C80738 /* QYZYLiveNoticeViewController.m in Sources */,
 				555CE93F28F6B82E0085F1D4 /* QYZYMatchApi.m in Sources */,
 				55B04A8428E5BCEE00A82F1F /* QYZYLiveMainGroupApi.m in Sources */,
+				F37E5E082BF8A4840049FAE1 /* AXMatchLineupPlayerStatsView.m in Sources */,
 				B1B744B828E824B700DD300E /* QYZYMyattentionModel.m in Sources */,
 				F550C7D528F99854000FD3DB /* QYZYGetSetPasswordTicketApi.m in Sources */,
 				9B46F6A328E6D79F00941F97 /* QYZYSearchUtils.m in Sources */,
@@ -2691,6 +2721,7 @@
 				5552ABFE28F935BD00285B25 /* QYZYMatchAnalyzeViewController.m in Sources */,
 				B1B054C728E693BA00030F57 /* QYZYFootballApi.m in Sources */,
 				555C687A28EC569D00044A5E /* QYZYChargeView.m in Sources */,
+				F37E5E022BF891610049FAE1 /* AXMatchLineupPerformersPlayerView.m in Sources */,
 				55B04A7128E593CB00A82F1F /* JXPagerView.m in Sources */,
 				AE78C0C029068B72006A70A3 /* QYZYMatchAnalyzeFooterView.m in Sources */,
 				55BF55BB28E9801000DB476B /* QYZYLiveGetGiftApi.m in Sources */,
@@ -2769,6 +2800,7 @@
 				55B04A6F28E593CB00A82F1F /* JXPagerListContainerView.m in Sources */,
 				B1B744AC28E7EEED00DD300E /* QYZYMyattentionViewController.m in Sources */,
 				9B9A76E528E94A7B00809C8D /* QYZYCircleContentModel.m in Sources */,
+				F37E5E052BF8A38C0049FAE1 /* AXMatchLineupPlayerStatsCell.m in Sources */,
 				9BD7B87028ED2F5C00054799 /* QYZYBaseViewController.m in Sources */,
 				55B04A4C28E54A7500A82F1F /* QYZYLiveItemView.m in Sources */,
 				55E2394528E7F70B003ED27E /* QYZYLiveRankDayApi.m in Sources */,
