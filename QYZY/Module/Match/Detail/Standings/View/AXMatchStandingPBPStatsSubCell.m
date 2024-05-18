@@ -138,6 +138,7 @@
         _homeTintView = [[UIView alloc] init];
         _homeTintView.backgroundColor = rgb(143, 0, 255);
         _homeTintView.layer.cornerRadius = 4;
+        _homeTintView.layer.maskedCorners = kCALayerMinXMinYCorner | kCALayerMinXMaxYCorner;
     }
     return _homeTintView;
 }
@@ -147,6 +148,7 @@
         _awayTintView = [[UIView alloc] init];
         _awayTintView.backgroundColor = rgb(0, 162, 36);
         _awayTintView.layer.cornerRadius = 4;
+        _awayTintView.layer.maskedCorners = kCALayerMaxXMinYCorner | kCALayerMaxXMaxYCorner;
     }
     return _awayTintView;
 }

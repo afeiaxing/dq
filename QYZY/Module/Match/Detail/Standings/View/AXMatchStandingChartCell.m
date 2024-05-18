@@ -357,6 +357,7 @@
         _scoreHostColorView = [UIView new];
         _scoreHostColorView.backgroundColor = rgb(143, 0, 255);
         _scoreHostColorView.layer.cornerRadius = 4;
+        _scoreHostColorView.layer.maskedCorners =  kCALayerMaxXMaxYCorner | kCALayerMaxXMinYCorner;
     }
     return _scoreHostColorView;
 }
@@ -366,6 +367,7 @@
         _scoreAwayColorView = [UIView new];
         _scoreAwayColorView.backgroundColor = rgb(0, 162, 36);
         _scoreAwayColorView.layer.cornerRadius = 4;
+        _scoreAwayColorView.layer.maskedCorners =  kCALayerMaxXMaxYCorner | kCALayerMaxXMinYCorner;
     }
     return _scoreAwayColorView;
 }

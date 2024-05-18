@@ -78,6 +78,8 @@
     if (!_colorView) {
         _colorView = [UIView new];
         _colorView.layer.cornerRadius = 4;
+        _colorView.layer.maskedCorners = kCALayerMinXMinYCorner | kCALayerMinXMaxYCorner;
+
     }
     return _colorView;
 }
