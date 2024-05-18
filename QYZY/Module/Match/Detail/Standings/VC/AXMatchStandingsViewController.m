@@ -45,7 +45,7 @@
         AXMatchStandingChartCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchStandingChartCell.class) forIndexPath:indexPath];
         
         return cell;
-    } else if (indexPath.row == 0) {
+    } else if (indexPath.row == 1) {
         AXMatchStandingTeamStatsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchStandingTeamStatsCell.class) forIndexPath:indexPath];
         
         return cell;

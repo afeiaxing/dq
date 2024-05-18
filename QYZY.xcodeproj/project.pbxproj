@@ -288,6 +288,10 @@
 		F37E5DE92BF780F70049FAE1 /* AXMatchStandingTeamStatsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5DE82BF780F70049FAE1 /* AXMatchStandingTeamStatsCell.m */; };
 		F37E5DEC2BF7810D0049FAE1 /* AXMatchStandingChartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5DEB2BF7810D0049FAE1 /* AXMatchStandingChartCell.m */; };
 		F37E5DEF2BF781620049FAE1 /* AXMatchStandingPBPCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5DEE2BF781620049FAE1 /* AXMatchStandingPBPCell.m */; };
+		F37E5DF22BF852870049FAE1 /* AXMatchStandingPBPView.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5DF12BF852870049FAE1 /* AXMatchStandingPBPView.m */; };
+		F37E5DF52BF852A10049FAE1 /* AXMatchStandingPBPStatsView.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5DF42BF852A00049FAE1 /* AXMatchStandingPBPStatsView.m */; };
+		F37E5DF82BF869AC0049FAE1 /* AXMatchStandingPBPSubCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5DF72BF869AC0049FAE1 /* AXMatchStandingPBPSubCell.m */; };
+		F37E5DFB2BF876F80049FAE1 /* AXMatchStandingPBPStatsSubCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5DFA2BF876F80049FAE1 /* AXMatchStandingPBPStatsSubCell.m */; };
 		F39766022BF3988300E4C861 /* AXNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F39766012BF3988300E4C861 /* AXNetWorkManager.m */; };
 		F39766082BF3993A00E4C861 /* QYZYDataTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F39766072BF3993A00E4C861 /* QYZYDataTools.m */; };
 		F52A4E0828EC18FA002358BC /* QYZYSettingPaswwordApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F52A4E0728EC18FA002358BC /* QYZYSettingPaswwordApi.m */; };
@@ -859,6 +863,14 @@
 		F37E5DEB2BF7810D0049FAE1 /* AXMatchStandingChartCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchStandingChartCell.m; sourceTree = "<group>"; };
 		F37E5DED2BF781620049FAE1 /* AXMatchStandingPBPCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchStandingPBPCell.h; sourceTree = "<group>"; };
 		F37E5DEE2BF781620049FAE1 /* AXMatchStandingPBPCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchStandingPBPCell.m; sourceTree = "<group>"; };
+		F37E5DF02BF852870049FAE1 /* AXMatchStandingPBPView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchStandingPBPView.h; sourceTree = "<group>"; };
+		F37E5DF12BF852870049FAE1 /* AXMatchStandingPBPView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchStandingPBPView.m; sourceTree = "<group>"; };
+		F37E5DF32BF852A00049FAE1 /* AXMatchStandingPBPStatsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchStandingPBPStatsView.h; sourceTree = "<group>"; };
+		F37E5DF42BF852A00049FAE1 /* AXMatchStandingPBPStatsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchStandingPBPStatsView.m; sourceTree = "<group>"; };
+		F37E5DF62BF869AC0049FAE1 /* AXMatchStandingPBPSubCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchStandingPBPSubCell.h; sourceTree = "<group>"; };
+		F37E5DF72BF869AC0049FAE1 /* AXMatchStandingPBPSubCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchStandingPBPSubCell.m; sourceTree = "<group>"; };
+		F37E5DF92BF876F80049FAE1 /* AXMatchStandingPBPStatsSubCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchStandingPBPStatsSubCell.h; sourceTree = "<group>"; };
+		F37E5DFA2BF876F80049FAE1 /* AXMatchStandingPBPStatsSubCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchStandingPBPStatsSubCell.m; sourceTree = "<group>"; };
 		F39766002BF3988300E4C861 /* AXNetWorkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXNetWorkManager.h; sourceTree = "<group>"; };
 		F39766012BF3988300E4C861 /* AXNetWorkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXNetWorkManager.m; sourceTree = "<group>"; };
 		F39766062BF3993A00E4C861 /* QYZYDataTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYZYDataTools.h; sourceTree = "<group>"; };
@@ -2135,6 +2147,14 @@
 				F37E5DE82BF780F70049FAE1 /* AXMatchStandingTeamStatsCell.m */,
 				F37E5DED2BF781620049FAE1 /* AXMatchStandingPBPCell.h */,
 				F37E5DEE2BF781620049FAE1 /* AXMatchStandingPBPCell.m */,
+				F37E5DF02BF852870049FAE1 /* AXMatchStandingPBPView.h */,
+				F37E5DF12BF852870049FAE1 /* AXMatchStandingPBPView.m */,
+				F37E5DF62BF869AC0049FAE1 /* AXMatchStandingPBPSubCell.h */,
+				F37E5DF72BF869AC0049FAE1 /* AXMatchStandingPBPSubCell.m */,
+				F37E5DF32BF852A00049FAE1 /* AXMatchStandingPBPStatsView.h */,
+				F37E5DF42BF852A00049FAE1 /* AXMatchStandingPBPStatsView.m */,
+				F37E5DF92BF876F80049FAE1 /* AXMatchStandingPBPStatsSubCell.h */,
+				F37E5DFA2BF876F80049FAE1 /* AXMatchStandingPBPStatsSubCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2607,6 +2627,7 @@
 				AEF7069228EC4738003FEEFD /* QYZYCommentInputView.m in Sources */,
 				B1D8D8C528EBD379004F2ADA /* QYZYPersonalHadeView.m in Sources */,
 				9B8D5B6528EBDC9000B480BA /* QYZYCollectApi.m in Sources */,
+				F37E5DF82BF869AC0049FAE1 /* AXMatchStandingPBPSubCell.m in Sources */,
 				55B04A8F28E5CD6500A82F1F /* QYZYLiveMainHeaderCell.m in Sources */,
 				9B8D5B6B28EC270A00B480BA /* QYZYReportView.m in Sources */,
 				55A5320B290545F90008C110 /* QYZYMatchEventModel.m in Sources */,
@@ -2684,6 +2705,7 @@
 				55D2972F28EAE58800C80738 /* QYZYLiveDynamicViewController.m in Sources */,
 				552B0F3A28E6A62B00D81F45 /* QYZYLiveListApi.m in Sources */,
 				CB32C7A92BF5FA9A00B2E277 /* AXStreamViewController.m in Sources */,
+				F37E5DF22BF852870049FAE1 /* AXMatchStandingPBPView.m in Sources */,
 				55E0D52F28F83D6100DDAAB6 /* QYZYMatchOverEventApi.m in Sources */,
 				55BF55CB28E9ACCA00DB476B /* QYZYSendGiftApi.m in Sources */,
 				B1B744BE28E8352500DD300E /* QYZYRankViewController.m in Sources */,
@@ -2831,6 +2853,8 @@
 				555C688028EC588700044A5E /* QYZYChargeCell.m in Sources */,
 				F560B5A928E8709200989DE4 /* QYZYTopBlocksModel.m in Sources */,
 				AE78C0C329068D1E006A70A3 /* QYZYMatchHeaderView.m in Sources */,
+				F37E5DF52BF852A10049FAE1 /* AXMatchStandingPBPStatsView.m in Sources */,
+				F37E5DFB2BF876F80049FAE1 /* AXMatchStandingPBPStatsSubCell.m in Sources */,
 				9BC0D5A0290685360063BCC7 /* QYZYSituationFooterView.m in Sources */,
 				F37E5DDF2BF77C210049FAE1 /* AXMatchLineupViewController.m in Sources */,
 				AEF7068028EBDD81003FEEFD /* QYZYNewsCommentSubModel.m in Sources */,
