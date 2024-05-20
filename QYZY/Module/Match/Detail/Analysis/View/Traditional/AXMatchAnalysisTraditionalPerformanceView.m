@@ -101,6 +101,7 @@
         _winLabel.textColor = UIColor.whiteColor;
         _winLabel.textAlignment = NSTextAlignmentCenter;
         _winLabel.layer.cornerRadius = 8;
+        _winLabel.layer.maskedCorners = kCALayerMinXMinYCorner | kCALayerMinXMaxYCorner;
         _winLabel.layer.masksToBounds = true;
     }
     return _winLabel;
@@ -114,6 +115,7 @@
         _loseLabel.textColor = UIColor.whiteColor;
         _loseLabel.textAlignment = NSTextAlignmentCenter;
         _loseLabel.layer.cornerRadius = 8;
+        _loseLabel.layer.maskedCorners = kCALayerMaxXMinYCorner | kCALayerMaxXMaxYCorner;
         _loseLabel.layer.masksToBounds = true;
     }
     return _loseLabel;

@@ -42,17 +42,17 @@
     [self addSubview:self.awayTintView];
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self).offset(2);
-            make.centerX.equalTo(self);
+        make.top.equalTo(self).offset(2);
+        make.centerX.equalTo(self);
         make.width.mas_equalTo(80);
-        }];
-        
-        [self.hostBackView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(self.titleLabel);
-            make.right.equalTo(self.titleLabel.mas_left).offset(-20);
-            make.left.offset(16);
-            make.height.mas_equalTo(8);
-        }];
+    }];
+    
+    [self.hostBackView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.titleLabel);
+        make.right.equalTo(self.titleLabel.mas_left).offset(-20);
+        make.left.offset(16);
+        make.height.mas_equalTo(8);
+    }];
     
     [self.hostTintView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.height.centerY.equalTo(self.hostBackView);

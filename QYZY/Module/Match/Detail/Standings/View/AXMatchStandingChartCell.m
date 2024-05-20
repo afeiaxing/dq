@@ -230,6 +230,7 @@
     return label;
 }
 
+// 不足4节的，在得分数组里加“-”；和算出总分
 - (NSArray *)handleScoreArray: (NSArray *)scores{
     NSMutableArray *temp = [NSMutableArray arrayWithArray:scores];
     while (temp.count < 4) {
@@ -302,7 +303,7 @@
 - (UIImageView *)hostLogo{
     if (!_hostLogo) {
         _hostLogo = [UIImageView new];
-        _hostLogo.backgroundColor = UIColor.purpleColor;
+        _hostLogo.image = [UIImage imageNamed:@"match_team_logo"];
     }
     return _hostLogo;
 }
@@ -310,7 +311,7 @@
 - (UIImageView *)awayLogo{
     if (!_awayLogo) {
         _awayLogo = [UIImageView new];
-        _awayLogo.backgroundColor = UIColor.purpleColor;
+        _awayLogo.image = [UIImage imageNamed:@"match_team_logo"];
     }
     return _awayLogo;
 }
@@ -395,7 +396,7 @@
 - (UIImageView *)scoreHostLogo{
     if (!_scoreHostLogo) {
         _scoreHostLogo = [UIImageView new];
-        _scoreHostLogo.backgroundColor = UIColor.purpleColor;
+        _scoreHostLogo.image = [UIImage imageNamed:@"match_team_logo"];
     }
     return _scoreHostLogo;
 }
@@ -403,7 +404,7 @@
 - (UIImageView *)scoreAwayLogo{
     if (!_scoreAwayLogo) {
         _scoreAwayLogo = [UIImageView new];
-        _scoreAwayLogo.backgroundColor = UIColor.purpleColor;
+        _scoreAwayLogo.image = [UIImage imageNamed:@"match_team_logo"];
     }
     return _scoreAwayLogo;
 }

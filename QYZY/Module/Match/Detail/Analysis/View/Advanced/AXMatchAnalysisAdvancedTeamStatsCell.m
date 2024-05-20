@@ -115,7 +115,7 @@
 - (UIImageView *)hostLogo{
     if (!_hostLogo) {
         _hostLogo = [UIImageView new];
-        _hostLogo.backgroundColor = UIColor.purpleColor;
+        _hostLogo.image = [UIImage imageNamed:@"match_team_logo"];
     }
     return _hostLogo;
 }
@@ -123,7 +123,7 @@
 - (UIImageView *)awayLogo{
     if (!_awayLogo) {
         _awayLogo = [UIImageView new];
-        _awayLogo.backgroundColor = UIColor.purpleColor;
+        _awayLogo.image = [UIImage imageNamed:@"match_team_logo"];
     }
     return _awayLogo;
 }

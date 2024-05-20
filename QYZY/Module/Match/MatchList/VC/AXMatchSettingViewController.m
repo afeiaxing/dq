@@ -27,17 +27,17 @@
     }];
     
     self.settingsData = @[@{@"title": @"Matches display", @"options": @[]},
-                               @{@"title": @"Match rankings", @"options": @[@{@"title": @"", @"type": [NSNumber numberWithInt:SettingTypeSwitch]}]},
-                               @{@"title": @"Notification sound in APP", @"options": @[]},
-                               @{@"title": @"Favorites event push", @"options": @[@{@"title": @"ALL Matches", @"type": [NSNumber numberWithInt:SettingTypeArrow]}]},
-                               @{@"title": @"Score Notification", @"options": @[]},
-                               @{@"title": @"Voice notification", @"options": @[@{@"title": @"", @"type": [NSNumber numberWithInt:SettingTypeSwitch]}]},
-                               @{@"title": @"Vibrate", @"options": @[@{@"title": @"", @"type": [NSNumber numberWithInt:SettingTypeSwitch]}]},
-                               @{@"title": @"Mobile phone notification bar push settings", @"options": @[]},
-                               @{@"title": @"Notification bar push", @"options": @[@{@"title": @"", @"type": [NSNumber numberWithInt:SettingTypeSwitch]}]},
-                               @{@"title": @"Favorites event push", @"options": @[@{@"title": @"3/3", @"type": [NSNumber numberWithInt:SettingTypeArrow]}]}];
-        
-        [self.tableView registerClass:[AXMatchListSettingCell class] forCellReuseIdentifier:@"SettingCell"];
+                          @{@"title": @"Match rankings", @"options": @[@{@"title": @"", @"type": [NSNumber numberWithInt:SettingTypeSwitch]}]},
+                          @{@"title": @"Notification sound in APP", @"options": @[]},
+                          @{@"title": @"Favorites event push", @"options": @[@{@"title": @"ALL Matches", @"type": [NSNumber numberWithInt:SettingTypeArrow]}]},
+                          @{@"title": @"Score Notification", @"options": @[]},
+                          @{@"title": @"Voice notification", @"options": @[@{@"title": @"", @"type": [NSNumber numberWithInt:SettingTypeSwitch]}]},
+                          @{@"title": @"Vibrate", @"options": @[@{@"title": @"", @"type": [NSNumber numberWithInt:SettingTypeSwitch]}]},
+                          @{@"title": @"Mobile phone notification bar push settings", @"options": @[]},
+                          @{@"title": @"Notification bar push", @"options": @[@{@"title": @"", @"type": [NSNumber numberWithInt:SettingTypeSwitch]}]},
+                          @{@"title": @"Favorites event push", @"options": @[@{@"title": @"3/3", @"type": [NSNumber numberWithInt:SettingTypeArrow]}]}];
+    
+    [self.tableView registerClass:[AXMatchListSettingCell class] forCellReuseIdentifier:@"SettingCell"];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
