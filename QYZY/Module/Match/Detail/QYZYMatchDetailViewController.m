@@ -21,7 +21,7 @@
 @interface QYZYMatchDetailViewController ()<JXCategoryViewDelegate,JXCategoryListContainerViewDelegate>
 @property (nonatomic ,strong) UIView *statusView;
 @property (nonatomic ,strong) UIView *navigationView;
-@property (nonatomic ,strong) UIView *headerBgView;
+@property (nonatomic ,strong) UIImageView *headerBgView;
 @property (nonatomic, strong) UILabel *topHostName;
 @property (nonatomic, strong) UILabel *topAwayName;
 @property (nonatomic, strong) UIImageView *topHostLogo;
@@ -245,11 +245,11 @@
 
 - (void)updateHeaderWithDetailModel:(QYZYMatchMainModel *)detailModel {
     self.timeLabel.text = [self time_timestampToString:detailModel.matchTime.integerValue];
-    [self.hostLogo sd_setImageWithURL:[NSURL URLWithString:detailModel.hostTeamLogo]];
-    self.hostLogo.backgroundColor = detailModel.hostTeamLogo.length ? UIColor.clearColor : rgba(255, 255, 255, 0.15);
+//    [self.hostLogo sd_setImageWithURL:[NSURL URLWithString:detailModel.hostTeamLogo]];
+//    self.hostLogo.backgroundColor = detailModel.hostTeamLogo.length ? UIColor.clearColor : rgba(255, 255, 255, 0.15);
     self.hostName.text = @"Los Angeles Lakers";
-    [self.awayLogo sd_setImageWithURL:[NSURL URLWithString:detailModel.guestTeamLogo]];
-    self.awayLogo.backgroundColor = detailModel.guestTeamLogo.length ? UIColor.clearColor : rgba(255, 255, 255, 0.15);
+//    [self.awayLogo sd_setImageWithURL:[NSURL URLWithString:detailModel.guestTeamLogo]];
+//    self.awayLogo.backgroundColor = detailModel.guestTeamLogo.length ? UIColor.clearColor : rgba(255, 255, 255, 0.15);
     self.awayName.text = @"Boston Celtics";
     self.scoreLabel.text = [NSString stringWithFormat:@"%@ - %@",detailModel.hostTeamScore ?: @"0", detailModel.guestTeamScore ?: @"0"];
 }
@@ -331,7 +331,7 @@
 - (UIImageView *)topHostLogo{
     if (!_topHostLogo) {
         _topHostLogo = [UIImageView new];
-        _topHostLogo.backgroundColor = UIColor.purpleColor;
+        _topHostLogo.image = [UIImage imageNamed:@"match_team_logo"];
     }
     return _topHostLogo;
 }
@@ -339,7 +339,7 @@
 - (UIImageView *)topAwayLogo{
     if (!_topAwayLogo) {
         _topAwayLogo = [UIImageView new];
-        _topAwayLogo.backgroundColor = UIColor.purpleColor;
+        _topAwayLogo.image = [UIImage imageNamed:@"match_team_logo"];
     }
     return _topAwayLogo;
 }
@@ -364,10 +364,11 @@
     return _topAwayName;
 }
 
-- (UIView *)headerBgView {
+- (UIImageView *)headerBgView {
     if (!_headerBgView) {
-        _headerBgView = [[UIView alloc] init];
-        _headerBgView.backgroundColor = UIColor.purpleColor;;
+        _headerBgView = [[UIImageView alloc] init];
+        _headerBgView.userInteractionEnabled = true;
+        _headerBgView.image = [UIImage imageNamed:@"match_detail_headerbg"];
     }
     return _headerBgView;
 }
@@ -404,7 +405,7 @@
     if (!_timeLabel) {
         _timeLabel = [[UILabel alloc] init];
         _timeLabel.textColor = rgba(255, 255, 255, 0.8);
-        _timeLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:12];
+        _timeLabel.font = [UIFont fontWithName:PingFangSC_Regular size:12];
     }
     return _timeLabel;
 }
@@ -429,7 +430,7 @@
 - (UIImageView *)hostLogo {
     if (!_hostLogo) {
         _hostLogo = [[UIImageView alloc] init];
-        _hostLogo.backgroundColor = rgba(255, 255, 255, 0.15);
+        _hostLogo.image = [UIImage imageNamed:@"match_team_logo"];
     }
     return _hostLogo;
 }
@@ -437,7 +438,7 @@
 - (UIImageView *)awayLogo {
     if (!_awayLogo) {
         _awayLogo = [[UIImageView alloc] init];
-        _awayLogo.backgroundColor = rgba(255, 255, 255, 0.15);
+        _awayLogo.image = [UIImage imageNamed:@"match_team_logo"];
     }
     return _awayLogo;
 }

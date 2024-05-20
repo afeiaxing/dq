@@ -40,7 +40,7 @@
     
     UITabBarItem *item = [UITabBarItem appearance];
     [item setTitleTextAttributes:@{NSForegroundColorAttributeName : rgba(130, 134, 163,1)} forState:UIControlStateNormal];
-    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : rgba(255, 88, 0,1)} forState:UIControlStateSelected];
+    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : AXSelectColor} forState:UIControlStateSelected];
     
 //    tabbarVC.tabBar.tintColor = rgba(130, 134, 163,1);
 //    tabbarVC.tabBar.unselectedItemTintColor = rgba(255, 88, 0,1);

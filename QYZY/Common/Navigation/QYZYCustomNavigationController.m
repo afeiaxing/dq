@@ -21,7 +21,7 @@
 - (void)configNavigation {
     [self.navigationBar setBackgroundImage:[UIImage qmui_imageWithColor:UIColor.whiteColor] forBarMetrics:UIBarMetricsDefault];
     self.navigationBar.translucent = false;
-    self.navigationBar.titleTextAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"PingFangSC-Medium" size:16],NSForegroundColorAttributeName : rgb(196, 220, 255)};
+    self.navigationBar.titleTextAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"PingFangSC-Medium" size:16],NSForegroundColorAttributeName : AXSelectColor};
     
     if (@available(iOS 15.0, *)) {
         UINavigationBarAppearance *app = [[UINavigationBarAppearance alloc] init];
@@ -31,7 +31,7 @@
         app.backgroundEffect = nil;
         UINavigationBar.appearance.scrollEdgeAppearance = app;
         UINavigationBar.appearance.standardAppearance = app;
-        app.titleTextAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"PingFangSC-Medium" size:16],NSForegroundColorAttributeName : rgb(196, 220, 255)};
+        app.titleTextAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"PingFangSC-Medium" size:16],NSForegroundColorAttributeName : AXSelectColor};
     }
 
 }
