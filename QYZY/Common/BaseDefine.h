@@ -24,6 +24,7 @@ typedef NS_ENUM(NSInteger ,QYZYMatchType) {
 #define PingFangSC_Semibold @"PingFangSC-Semibold"
 
 #define  AXSelectColor rgb(255,88,0)
+#define  AXUnSelectColor rgb(130,134,163)
 
 #define weakSelf(type)  __weak typeof(type) weak##type = type;
 #define strongSelf(type)  __strong typeof(weak##type) type = weak##type;

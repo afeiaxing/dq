@@ -18,8 +18,6 @@
 
 @end
 
-#define AXMatchStandingPBPBtnNormalColor rgb(130, 134, 163)
-
 @implementation AXMatchStandingPBPView
 
 // MARK: lifecycle
@@ -37,7 +35,7 @@
         NSString *title = self.quarters[i];
         UIButton *btn = [UIButton new];
         [btn setTitle:title forState:UIControlStateNormal];
-        [btn setTitleColor:i == 0 ? AXSelectColor : AXMatchStandingPBPBtnNormalColor forState:UIControlStateNormal];
+        [btn setTitleColor:i == 0 ? AXSelectColor : AXUnSelectColor forState:UIControlStateNormal];
         btn.backgroundColor = i == 0 ? rgb(255, 247, 239) : UIColor.whiteColor;
         btn.layer.cornerRadius = 15;
         btn.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -62,7 +60,7 @@
 }
 
 - (void)handleBtnEvent: (UIButton *)sender{
-    [self.lastSelectedBtn setTitleColor:AXMatchStandingPBPBtnNormalColor forState:UIControlStateNormal];
+    [self.lastSelectedBtn setTitleColor:AXUnSelectColor forState:UIControlStateNormal];
     self.lastSelectedBtn.backgroundColor = UIColor.whiteColor;
     [sender setTitleColor:AXSelectColor forState:UIControlStateNormal];
     sender.backgroundColor = rgb(255, 247, 239);

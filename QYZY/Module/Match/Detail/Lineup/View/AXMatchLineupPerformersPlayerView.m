@@ -158,7 +158,7 @@
     if (!_hostPlayerNum) {
         _hostPlayerNum = [[UILabel alloc] init];
         _hostPlayerNum.font = [UIFont systemFontOfSize:12];
-        _hostPlayerNum.textColor = rgb(130, 134, 163);
+        _hostPlayerNum.textColor = AXUnSelectColor;
         _hostPlayerNum.text = @"#24";
     }
     return _hostPlayerNum;
@@ -186,7 +186,7 @@
     if (!_awayPlayerNum) {
         _awayPlayerNum = [[UILabel alloc] init];
         _awayPlayerNum.font = [UIFont systemFontOfSize:12];
-        _awayPlayerNum.textColor = rgb(130, 134, 163);
+        _awayPlayerNum.textColor = AXUnSelectColor;
         _awayPlayerNum.text = @"#30";
     }
     return _awayPlayerNum;
@@ -196,7 +196,7 @@
     if (!_scoreTitle) {
         _scoreTitle = [[UILabel alloc] init];
         _scoreTitle.font = [UIFont systemFontOfSize:12];
-        _scoreTitle.textColor = rgb(130, 134, 163);
+        _scoreTitle.textColor = AXUnSelectColor;
         _scoreTitle.text = @"Score";
     }
     return _scoreTitle;

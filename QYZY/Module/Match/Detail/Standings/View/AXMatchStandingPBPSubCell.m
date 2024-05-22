@@ -99,7 +99,7 @@
        _quarterLabel = [[UILabel alloc] init];
        _quarterLabel.font = [UIFont systemFontOfSize:14];
        _quarterLabel.text = @"2nd";
-       _quarterLabel.textColor = rgb(130, 134, 163);
+       _quarterLabel.textColor = AXUnSelectColor;
    }
    return _quarterLabel;
 }
