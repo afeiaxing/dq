@@ -34,5 +34,6 @@
 #import <YYText/YYText.h>
 #import "NSString+Category.h"
 #import "QYZYBaseViewController.h"
+#import "AXNetWorkManager.h"
 
 #endif /* qyzy_pch */

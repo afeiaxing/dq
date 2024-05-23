@@ -9,6 +9,7 @@
 #import "QYZYMatchSubViewController.h"
 #import "QYZYMatchViewModel.h"
 #import "JXCategoryTitleBackgroundView.h"
+#import "AXMatchListRequest.h"
 
 @interface QYZYSubMainViewController ()<JXCategoryViewDelegate,JXCategoryListContainerViewDelegate>
 @property (nonatomic ,strong) JXCategoryTitleBackgroundView *categoryView;
@@ -19,6 +20,7 @@
 @property (nonatomic ,strong) QYZYMatchSubViewController *goingVC;
 @property (nonatomic ,strong) QYZYMatchSubViewController *uncomingVC;
 @property (nonatomic ,strong) QYZYMatchSubViewController *favoriteVC;
+@property (nonatomic, strong) AXMatchListRequest *requestManager;
 @end
 
 @implementation QYZYSubMainViewController
@@ -56,6 +58,10 @@
 
 - (void)requestData {
     weakSelf(self);
+    [self.requestManager requestMatchListWithcompletion:^(NSDictionary * _Nonnull matchModel) {
+        NSLog(@"%@", matchModel);
+    }];
+    
     [self.viewModel requestMatchDataWithDateString:self.currentDateString completion:^(QYZYMatchModel * _Nonnull matchModel) {
         strongSelf(self);
         [self.goingVC endRefresh];
@@ -200,5 +206,11 @@
     return _favoriteVC;
 }
 
+- (AXMatchListRequest *)requestManager{
+    if (!_requestManager) {
+        _requestManager = [AXMatchListRequest new];
+    }
+    return _requestManager;
+}
 
 @end

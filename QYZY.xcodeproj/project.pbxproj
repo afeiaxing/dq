@@ -308,6 +308,8 @@
 		F37E5E292BF9CCDC0049FAE1 /* AXMatchAnalysisAdvancedTeamStatsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5E282BF9CCDB0049FAE1 /* AXMatchAnalysisAdvancedTeamStatsCell.m */; };
 		F37E5E2C2BF9D59C0049FAE1 /* AXMatchAnalysisAdvancedTeamStatsView.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5E2B2BF9D59C0049FAE1 /* AXMatchAnalysisAdvancedTeamStatsView.m */; };
 		F37E5E2F2BFA2E3A0049FAE1 /* AXMatchListSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5E2E2BFA2E3A0049FAE1 /* AXMatchListSettingCell.m */; };
+		F37E5E322BFF802C0049FAE1 /* AXMatchListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5E312BFF802C0049FAE1 /* AXMatchListRequest.m */; };
+		F37E5E362BFF80AA0049FAE1 /* AXMatchListApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5E352BFF80AA0049FAE1 /* AXMatchListApi.m */; };
 		F39766022BF3988300E4C861 /* AXNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F39766012BF3988300E4C861 /* AXNetWorkManager.m */; };
 		F39766082BF3993A00E4C861 /* QYZYDataTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F39766072BF3993A00E4C861 /* QYZYDataTools.m */; };
 		F52A4E0828EC18FA002358BC /* QYZYSettingPaswwordApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F52A4E0728EC18FA002358BC /* QYZYSettingPaswwordApi.m */; };
@@ -919,6 +921,10 @@
 		F37E5E2B2BF9D59C0049FAE1 /* AXMatchAnalysisAdvancedTeamStatsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchAnalysisAdvancedTeamStatsView.m; sourceTree = "<group>"; };
 		F37E5E2D2BFA2E3A0049FAE1 /* AXMatchListSettingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchListSettingCell.h; sourceTree = "<group>"; };
 		F37E5E2E2BFA2E3A0049FAE1 /* AXMatchListSettingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchListSettingCell.m; sourceTree = "<group>"; };
+		F37E5E302BFF802C0049FAE1 /* AXMatchListRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchListRequest.h; sourceTree = "<group>"; };
+		F37E5E312BFF802C0049FAE1 /* AXMatchListRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchListRequest.m; sourceTree = "<group>"; };
+		F37E5E342BFF80AA0049FAE1 /* AXMatchListApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchListApi.h; sourceTree = "<group>"; };
+		F37E5E352BFF80AA0049FAE1 /* AXMatchListApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchListApi.m; sourceTree = "<group>"; };
 		F39766002BF3988300E4C861 /* AXNetWorkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXNetWorkManager.h; sourceTree = "<group>"; };
 		F39766012BF3988300E4C861 /* AXNetWorkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXNetWorkManager.m; sourceTree = "<group>"; };
 		F39766062BF3993A00E4C861 /* QYZYDataTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYZYDataTools.h; sourceTree = "<group>"; };
@@ -2046,6 +2052,7 @@
 		F37E5DA22BF4DB900049FAE1 /* MatchList */ = {
 			isa = PBXGroup;
 			children = (
+				F37E5E332BFF80810049FAE1 /* API */,
 				F37E5DA62BF4DBAB0049FAE1 /* Request */,
 				F37E5DA52BF4DBA60049FAE1 /* Model */,
 				F37E5DA42BF4DB9F0049FAE1 /* View */,
@@ -2098,6 +2105,8 @@
 		F37E5DA62BF4DBAB0049FAE1 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				F37E5E302BFF802C0049FAE1 /* AXMatchListRequest.h */,
+				F37E5E312BFF802C0049FAE1 /* AXMatchListRequest.m */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -2269,6 +2278,15 @@
 				F37E5E2B2BF9D59C0049FAE1 /* AXMatchAnalysisAdvancedTeamStatsView.m */,
 			);
 			path = Advanced;
+			sourceTree = "<group>";
+		};
+		F37E5E332BFF80810049FAE1 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				F37E5E342BFF80AA0049FAE1 /* AXMatchListApi.h */,
+				F37E5E352BFF80AA0049FAE1 /* AXMatchListApi.m */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		F39765FF2BF3985E00E4C861 /* AXNetworkManager */ = {
@@ -2770,6 +2788,7 @@
 				B1B744B228E7F75800DD300E /* QYZYMyreserModel.m in Sources */,
 				552B0F3728E69D2000D81F45 /* QYZYLiveMainHotModel.m in Sources */,
 				B1B744B528E81E5900DD300E /* QYZYMyattentionApi.m in Sources */,
+				F37E5E322BFF802C0049FAE1 /* AXMatchListRequest.m in Sources */,
 				5519478028E6C1CA0088C134 /* QYZYLiveListModel.m in Sources */,
 				55E0D50928F8050E00DDAAB6 /* QYZYMatchDetailApi.m in Sources */,
 				9B8D5B6828EBDC9B00B480BA /* QYZYCancelCollectApi.m in Sources */,
@@ -2830,6 +2849,7 @@
 				55E0D52F28F83D6100DDAAB6 /* QYZYMatchOverEventApi.m in Sources */,
 				55BF55CB28E9ACCA00DB476B /* QYZYSendGiftApi.m in Sources */,
 				B1B744BE28E8352500DD300E /* QYZYRankViewController.m in Sources */,
+				F37E5E362BFF80AA0049FAE1 /* AXMatchListApi.m in Sources */,
 				9BC0D5AD29069D8C0063BCC7 /* QYZYTeamStaticsModel.m in Sources */,
 				AEF7068928EC2EE8003FEEFD /* QYZYNewsLikeApi.m in Sources */,
 				55BF55AE28E95FFE00DB476B /* QYZYLiveChatFilterApi.m in Sources */,

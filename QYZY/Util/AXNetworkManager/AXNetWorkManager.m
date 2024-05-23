@@ -23,6 +23,10 @@
                                 failure:(YTKRequestCompletionBlock)failure {
     [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         // TODO: 统一处理返回数据
+        NSNumber *responseCode = request.responseJSONObject[@"code"];
+        if (responseCode.intValue == 403) {
+            
+        }
         success(request);
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         // TODO: 统一处理返回数据

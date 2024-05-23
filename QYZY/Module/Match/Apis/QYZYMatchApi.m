@@ -9,28 +9,28 @@
 
 @implementation QYZYMatchApi
 - (NSString *)requestUrl {
-    return @"/qiutx-score/v10/queryAllByStatus";
+    return @"/app-api/score/matchList/page";
 }
 
 - (YTKRequestMethod)requestMethod {
-    return YTKRequestMethodPOST;
+    return YTKRequestMethodGET;
 }
 
-- (id)requestArgument {
-    NSMutableDictionary *dict = @{}.mutableCopy;
-    [dict setValue:@(self.matchType) forKey:@"sportType"];
-    [dict setValue:self.currentDateString forKey:@"date"];
-    [dict setValue:@"" forKey:@"status"];
-    [dict setValue:@1 forKey:@"isComplete"];
-    [dict setValue:@0 forKey:@"isAll"];
-    [dict setValue:@0 forKey:@"isFormated"];
-    if (QYZYUserManager.shareInstance.isLogin) {
-        [dict setValue:QYZYUserManager.shareInstance.userModel.uid forKey:@"userId"];
-    } else {
-        [dict setValue:[UIDevice qyzy_getDeviceID] forKey:@"userId"];
-    }
-    return dict;
-}
+//- (id)requestArgument {
+//    NSMutableDictionary *dict = @{}.mutableCopy;
+//    [dict setValue:@(self.matchType) forKey:@"sportType"];
+//    [dict setValue:self.currentDateString forKey:@"date"];
+//    [dict setValue:@"" forKey:@"status"];
+//    [dict setValue:@1 forKey:@"isComplete"];
+//    [dict setValue:@0 forKey:@"isAll"];
+//    [dict setValue:@0 forKey:@"isFormated"];
+//    if (QYZYUserManager.shareInstance.isLogin) {
+//        [dict setValue:QYZYUserManager.shareInstance.userModel.uid forKey:@"userId"];
+//    } else {
+//        [dict setValue:[UIDevice qyzy_getDeviceID] forKey:@"userId"];
+//    }
+//    return dict;
+//}
 
 - (YTKRequestSerializerType)requestSerializerType {
     return YTKRequestSerializerTypeJSON;
