@@ -183,7 +183,7 @@
     for (int i = 0; i < quarterTitles.count; i++) {
         // title
         NSString *title = quarterTitles[i];
-        UILabel *titleLabel = [self getLabelWithText:title TextColor:rgb(130, 134, 163) fontSize:12];
+        UILabel *titleLabel = [self getLabelWithText:title TextColor:AXUnSelectColor fontSize:12];
         [self.scoreBGView addSubview:titleLabel];
         [titleLabels addObject:titleLabel];
         
@@ -191,13 +191,13 @@
         
         // host score
         NSString *hostScoreString = hostScores[i];
-        UILabel *hostScoreLabel = [self getLabelWithText:hostScoreString TextColor:isTotolScore ? AXSelectColor : rgb(130, 134, 163) fontSize:14];
+        UILabel *hostScoreLabel = [self getLabelWithText:hostScoreString TextColor:isTotolScore ? AXSelectColor : AXUnSelectColor fontSize:14];
         [self.scoreBGView addSubview:hostScoreLabel];
         [hostScoreLabels addObject:hostScoreLabel];
         
         // away score
         NSString *awayScoreString = awayScores[i];
-        UILabel *awayScoreLabel = [self getLabelWithText:awayScoreString TextColor:isTotolScore ? AXSelectColor : rgb(130, 134, 163) fontSize:14];
+        UILabel *awayScoreLabel = [self getLabelWithText:awayScoreString TextColor:isTotolScore ? AXSelectColor : AXUnSelectColor fontSize:14];
         [self.scoreBGView addSubview:awayScoreLabel];
         [awayScoreLabels addObject:awayScoreLabel];
     }
@@ -348,7 +348,7 @@
         _scoreTeamTitle = [UILabel new];
         _scoreTeamTitle.text = @"Team";
         _scoreTeamTitle.font = [UIFont systemFontOfSize:12];
-        _scoreTeamTitle.textColor = rgb(130, 134, 163);
+        _scoreTeamTitle.textColor = AXUnSelectColor;
     }
     return _scoreTeamTitle;
 }
@@ -378,7 +378,7 @@
         _scoreHostRanking = [UILabel new];
         _scoreHostRanking.text = @"5";
         _scoreHostRanking.font = [UIFont systemFontOfSize:16];
-        _scoreHostRanking.textColor = rgb(130, 134, 163);
+        _scoreHostRanking.textColor = AXUnSelectColor;
     }
     return _scoreHostRanking;
 }
@@ -388,7 +388,7 @@
         _scoreAwayRanking = [UILabel new];
         _scoreAwayRanking.text = @"2";
         _scoreAwayRanking.font = [UIFont systemFontOfSize:16];
-        _scoreAwayRanking.textColor = rgb(130, 134, 163);
+        _scoreAwayRanking.textColor = AXUnSelectColor;
     }
     return _scoreAwayRanking;
 }

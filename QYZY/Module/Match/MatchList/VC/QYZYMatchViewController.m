@@ -170,7 +170,7 @@
     if (!_categoryView) {
         _categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 48)];
         _categoryView.titles = @[@"BASKETBALL",@"LEAGUES"];
-        _categoryView.titleColor = rgb(130, 134, 163);
+        _categoryView.titleColor = AXUnSelectColor;
         _categoryView.titleSelectedColor = rgb(17, 17, 17);
         _categoryView.titleFont = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
         _categoryView.titleSelectedFont = [UIFont fontWithName:@"PingFangSC-Semibold" size:18];

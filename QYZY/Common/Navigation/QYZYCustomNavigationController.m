@@ -34,6 +34,17 @@
         app.titleTextAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"PingFangSC-Medium" size:16],NSForegroundColorAttributeName : AXSelectColor};
     }
 
+    
+    if(@available(iOS 13.0, *)){
+        UITabBar *tabbar = [UITabBar appearance];
+        [tabbar setTintColor:AXSelectColor];
+        [tabbar setUnselectedItemTintColor:AXUnSelectColor];
+    } else {
+        UITabBarItem *item = [UITabBarItem appearance];
+        [item setTitleTextAttributes:@{NSForegroundColorAttributeName:AXUnSelectColor} forState:UIControlStateNormal];
+        [item setTitleTextAttributes:@{NSForegroundColorAttributeName:AXSelectColor} forState:UIControlStateSelected];
+    }
+
 }
 
 @end
