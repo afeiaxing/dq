@@ -7,7 +7,6 @@
 
 #import "QYZYAppConfig.h"
 #import "IQKeyboardManager.h"
-#import "QYZYBlockManager.h"
 #import "QYZYRIMManager.h"
 #import "JPUSHService.h"
 #import <UMCommon/UMCommon.h>
@@ -25,11 +24,10 @@
 
 + (void)configWithapplication:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self configNetwork];
-    [self configRongIM];
+//    [QYZYRIMManager.shareInstace requestKeyData];
     [self configKeyboard];
-    [self configUmeng];
-    [self configUserResource];
-    [self configJiGugangWithapplication:application didFinishLaunchingWithOptions:launchOptions];
+//    [self configUmeng];
+//    [self configJiGugangWithapplication:application didFinishLaunchingWithOptions:launchOptions];
     
 }
 
@@ -47,11 +45,6 @@
         }
     
     }];
-}
-
-#pragma mark - RongIM
-+ (void)configRongIM {
-    [QYZYRIMManager.shareInstace requestKeyData];
 }
 
 #pragma mark - Keyboard
@@ -138,11 +131,5 @@
 + (void)configUmeng {
     [UMConfigure initWithAppkey:@"5e43ceaacb23d2efa7000076" channel:@"Apple Store"];
 }
-    
-#pragma mark - user resource
-+ (void)configUserResource {
-    [QYZYBlockManager.shareInstance requestData];
-}
-
 
 @end

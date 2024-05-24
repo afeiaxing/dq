@@ -21,7 +21,10 @@
 @property (nonatomic ,strong) QYZYMatchSubViewController *uncomingVC;
 @property (nonatomic ,strong) QYZYMatchSubViewController *favoriteVC;
 @property (nonatomic, strong) AXMatchListRequest *requestManager;
+@property (nonatomic, strong) NSTimer *timer;
 @end
+
+#define kMatchListRefreshDuration 1500000000000
 
 @implementation QYZYSubMainViewController
 
@@ -31,6 +34,19 @@
     [self setupSubViews];
     [self requestData];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestData) name:QYZYNetworkingFirstAvaliableNotification object:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self.timer invalidate];
+    self.timer = nil;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if (!self.timer) {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:kMatchListRefreshDuration target:self selector:@selector(requestData) userInfo:nil repeats:YES];
+    }
 }
 
 - (void)dealloc {
@@ -62,6 +78,7 @@
         NSLog(@"%@", matchModel);
     }];
     
+    return;
     [self.viewModel requestMatchDataWithDateString:self.currentDateString completion:^(QYZYMatchModel * _Nonnull matchModel) {
         strongSelf(self);
         [self.goingVC endRefresh];

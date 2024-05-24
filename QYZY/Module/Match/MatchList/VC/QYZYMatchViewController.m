@@ -11,18 +11,18 @@
 #import "FSCalendarView.h"
 #import "AXMatchFilterViewController.h"
 #import "AXMatchSettingViewController.h"
+#import "AXDataBaseViewController.h"
 
 @interface QYZYMatchViewController ()<JXCategoryViewDelegate,JXCategoryListContainerViewDelegate,FSCalendarDelegate>
 @property (nonatomic, strong) JXCategoryTitleView *categoryView;
 @property (nonatomic, strong) JXCategoryListContainerView *containerView;
-@property (nonatomic, strong) QYZYSubMainViewController *footVC;
 @property (nonatomic, strong) QYZYSubMainViewController *basketVC;
+@property (nonatomic, strong) AXDataBaseViewController *dataBaseVC;
 @property (nonatomic, strong) UIButton *selectButton;
 @property (nonatomic, strong) NSString *currentDateString;
 @property (nonatomic, strong) UIView *bgView;
 @property (nonatomic, strong) FSCalendarView *calendarView;
 @property (nonatomic, strong) NSDate *calendarDate;
-@property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) UIView *navigationLine;
 @property (nonatomic, strong) UIButton *filterBtn;
 @property (nonatomic, strong) UIButton *settingBtn;
@@ -35,26 +35,6 @@
     [super viewDidLoad];
     self.view.backgroundColor = rgb(248, 249, 254);
     [self setup];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    [self.timer invalidate];
-    self.timer = nil;
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    if (!self.timer) {
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(timerLoadReData) userInfo:nil repeats:YES];
-    }
-}
-
-- (void)timerLoadReData {
-    self.footVC.currentDateString = self.currentDateString;
-    [self.footVC requestData];
-    self.basketVC.currentDateString = self.currentDateString;
-    [self.basketVC requestData];
 }
 
 - (void)setup {
@@ -119,8 +99,8 @@
     NSString *changeString = [NSDate getDateStringWithDate:self.calendarDate formatter:@"yyyy-MM-dd"];
     if ([self.currentDateString isEqualToString:changeString]) return;
     self.currentDateString = changeString;
-    self.footVC.currentDateString = self.currentDateString;
-    [self.footVC requestData];
+//    self.footVC.currentDateString = self.currentDateString;
+//    [self.footVC requestData];
     self.basketVC.currentDateString = self.currentDateString;
     [self.basketVC requestData];
 }
@@ -145,10 +125,9 @@
 
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     if (index == 0) {
-        return self.footVC;
-    }
-    else {
         return self.basketVC;
+    } else {
+        return self.dataBaseVC;
     }
 }
 
@@ -209,13 +188,11 @@
     return _containerView;
 }
 
-- (QYZYSubMainViewController *)footVC {
-    if (!_footVC) {
-        _footVC = [[QYZYSubMainViewController alloc] init];
-        _footVC.matchType = QYZYMatchTypeFootball;
-        _footVC.currentDateString = self.currentDateString;
+- (AXDataBaseViewController *)dataBaseVC{
+    if (!_dataBaseVC) {
+        _dataBaseVC = [AXDataBaseViewController new];
     }
-    return _footVC;
+    return _dataBaseVC;
 }
 
 - (QYZYSubMainViewController *)basketVC {

@@ -10,7 +10,6 @@
 #import "QYZYLiveDetailModel.h"
 #import "ZFIJKPlayerManager.h"
 #import <WebKit/WebKit.h>
-#import "QYZYBlockManager.h"
 #import "QYZYNewsPostAttentionApi.h"
 #import "QYZYNewsPostAttentionCancelApi.h"
 
@@ -251,40 +250,40 @@
         self.fansLabel.text = [NSString stringWithFormat:@"%@ 粉丝",[NSString spelloutStringWithNumber:@(self.detailModel.fans.integerValue)]];
         self.nameLabel.text = self.detailModel.nickname;
         [self updateFocusControl];
-        if ([QYZYBlockManager isBlockedByLeagueId:self.detailModel.leagueId]) {
-            [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.detailModel.animUrl]]];
-            self.webView.hidden = NO;
-        }
-        else if ([self.detailModel.playAddr isKindOfClass:[NSDictionary class]]) {
-            self.webView.hidden = YES;
-            NSString *signRefer = [NSString stringWithFormat:@"Referer:%@",@"https://video.dqiu.com/"];
-            ZFIJKPlayerManager *manager = self.player.currentPlayerManager;
-            [manager.options setOptionValue:signRefer forKey:@"headers" ofCategory:kIJKFFOptionCategoryFormat];
-            self.player.currentPlayerManager = manager;
-            if ([self.detailModel.isRobot isEqualToNumber:@1]) {
-                if ([self.detailModel.playAddr[@"flv"] length]) {
-                    self.player.assetURL = [NSURL URLWithString:self.detailModel.playAddr[@"flv"]];
-                }else if ([self.detailModel.playAddr[@"m3u8"] length]) {
-                    self.player.assetURL = [NSURL URLWithString:self.detailModel.playAddr[@"m3u8"]];
-                }else {
-                    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.detailModel.animUrl]]];
-                    self.webView.hidden = NO;
-                }
-            }else {
-                if ([self.detailModel.playAddr[@"ld_flv"] length]) {
-                    self.player.assetURL = [NSURL URLWithString:self.detailModel.playAddr[@"ld_flv"]];
-                }else if ([self.detailModel.playAddr[@"ld_m3u8"] length]) {
-                    self.player.assetURL = [NSURL URLWithString:self.detailModel.playAddr[@"ld_m3u8"]];
-                }else {
-                    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.detailModel.animUrl]]];
-                    self.webView.hidden = NO;
-                }
-            }
-        }
-        else {
-            [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.detailModel.animUrl]]];
-            self.webView.hidden = NO;
-        }
+//        if ([QYZYBlockManager isBlockedByLeagueId:self.detailModel.leagueId]) {
+//            [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.detailModel.animUrl]]];
+//            self.webView.hidden = NO;
+//        }
+//        else if ([self.detailModel.playAddr isKindOfClass:[NSDictionary class]]) {
+//            self.webView.hidden = YES;
+//            NSString *signRefer = [NSString stringWithFormat:@"Referer:%@",@"https://video.dqiu.com/"];
+//            ZFIJKPlayerManager *manager = self.player.currentPlayerManager;
+//            [manager.options setOptionValue:signRefer forKey:@"headers" ofCategory:kIJKFFOptionCategoryFormat];
+//            self.player.currentPlayerManager = manager;
+//            if ([self.detailModel.isRobot isEqualToNumber:@1]) {
+//                if ([self.detailModel.playAddr[@"flv"] length]) {
+//                    self.player.assetURL = [NSURL URLWithString:self.detailModel.playAddr[@"flv"]];
+//                }else if ([self.detailModel.playAddr[@"m3u8"] length]) {
+//                    self.player.assetURL = [NSURL URLWithString:self.detailModel.playAddr[@"m3u8"]];
+//                }else {
+//                    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.detailModel.animUrl]]];
+//                    self.webView.hidden = NO;
+//                }
+//            }else {
+//                if ([self.detailModel.playAddr[@"ld_flv"] length]) {
+//                    self.player.assetURL = [NSURL URLWithString:self.detailModel.playAddr[@"ld_flv"]];
+//                }else if ([self.detailModel.playAddr[@"ld_m3u8"] length]) {
+//                    self.player.assetURL = [NSURL URLWithString:self.detailModel.playAddr[@"ld_m3u8"]];
+//                }else {
+//                    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.detailModel.animUrl]]];
+//                    self.webView.hidden = NO;
+//                }
+//            }
+//        }
+//        else {
+//            [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.detailModel.animUrl]]];
+//            self.webView.hidden = NO;
+//        }
         self.chatVC.chatId = self.detailModel.chatId;
         self.anchorVC.detailModel = self.detailModel;
         self.idLabel.text = [NSString stringWithFormat:@"主播ID: %@", self.detailModel.stb];
