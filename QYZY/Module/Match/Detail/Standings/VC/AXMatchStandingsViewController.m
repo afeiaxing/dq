@@ -9,10 +9,13 @@
 #import "AXMatchStandingChartCell.h"
 #import "AXMatchStandingTeamStatsCell.h"
 #import "AXMatchStandingPBPCell.h"
+#import "AXMatchStandingRequest.h"
 
 @interface AXMatchStandingsViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableview;
+@property (nonatomic, strong) AXMatchStandingRequest *request;
+@property (nonatomic, strong) AXMatchStandingModel *standingModel;
 
 @end
 
@@ -23,6 +26,7 @@
     [super viewDidLoad];
     
     [self setupSubviews];
+    [self requestData];
 }
 
 // MARK: UITableViewDelegate, UITableViewDataSource
@@ -44,14 +48,17 @@
     if (indexPath.row == 0) {
         AXMatchStandingChartCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchStandingChartCell.class) forIndexPath:indexPath];
         cell.matchModel = self.matchModel;
+        cell.standingModel = self.standingModel;
         return cell;
     } else if (indexPath.row == 1) {
         AXMatchStandingTeamStatsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchStandingTeamStatsCell.class) forIndexPath:indexPath];
         cell.matchModel = self.matchModel;
+        cell.standingModel = self.standingModel;
         return cell;
     } else {
         AXMatchStandingPBPCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchStandingPBPCell.class) forIndexPath:indexPath];
         cell.matchModel = self.matchModel;
+        cell.standingModel = self.standingModel;
         return cell;
     }
 }
@@ -61,6 +68,13 @@
     [self.view addSubview:self.tableview];
     [self.tableview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.offset(0);
+    }];
+}
+
+- (void)requestData{
+    [self.request requestMatchStandingWithMatchId:self.matchModel.matchId completion:^(AXMatchStandingModel * _Nonnull matchModel) {
+        self.standingModel = matchModel;
+        [self.tableview reloadData];
     }];
 }
 
@@ -81,6 +95,13 @@
         _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _tableview;
+}
+
+- (AXMatchStandingRequest *)request{
+    if (!_request) {
+        _request = [AXMatchStandingRequest new];
+    }
+    return _request;
 }
 
 @end

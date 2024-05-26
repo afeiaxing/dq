@@ -16,10 +16,10 @@
 @property (nonatomic, strong) UILabel *point2TitleLabel;
 @property (nonatomic, strong) UILabel *freeThrowTitleLabel;
 @property (nonatomic, strong) UILabel *freeThrowPercentTitleLabel;
-@property (nonatomic, strong) UILabel *homePoint3Label;
-@property (nonatomic, strong) UILabel *homePoint2Label;
-@property (nonatomic, strong) UILabel *homeFreeThrowLabel;
-@property (nonatomic, strong) UILabel *homeFreeThrowPercentLabel;
+@property (nonatomic, strong) UILabel *hostPoint3Label;
+@property (nonatomic, strong) UILabel *hostPoint2Label;
+@property (nonatomic, strong) UILabel *hostFreeThrowLabel;
+@property (nonatomic, strong) UILabel *hostFreeThrowPercentLabel;
 @property (nonatomic, strong) UILabel *awayPoint3Label;
 @property (nonatomic, strong) UILabel *awayPoint2Label;
 @property (nonatomic, strong) UILabel *awayFreeThrowLabel;
@@ -109,29 +109,29 @@
         make.width.mas_equalTo(kAXMatchStandingTeamStatsTitleWidth);
     }];
     
-    [self.containerView addSubview:self.homePoint3Label];
-    [self.homePoint3Label mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.containerView addSubview:self.hostPoint3Label];
+    [self.hostPoint3Label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.point3TitleLabel).offset(0);
         make.right.equalTo(self.point3TitleLabel.mas_left).offset(0);
         make.width.mas_equalTo(kAXMatchStandingTeamStatsValueWidth);
     }];
     
-    [self.containerView addSubview:self.homePoint2Label];
-    [self.homePoint2Label mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.containerView addSubview:self.hostPoint2Label];
+    [self.hostPoint2Label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.point2TitleLabel).offset(0);
         make.right.equalTo(self.point2TitleLabel.mas_left).offset(0);
         make.width.mas_equalTo(kAXMatchStandingTeamStatsValueWidth);
     }];
     
-    [self.containerView addSubview:self.homeFreeThrowLabel];
-    [self.homeFreeThrowLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.containerView addSubview:self.hostFreeThrowLabel];
+    [self.hostFreeThrowLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.freeThrowTitleLabel).offset(0);
         make.right.equalTo(self.freeThrowTitleLabel.mas_left).offset(0);
         make.width.mas_equalTo(kAXMatchStandingTeamStatsValueWidth);
     }];
     
-    [self.containerView addSubview:self.homeFreeThrowPercentLabel];
-    [self.homeFreeThrowPercentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.containerView addSubview:self.hostFreeThrowPercentLabel];
+    [self.hostFreeThrowPercentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.freeThrowPercentTitleLabel).offset(0);
         make.right.equalTo(self.freeThrowPercentTitleLabel.mas_left).offset(0);
         make.width.mas_equalTo(kAXMatchStandingTeamStatsValueWidth);
@@ -240,7 +240,7 @@
     
     [self.contentView addSubview:self.point3BackView];
     [self.point3BackView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.homePoint3Label);
+        make.left.equalTo(self.hostPoint3Label);
         make.right.equalTo(self.awayPoint3Label);
         make.height.mas_equalTo(8);
         make.top.equalTo(self.point3TitleLabel.mas_bottom).offset(4);
@@ -293,7 +293,49 @@
 - (void)setMatchModel:(AXMatchListItemModel *)matchModel{
     [self.hostLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.homeTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
     [self.awayLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.awayTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
+    self.hostName.text = matchModel.homeTeamName;
+    self.awayName.text = matchModel.awayTeamName;
     _matchModel = matchModel;
+}
+
+- (void)setStandingModel:(AXMatchStandingModel *)standingModel{
+    if (!standingModel) {return;}
+    
+    _standingModel = standingModel;
+    self.hostFouls.text = standingModel.hostTeamStats.currentFouls;
+    self.awayFouls.text = standingModel.awayTeamStats.currentFouls;
+    self.hostTimeout.text = standingModel.hostTeamStats.timeouts;
+    self.awayTimeout.text = standingModel.awayTeamStats.timeouts;
+    
+    self.hostPoint3Label.text = standingModel.hostTeamStats.threePoints;
+    self.awayPoint3Label.text = standingModel.awayTeamStats.threePoints;
+    self.hostPoint2Label.text = standingModel.hostTeamStats.twoPoints;
+    self.awayPoint2Label.text = standingModel.awayTeamStats.twoPoints;
+    self.hostFreeThrowLabel.text = standingModel.hostTeamStats.freeThrow;
+    self.awayFreeThrowLabel.text = standingModel.awayTeamStats.freeThrow;
+    self.hostFreeThrowPercentLabel.text = standingModel.hostTeamStats.freeThrowAccuracy;
+    self.awayFreeThrowPercentLabel.text = standingModel.awayTeamStats.freeThrowAccuracy;
+    
+    CGFloat backViewW = self.point3BackView.bounds.size.width;
+    
+    int point3Total = standingModel.hostTeamStats.threePoints.intValue + standingModel.awayTeamStats.threePoints.intValue;
+    CGFloat point3Precent;
+//    if (standingModel.hostTeamStats.threePoints.intValue > standingModel.awayTeamStats.threePoints.intValue) {
+        point3Precent = standingModel.hostTeamStats.threePoints.intValue / point3Total;
+        [self.point3TintView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.centerY.height.equalTo(self.point3BackView);
+            make.width.mas_equalTo(50);
+        }];
+//    } else {
+//        point3Precent = standingModel.awayTeamStats.threePoints.intValue / point3Total;
+//        [self.point3TintView mas_remakeConstraints:^(MASConstraintMaker *make) {
+//            make.right.centerY.height.equalTo(self.point3BackView);
+//            make.width.mas_equalTo(backViewW * point3Precent);
+//        }];
+//    }
+    
+    /// TODO: 设置其他进度条
+    
 }
 
 - (UIView *)containerView{
@@ -358,44 +400,40 @@
     return _freeThrowPercentTitleLabel;
 }
 
-- (UILabel *)homePoint3Label {
-    if (!_homePoint3Label) {
-        _homePoint3Label = [[UILabel alloc] init];
-        _homePoint3Label.font = [UIFont systemFontOfSize:12];
-        _homePoint3Label.textColor = rgb(17, 17, 17);
-        _homePoint3Label.text = @"21";
+- (UILabel *)hostPoint3Label {
+    if (!_hostPoint3Label) {
+        _hostPoint3Label = [[UILabel alloc] init];
+        _hostPoint3Label.font = [UIFont systemFontOfSize:12];
+        _hostPoint3Label.textColor = rgb(17, 17, 17);
     }
-    return _homePoint3Label;
+    return _hostPoint3Label;
 }
 
-- (UILabel *)homePoint2Label {
-    if (!_homePoint2Label) {
-        _homePoint2Label = [[UILabel alloc] init];
-        _homePoint2Label.font = [UIFont systemFontOfSize:12];
-        _homePoint2Label.textColor = rgb(17, 17, 17);
-        _homePoint2Label.text = @"15";
+- (UILabel *)hostPoint2Label {
+    if (!_hostPoint2Label) {
+        _hostPoint2Label = [[UILabel alloc] init];
+        _hostPoint2Label.font = [UIFont systemFontOfSize:12];
+        _hostPoint2Label.textColor = rgb(17, 17, 17);
     }
-    return _homePoint2Label;
+    return _hostPoint2Label;
 }
 
-- (UILabel *)homeFreeThrowLabel {
-    if (!_homeFreeThrowLabel) {
-        _homeFreeThrowLabel = [[UILabel alloc] init];
-        _homeFreeThrowLabel.font = [UIFont systemFontOfSize:12];
-        _homeFreeThrowLabel.textColor = rgb(17, 17, 17);
-        _homeFreeThrowLabel.text = @"16";
+- (UILabel *)hostFreeThrowLabel {
+    if (!_hostFreeThrowLabel) {
+        _hostFreeThrowLabel = [[UILabel alloc] init];
+        _hostFreeThrowLabel.font = [UIFont systemFontOfSize:12];
+        _hostFreeThrowLabel.textColor = rgb(17, 17, 17);
     }
-    return _homeFreeThrowLabel;
+    return _hostFreeThrowLabel;
 }
 
-- (UILabel *)homeFreeThrowPercentLabel {
-    if (!_homeFreeThrowPercentLabel) {
-        _homeFreeThrowPercentLabel = [[UILabel alloc] init];
-        _homeFreeThrowPercentLabel.font = [UIFont systemFontOfSize:12];
-        _homeFreeThrowPercentLabel.textColor = rgb(17, 17, 17);
-        _homeFreeThrowPercentLabel.text = @"17";
+- (UILabel *)hostFreeThrowPercentLabel {
+    if (!_hostFreeThrowPercentLabel) {
+        _hostFreeThrowPercentLabel = [[UILabel alloc] init];
+        _hostFreeThrowPercentLabel.font = [UIFont systemFontOfSize:12];
+        _hostFreeThrowPercentLabel.textColor = rgb(17, 17, 17);
     }
-    return _homeFreeThrowPercentLabel;
+    return _hostFreeThrowPercentLabel;
 }
 
 - (UILabel *)awayPoint3Label {
@@ -403,7 +441,6 @@
         _awayPoint3Label = [[UILabel alloc] init];
         _awayPoint3Label.font = [UIFont systemFontOfSize:12];
         _awayPoint3Label.textColor = rgb(17, 17, 17);
-        _awayPoint3Label.text = @"18";
         _awayPoint3Label.textAlignment = NSTextAlignmentRight;
     }
     return _awayPoint3Label;
@@ -414,7 +451,6 @@
         _awayPoint2Label = [[UILabel alloc] init];
         _awayPoint2Label.font = [UIFont systemFontOfSize:12];
         _awayPoint2Label.textColor = rgb(17, 17, 17);
-        _awayPoint2Label.text = @"19";
         _awayPoint2Label.textAlignment = NSTextAlignmentRight;
     }
     return _awayPoint2Label;
@@ -425,7 +461,6 @@
         _awayFreeThrowLabel = [[UILabel alloc] init];
         _awayFreeThrowLabel.font = [UIFont systemFontOfSize:12];
         _awayFreeThrowLabel.textColor = rgb(17, 17, 17);
-        _awayFreeThrowLabel.text = @"20";
         _awayFreeThrowLabel.textAlignment = NSTextAlignmentRight;
     }
     return _awayFreeThrowLabel;
@@ -436,7 +471,6 @@
         _awayFreeThrowPercentLabel = [[UILabel alloc] init];
         _awayFreeThrowPercentLabel.font = [UIFont systemFontOfSize:12];
         _awayFreeThrowPercentLabel.textColor = rgb(17, 17, 17);
-        _awayFreeThrowPercentLabel.text = @"21";
         _awayFreeThrowPercentLabel.textAlignment = NSTextAlignmentRight;
     }
     return _awayFreeThrowPercentLabel;
@@ -461,7 +495,6 @@
         _hostName = [[UILabel alloc] init];
         _hostName.font = [UIFont systemFontOfSize:12];
         _hostName.textColor = rgb(17, 17, 17);
-        _hostName.text = @"LAL";
     }
     return _hostName;
 }
@@ -471,7 +504,6 @@
         _awayName = [[UILabel alloc] init];
         _awayName.font = [UIFont systemFontOfSize:12];
         _awayName.textColor = rgb(17, 17, 17);
-        _awayName.text = @"BOS";
     }
     return _awayName;
 }
@@ -491,7 +523,6 @@
         _hostFouls = [[UILabel alloc] init];
         _hostFouls.font = [UIFont systemFontOfSize:12];
         _hostFouls.textColor = rgb(17, 17, 17);
-        _hostFouls.text = @"4";
     }
     return _hostFouls;
 }
@@ -511,7 +542,6 @@
         _awayFouls = [[UILabel alloc] init];
         _awayFouls.font = [UIFont systemFontOfSize:12];
         _awayFouls.textColor = rgb(17, 17, 17);
-        _awayFouls.text = @"5";
     }
     return _awayFouls;
 }
@@ -531,7 +561,6 @@
         _hostTimeout = [[UILabel alloc] init];
         _hostTimeout.font = [UIFont systemFontOfSize:12];
         _hostTimeout.textColor = rgb(17, 17, 17);
-        _hostTimeout.text = @"12";
     }
     return _hostTimeout;
 }
@@ -551,7 +580,6 @@
         _awayTimeout = [[UILabel alloc] init];
         _awayTimeout.font = [UIFont systemFontOfSize:12];
         _awayTimeout.textColor = rgb(17, 17, 17);
-        _awayTimeout.text = @"33";
     }
     return _awayTimeout;
 }

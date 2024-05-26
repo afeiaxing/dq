@@ -6,12 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AXMatchStandingModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AXMatchStandingPBPCell : UITableViewCell
 
 @property (nonatomic, strong) AXMatchListItemModel *matchModel;
+@property (nonatomic, strong) AXMatchStandingModel *standingModel;
 
 @end
 

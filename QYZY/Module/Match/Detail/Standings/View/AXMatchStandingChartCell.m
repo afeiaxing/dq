@@ -7,6 +7,7 @@
 
 #import "AXMatchStandingChartCell.h"
 #import "AXMatchStandingPolylineView.h"
+#import "AXMatchListScoreCustomView.h"
 
 @interface AXMatchStandingChartCell()
 
@@ -14,7 +15,6 @@
 @property (nonatomic, strong) UIImageView *hostLogo;
 @property (nonatomic, strong) UIImageView *awayLogo;
 
-@property (nonatomic, strong) NSArray *scoreDiffData;
 @property (nonatomic, strong) AXMatchStandingPolylineView *polylineView;
 
 @property (nonatomic, strong) UIView *scoreBGView;
@@ -29,9 +29,7 @@
 @property (nonatomic, strong) UILabel *scoreAwayName;
 @property (nonatomic, strong) UIView *scoreLineView;
 
-@property (nonatomic, strong) NSArray *scoreTitleLabels;
-@property (nonatomic, strong) NSArray *scoreHostLabels;
-@property (nonatomic, strong) NSArray *scoreAwayLabels;
+@property (nonatomic, strong) NSArray *scoreViews;
 
 
 @end
@@ -147,105 +145,85 @@
         make.size.mas_equalTo(CGSizeMake(1, 80));
     }];
     
-    self.polylineView.scoreDiffs = self.scoreDiffData;
-    [self setScores];
-}
-
-- (void)setScores{
-    NSArray *score = @[@"1", @"2", @"12", @"12", @"0", @"2"];
-    NSArray *awayScore = @[@"3", @"4", @"1", @"2", @"2", @"1"];
-    NSInteger quarterCount = score.count;
-    NSArray *quarterTitles;
-    
-    if (5 > quarterCount) {
-        // 无加时
-        quarterTitles = @[@"Q1", @"Q2", @"Q3", @"Q4", @"Tot."];
-    } else if (quarterCount == 5) {
-        // 加时1
-        quarterTitles = @[@"Q1", @"Q2", @"Q3", @"Q4", @"OT1", @"Tot."];
-    } else {
-        // 加时2
-        quarterTitles = @[@"Q1", @"Q2", @"Q3", @"Q4", @"OT1", @"OT2", @"Tot."];
+    NSMutableArray *temp = [NSMutableArray array];
+    for (int i = 0; i < 6; i++) {
+        AXMatchListScoreCustomView *view = [AXMatchListScoreCustomView new];
+        view.viewType = (AXMatchListScoreCustomViewType)i;
+        [self.containerView addSubview:view];
+        [temp addObject:view];
     }
-    
-    NSArray *hostScores = [self handleScoreArray:score];
-    NSArray *awayScores = [self handleScoreArray:awayScore];
-    
-    NSMutableArray *titleLabels = [NSMutableArray array];
-    NSMutableArray *hostScoreLabels = [NSMutableArray array];
-    NSMutableArray *awayScoreLabels = [NSMutableArray array];
-    
-    for (int i = 0; i < quarterTitles.count; i++) {
-        // title
-        NSString *title = quarterTitles[i];
-        UILabel *titleLabel = [self getLabelWithText:title TextColor:AXUnSelectColor fontSize:12];
-        [self.scoreBGView addSubview:titleLabel];
-        [titleLabels addObject:titleLabel];
-        
-        BOOL isTotolScore = i == quarterTitles.count - 1;
-        
-        // host score
-        NSString *hostScoreString = hostScores[i];
-        UILabel *hostScoreLabel = [self getLabelWithText:hostScoreString TextColor:isTotolScore ? AXSelectColor : AXUnSelectColor fontSize:14];
-        [self.scoreBGView addSubview:hostScoreLabel];
-        [hostScoreLabels addObject:hostScoreLabel];
-        
-        // away score
-        NSString *awayScoreString = awayScores[i];
-        UILabel *awayScoreLabel = [self getLabelWithText:awayScoreString TextColor:isTotolScore ? AXSelectColor : AXUnSelectColor fontSize:14];
-        [self.scoreBGView addSubview:awayScoreLabel];
-        [awayScoreLabels addObject:awayScoreLabel];
-    }
-    
-    [titleLabels mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:25 leadSpacing:126 tailSpacing:15];
-    [titleLabels mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.offset(16);
-//        make.left.equalTo(self.scoreLineView).offset(15);
+    self.scoreViews = temp.copy;
+    [self.scoreViews mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:20 leadSpacing:126 tailSpacing:15];
+    [self.scoreViews mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(85);
+        make.top.equalTo(self.scoreBGView).offset(16);
     }];
-    
-    [hostScoreLabels mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:25 leadSpacing:126 tailSpacing:15];
-    [hostScoreLabels mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.offset(50);
-    }];
-    
-    [awayScoreLabels mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:25 leadSpacing:126 tailSpacing:15];
-    [awayScoreLabels mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.offset(84);
-    }];
-}
-
-- (UILabel *)getLabelWithText: (NSString *)text
-                    TextColor: (UIColor *)textColor
-                     fontSize: (CGFloat)fontSize{
-    UILabel *label = [UILabel new];
-    label.text = text;
-    label.textColor = textColor;
-    label.font = [UIFont systemFontOfSize:fontSize];
-    label.textAlignment = NSTextAlignmentCenter;
-    return label;
-}
-
-// 不足4节的，在得分数组里加“-”；和算出总分
-- (NSArray *)handleScoreArray: (NSArray *)scores{
-    NSMutableArray *temp = [NSMutableArray arrayWithArray:scores];
-    while (temp.count < 4) {
-        [temp addObject:@"-"];
-    }
-    
-    NSInteger totalScore = 0;
-    for (NSString *score in temp) {
-        totalScore += [score isEqualToString:@"-"] ? 0 : score.integerValue;
-    }
-    
-    [temp addObject:[NSString stringWithFormat:@"%ld", totalScore]];
-    return temp.copy;
 }
 
 // MARK: setter & setter
 - (void)setMatchModel:(AXMatchListItemModel *)matchModel{
+    _matchModel = matchModel;
+    
     [self.hostLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.homeTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
     [self.awayLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.awayTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
-    _matchModel = matchModel;
+    [self.scoreHostLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.homeTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
+    [self.scoreAwayLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.awayTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
+    self.scoreHostName.text = @"LAL";
+    self.scoreAwayName.text = @"BOS";
+    
+    /// 赛事状态：1:未开赛，2:第1节，3:第1节完，4:第2节，5:第2节完，6:第3节，:第3节完，8:第4节，9:加时，10:完
+    // 设置比分
+    AXMatchListScoreCustomView *q1View = self.scoreViews[0];
+    AXMatchListScoreCustomView *q2View = self.scoreViews[1];
+    AXMatchListScoreCustomView *q3View = self.scoreViews[2];
+    AXMatchListScoreCustomView *q4View = self.scoreViews[3];
+    AXMatchListScoreCustomView *ot1View = self.scoreViews[4];
+    AXMatchListScoreCustomView *totalView = self.scoreViews[5];
+    totalView.datas = @[matchModel.homeTotalScore, matchModel.awayTotalScore];
+    
+    NSMutableArray *temp = [NSMutableArray arrayWithArray:@[q1View, q2View, q3View, q4View]];
+    
+    q1View.datas = @[matchModel.homeScoreList.firstObject, matchModel.awayscoreList.firstObject];
+    
+    BOOL q2 = matchModel.leaguesStatus.intValue >= 4;
+    q2View.datas = @[q2 && matchModel.homeScoreList.count > 1 ? matchModel.homeScoreList[1] : @"-",
+                     q2 && matchModel.awayscoreList.count > 1 ? matchModel.awayscoreList[1] : @"-"];
+    
+    BOOL q3 = matchModel.leaguesStatus.intValue >= 6;
+    q3View.datas = @[q3 && matchModel.homeScoreList.count > 2 ? matchModel.homeScoreList[2] : @"-",
+                     q3 && matchModel.awayscoreList.count > 2 ? matchModel.awayscoreList[2] : @"-"];
+    
+    BOOL q4 = matchModel.leaguesStatus.intValue >= 8;
+    q4View.datas = @[q4 && matchModel.homeScoreList.count > 3 ? matchModel.homeScoreList[3] : @"-",
+                     q4 && matchModel.awayscoreList.count > 3 ? matchModel.awayscoreList[3] : @"-"];
+    
+    BOOL ot1 = matchModel.leaguesStatus.intValue == 9 || matchModel.homeScoreList.count > 4;  // 当前为加时；或者是结束了加时有值
+    if (ot1) {
+        [temp addObject:ot1View];
+    }
+    ot1View.hidden = !ot1;
+    ot1View.datas = @[ot1 && matchModel.homeScoreList.count > 4 ? matchModel.homeScoreList[4] : @"-",
+                     q4 && matchModel.awayscoreList.count > 4 ? matchModel.awayscoreList[4] : @"-"];
+    
+    // 重新布局比分
+    
+//    [temp mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:20 leadSpacing:182 tailSpacing:17];
+//    [temp mas_remakeConstraints:^(MASConstraintMaker *make) {
+//        make.height.mas_equalTo(65);
+//        make.top.equalTo(self.lineH.mas_bottom).offset(6);
+//    }];
+}
+
+- (void)setStandingModel:(AXMatchStandingModel *)standingModel{
+    _standingModel = standingModel;
+    NSMutableArray *temp = [NSMutableArray array];
+    
+    for (NSArray *array in standingModel.scoreDiff) {
+        for (NSNumber *scoreDiff in array) {
+            [temp addObject:scoreDiff];
+        }
+    }
+    self.polylineView.scoreDiffs = temp.copy;;
 }
 
 - (UIView *)containerView{
@@ -275,10 +253,6 @@
         _polylineView = [[AXMatchStandingPolylineView alloc] initWithFrame:CGRectMake(kMatchStandingChartLeftMargin, 20, [UIScreen mainScreen].bounds.size.width - kMatchStandingChartLeftMargin - kMatchStandingChartRightMargin, kMatchStandingChartHeight)];
     }
     return _polylineView;
-}
-
-- (NSArray *)scoreDiffData{
-    return @[@1, @3, @4, @1, @0, @-1, @-3, @-5, @-7, @-4, @-1, @0,  @1, @4, @5, @7, @4, @1, @0, @-1, @-2, @-4];
 }
 
 - (UIView *)scoreBGView{
@@ -343,7 +317,6 @@
 - (UIImageView *)scoreHostLogo{
     if (!_scoreHostLogo) {
         _scoreHostLogo = [UIImageView new];
-        _scoreHostLogo.image = [UIImage imageNamed:@"match_team_logo"];
     }
     return _scoreHostLogo;
 }
@@ -351,7 +324,6 @@
 - (UIImageView *)scoreAwayLogo{
     if (!_scoreAwayLogo) {
         _scoreAwayLogo = [UIImageView new];
-        _scoreAwayLogo.image = [UIImage imageNamed:@"match_team_logo"];
     }
     return _scoreAwayLogo;
 }
@@ -359,7 +331,6 @@
 - (UILabel *)scoreHostName{
     if (!_scoreHostName) {
         _scoreHostName = [UILabel new];
-        _scoreHostName.text = @"LAL";
         _scoreHostName.font = [UIFont systemFontOfSize:14];
         _scoreHostName.textColor = rgb(17, 17, 17);
     }
@@ -369,7 +340,6 @@
 - (UILabel *)scoreAwayName{
     if (!_scoreAwayName) {
         _scoreAwayName = [UILabel new];
-        _scoreAwayName.text = @"BOS";
         _scoreAwayName.font = [UIFont systemFontOfSize:14];
         _scoreAwayName.textColor = rgb(17, 17, 17);
     }
