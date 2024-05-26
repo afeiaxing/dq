@@ -198,7 +198,7 @@
 - (QYZYSubMainViewController *)basketVC {
     if (!_basketVC) {
         _basketVC = [[QYZYSubMainViewController alloc] init];
-        _basketVC.matchType = QYZYMatchTypeBasketball;
+//        _basketVC.matchType = QYZYMatchTypeBasketball;
         _basketVC.currentDateString = self.currentDateString;
     }
     return _basketVC;

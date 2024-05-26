@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -262,7 +262,6 @@
 		B1D8D8C228EBD2C1004F2ADA /* QYZYPersonalhomepageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D8D8C128EBD2C1004F2ADA /* QYZYPersonalhomepageViewController.m */; };
 		B1D8D8C528EBD379004F2ADA /* QYZYPersonalHadeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D8D8C428EBD379004F2ADA /* QYZYPersonalHadeView.m */; };
 		CB08230A2BF5A9D100027C81 /* AXMatchListOddsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0823082BF5A9D100027C81 /* AXMatchListOddsCell.m */; };
-		CB08230D2BF5AB6400027C81 /* AXMatchListOddsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB08230C2BF5AB6400027C81 /* AXMatchListOddsCell.xib */; };
 		CB1D7A3A2C0022DA005248E5 /* AXDataBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1D7A392C0022DA005248E5 /* AXDataBaseViewController.m */; };
 		CB32C7A92BF5FA9A00B2E277 /* AXStreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB32C7A82BF5FA9A00B2E277 /* AXStreamViewController.m */; };
 		CB32C7AF2BF5FD9100B2E277 /* AXProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB32C7AE2BF5FD9100B2E277 /* AXProfileViewController.m */; };
@@ -275,7 +274,6 @@
 		F37E5DA02BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5D9C2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCell.m */; };
 		F37E5DA12BF4D7A10049FAE1 /* JXCategoryTitleBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5D9D2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundView.m */; };
 		F37E5DAF2BF4DD0B0049FAE1 /* AXMatchListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5DAD2BF4DD0B0049FAE1 /* AXMatchListTableViewCell.m */; };
-		F37E5DB02BF4DD0B0049FAE1 /* AXMatchListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F37E5DAE2BF4DD0B0049FAE1 /* AXMatchListTableViewCell.xib */; };
 		F37E5DB42BF62F820049FAE1 /* AXMatchFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5DB32BF62F820049FAE1 /* AXMatchFilterViewController.m */; };
 		F37E5DBA2BF630550049FAE1 /* AXMatchListSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5DB92BF630550049FAE1 /* AXMatchListSectionHeader.m */; };
 		F37E5DC12BF631DC0049FAE1 /* AXMatchSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5DC02BF631DC0049FAE1 /* AXMatchSettingViewController.m */; };
@@ -309,6 +307,13 @@
 		F37E5E2F2BFA2E3A0049FAE1 /* AXMatchListSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5E2E2BFA2E3A0049FAE1 /* AXMatchListSettingCell.m */; };
 		F37E5E322BFF802C0049FAE1 /* AXMatchListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5E312BFF802C0049FAE1 /* AXMatchListRequest.m */; };
 		F37E5E362BFF80AA0049FAE1 /* AXMatchListApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5E352BFF80AA0049FAE1 /* AXMatchListApi.m */; };
+		F37E5E7E2C0205ED0049FAE1 /* AXMatchListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5E7D2C0205ED0049FAE1 /* AXMatchListModel.m */; };
+		F37E5E862C0207060049FAE1 /* AXMatchDetailRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5E852C0207060049FAE1 /* AXMatchDetailRequest.m */; };
+		F37E5E8C2C0207390049FAE1 /* AXMatchDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5E8B2C0207390049FAE1 /* AXMatchDetailModel.m */; };
+		F37E5E8F2C02078D0049FAE1 /* AXMatchDetailApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5E8E2C02078D0049FAE1 /* AXMatchDetailApi.m */; };
+		F37E5E922C022B3A0049FAE1 /* AXMatchStandingPolylineView.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5E912C022B3A0049FAE1 /* AXMatchStandingPolylineView.m */; };
+		F37E5E952C02F3BE0049FAE1 /* AXMatchListScoreCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5E942C02F3BE0049FAE1 /* AXMatchListScoreCustomView.m */; };
+		F37E5E992C03064C0049FAE1 /* AXMatchTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5E982C03064C0049FAE1 /* AXMatchTools.m */; };
 		F39766022BF3988300E4C861 /* AXNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F39766012BF3988300E4C861 /* AXNetWorkManager.m */; };
 		F39766082BF3993A00E4C861 /* QYZYDataTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F39766072BF3993A00E4C861 /* QYZYDataTools.m */; };
 		F52A4E0828EC18FA002358BC /* QYZYSettingPaswwordApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F52A4E0728EC18FA002358BC /* QYZYSettingPaswwordApi.m */; };
@@ -830,7 +835,6 @@
 		B1D8D8C428EBD379004F2ADA /* QYZYPersonalHadeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYPersonalHadeView.m; sourceTree = "<group>"; };
 		CB0823072BF5A9D100027C81 /* AXMatchListOddsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchListOddsCell.h; sourceTree = "<group>"; };
 		CB0823082BF5A9D100027C81 /* AXMatchListOddsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchListOddsCell.m; sourceTree = "<group>"; };
-		CB08230C2BF5AB6400027C81 /* AXMatchListOddsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AXMatchListOddsCell.xib; sourceTree = "<group>"; };
 		CB1D7A382C0022DA005248E5 /* AXDataBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXDataBaseViewController.h; sourceTree = "<group>"; };
 		CB1D7A392C0022DA005248E5 /* AXDataBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXDataBaseViewController.m; sourceTree = "<group>"; };
 		CB32C7A72BF5FA9A00B2E277 /* AXStreamViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXStreamViewController.h; sourceTree = "<group>"; };
@@ -855,7 +859,6 @@
 		F37E5D9E2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleBackgroundCellModel.h; sourceTree = "<group>"; };
 		F37E5DAC2BF4DD0B0049FAE1 /* AXMatchListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchListTableViewCell.h; sourceTree = "<group>"; };
 		F37E5DAD2BF4DD0B0049FAE1 /* AXMatchListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchListTableViewCell.m; sourceTree = "<group>"; };
-		F37E5DAE2BF4DD0B0049FAE1 /* AXMatchListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AXMatchListTableViewCell.xib; sourceTree = "<group>"; };
 		F37E5DB22BF62F820049FAE1 /* AXMatchFilterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchFilterViewController.h; sourceTree = "<group>"; };
 		F37E5DB32BF62F820049FAE1 /* AXMatchFilterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchFilterViewController.m; sourceTree = "<group>"; };
 		F37E5DB82BF630550049FAE1 /* AXMatchListSectionHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchListSectionHeader.h; sourceTree = "<group>"; };
@@ -922,6 +925,20 @@
 		F37E5E312BFF802C0049FAE1 /* AXMatchListRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchListRequest.m; sourceTree = "<group>"; };
 		F37E5E342BFF80AA0049FAE1 /* AXMatchListApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchListApi.h; sourceTree = "<group>"; };
 		F37E5E352BFF80AA0049FAE1 /* AXMatchListApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchListApi.m; sourceTree = "<group>"; };
+		F37E5E7C2C0205ED0049FAE1 /* AXMatchListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchListModel.h; sourceTree = "<group>"; };
+		F37E5E7D2C0205ED0049FAE1 /* AXMatchListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchListModel.m; sourceTree = "<group>"; };
+		F37E5E842C0207060049FAE1 /* AXMatchDetailRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchDetailRequest.h; sourceTree = "<group>"; };
+		F37E5E852C0207060049FAE1 /* AXMatchDetailRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchDetailRequest.m; sourceTree = "<group>"; };
+		F37E5E8A2C0207390049FAE1 /* AXMatchDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchDetailModel.h; sourceTree = "<group>"; };
+		F37E5E8B2C0207390049FAE1 /* AXMatchDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchDetailModel.m; sourceTree = "<group>"; };
+		F37E5E8D2C02078D0049FAE1 /* AXMatchDetailApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchDetailApi.h; sourceTree = "<group>"; };
+		F37E5E8E2C02078D0049FAE1 /* AXMatchDetailApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchDetailApi.m; sourceTree = "<group>"; };
+		F37E5E902C022B3A0049FAE1 /* AXMatchStandingPolylineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchStandingPolylineView.h; sourceTree = "<group>"; };
+		F37E5E912C022B3A0049FAE1 /* AXMatchStandingPolylineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchStandingPolylineView.m; sourceTree = "<group>"; };
+		F37E5E932C02F3BE0049FAE1 /* AXMatchListScoreCustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchListScoreCustomView.h; sourceTree = "<group>"; };
+		F37E5E942C02F3BE0049FAE1 /* AXMatchListScoreCustomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchListScoreCustomView.m; sourceTree = "<group>"; };
+		F37E5E972C03064C0049FAE1 /* AXMatchTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchTools.h; sourceTree = "<group>"; };
+		F37E5E982C03064C0049FAE1 /* AXMatchTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchTools.m; sourceTree = "<group>"; };
 		F39766002BF3988300E4C861 /* AXNetWorkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXNetWorkManager.h; sourceTree = "<group>"; };
 		F39766012BF3988300E4C861 /* AXNetWorkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXNetWorkManager.m; sourceTree = "<group>"; };
 		F39766062BF3993A00E4C861 /* QYZYDataTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYZYDataTools.h; sourceTree = "<group>"; };
@@ -1297,13 +1314,12 @@
 		55E0D50328F7FDB200DDAAB6 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				F37E5E7F2C0206C30049FAE1 /* Detail */,
 				F37E5DCC2BF77A6C0049FAE1 /* Analysis */,
 				F37E5DCA2BF77A600049FAE1 /* Lineup */,
 				F37E5DC82BF77A550049FAE1 /* Standings */,
 				F37E5DC62BF77A480049FAE1 /* Chat */,
 				F37E5DC42BF77A360049FAE1 /* Bet */,
-				55E0D50428F7FE0100DDAAB6 /* QYZYMatchDetailViewController.h */,
-				55E0D50528F7FE0100DDAAB6 /* QYZYMatchDetailViewController.m */,
 				5552ABFB28F9353200285B25 /* Analyze */,
 				55E0D51028F822D900DDAAB6 /* OverView */,
 			);
@@ -1974,6 +1990,7 @@
 		CB1D7A362C00227E005248E5 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
+				F37E5E782C01C65D0049FAE1 /* View */,
 				CB1D7A372C002286005248E5 /* VC */,
 			);
 			path = DataBase;
@@ -2086,10 +2103,10 @@
 			children = (
 				F37E5DAC2BF4DD0B0049FAE1 /* AXMatchListTableViewCell.h */,
 				F37E5DAD2BF4DD0B0049FAE1 /* AXMatchListTableViewCell.m */,
-				F37E5DAE2BF4DD0B0049FAE1 /* AXMatchListTableViewCell.xib */,
+				F37E5E932C02F3BE0049FAE1 /* AXMatchListScoreCustomView.h */,
+				F37E5E942C02F3BE0049FAE1 /* AXMatchListScoreCustomView.m */,
 				CB0823072BF5A9D100027C81 /* AXMatchListOddsCell.h */,
 				CB0823082BF5A9D100027C81 /* AXMatchListOddsCell.m */,
-				CB08230C2BF5AB6400027C81 /* AXMatchListOddsCell.xib */,
 				F37E5DB82BF630550049FAE1 /* AXMatchListSectionHeader.h */,
 				F37E5DB92BF630550049FAE1 /* AXMatchListSectionHeader.m */,
 				F37E5E2D2BFA2E3A0049FAE1 /* AXMatchListSettingCell.h */,
@@ -2101,6 +2118,8 @@
 		F37E5DA52BF4DBA60049FAE1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F37E5E7C2C0205ED0049FAE1 /* AXMatchListModel.h */,
+				F37E5E7D2C0205ED0049FAE1 /* AXMatchListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2211,6 +2230,8 @@
 			children = (
 				F37E5DEA2BF7810D0049FAE1 /* AXMatchStandingChartCell.h */,
 				F37E5DEB2BF7810D0049FAE1 /* AXMatchStandingChartCell.m */,
+				F37E5E902C022B3A0049FAE1 /* AXMatchStandingPolylineView.h */,
+				F37E5E912C022B3A0049FAE1 /* AXMatchStandingPolylineView.m */,
 				F37E5DE72BF780F70049FAE1 /* AXMatchStandingTeamStatsCell.h */,
 				F37E5DE82BF780F70049FAE1 /* AXMatchStandingTeamStatsCell.m */,
 				F37E5DED2BF781620049FAE1 /* AXMatchStandingPBPCell.h */,
@@ -2290,6 +2311,69 @@
 				F37E5E352BFF80AA0049FAE1 /* AXMatchListApi.m */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		F37E5E782C01C65D0049FAE1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F37E5E7F2C0206C30049FAE1 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				F37E5E832C0206EE0049FAE1 /* API */,
+				F37E5E822C0206DC0049FAE1 /* Model */,
+				F37E5E812C0206D10049FAE1 /* Request */,
+				F37E5E802C0206CA0049FAE1 /* VC */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		F37E5E802C0206CA0049FAE1 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				55E0D50428F7FE0100DDAAB6 /* QYZYMatchDetailViewController.h */,
+				55E0D50528F7FE0100DDAAB6 /* QYZYMatchDetailViewController.m */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		F37E5E812C0206D10049FAE1 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				F37E5E842C0207060049FAE1 /* AXMatchDetailRequest.h */,
+				F37E5E852C0207060049FAE1 /* AXMatchDetailRequest.m */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		F37E5E822C0206DC0049FAE1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F37E5E8A2C0207390049FAE1 /* AXMatchDetailModel.h */,
+				F37E5E8B2C0207390049FAE1 /* AXMatchDetailModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F37E5E832C0206EE0049FAE1 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				F37E5E8D2C02078D0049FAE1 /* AXMatchDetailApi.h */,
+				F37E5E8E2C02078D0049FAE1 /* AXMatchDetailApi.m */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		F37E5E962C0306360049FAE1 /* AXMatchTools */ = {
+			isa = PBXGroup;
+			children = (
+				F37E5E972C03064C0049FAE1 /* AXMatchTools.h */,
+				F37E5E982C03064C0049FAE1 /* AXMatchTools.m */,
+			);
+			path = AXMatchTools;
 			sourceTree = "<group>";
 		};
 		F39765FF2BF3985E00E4C861 /* AXNetworkManager */ = {
@@ -2406,6 +2490,7 @@
 		F551042928E34263001E9BC5 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				F37E5E962C0306360049FAE1 /* AXMatchTools */,
 				CBFDA1B32BF75CF000D80483 /* ORLineChart */,
 				F39765FF2BF3985E00E4C861 /* AXNetworkManager */,
 				55A531EC29052E1B0008C110 /* QYZYCalendar */,
@@ -2625,8 +2710,6 @@
 				55E0D51E28F8289400DDAAB6 /* QYZYMatchOverViewController.xib in Resources */,
 				F551040628E33798001E9BC5 /* LaunchScreen.storyboard in Resources */,
 				9B9A76D028E93C8A00809C8D /* QYZYCircleCell.xib in Resources */,
-				F37E5DB02BF4DD0B0049FAE1 /* AXMatchListTableViewCell.xib in Resources */,
-				CB08230D2BF5AB6400027C81 /* AXMatchListOddsCell.xib in Resources */,
 				55D2973828EB026F00C80738 /* QYZYLiveNoticeViewController.xib in Resources */,
 				55B10194290151370056CF17 /* QYZYMatchHomeCell.xib in Resources */,
 				9B46F6B828E6F53400941F97 /* QYZYResultAnchorCell.xib in Resources */,
@@ -2833,6 +2916,7 @@
 				B1B054C728E693BA00030F57 /* QYZYFootballApi.m in Sources */,
 				555C687A28EC569D00044A5E /* QYZYChargeView.m in Sources */,
 				F37E5E022BF891610049FAE1 /* AXMatchLineupPerformersPlayerView.m in Sources */,
+				F37E5E862C0207060049FAE1 /* AXMatchDetailRequest.m in Sources */,
 				55B04A7128E593CB00A82F1F /* JXPagerView.m in Sources */,
 				AE78C0C029068B72006A70A3 /* QYZYMatchAnalyzeFooterView.m in Sources */,
 				55BF55BB28E9801000DB476B /* QYZYLiveGetGiftApi.m in Sources */,
@@ -2857,6 +2941,7 @@
 				9BC0D5AD29069D8C0063BCC7 /* QYZYTeamStaticsModel.m in Sources */,
 				AEF7068928EC2EE8003FEEFD /* QYZYNewsLikeApi.m in Sources */,
 				55BF55AE28E95FFE00DB476B /* QYZYLiveChatFilterApi.m in Sources */,
+				F37E5E8F2C02078D0049FAE1 /* AXMatchDetailApi.m in Sources */,
 				55EADDCD28E706BB008324AE /* ZFIJKPlayerManager.m in Sources */,
 				55E2393928E7EC31003ED27E /* QYZYLiveRankSubViewController.m in Sources */,
 				B1728B4028E5B11800419F67 /* QYZYFootballViewController.m in Sources */,
@@ -2884,6 +2969,7 @@
 				F37E5DE92BF780F70049FAE1 /* AXMatchStandingTeamStatsCell.m in Sources */,
 				B189E9EA28ED69EA00F17247 /* QYZYNodataTableViewCell.m in Sources */,
 				F37E5DA12BF4D7A10049FAE1 /* JXCategoryTitleBackgroundView.m in Sources */,
+				F37E5E922C022B3A0049FAE1 /* AXMatchStandingPolylineView.m in Sources */,
 				F551044628E40187001E9BC5 /* NSDate+Extensions.m in Sources */,
 				9B89964A29077FB5007D3A79 /* QYZYPlayerTitleCell.m in Sources */,
 				F551043928E3467F001E9BC5 /* NSString+Extensions.m in Sources */,
@@ -2910,6 +2996,7 @@
 				B1B744CD28E846CF00DD300E /* QYZYRankModel.m in Sources */,
 				F551043D28E3EDC0001E9BC5 /* UIDevice+Extensions.m in Sources */,
 				B14A63BD28EAF05700476EAE /* QYZYMineModel.m in Sources */,
+				F37E5E952C02F3BE0049FAE1 /* AXMatchListScoreCustomView.m in Sources */,
 				55B04A6F28E593CB00A82F1F /* JXPagerListContainerView.m in Sources */,
 				B1B744AC28E7EEED00DD300E /* QYZYMyattentionViewController.m in Sources */,
 				9B9A76E528E94A7B00809C8D /* QYZYCircleContentModel.m in Sources */,
@@ -2939,9 +3026,11 @@
 				F58DF5F928EAA5B900CFF18A /* QYZYSendSMSCodeApi.m in Sources */,
 				55E2393E28E7ECA6003ED27E /* QYZYLiveRankCell.m in Sources */,
 				555C687128EBD38400044A5E /* QYZYLiveNoticeApi.m in Sources */,
+				F37E5E8C2C0207390049FAE1 /* AXMatchDetailModel.m in Sources */,
 				55A5320329052E3C0008C110 /* NSDate+FSCalendar.m in Sources */,
 				555CE93728F6B7DA0085F1D4 /* QYZYMatchModel.m in Sources */,
 				AE78C0BA29067662006A70A3 /* QYZYHistoryHeaderView.m in Sources */,
+				F37E5E992C03064C0049FAE1 /* AXMatchTools.m in Sources */,
 				B1728B3A28E5937A00419F67 /* QYZYScheduleTableViewCell.m in Sources */,
 				AE68008E28E994AC0084E652 /* QYZYNewsDetailApi.m in Sources */,
 				F58DF60428EAFB4C00CFF18A /* QYZYUsesProtocolViewController.m in Sources */,
@@ -2978,6 +3067,7 @@
 				555CE94828F6C9E90085F1D4 /* QYZYMatchSubViewController.m in Sources */,
 				F37E5E0C2BF8E16C0049FAE1 /* AXMatchAnalysisTraditionalViewController.m in Sources */,
 				9B21D03428EAB2D600AC6F0D /* QYZYMsgInspectionApi.m in Sources */,
+				F37E5E7E2C0205ED0049FAE1 /* AXMatchListModel.m in Sources */,
 				AE65E0F72907E2A10053CA49 /* QYZYMatchOverHelpCell.m in Sources */,
 				F37E5E152BF8EC8C0049FAE1 /* AXMatchAnalysisTraditionalRankCell.m in Sources */,
 				55E2394B28E8134F003ED27E /* QYZYLiveRankModel.m in Sources */,

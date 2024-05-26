@@ -105,7 +105,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.historyArray.count) {
         QYZYMatchDetailViewController *vc = [[QYZYMatchDetailViewController alloc] init];
-        vc.matchId = self.historyArray[indexPath.row].matchId;
+//        vc.matchId = self.historyArray[indexPath.row].matchId;
         vc.hidesBottomBarWhenPushed = YES;
         [UIViewController.currentViewController.navigationController pushViewController:vc animated:YES];
     }

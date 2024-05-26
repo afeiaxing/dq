@@ -16,9 +16,9 @@
 @property (nonatomic ,strong) JXCategoryListContainerView *containerView;
 @property (nonatomic ,strong) QYZYMatchViewModel *viewModel;
 @property (nonatomic ,strong) QYZYMatchSubViewController *allVC;
-@property (nonatomic ,strong) QYZYMatchSubViewController *finishedVC;
-@property (nonatomic ,strong) QYZYMatchSubViewController *goingVC;
-@property (nonatomic ,strong) QYZYMatchSubViewController *uncomingVC;
+@property (nonatomic ,strong) QYZYMatchSubViewController *resultVC;
+@property (nonatomic ,strong) QYZYMatchSubViewController *liveVC;
+@property (nonatomic ,strong) QYZYMatchSubViewController *scheduleVC;
 @property (nonatomic ,strong) QYZYMatchSubViewController *favoriteVC;
 @property (nonatomic, strong) AXMatchListRequest *requestManager;
 @property (nonatomic, strong) NSTimer *timer;
@@ -74,23 +74,25 @@
 
 - (void)requestData {
     weakSelf(self);
-    [self.requestManager requestMatchListWithcompletion:^(NSDictionary * _Nonnull matchModel) {
-        NSLog(@"%@", matchModel);
-    }];
-    
-    return;
-    [self.viewModel requestMatchDataWithDateString:self.currentDateString completion:^(QYZYMatchModel * _Nonnull matchModel) {
-        strongSelf(self);
-        [self.goingVC endRefresh];
-        [self.finishedVC endRefresh];
-        [self.uncomingVC endRefresh];
-        if (matchModel) {
-            self.allVC.matches = matchModel.going.matches;
-            self.goingVC.matches = matchModel.going.matches;
-            self.finishedVC.matches = matchModel.finished.matches;
-            self.uncomingVC.matches = matchModel.uncoming.matches;
-            self.favoriteVC.matches = matchModel.going.matches;
+//    [self.allVC.view qyzy_showLoadingWithMsg:@"loading"];
+    [self.requestManager requestMatchListWithcompletion:^(AXMatchListModel * _Nonnull matchModel) {
+        [self.liveVC endRefresh];
+        [self.resultVC endRefresh];
+        [self.scheduleVC endRefresh];
+        NSMutableArray *allModel = [NSMutableArray array];
+        if (matchModel.live.count) {
+            [allModel addObject:matchModel.live];
+            self.liveVC.matches = @[matchModel.live];
         }
+        if (matchModel.schedule.count) {
+            [allModel addObject:matchModel.schedule];
+            self.scheduleVC.matches = @[matchModel.schedule];
+        }
+        if (matchModel.result.count) {
+            [allModel addObject:matchModel.result];
+            self.resultVC.matches = @[matchModel.result];
+        }
+        self.allVC.matches = allModel.copy;
     }];
 }
 
@@ -107,11 +109,11 @@
     if (index == 0) {
         return self.allVC;
     } else if (index == 1) {
-        return self.goingVC;
+        return self.liveVC;
     } else if (index == 2) {
-        return self.uncomingVC;
+        return self.scheduleVC;
     } else if (index == 2) {
-        return self.finishedVC;
+        return self.resultVC;
     } else {
         return self.favoriteVC;
     }
@@ -163,40 +165,40 @@
     return _viewModel;
 }
 
-- (QYZYMatchSubViewController *)goingVC {
-    if (!_goingVC) {
-        _goingVC = [[QYZYMatchSubViewController alloc] init];
+- (QYZYMatchSubViewController *)liveVC {
+    if (!_liveVC) {
+        _liveVC = [[QYZYMatchSubViewController alloc] init];
         weakSelf(self);
-        _goingVC.requestBlock = ^{
+        _liveVC.requestBlock = ^{
             strongSelf(self);
             [self requestData];
         };
     }
-    return _goingVC;
+    return _liveVC;
 }
 
-- (QYZYMatchSubViewController *)finishedVC {
-    if (!_finishedVC) {
-        _finishedVC = [[QYZYMatchSubViewController alloc] init];
+- (QYZYMatchSubViewController *)resultVC {
+    if (!_resultVC) {
+        _resultVC = [[QYZYMatchSubViewController alloc] init];
         weakSelf(self);
-        _finishedVC.requestBlock = ^{
+        _resultVC.requestBlock = ^{
             strongSelf(self);
             [self requestData];
         };
     }
-    return _finishedVC;
+    return _resultVC;
 }
 
-- (QYZYMatchSubViewController *)uncomingVC {
-    if (!_uncomingVC) {
-        _uncomingVC = [[QYZYMatchSubViewController alloc] init];
+- (QYZYMatchSubViewController *)scheduleVC {
+    if (!_scheduleVC) {
+        _scheduleVC = [[QYZYMatchSubViewController alloc] init];
         weakSelf(self);
-        _uncomingVC.requestBlock = ^{
+        _scheduleVC.requestBlock = ^{
             strongSelf(self);
             [self requestData];
         };
     }
-    return _uncomingVC;
+    return _scheduleVC;
 }
 
 - (QYZYMatchSubViewController *)allVC {

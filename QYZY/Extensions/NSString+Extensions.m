@@ -144,4 +144,14 @@
     return @"";
 }
 
++ (NSString *)axTimestampToDate: (NSString *)timestamp
+                         format: (NSString *)format{
+    NSTimeInterval time=[timestamp doubleValue];//传入的时间戳str如果是精确到毫秒的记得要/1000
+    NSDate *detailDate=[NSDate dateWithTimeIntervalSince1970:time];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init]; //实例化一个NSDateFormatter对象
+    [dateFormatter setDateFormat:format];
+    NSString *currentDateStr = [dateFormatter stringFromDate: detailDate];
+    return currentDateStr;
+}
+
 @end

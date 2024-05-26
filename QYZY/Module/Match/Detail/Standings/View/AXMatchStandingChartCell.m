@@ -6,16 +6,16 @@
 //
 
 #import "AXMatchStandingChartCell.h"
-#import "ORLineChartView.h"
+#import "AXMatchStandingPolylineView.h"
 
-@interface AXMatchStandingChartCell()<ORLineChartViewDataSource>
+@interface AXMatchStandingChartCell()
 
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) UIImageView *hostLogo;
 @property (nonatomic, strong) UIImageView *awayLogo;
 
-@property (nonatomic, strong) NSArray *chartDatas;
-@property (nonatomic, strong) ORLineChartView *lineChartView;
+@property (nonatomic, strong) NSArray *scoreDiffData;
+@property (nonatomic, strong) AXMatchStandingPolylineView *polylineView;
 
 @property (nonatomic, strong) UIView *scoreBGView;
 @property (nonatomic, strong) UILabel *scoreTeamTitle;
@@ -38,7 +38,7 @@
 
 #define kMatchStandingChartLeftMargin 78
 #define kMatchStandingChartRightMargin 12
-#define kMatchStandingChartHeight 104
+#define kMatchStandingChartHeight 128
 
 @implementation AXMatchStandingChartCell
 
@@ -75,19 +75,13 @@
         make.top.equalTo(self.hostLogo.mas_bottom).offset(20);
     }];
     
-    [self.containerView addSubview:self.lineChartView];
-    [self.lineChartView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.offset(20);
-        make.right.offset(-kMatchStandingChartRightMargin);
-        make.left.offset(kMatchStandingChartLeftMargin);
-        make.height.mas_equalTo(kMatchStandingChartHeight);
-    }];
+    [self.containerView addSubview:self.polylineView];
     
     [self.containerView addSubview:self.scoreBGView];
     [self.scoreBGView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.hostLogo);
-        make.right.equalTo(self.lineChartView);
-        make.top.equalTo(self.lineChartView.mas_bottom).offset(16);
+        make.right.equalTo(self.polylineView);
+        make.top.equalTo(self.polylineView.mas_bottom).offset(16);
         make.height.mas_equalTo(114);
     }];
     
@@ -153,6 +147,7 @@
         make.size.mas_equalTo(CGSizeMake(1, 80));
     }];
     
+    self.polylineView.scoreDiffs = self.scoreDiffData;
     [self setScores];
 }
 
@@ -246,51 +241,6 @@
     return temp.copy;
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    
-    [_lineChartView reloadData];
-
-
-    return;
-}
-
-// MARK: ORLineChartViewDataSource
-- (NSString *)chartView:(ORLineChartView *)chartView titleForHorizontalAtIndex:(NSInteger)index{
-    return @"";
-}
-
-- (NSInteger)numberOfHorizontalDataOfChartView:(ORLineChartView *)chartView {
-    return self.chartDatas.count;
-}
-
-- (CGFloat)chartView:(ORLineChartView *)chartView valueForHorizontalAtIndex:(NSInteger)index {
-    return [self.chartDatas[index] doubleValue];
-}
-
-- (NSInteger)numberOfVerticalLinesOfChartView:(ORLineChartView *)chartView {
-    return 4;
-}
-
-- (NSAttributedString *)chartView:(ORLineChartView *)chartView attributedStringForIndicaterAtIndex:(NSInteger)index {
-    NSAttributedString *string = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"value: %g", [self.chartDatas[index] doubleValue]]];
-    return string;
-}
-
-- (NSDictionary<NSAttributedStringKey,id> *)labelAttrbutesForVerticalOfChartView:(ORLineChartView *)chartView {
-    return @{NSFontAttributeName : [UIFont systemFontOfSize:12], NSForegroundColorAttributeName : [UIColor redColor]};
-}
-
-- (NSDictionary<NSAttributedStringKey,id> *)labelAttrbutesForHorizontalOfChartView:(ORLineChartView *)chartView {
-    return @{NSFontAttributeName : [UIFont systemFontOfSize:12], NSForegroundColorAttributeName : [UIColor blueColor]};
-}
-
-////custom left values
-//- (CGFloat)chartView:(ORLineChartView *)chartView valueOfVerticalSeparateAtIndex:(NSInteger)index {
-//    NSArray *number1 = @[@(0),@(0.2),@(0.4),@(0.6),@(0.8),@(0.10)];
-//    return [number1[index] doubleValue];
-//}
-
-
 // MARK: setter & setter
 - (UIView *)containerView{
     if (!_containerView) {
@@ -316,22 +266,15 @@
     return _awayLogo;
 }
 
-- (ORLineChartView *)lineChartView{
-    if (!_lineChartView) {
-        _lineChartView = [[ORLineChartView alloc] initWithFrame:CGRectZero];
-        _lineChartView.config.gradientLocations = @[@(0.8), @(0.9)];
-        _lineChartView.config.showShadowLine = false;
-        _lineChartView.config.showVerticalBgline = false;
-        _lineChartView.config.showHorizontalBgline = false;
-        _lineChartView.config.bottomLabelWidth = (ScreenWidth - kMatchStandingChartLeftMargin - kMatchStandingChartRightMargin) / self.chartDatas.count;
-
-        _lineChartView.dataSource = self;
+- (AXMatchStandingPolylineView *)polylineView{
+    if (!_polylineView) {
+        _polylineView = [[AXMatchStandingPolylineView alloc] initWithFrame:CGRectMake(kMatchStandingChartLeftMargin, 20, [UIScreen mainScreen].bounds.size.width - kMatchStandingChartLeftMargin - kMatchStandingChartRightMargin, kMatchStandingChartHeight)];
     }
-    return _lineChartView;
+    return _polylineView;
 }
 
-- (NSArray *)chartDatas{
-    return @[@(1), @(3),@(5),@(4),@(6),@(7),@(9),@(0),@(-2),@(-4),@(-9),@(4),@(0),@(-2),@(5)];;
+- (NSArray *)scoreDiffData{
+    return @[@1, @3, @4, @1, @0, @-1, @-3, @-5, @-7, @-4, @-1, @0,  @1, @4, @5, @7, @4, @1, @0, @-1, @-2, @-4];
 }
 
 - (UIView *)scoreBGView{

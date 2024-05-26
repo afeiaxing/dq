@@ -35,5 +35,7 @@
 #import "NSString+Category.h"
 #import "QYZYBaseViewController.h"
 #import "AXNetWorkManager.h"
+#import "AXMatchListModel.h"
+#import "AXMatchTools.h"
 
 #endif /* qyzy_pch */

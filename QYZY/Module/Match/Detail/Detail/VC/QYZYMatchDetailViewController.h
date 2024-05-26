@@ -10,7 +10,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface QYZYMatchDetailViewController : QYZYBaseViewController
-@property (nonatomic ,strong) NSString *matchId;
+
+@property (nonatomic, strong) AXMatchListItemModel *matchModel;
+
 @end
 
 NS_ASSUME_NONNULL_END

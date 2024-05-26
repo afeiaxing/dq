@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AXMatchListTableViewCell : UITableViewCell
 
-@property (nonatomic, assign) NSInteger indexrow;
+@property (nonatomic, strong) AXMatchListItemModel *model;
 
 @end
 

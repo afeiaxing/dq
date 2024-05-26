@@ -17,6 +17,7 @@
 #import "AXMatchStandingsViewController.h"
 #import "AXMatchLineupViewController.h"
 #import "AXMatchAnalysisViewController.h"
+#import "AXMatchDetailRequest.h"
 
 @interface QYZYMatchDetailViewController ()<JXCategoryViewDelegate,JXCategoryListContainerViewDelegate>
 @property (nonatomic ,strong) UIView *statusView;
@@ -44,9 +45,6 @@
 @property (nonatomic ,strong) WKWebView *webView;
 @property (nonatomic ,strong) UIButton *backButton;
 //@property (nonatomic ,strong) QYZYLiveChatViewController *chatVC;
-@property (nonatomic ,strong) QYZYMatchOverViewController *overVC;
-@property (nonatomic ,strong) QYZYBasketballOverviewController *basketballOverVc;
-@property (nonatomic ,strong) QYZYMatchAnalyzeViewController *analyzeVC;
 @property (nonatomic, strong) AXMatchBetViewController *betVC;
 @property (nonatomic, strong) AXMatchChatViewController *chatVC;
 @property (nonatomic, strong) AXMatchStandingsViewController *standingsVC;
@@ -55,6 +53,9 @@
 @property (nonatomic, strong) JXCategoryTitleView *categoryView;
 @property (nonatomic, strong) JXCategoryListContainerView *containerView;
 @property (nonatomic, strong) NSTimer *timer;
+
+@property (nonatomic, strong) AXMatchDetailRequest *request;
+
 @end
 
 @implementation QYZYMatchDetailViewController
@@ -80,7 +81,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     if (!self.timer) {
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(timerLoadDetailData) userInfo:nil repeats:YES];
+//        self.timer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(timerLoadDetailData) userInfo:nil repeats:YES];
     }
 }
 
@@ -89,6 +90,7 @@
     self.fd_prefersNavigationBarHidden = YES;
     self.view.backgroundColor = UIColor.whiteColor;
     [self setupSubViews];
+    [self setInitData];
     [self requestData];
 }
 
@@ -219,28 +221,45 @@
     }];
 }
 
+- (void)setInitData{
+//    self.timeLabel.text = [self time_timestampToString:detailModel.matchTime.integerValue];
+    [self.topHostLogo sd_setImageWithURL:[NSURL URLWithString:self.matchModel.homeTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
+    self.topHostName.text = self.matchModel.homeTeamName;
+    [self.topAwayLogo sd_setImageWithURL:[NSURL URLWithString:self.matchModel.awayTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
+    self.topAwayName.text = self.matchModel.awayTeamName;
+    
+    self.hostName.text = self.matchModel.homeTeamName;
+    [self.hostLogo sd_setImageWithURL:[NSURL URLWithString:self.matchModel.homeTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
+    self.awayName.text = self.matchModel.awayTeamName;
+    [self.awayLogo sd_setImageWithURL:[NSURL URLWithString:self.matchModel.awayTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
+    self.scoreLabel.text = [NSString stringWithFormat:@"%@ - %@",self.matchModel.homeTotalScore ?: @"0", self.matchModel.awayTotalScore ?: @"0"];
+}
+
 - (void)requestData {
     weakSelf(self);
-    [self.viewModel requestMatchDetailWithMatchId:self.matchId completion:^(QYZYMatchMainModel * _Nonnull detailModel) {
-        strongSelf(self);
-        detailModel = [QYZYMatchMainModel new];
-        if (detailModel) {
-            self.mainModel = detailModel;
-            [self updateHeaderWithDetailModel:detailModel];
-            if (detailModel.animUrl.length) {
-                [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:detailModel.animUrl]]];
-            } else if (detailModel.obliqueAnimUrl.length) {
-                [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:detailModel.obliqueAnimUrl]]];
-            }
-//            self.chatVC.chatId = detailModel.matchId;
-            self.analyzeVC.detailModel = detailModel;
-            if (detailModel.sportId.integerValue == 2) {
-                self.basketballOverVc.detailModel = detailModel;
-            }else {
-                self.overVC.detailModel = detailModel;
-            }
-        }
+    [self.request requestMatchDetailWithMatchId:self.matchModel.matchId completion:^(AXMatchDetailModel * _Nonnull matchModel) {
+        NSLog(@"%@", matchModel);
     }];
+//    [self.viewModel requestMatchDetailWithMatchId:self.matchId completion:^(QYZYMatchMainModel * _Nonnull detailModel) {
+//        strongSelf(self);
+//        detailModel = [QYZYMatchMainModel new];
+//        if (detailModel) {
+//            self.mainModel = detailModel;
+//            [self updateHeaderWithDetailModel:detailModel];
+//            if (detailModel.animUrl.length) {
+//                [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:detailModel.animUrl]]];
+//            } else if (detailModel.obliqueAnimUrl.length) {
+//                [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:detailModel.obliqueAnimUrl]]];
+//            }
+////            self.chatVC.chatId = detailModel.matchId;
+//            self.analyzeVC.detailModel = detailModel;
+//            if (detailModel.sportId.integerValue == 2) {
+//                self.basketballOverVc.detailModel = detailModel;
+//            }else {
+//                self.overVC.detailModel = detailModel;
+//            }
+//        }
+//    }];
 }
 
 - (void)updateHeaderWithDetailModel:(QYZYMatchMainModel *)detailModel {
@@ -252,17 +271,6 @@
 //    self.awayLogo.backgroundColor = detailModel.guestTeamLogo.length ? UIColor.clearColor : rgba(255, 255, 255, 0.15);
     self.awayName.text = @"Boston Celtics";
     self.scoreLabel.text = [NSString stringWithFormat:@"%@ - %@",detailModel.hostTeamScore ?: @"0", detailModel.guestTeamScore ?: @"0"];
-}
-
-- (void)timerLoadDetailData {
-    weakSelf(self);
-    [self.viewModel requestMatchDetailWithMatchId:self.matchId completion:^(QYZYMatchMainModel * _Nonnull detailModel) {
-        strongSelf(self);
-        if (detailModel) {
-            self.mainModel = detailModel;
-            [self updateHeaderWithDetailModel:detailModel];
-        }
-    }];
 }
 
 #pragma mark - delegate
@@ -521,32 +529,6 @@
     return _analysisVC;
 }
 
-/// 赛况
-- (QYZYMatchOverViewController *)overVC {
-    if (!_overVC) {
-        _overVC = [[QYZYMatchOverViewController alloc] init];
-        _overVC.matchId = self.matchId;
-    }
-    return _overVC;
-}
-
-/// 篮球赛况
-- (QYZYBasketballOverviewController *)basketballOverVc {
-    if (!_basketballOverVc) {
-        _basketballOverVc = [[QYZYBasketballOverviewController alloc] init];
-        _basketballOverVc.matchId = self.matchId;
-    }
-    return _basketballOverVc;
-}
-
-/// 分析
-- (QYZYMatchAnalyzeViewController *)analyzeVC {
-    if (!_analyzeVC) {
-        _analyzeVC = [[QYZYMatchAnalyzeViewController alloc] init];
-    }
-    return _analyzeVC;
-}
-
 - (JXCategoryTitleView *)categoryView {
     if (!_categoryView) {
         _categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 48)];
@@ -750,6 +732,13 @@
     formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];// 如果不设置locle 跟随系统语言
     formatter.numberStyle = kCFNumberFormatterRoundHalfDown;
     return [formatter stringFromNumber:[NSNumber numberWithInteger:number]];
+}
+
+- (AXMatchDetailRequest *)request{
+    if (!_request) {
+        _request = [AXMatchDetailRequest new];
+    }
+    return _request;
 }
 
 @end

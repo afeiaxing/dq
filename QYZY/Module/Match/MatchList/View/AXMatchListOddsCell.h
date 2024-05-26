@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AXMatchListOddsCell : UITableViewCell
 
+@property (nonatomic, strong) AXMatchListItemModel *model;
+
 @end
 
 NS_ASSUME_NONNULL_END

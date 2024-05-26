@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface QYZYMatchViewModel : NSObject
 @property (nonatomic ,assign) QYZYMatchType matchType;
 @property (nonatomic ,assign) BOOL isBasket; /// 是否篮球，默认否
-- (void)requestMatchDataWithDateString:(NSString *)dateString completion:(void(^)(QYZYMatchModel *matchModel))completion;
+
 - (void)requestMatchDetailWithMatchId:(NSString *)matchId completion:(void(^)(QYZYMatchMainModel *detailModel))completion;
 - (void)requestMatchOverPhraseWithMatchId:(NSString *)matchId completion:(void(^)(NSArray <QYZYMatchOverModel *> *overArray))completion;
 - (void)requestMatchOverEventWithMatchId:(NSString *)matchId completion:(void(^)(NSArray <QYZYMatchOverModel *> *overArray))completion;

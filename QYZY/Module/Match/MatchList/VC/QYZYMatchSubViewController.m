@@ -46,47 +46,29 @@
 
 - (void)endRefresh {
     [self.tableView.mj_header endRefreshing];
+//    [self.view qyzy_hideLoading];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    BOOL isUpcoming = indexPath.row %2 == 0;
-    if (isUpcoming) {
+    NSArray *array = self.matches[indexPath.section];
+    AXMatchListItemModel *model = array[indexPath.row];
+    if (self.status == AXMatchStatusSchedule) {
         AXMatchListOddsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchListOddsCell.class) forIndexPath:indexPath];
+        cell.model = model;
         return cell;
     } else {
         AXMatchListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchListTableViewCell.class) forIndexPath:indexPath];
-        cell.indexrow = indexPath.row;
+        cell.model = model;
         return cell;
     }
     
-//    QYZYMatchHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(QYZYMatchHomeCell.class) forIndexPath:indexPath];
-//    QYZYMatchDetailModel *model = [QYZYMatchDetailModel new];
-//    model.leagueName = @"西甲";
-//    model.matchTime = @"12321213";
-//    model.hostTeamName = @"皇马";
-//    model.guestTeamName = @"巴萨";
-//    model.hostTeamScore = @"1";
-//    model.guestTeamScore = @"2";
-//    model.statusLable = @"1";
-//    cell.detailModel = model;
-//    return cell;
-//
-//    if (self.matches.count) {
-//        QYZYMatchHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(QYZYMatchHomeCell.class) forIndexPath:indexPath];
-//        if (self.matches.count > indexPath.row) {
-//            cell.detailModel = self.matches[indexPath.row];
-//        }
-//        return cell;
-//    }
-//    else {
 //        QYZYTableEmptyCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(QYZYTableEmptyCell.class) forIndexPath:indexPath];
 //        cell.contentView.backgroundColor = UIColor.whiteColor;
 //        return cell;
-//    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return self.matches.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -94,12 +76,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
-//    return self.matches.count ? self.matches.count : 1;
+    NSArray *array = self.matches[section];
+    return array.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return  150;
+    return  154;
 //    return self.matches.count ? 82 : self.view.frame.size.height;
 }
 
@@ -110,12 +92,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (self.matches.count) {
-        QYZYMatchDetailViewController *vc = [[QYZYMatchDetailViewController alloc] init];
-        vc.matchId = self.matches[indexPath.row].matchId;
-        vc.hidesBottomBarWhenPushed = YES;
-        [UIViewController.currentViewController.navigationController pushViewController:vc animated:YES];
-//    }
+    QYZYMatchDetailViewController *vc = [[QYZYMatchDetailViewController alloc] init];
+    NSArray *array = self.matches[indexPath.section];
+    AXMatchListItemModel *model = array[indexPath.row];
+    vc.matchModel = model;
+    vc.hidesBottomBarWhenPushed = YES;
+    [UIViewController.currentViewController.navigationController pushViewController:vc animated:YES];
 }
 
 - (UITableView *)tableView{
@@ -130,8 +112,8 @@
             strongSelf(self);
             !self.requestBlock ? : self.requestBlock();
         }];
-        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass(AXMatchListTableViewCell.class) bundle:nil] forCellReuseIdentifier:NSStringFromClass(AXMatchListTableViewCell.class)];
-        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass(AXMatchListOddsCell.class) bundle:nil] forCellReuseIdentifier:NSStringFromClass(AXMatchListOddsCell.class)];
+        [_tableView registerClass:AXMatchListTableViewCell.class forCellReuseIdentifier:NSStringFromClass(AXMatchListTableViewCell.class)];
+        [_tableView registerClass:AXMatchListOddsCell.class forCellReuseIdentifier:NSStringFromClass(AXMatchListOddsCell.class)];
 //        [_tableView registerClass:QYZYTableEmptyCell.class forCellReuseIdentifier:NSStringFromClass(QYZYTableEmptyCell.class)];
         [_tableView registerClass:AXMatchListSectionHeader.class forHeaderFooterViewReuseIdentifier:NSStringFromClass(AXMatchListSectionHeader.class)];
         _tableView.sectionFooterHeight = 0.1;

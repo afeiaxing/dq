@@ -1,26 +1,26 @@
 //
-//  AXMatchListApi.m
+//  AXMatchDetailApi.m
 //  QYZY
 //
-//  Created by 22 on 2024/5/23.
+//  Created by 22 on 2024/5/25.
 //
 
-#import "AXMatchListApi.h"
+#import "AXMatchDetailApi.h"
 
-@implementation AXMatchListApi
+@implementation AXMatchDetailApi
 
 - (NSString *)requestUrl {
-    return @"/app-api/score/matchList/page";
+    return @"/app-api/score/matchList/getMatchInfoById";
 }
 
 - (id)requestArgument {
     NSMutableDictionary *dict = @{}.mutableCopy;
-//    [dict setValue:@"National Women's Basketball League1 East" forKey:@"filter"];
+    [dict setValue:self.matchId forKey:@"matchId"];
     return dict;
 }
 
 - (YTKRequestMethod)requestMethod {
-    return YTKRequestMethodPOST;
+    return YTKRequestMethodGET;
 }
 
 - (YTKRequestSerializerType)requestSerializerType {

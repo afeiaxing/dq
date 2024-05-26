@@ -17,17 +17,7 @@
 #import "QYZYFutureRecordsApi.h"
 
 @implementation QYZYMatchViewModel
-- (void)requestMatchDataWithDateString:(NSString *)dateString completion:(void(^)(QYZYMatchModel *matchModel))completion{
-    QYZYMatchApi *api = [[QYZYMatchApi alloc] init];
-    api.currentDateString = dateString;
-    api.matchType = self.matchType;
-    [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        QYZYMatchModel *matchModel = [QYZYMatchModel yy_modelWithJSON:request.responseJSONObject[@"data"]];
-        !completion ? : completion(matchModel);
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        !completion ? : completion(nil);
-    }];
-}
+
 
 - (void)requestMatchDetailWithMatchId:(NSString *)matchId completion:(void(^)(QYZYMatchMainModel *detailModel))completion {
     QYZYMatchDetailApi *api = [[QYZYMatchDetailApi alloc] init];

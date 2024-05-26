@@ -22,6 +22,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)isEmptyString:(NSString *)string;
 + (NSString *)notEmptyFloatString:(NSString *)string length:(NSInteger)length;
 + (NSString *)spelloutStringWithNumber: (NSNumber *)number;
+
+/// 时间戳转时间
++ (NSString *)axTimestampToDate: (NSString *)timestamp
+                         format: (NSString *)format;
+
 @end
 
 NS_ASSUME_NONNULL_END
