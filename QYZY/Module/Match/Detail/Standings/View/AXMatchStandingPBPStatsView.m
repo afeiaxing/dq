@@ -93,6 +93,11 @@
 }
 
 // MARK: setter & getter
+- (void)setMatchModel:(AXMatchListItemModel *)matchModel{
+    [self.hostLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.homeTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
+    [self.awayLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.awayTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
+    _matchModel = matchModel;
+}
 - (UILabel *)vsLabel {
     if (!_vsLabel) {
         _vsLabel = [[UILabel alloc] init];
@@ -106,7 +111,6 @@
 - (UIImageView *)hostLogo{
     if (!_hostLogo) {
         _hostLogo = [UIImageView new];
-        _hostLogo.image = [UIImage imageNamed:@"match_team_logo"];
     }
     return _hostLogo;
 }
@@ -114,7 +118,6 @@
 - (UIImageView *)awayLogo{
     if (!_awayLogo) {
         _awayLogo = [UIImageView new];
-        _awayLogo.image = [UIImage imageNamed:@"match_team_logo"];
     }
     return _awayLogo;
 }

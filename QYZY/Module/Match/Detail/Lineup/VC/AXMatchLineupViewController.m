@@ -47,7 +47,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
         AXMatchLineupPerformersCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchLineupPerformersCell.class) forIndexPath:indexPath];
-
+        cell.matchModel = self.matchModel;
         return cell;
     } else {
         AXMatchLineupPlayerStatsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchLineupPlayerStatsCell.class) forIndexPath:indexPath];

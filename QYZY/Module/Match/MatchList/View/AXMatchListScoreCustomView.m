@@ -63,23 +63,11 @@
         case AXMatchListScoreCustomViewQ4:
             self.titleLabel.text = @"Q4";
             break;
-        case AXMatchListScoreCustomViewOT1:
-            self.titleLabel.text = @"OT1";
-            break;
-        case AXMatchListScoreCustomViewOT2:
-            self.titleLabel.text = @"OT2";
+        case AXMatchListScoreCustomViewOT:
+            self.titleLabel.text = @"OT";
             break;
         case AXMatchListScoreCustomViewTot:
             self.titleLabel.text = @"Tot.";
-            break;
-        case AXMatchListScoreCustomViewHandicap:
-            self.titleLabel.text = @"Handicap";
-            break;
-        case AXMatchListScoreCustomViewOU:
-            self.titleLabel.text = @"O/U";
-            break;
-        case AXMatchListScoreCustomViewMoneyline:
-            self.titleLabel.text = @"Moneyline";
             break;
         default:
             break;
@@ -87,6 +75,23 @@
     
     self.hostScore.text = @"22";
     self.awayScore.text = @"13";
+}
+
+- (void)setMarketType:(AXMatchListScoreCustomMarketType)marketType{
+    _marketType = marketType;
+    switch (marketType) {
+        case AXMatchListScoreCustomMarketTypeHandicap:
+            self.titleLabel.text = @"Handicap";
+            break;
+        case AXMatchListScoreCustomMarketTypeOU:
+            self.titleLabel.text = @"O/U";
+            break;
+        case AXMatchListScoreCustomMarketTypeMoneyline:
+            self.titleLabel.text = @"Moneyline";
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)setDatas:(NSArray *)datas{

@@ -14,17 +14,20 @@ typedef NS_ENUM(NSInteger ,AXMatchListScoreCustomViewType) {
     AXMatchListScoreCustomViewQ2,
     AXMatchListScoreCustomViewQ3,
     AXMatchListScoreCustomViewQ4,
-    AXMatchListScoreCustomViewOT1,
-    AXMatchListScoreCustomViewOT2,
+    AXMatchListScoreCustomViewOT,
     AXMatchListScoreCustomViewTot,
-    AXMatchListScoreCustomViewHandicap,
-    AXMatchListScoreCustomViewOU,
-    AXMatchListScoreCustomViewMoneyline,
+};
+
+typedef NS_ENUM(NSInteger ,AXMatchListScoreCustomMarketType) {
+    AXMatchListScoreCustomMarketTypeHandicap,
+    AXMatchListScoreCustomMarketTypeOU,
+    AXMatchListScoreCustomMarketTypeMoneyline,
 };
 
 @interface AXMatchListScoreCustomView : UIView
 
 @property (nonatomic, assign) AXMatchListScoreCustomViewType viewType;
+@property (nonatomic, assign) AXMatchListScoreCustomMarketType marketType;
 @property (nonatomic, strong) NSArray *datas;
 
 @end

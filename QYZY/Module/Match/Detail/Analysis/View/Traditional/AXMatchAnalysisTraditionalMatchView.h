@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface AXMatchAnalysisTraditionalMatchView : UIView<JXCategoryListContentViewDelegate>
 
 @property (nonatomic, assign) AXMatchAnalysisTraditionalMatchViewType viewType;
+@property (nonatomic, strong) AXMatchListItemModel *matchModel;
 
 @end
 

@@ -70,6 +70,13 @@
 }
 
 // MARK: setter & getter
+- (void)setMatchModel:(AXMatchListItemModel *)matchModel{
+    _matchModel = matchModel;
+    self.allView.matchModel = matchModel;
+    self.hostView.matchModel = matchModel;
+    self.awayView.matchModel = matchModel;
+}
+
 - (JXCategoryTitleView *)categoryView {
     if (!_categoryView) {
         _categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 48)];

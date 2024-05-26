@@ -77,6 +77,11 @@
 }
 
 // MARK: setter & setter
+- (void)setMatchModel:(AXMatchListItemModel *)matchModel{
+    self.statsView.matchModel = matchModel;
+    _matchModel = matchModel;
+}
+
 - (UIView *)colorBgView{
     if (!_colorBgView) {
         _colorBgView = [UIView new];

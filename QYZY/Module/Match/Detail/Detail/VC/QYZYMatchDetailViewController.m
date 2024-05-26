@@ -10,7 +10,6 @@
 #import "QYZYMatchOverViewController.h"
 #import "QYZYMatchAnalyzeViewController.h"
 #import "QYZYBasketballOverviewController.h"
-#import "QYZYMatchViewModel.h"
 #import <WebKit/WebKit.h>
 #import "AXMatchBetViewController.h"
 #import "AXMatchChatViewController.h"
@@ -37,14 +36,10 @@
 @property (nonatomic ,strong) UIImageView *awayLogo;
 @property (nonatomic ,strong) UILabel *hostName;
 @property (nonatomic ,strong) UILabel *awayName;
-@property (nonatomic ,strong) UIButton *playButton;
 @property (nonatomic ,strong) UILabel *scoreLabel;
 
-@property (nonatomic ,strong) QYZYMatchViewModel *viewModel;
-@property (nonatomic ,strong) QYZYMatchMainModel *mainModel;
-@property (nonatomic ,strong) WKWebView *webView;
 @property (nonatomic ,strong) UIButton *backButton;
-//@property (nonatomic ,strong) QYZYLiveChatViewController *chatVC;
+
 @property (nonatomic, strong) AXMatchBetViewController *betVC;
 @property (nonatomic, strong) AXMatchChatViewController *chatVC;
 @property (nonatomic, strong) AXMatchStandingsViewController *standingsVC;
@@ -141,11 +136,6 @@
         make.height.mas_equalTo(headerBGHeight);
     }];
     
-    [self.view addSubview:self.webView];
-    [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.headerBgView);
-    }];
-    
     [self.view addSubview:self.backButton];
     [self.backButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).offset(8);
@@ -195,13 +185,6 @@
         make.top.offset(78);
     }];
     
-    [self.headerBgView addSubview:self.playButton];
-    [self.playButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.offset(0);
-        make.bottom.equalTo(self.headerBgView).offset(-10);
-        make.size.mas_equalTo(CGSizeMake(80, 24));
-    }];
-    
     [self.headerBgView addSubview:self.scoreLabel];
     [self.scoreLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.headerBgView);
@@ -222,7 +205,16 @@
 }
 
 - (void)setInitData{
-//    self.timeLabel.text = [self time_timestampToString:detailModel.matchTime.integerValue];
+    if (self.matchModel.leaguesStatus.intValue == 1) {
+        self.timeLabel.text = [NSString axTimestampToDate:self.matchModel.matchTime format:@"HH:mm"];
+    } else if (self.matchModel.leaguesStatus.intValue == 10) {
+        self.timeLabel.text = @"End";
+    } else {
+        int min = self.matchModel.residualTime.intValue / 60;
+        int second = self.matchModel.residualTime.intValue % 60;
+        self.timeLabel.text = [NSString stringWithFormat:@"%@ %d:%d", [AXMatchTools handleMatchStatusText:self.matchModel.leaguesStatus.intValue], min, second];
+    }
+    
     [self.topHostLogo sd_setImageWithURL:[NSURL URLWithString:self.matchModel.homeTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
     self.topHostName.text = self.matchModel.homeTeamName;
     [self.topAwayLogo sd_setImageWithURL:[NSURL URLWithString:self.matchModel.awayTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
@@ -233,6 +225,11 @@
     self.awayName.text = self.matchModel.awayTeamName;
     [self.awayLogo sd_setImageWithURL:[NSURL URLWithString:self.matchModel.awayTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
     self.scoreLabel.text = [NSString stringWithFormat:@"%@ - %@",self.matchModel.homeTotalScore ?: @"0", self.matchModel.awayTotalScore ?: @"0"];
+    
+    self.standingsVC.matchModel = self.matchModel;
+    self.lineupVC.matchModel = self.matchModel;
+    self.analysisVC.matchModel = self.matchModel;
+    
 }
 
 - (void)requestData {
@@ -262,17 +259,6 @@
 //    }];
 }
 
-- (void)updateHeaderWithDetailModel:(QYZYMatchMainModel *)detailModel {
-    self.timeLabel.text = [self time_timestampToString:detailModel.matchTime.integerValue];
-//    [self.hostLogo sd_setImageWithURL:[NSURL URLWithString:detailModel.hostTeamLogo]];
-//    self.hostLogo.backgroundColor = detailModel.hostTeamLogo.length ? UIColor.clearColor : rgba(255, 255, 255, 0.15);
-    self.hostName.text = @"Los Angeles Lakers";
-//    [self.awayLogo sd_setImageWithURL:[NSURL URLWithString:detailModel.guestTeamLogo]];
-//    self.awayLogo.backgroundColor = detailModel.guestTeamLogo.length ? UIColor.clearColor : rgba(255, 255, 255, 0.15);
-    self.awayName.text = @"Boston Celtics";
-    self.scoreLabel.text = [NSString stringWithFormat:@"%@ - %@",detailModel.hostTeamScore ?: @"0", detailModel.guestTeamScore ?: @"0"];
-}
-
 #pragma mark - delegate
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     if (index == 0) {
@@ -294,20 +280,7 @@
 
 #pragma mark - action
 - (void)backAction {
-    if (!self.webView.hidden) {
-        self.webView.hidden = YES;
-        return;
-    }
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)playAction {
-    if (self.mainModel.animUrl.length || self.mainModel.obliqueAnimUrl.length) {
-        self.webView.hidden = NO;
-    } else {
-        self.webView.hidden = YES;
-        [self.view qyzy_showMsg:@"暂无动画"];
-    }
 }
 
 #pragma mark - get
@@ -418,23 +391,6 @@
     return _timeLabel;
 }
 
-- (UIButton *)playButton {
-    if (!_playButton) {
-        _playButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_playButton setTitle:@"观看动画" forState:UIControlStateNormal];
-        [_playButton setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
-        _playButton.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:12];
-        _playButton.backgroundColor = rgba(255, 255, 255, 0.25);
-        _playButton.layer.borderColor = rgba(255, 255, 255, 0.1).CGColor;
-        _playButton.layer.borderWidth = 0.5;
-        _playButton.layer.cornerRadius = 12;
-        _playButton.layer.masksToBounds = YES;
-        [_playButton addTarget:self action:@selector(playAction) forControlEvents:UIControlEventTouchUpInside];
-        _playButton.hidden = true;
-    }
-    return _playButton;
-}
-
 - (UIImageView *)hostLogo {
     if (!_hostLogo) {
         _hostLogo = [[UIImageView alloc] init];
@@ -476,22 +432,6 @@
         _scoreLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:32];
     }
     return _scoreLabel;
-}
-
-- (QYZYMatchViewModel *)viewModel {
-    if (!_viewModel) {
-        _viewModel = [[QYZYMatchViewModel alloc] init];
-    }
-    return _viewModel;
-}
-
-- (WKWebView *)webView {
-    if (!_webView) {
-        CGFloat width = CGRectGetWidth(self.view.bounds);
-        _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, StatusBarHeight, width, 9.0/16.0*width) configuration:[[WKWebViewConfiguration alloc] init]];
-        _webView.hidden = YES;
-    }
-    return _webView;
 }
 
 - (AXMatchBetViewController *)betVC{
@@ -563,175 +503,6 @@
         _containerView = [[JXCategoryListContainerView alloc] initWithType:JXCategoryListContainerType_CollectionView delegate:self];
     }
     return _containerView;
-}
-
-#pragma mark - help
-- (NSString *)time_timestampToString:(NSInteger)timestamp{
-    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:timestamp/1000];
-    NSDateFormatter *dateFormat=[[NSDateFormatter alloc]init];
-    [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm"];
-    NSString* string=[dateFormat stringFromDate:confromTimesp];
-    return string;
-}
-
-///比赛状态
-- (NSString *)getStatusCode:(NSInteger)statusCode
-                 timePlayed:(NSInteger)timePlayed
-                  MatchTime:(NSNumber *)matchTime
-                     status:(NSInteger)status
-            detailModel:(QYZYMatchMainModel *)detailModel {
-    if (!matchTime) {
-        matchTime = @0;
-    }
-    if (timePlayed < 0) {
-        timePlayed = 0;
-    }
-    NSString * statusString = @"未知";
-    switch (statusCode) {
-        case 0:
-            statusString = @"未";
-            break;
-        case 1:
-        {
-            if ([detailModel.sportId isEqualToString:@"1"]) {
-                NSInteger minute = 0;
-                if (timePlayed == 0) {
-                    NSInteger interval = [[NSDate date] timeIntervalSince1970];
-                    minute = (interval - matchTime.integerValue / 1000.0) / 60;
-                } else {
-                    minute = ceilf(timePlayed / 60.0);
-                }
-                if (minute < 0) minute = 0;
-                if (minute > 45) {
-                    statusString = @"45+";
-                } else {
-                    statusString = [NSString stringWithFormat:@"%zd",minute];
-                }
-            } else {
-                statusString = @"上半场";
-            }
-        }
-            break;
-        case 2:
-        {
-            if ([detailModel.sportId isEqualToString:@"1"]) {
-                NSInteger minute = 0;
-                if (timePlayed == 0) {
-                    NSInteger interval = [[NSDate date] timeIntervalSince1970];
-                    minute = (interval - matchTime.integerValue / 1000.0) / 60 - 15;
-                } else {
-                    minute = ceilf(timePlayed / 60.0);
-                }
-                if (minute > 90) {
-                    statusString = @"90+";
-                } else {
-                    statusString = [NSString stringWithFormat:@"%zd",minute];
-                }
-            } else {
-                statusString = @"下半场";
-            }
-        }
-            break;
-        case 10:
-        {
-            NSInteger interval = [[NSDate date] timeIntervalSince1970];
-            NSInteger minute = (interval - matchTime.integerValue / 1000.0) / 60;
-            if ([detailModel.sportId isEqualToString:@"1"]) {
-                if (timePlayed != 0) {
-                    minute = ceilf(timePlayed / 60.0);
-                }
-                statusString = [NSString stringWithFormat:@"%zd",minute];
-                break;
-            } else if ([detailModel.sportId isEqualToString:@"2"]) {
-                if (minute <= 3) {
-                    statusString = @"第一节";
-                    break;
-                }
-            }
-            statusString = @"进行中";
-        }
-            break;
-        case 11:
-        case 12:
-        case 13:
-        case 14:
-            statusString = [NSString stringWithFormat:@"第%@节",[self numberToString:statusCode - 10]];
-            break;
-//        case XMMatchBallStatusOvertime:
-        case 21:
-        case 22:
-            if ([detailModel.sportId isEqualToString:@"1"]) {
-                NSInteger minute = 0;
-                if (timePlayed == 0) {
-                    NSInteger interval = [[NSDate date] timeIntervalSince1970];
-                    minute = (interval - matchTime.integerValue / 1000.0) / 60 - 15;
-                } else {
-                    minute = ceilf(timePlayed / 60.0);
-                }
-                statusString = [NSString stringWithFormat:@"%zd",minute];
-            }
-            break;
-        case 25:
-            statusString = @"点球";
-            break;
-        case 30:
-            statusString = @"暂停";
-            break;
-        case 31:
-            statusString = @"中";
-            break;
-        case 35:
-        case 36:
-            statusString = @"点球";
-            break;
-        case 40:
-            statusString = @"取消";
-            break;
-        case 41:
-            statusString = @"延期";
-            break;
-        case 42:
-            statusString = @"推迟";
-            break;
-        case 43:
-            statusString = @"中断";
-            break;
-        case 100:
-            statusString = @"完";
-            break;
-        case 404:
-            statusString = @"未知";
-            break;
-        default:
-            break;
-    }
-    
-    if ([detailModel.sportId isEqualToString:@"2"]) {
-        if (statusCode == 11 ||
-            statusCode == 12 ||
-            statusCode == 13 ||
-            statusCode == 14 ||
-            statusCode == 1 ||
-            statusCode == 2 ||
-            (statusCode == 20)) {
-            NSInteger minute = (timePlayed) / 60.0;
-            NSInteger second = (timePlayed) % 60;
-            statusString = [NSString stringWithFormat:@"%@ %02ld:%02ld",statusString,minute,second];
-        }
-    }
-    
-    if (status == 3 ||
-        statusCode == 100) {
-        statusString = @"完";
-    }
-    return statusString;
-}
-
-- (NSString *)numberToString:(NSInteger)number {
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];// 如果不设置locle 跟随系统语言
-    formatter.numberStyle = kCFNumberFormatterRoundHalfDown;
-    return [formatter stringFromNumber:[NSNumber numberWithInteger:number]];
 }
 
 - (AXMatchDetailRequest *)request{

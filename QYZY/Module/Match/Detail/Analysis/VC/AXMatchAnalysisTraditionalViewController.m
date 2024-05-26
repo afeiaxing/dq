@@ -51,7 +51,7 @@
         return cell;
     } else {
         AXMatchAnalysisTraditionalMatchCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchAnalysisTraditionalMatchCell.class) forIndexPath:indexPath];
-
+        cell.matchModel = self.matchModel;
         return cell;
     }
 }

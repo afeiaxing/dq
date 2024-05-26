@@ -134,7 +134,7 @@
     }];
     
     NSMutableArray *temp = [NSMutableArray array];
-    for (int i = 7; i < 10; i++) {
+    for (int i = 0; i < 3; i++) {
         AXMatchListScoreCustomView *view = [AXMatchListScoreCustomView new];
         view.viewType = (AXMatchListScoreCustomViewType)i;
         [self.containerView addSubview:view];
@@ -169,11 +169,11 @@
     self.matchState.text = [NSString stringWithFormat:@"%@ %d:%d", [AXMatchTools handleMatchStatusText:model.leaguesStatus.intValue], min, second];
     
     for (AXMatchListScoreCustomView *view in self.marketViews) {
-        if (view.viewType == AXMatchListScoreCustomViewHandicap) {
+        if (view.marketType == AXMatchListScoreCustomMarketTypeHandicap) {
             view.datas = @[model.homeOdds, model.awayOdds];
-        } else if (view.viewType == AXMatchListScoreCustomViewOU) {
+        } else if (view.viewType == AXMatchListScoreCustomMarketTypeOU) {
             view.datas = @[[NSString stringWithFormat:@"O%@",model.ballScore], [NSString stringWithFormat:@"U%@",model.ballScore]];
-        } else if (view.viewType == AXMatchListScoreCustomViewMoneyline) {
+        } else if (view.viewType == AXMatchListScoreCustomMarketTypeMoneyline) {
             view.datas = @[[NSString stringWithFormat:@"%@",model.bigBallOdds], [NSString stringWithFormat:@"%@",model.smallBallOdds]];
         }
     }

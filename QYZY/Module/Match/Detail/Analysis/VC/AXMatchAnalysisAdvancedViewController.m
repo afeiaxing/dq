@@ -47,11 +47,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
         AXMatchAnalysisAdvancedQuaterCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchAnalysisAdvancedQuaterCell.class) forIndexPath:indexPath];
-
+        cell.matchModel = self.matchModel;
         return cell;
     } else {
         AXMatchAnalysisAdvancedTeamStatsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchAnalysisAdvancedTeamStatsCell.class) forIndexPath:indexPath];
-
+        cell.matchModel = self.matchModel;
         return cell;
     }
 }

@@ -43,15 +43,15 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
         AXMatchStandingChartCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchStandingChartCell.class) forIndexPath:indexPath];
-        
+        cell.matchModel = self.matchModel;
         return cell;
     } else if (indexPath.row == 1) {
         AXMatchStandingTeamStatsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchStandingTeamStatsCell.class) forIndexPath:indexPath];
-        
+        cell.matchModel = self.matchModel;
         return cell;
     } else {
         AXMatchStandingPBPCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchStandingPBPCell.class) forIndexPath:indexPath];
-        
+        cell.matchModel = self.matchModel;
         return cell;
     }
 }
