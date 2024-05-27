@@ -317,6 +317,7 @@
 		F37E5E9F2C0358210049FAE1 /* AXMatchStandingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5E9E2C0358210049FAE1 /* AXMatchStandingModel.m */; };
 		F37E5EA22C0358320049FAE1 /* AXMatchStandingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5EA12C0358320049FAE1 /* AXMatchStandingRequest.m */; };
 		F37E5EA52C03584F0049FAE1 /* AXMatchStandingApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5EA42C03584F0049FAE1 /* AXMatchStandingApi.m */; };
+		F37E5EAB2C04A92D0049FAE1 /* AXMatchListDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5EAA2C04A92D0049FAE1 /* AXMatchListDateView.m */; };
 		F39766022BF3988300E4C861 /* AXNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F39766012BF3988300E4C861 /* AXNetWorkManager.m */; };
 		F39766082BF3993A00E4C861 /* QYZYDataTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F39766072BF3993A00E4C861 /* QYZYDataTools.m */; };
 		F52A4E0828EC18FA002358BC /* QYZYSettingPaswwordApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F52A4E0728EC18FA002358BC /* QYZYSettingPaswwordApi.m */; };
@@ -948,6 +949,8 @@
 		F37E5EA12C0358320049FAE1 /* AXMatchStandingRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchStandingRequest.m; sourceTree = "<group>"; };
 		F37E5EA32C03584F0049FAE1 /* AXMatchStandingApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchStandingApi.h; sourceTree = "<group>"; };
 		F37E5EA42C03584F0049FAE1 /* AXMatchStandingApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchStandingApi.m; sourceTree = "<group>"; };
+		F37E5EA92C04A92D0049FAE1 /* AXMatchListDateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchListDateView.h; sourceTree = "<group>"; };
+		F37E5EAA2C04A92D0049FAE1 /* AXMatchListDateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchListDateView.m; sourceTree = "<group>"; };
 		F39766002BF3988300E4C861 /* AXNetWorkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXNetWorkManager.h; sourceTree = "<group>"; };
 		F39766012BF3988300E4C861 /* AXNetWorkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXNetWorkManager.m; sourceTree = "<group>"; };
 		F39766062BF3993A00E4C861 /* QYZYDataTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYZYDataTools.h; sourceTree = "<group>"; };
@@ -2118,6 +2121,8 @@
 				CB0823082BF5A9D100027C81 /* AXMatchListOddsCell.m */,
 				F37E5DB82BF630550049FAE1 /* AXMatchListSectionHeader.h */,
 				F37E5DB92BF630550049FAE1 /* AXMatchListSectionHeader.m */,
+				F37E5EA92C04A92D0049FAE1 /* AXMatchListDateView.h */,
+				F37E5EAA2C04A92D0049FAE1 /* AXMatchListDateView.m */,
 				F37E5E2D2BFA2E3A0049FAE1 /* AXMatchListSettingCell.h */,
 				F37E5E2E2BFA2E3A0049FAE1 /* AXMatchListSettingCell.m */,
 			);
@@ -3100,6 +3105,7 @@
 				9B46F6B328E6F06F00941F97 /* QYZYSearchLiveModel.m in Sources */,
 				B189E9E028ED5F7E00F17247 /* UILabel+XMUtils.m in Sources */,
 				55A5320529052E3C0008C110 /* FSCalendarView.m in Sources */,
+				F37E5EAB2C04A92D0049FAE1 /* AXMatchListDateView.m in Sources */,
 				9B46F6B728E6F53400941F97 /* QYZYResultAnchorCell.m in Sources */,
 				9BC0D5A429068E330063BCC7 /* QYZYTeamNameCell.m in Sources */,
 				F37E5E1E2BF9BB390049FAE1 /* AXMatchAnalysisTraditionalMatchHistoryView.m in Sources */,

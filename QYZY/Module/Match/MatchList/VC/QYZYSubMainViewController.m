@@ -112,7 +112,7 @@
         return self.liveVC;
     } else if (index == 2) {
         return self.scheduleVC;
-    } else if (index == 2) {
+    } else if (index == 3) {
         return self.resultVC;
     } else {
         return self.favoriteVC;
@@ -123,7 +123,8 @@
 - (JXCategoryTitleBackgroundView *)categoryView {
     if (!_categoryView) {
         _categoryView = [[JXCategoryTitleBackgroundView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 48)];
-        _categoryView.titles = @[@"All",@"Live",@"Scheduled",@"Result",@"Favorite"];
+//        _categoryView.titles = @[@"All",@"Live",@"Scheduled",@"Result",@"Favorite"];
+        _categoryView.titles = @[@"All",@"Live",@"Scheduled",@"Result"];
         _categoryView.titleColor = rgb(153, 153, 153);
         _categoryView.titleSelectedColor = rgb(255, 88, 0);
         _categoryView.titleFont = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
@@ -168,6 +169,7 @@
 - (QYZYMatchSubViewController *)liveVC {
     if (!_liveVC) {
         _liveVC = [[QYZYMatchSubViewController alloc] init];
+        _liveVC.status = AXMatchStatusLive;
         weakSelf(self);
         _liveVC.requestBlock = ^{
             strongSelf(self);
@@ -180,6 +182,7 @@
 - (QYZYMatchSubViewController *)resultVC {
     if (!_resultVC) {
         _resultVC = [[QYZYMatchSubViewController alloc] init];
+        _resultVC.status = AXMatchStatusResult;
         weakSelf(self);
         _resultVC.requestBlock = ^{
             strongSelf(self);
@@ -192,6 +195,7 @@
 - (QYZYMatchSubViewController *)scheduleVC {
     if (!_scheduleVC) {
         _scheduleVC = [[QYZYMatchSubViewController alloc] init];
+        _scheduleVC.status = AXMatchStatusSchedule;
         weakSelf(self);
         _scheduleVC.requestBlock = ^{
             strongSelf(self);
@@ -204,6 +208,7 @@
 - (QYZYMatchSubViewController *)allVC {
     if (!_allVC) {
         _allVC = [[QYZYMatchSubViewController alloc] init];
+        _allVC.status = AXMatchStatusAll;
         weakSelf(self);
         _allVC.requestBlock = ^{
             strongSelf(self);
@@ -216,6 +221,7 @@
 - (QYZYMatchSubViewController *)favoriteVC {
     if (!_favoriteVC) {
         _favoriteVC = [[QYZYMatchSubViewController alloc] init];
+//        _favoriteVC.status = AXMatchStatusFavorite;
         weakSelf(self);
         _favoriteVC.requestBlock = ^{
             strongSelf(self);

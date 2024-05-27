@@ -16,9 +16,12 @@
 
 @interface QYZYMatchSubViewController ()<UITableViewDelegate,UITableViewDataSource>
 
+@property (nonatomic, strong) AXMatchListDateView *dateView;
 @property (nonatomic, strong) UITableView *tableView;
 
 @end
+
+#define kAXMatchListDateViewHeight 50
 
 @implementation QYZYMatchSubViewController
 
@@ -34,9 +37,22 @@
 
 - (void)setupSubviews{
     [self.view addSubview:self.tableView];
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.offset(0);
-    }];
+    if (self.status == AXMatchStatusSchedule || self.status == AXMatchStatusResult) {
+        [self.view addSubview:self.dateView];
+        [self.dateView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.right.offset(0);
+            make.height.mas_equalTo(kAXMatchListDateViewHeight);
+        }];
+        
+        [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.offset(0);
+            make.top.equalTo(self.dateView.mas_bottom).offset(0);
+        }];
+    } else {
+        [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.offset(0);
+        }];
+    }
 }
 
 - (void)setMatches:(NSArray *)matches {
@@ -119,6 +135,14 @@
         _tableView.sectionFooterHeight = 0.1;
     }
     return _tableView;
+}
+
+- (AXMatchListDateView *)dateView{
+    if (!_dateView) {
+        _dateView = [AXMatchListDateView new];
+        _dateView.status = self.status;
+    }
+    return _dateView;
 }
 
 @end

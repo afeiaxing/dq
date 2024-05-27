@@ -324,7 +324,8 @@
         point3Precent = standingModel.hostTeamStats.threePoints.intValue / point3Total;
         [self.point3TintView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.centerY.height.equalTo(self.point3BackView);
-            make.width.mas_equalTo(50);
+//            make.width.mas_equalTo(50);
+                        make.width.mas_equalTo(backViewW * point3Precent);
         }];
 //    } else {
 //        point3Precent = standingModel.awayTeamStats.threePoints.intValue / point3Total;

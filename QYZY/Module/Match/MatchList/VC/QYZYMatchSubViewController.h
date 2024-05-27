@@ -7,15 +7,9 @@
 
 #import "QYZYBaseViewController.h"
 #import "AXMatchListModel.h"
+#import "AXMatchListDateView.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
-typedef enum : NSUInteger {
-    AXMatchStatusAll,
-    AXMatchStatusSchedule,
-    AXMatchStatusLive,
-    AXMatchStatusResult,
-} AXMatchStatus;
 
 @interface QYZYMatchSubViewController : QYZYBaseViewController<JXCategoryListContentViewDelegate>
 
