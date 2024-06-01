@@ -1,1 +1,0 @@
-../../../QMUIKit/QMUIKit/UIKitExtensions/QMUIBarProtocol/QMUIBarProtocolPrivate.h

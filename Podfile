@@ -27,7 +27,7 @@ pod 'AFNetworking'
   pod 'ZFPlayer/ControlView', '~> 4.1.3'
   pod 'SDCycleScrollView',  '~> 1.82'
   pod 'YYText'
-  pod 'FGIAPService'
+#  pod 'FGIAPService'
 end
 
 post_install do |installer|

@@ -16,7 +16,6 @@ PODS:
     - AFNetworking/NSURLSession
   - DZNEmptyDataSet (1.8.1)
   - FDFullscreenPopGesture (1.1)
-  - FGIAPService (0.5.0)
   - FunctionalObjC (1.0.2)
   - IQKeyboardManager (6.4.2)
   - JCore (2.1.8)
@@ -363,7 +362,6 @@ DEPENDENCIES:
   - AFNetworking
   - DZNEmptyDataSet
   - FDFullscreenPopGesture
-  - FGIAPService
   - FunctionalObjC (~> 1.0)
   - IQKeyboardManager (~> 6.4.2)
   - JCore (~> 2.1.8-noidfa)
@@ -390,7 +388,6 @@ SPEC REPOS:
     - AFNetworking
     - DZNEmptyDataSet
     - FDFullscreenPopGesture
-    - FGIAPService
     - FunctionalObjC
     - IQKeyboardManager
     - JCore
@@ -412,10 +409,9 @@ SPEC REPOS:
     - ZFPlayer
 
 SPEC CHECKSUMS:
-  AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
-  FGIAPService: d0848b3a193fd2a66563218cf87b615b68e9e155
   FunctionalObjC: bd6aaa4b69abea0a5ac0e860a052c1ebebd5311c
   IQKeyboardManager: b41e0a4943fbac4c11a239d31a688667675f962e
   JCore: a7f1dead960d77a97717c73ea8b0aa5b33706491
@@ -436,6 +432,6 @@ SPEC CHECKSUMS:
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
   ZFPlayer: bf4a4746e970c4faee9ea7f142c032be1405750f
 
-PODFILE CHECKSUM: 351dc5de6967345ee81bb93f5463ffdf770a6c98
+PODFILE CHECKSUM: 4a735d97f59659134196e71fad237a34be5d96eb
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.11.3
