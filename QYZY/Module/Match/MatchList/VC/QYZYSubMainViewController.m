@@ -74,7 +74,7 @@
 
 - (void)requestData {
     weakSelf(self);
-//    [self.allVC.view qyzy_showLoadingWithMsg:@"loading"];
+    [self.allVC.view ax_showLoading];
     [self.requestManager requestMatchListWithcompletion:^(AXMatchListModel * _Nonnull matchModel) {
         [self.liveVC endRefresh];
         [self.resultVC endRefresh];

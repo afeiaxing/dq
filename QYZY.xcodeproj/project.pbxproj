@@ -270,6 +270,9 @@
 		CBFDA1C02BF75CF000D80483 /* ORLineChartConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFDA1B62BF75CF000D80483 /* ORLineChartConfig.m */; };
 		CBFDA1C12BF75CF000D80483 /* ORLineChartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFDA1B72BF75CF000D80483 /* ORLineChartCell.m */; };
 		CBFDA1C22BF75CF000D80483 /* ORLineChartValue.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFDA1BB2BF75CF000D80483 /* ORLineChartValue.m */; };
+		F36D875C2C0B0383001F37F0 /* AXToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = F36D875B2C0B0383001F37F0 /* AXToastView.m */; };
+		F36D875F2C0B045C001F37F0 /* UIView+AXToast.m in Sources */ = {isa = PBXBuildFile; fileRef = F36D875E2C0B045C001F37F0 /* UIView+AXToast.m */; };
+		F36D87622C0B098D001F37F0 /* UIView+CSToast.m in Sources */ = {isa = PBXBuildFile; fileRef = F36D87602C0B098C001F37F0 /* UIView+CSToast.m */; };
 		F37E5D9F2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5D9B2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCellModel.m */; };
 		F37E5DA02BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5D9C2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCell.m */; };
 		F37E5DA12BF4D7A10049FAE1 /* JXCategoryTitleBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5D9D2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundView.m */; };
@@ -855,6 +858,12 @@
 		CBFDA1BB2BF75CF000D80483 /* ORLineChartValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORLineChartValue.m; sourceTree = "<group>"; };
 		CBFDA1BC2BF75CF000D80483 /* ORLineChartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORLineChartCell.h; sourceTree = "<group>"; };
 		CBFDA1BD2BF75CF000D80483 /* ORLineChartConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORLineChartConfig.h; sourceTree = "<group>"; };
+		F36D875A2C0B0383001F37F0 /* AXToastView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXToastView.h; sourceTree = "<group>"; };
+		F36D875B2C0B0383001F37F0 /* AXToastView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXToastView.m; sourceTree = "<group>"; };
+		F36D875D2C0B045C001F37F0 /* UIView+AXToast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+AXToast.h"; sourceTree = "<group>"; };
+		F36D875E2C0B045C001F37F0 /* UIView+AXToast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+AXToast.m"; sourceTree = "<group>"; };
+		F36D87602C0B098C001F37F0 /* UIView+CSToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CSToast.m"; sourceTree = "<group>"; };
+		F36D87612C0B098C001F37F0 /* UIView+CSToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CSToast.h"; sourceTree = "<group>"; };
 		F37E5D992BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleBackgroundCell.h; sourceTree = "<group>"; };
 		F37E5D9A2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleBackgroundView.h; sourceTree = "<group>"; };
 		F37E5D9B2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryTitleBackgroundCellModel.m; sourceTree = "<group>"; };
@@ -2068,6 +2077,19 @@
 			path = ORLineChart;
 			sourceTree = "<group>";
 		};
+		F36D87592C0B036E001F37F0 /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				F36D875D2C0B045C001F37F0 /* UIView+AXToast.h */,
+				F36D875E2C0B045C001F37F0 /* UIView+AXToast.m */,
+				F36D87612C0B098C001F37F0 /* UIView+CSToast.h */,
+				F36D87602C0B098C001F37F0 /* UIView+CSToast.m */,
+				F36D875A2C0B0383001F37F0 /* AXToastView.h */,
+				F36D875B2C0B0383001F37F0 /* AXToastView.m */,
+			);
+			path = Toast;
+			sourceTree = "<group>";
+		};
 		F37E5D982BF4D7A10049FAE1 /* TitleBackground */ = {
 			isa = PBXGroup;
 			children = (
@@ -2534,6 +2556,7 @@
 		F551042928E34263001E9BC5 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				F36D87592C0B036E001F37F0 /* Toast */,
 				F37E5E962C0306360049FAE1 /* AXMatchTools */,
 				CBFDA1B32BF75CF000D80483 /* ORLineChart */,
 				F39765FF2BF3985E00E4C861 /* AXNetworkManager */,
@@ -2987,6 +3010,7 @@
 				55BF55AE28E95FFE00DB476B /* QYZYLiveChatFilterApi.m in Sources */,
 				F37E5E8F2C02078D0049FAE1 /* AXMatchDetailApi.m in Sources */,
 				55EADDCD28E706BB008324AE /* ZFIJKPlayerManager.m in Sources */,
+				F36D87622C0B098D001F37F0 /* UIView+CSToast.m in Sources */,
 				55E2393928E7EC31003ED27E /* QYZYLiveRankSubViewController.m in Sources */,
 				B1728B4028E5B11800419F67 /* QYZYFootballViewController.m in Sources */,
 				555C687428EC04B700044A5E /* QYZYCollectionEmptyCell.m in Sources */,
@@ -2997,6 +3021,7 @@
 				AE65E0E82907BF240053CA49 /* QYZYAnalyzeSectionModel.m in Sources */,
 				55A5320129052E3C0008C110 /* FSCalendarCustomView.m in Sources */,
 				55EADDC728E6F30E008324AE /* QYZYDetailBaseInfoApi.m in Sources */,
+				F36D875F2C0B045C001F37F0 /* UIView+AXToast.m in Sources */,
 				AE4DED9128EAF39E00CD01C3 /* QYZYNewsCommentInspectionApi.m in Sources */,
 				AE9FB1B9290656A800B2033A /* QYZYIntegralHeaderView.m in Sources */,
 				AE4DED9428EAFB4600CD01C3 /* QYZYNewsSaveCommentApi.m in Sources */,
@@ -3063,6 +3088,7 @@
 				B1728B3728E58BFE00419F67 /* QYZYScheduleHeaderVIew.m in Sources */,
 				F37E5E2C2BF9D59C0049FAE1 /* AXMatchAnalysisAdvancedTeamStatsView.m in Sources */,
 				9B46F6BB28E6FB6300941F97 /* QYZYSearchResultHeader.m in Sources */,
+				F36D875C2C0B0383001F37F0 /* AXToastView.m in Sources */,
 				55E0D50628F7FE0100DDAAB6 /* QYZYMatchDetailViewController.m in Sources */,
 				F37E5DE22BF77C4E0049FAE1 /* AXMatchAnalysisViewController.m in Sources */,
 				F52A4E0828EC18FA002358BC /* QYZYSettingPaswwordApi.m in Sources */,
