@@ -6,7 +6,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "QYZYRankApi.h"
 #import "QYZYRankModel.h"
 
 NS_ASSUME_NONNULL_BEGIN

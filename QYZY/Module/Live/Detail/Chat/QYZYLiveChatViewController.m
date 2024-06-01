@@ -10,7 +10,6 @@
 #import "QYZYRIMManager.h"
 #import "QYZYLiveChatInputView.h"
 #import <IQKeyboardManager.h>
-#import "QYZYLiveDetailViewModel.h"
 #import "QYZYChatGiftView.h"
 
 NSString *sendFailMsg = @"消息发送失败，请重试";
@@ -22,7 +21,6 @@ NSString *reConnectMsg = @"重连中...";
 @property (nonatomic ,strong) QYZYLiveChatInputView *putView;
 @property (nonatomic ,assign) BOOL hasViewDidLayout;
 @property (nonatomic ,assign) CGRect sectionRect;
-@property (nonatomic ,strong) QYZYLiveDetailViewModel *viewModel;
 @property (nonatomic ,strong) QYZYChatGiftView *giftView;
 @property (nonatomic ,strong) NSMutableArray *rcUidArray;
 @end
@@ -76,12 +74,12 @@ NSString *reConnectMsg = @"重连中...";
 
 - (void)requestGiftData {
     weakSelf(self);
-    [self.viewModel requestGetGiftWithCompletion:^(NSArray<QYZYChatGiftModel *> * _Nonnull giftArray) {
-        strongSelf(self);
-        if (giftArray) {
-            self.giftView.giftArray = giftArray;
-        }
-    }];
+//    [self.viewModel requestGetGiftWithCompletion:^(NSArray<QYZYChatGiftModel *> * _Nonnull giftArray) {
+//        strongSelf(self);
+//        if (giftArray) {
+//            self.giftView.giftArray = giftArray;
+//        }
+//    }];
 }
 
 #pragma mark - Noti Methods
@@ -210,43 +208,43 @@ NSString *reConnectMsg = @"重连中...";
 
 - (void)requestFilterWithContent:(NSString *)content {
     weakSelf(self);
-    [self.viewModel requestFilterDataWithContent:content completion:^(QYZYLiveChatFilterModel * _Nonnull filterModel) {
-        strongSelf(self);
-        if (filterModel.success) {
-            NSMutableDictionary *dict = @{}.mutableCopy;
-            [dict setValue:@0 forKey:@"type"];
-            [dict setValue:filterModel.pushTime forKey:@"pushTime"];
-            [dict setValue:filterModel.userId forKey:@"userId"];
-            [dict setValue:filterModel.sign forKey:@"sign"];
-            [dict setValue:filterModel.nickname forKey:@"nickname"];
-            [dict setValue:filterModel.content forKey:@"content"];
-            
-            NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
-            NSString *content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            RCTextMessage *text = [RCTextMessage messageWithContent:content];
-            weakSelf(self);
-            __block RCMessage *message = [RCIMClient.sharedRCIMClient sendMessage:ConversationType_CHATROOM targetId:self.chatId content:text pushContent:nil pushData:nil success:^(long messageId) {
-                strongSelf(self);
-                [self onReceived:message left:1 object:nil];
-            } error:^(RCErrorCode nErrorCode, long messageId) {
-                strongSelf(self);
-                [self.view qyzy_showMsg:sendFailMsg];
-            }];
-        }
-        else {
-            [self.view qyzy_showMsg:filterModel.desc];
-        }
-    }];
+//    [self.viewModel requestFilterDataWithContent:content completion:^(QYZYLiveChatFilterModel * _Nonnull filterModel) {
+//        strongSelf(self);
+//        if (filterModel.success) {
+//            NSMutableDictionary *dict = @{}.mutableCopy;
+//            [dict setValue:@0 forKey:@"type"];
+//            [dict setValue:filterModel.pushTime forKey:@"pushTime"];
+//            [dict setValue:filterModel.userId forKey:@"userId"];
+//            [dict setValue:filterModel.sign forKey:@"sign"];
+//            [dict setValue:filterModel.nickname forKey:@"nickname"];
+//            [dict setValue:filterModel.content forKey:@"content"];
+//
+//            NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
+//            NSString *content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//            RCTextMessage *text = [RCTextMessage messageWithContent:content];
+//            weakSelf(self);
+//            __block RCMessage *message = [RCIMClient.sharedRCIMClient sendMessage:ConversationType_CHATROOM targetId:self.chatId content:text pushContent:nil pushData:nil success:^(long messageId) {
+//                strongSelf(self);
+//                [self onReceived:message left:1 object:nil];
+//            } error:^(RCErrorCode nErrorCode, long messageId) {
+//                strongSelf(self);
+//                [self.view qyzy_showMsg:sendFailMsg];
+//            }];
+//        }
+//        else {
+//            [self.view qyzy_showMsg:filterModel.desc];
+//        }
+//    }];
 }
 
 - (void)requestBalanceData {
-    weakSelf(self);
-    [self.viewModel requestBalanceWithCompletion:^(QYZYAmountwithModel * _Nonnull model) {
-        strongSelf(self);
-        if (model) {
-            [self.giftView updateBalance];
-        }
-    }];
+//    weakSelf(self);
+//    [self.viewModel requestBalanceWithCompletion:^(QYZYAmountwithModel * _Nonnull model) {
+//        strongSelf(self);
+//        if (model) {
+//            [self.giftView updateBalance];
+//        }
+//    }];
 }
 
 #pragma mark - get
@@ -282,13 +280,6 @@ NSString *reConnectMsg = @"重连中...";
     return _putView;
 }
 
-- (QYZYLiveDetailViewModel *)viewModel {
-    if (!_viewModel) {
-        _viewModel = [[QYZYLiveDetailViewModel alloc] init];
-    }
-    return _viewModel;
-}
-
 - (QYZYChatGiftView *)giftView {
     if (!_giftView) {
         NSArray *array = [NSBundle.mainBundle loadNibNamed:@"QYZYChatGiftView" owner:self options:nil];
@@ -298,17 +289,17 @@ NSString *reConnectMsg = @"重连中...";
         _giftView.clickBlock = ^(QYZYChatGiftModel * _Nonnull giftModel) {
             strongSelf(self);
             weakSelf(self);
-            [self.viewModel requestSendGiftWithAnchorId:self.anchorId giftId:giftModel.giftId chatId:self.chatId completion:^(NSString * msg) {
-                strongSelf(self);
-                if (!msg) {
-                    QYZYUserManager.shareInstance.userModel.balance -= giftModel.price;
-                    [self.giftView updateBalance];
-                    //[self requestBalanceData];
-                    [self.view qyzy_showMsg:@"已送礼"];
-                } else {
-                    [self.view qyzy_showMsg:msg];
-                }
-            }];
+//            [self.viewModel requestSendGiftWithAnchorId:self.anchorId giftId:giftModel.giftId chatId:self.chatId completion:^(NSString * msg) {
+//                strongSelf(self);
+//                if (!msg) {
+//                    QYZYUserManager.shareInstance.userModel.balance -= giftModel.price;
+//                    [self.giftView updateBalance];
+//                    //[self requestBalanceData];
+//                    [self.view qyzy_showMsg:@"已送礼"];
+//                } else {
+//                    [self.view qyzy_showMsg:msg];
+//                }
+//            }];
         };
         _giftView.chargeBlock = ^() {
             strongSelf(self);

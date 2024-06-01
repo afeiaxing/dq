@@ -6,21 +6,17 @@
 //
 
 #import "QYZYLiveDetailViewController.h"
-#import "QYZYLiveDetailViewModel.h"
 #import "QYZYLiveDetailModel.h"
 #import "ZFIJKPlayerManager.h"
 #import <WebKit/WebKit.h>
 #import "QYZYNewsPostAttentionApi.h"
 #import "QYZYNewsPostAttentionCancelApi.h"
 
-#import "QYZYLiveMoreViewController.h"
 #import "QYZYLiveChatViewController.h"
-#import "QYZYLiveAnchorViewController.h"
 #import "QYZYPersonalhomepageViewController.h"
 
 @interface QYZYLiveDetailViewController ()<JXCategoryViewDelegate,JXCategoryListContainerViewDelegate>
 @property (nonatomic ,strong) UIView *statusView;
-@property (nonatomic ,strong) QYZYLiveDetailViewModel *viewModel;
 @property (nonatomic ,strong) QYZYLiveDetailModel *detailModel;
 @property (nonatomic ,strong) UIButton *backButton;
 @property (nonatomic ,strong) ZFPlayerController *player;
@@ -29,9 +25,7 @@
 @property (nonatomic ,strong) UIImageView *playerView;
 @property (nonatomic ,strong) JXCategoryTitleView *categoryView;
 @property (nonatomic ,strong) JXCategoryListContainerView *containerView;
-@property (nonatomic ,strong) QYZYLiveMoreViewController *moreVC;
 @property (nonatomic ,strong) QYZYLiveChatViewController *chatVC;
-@property (nonatomic ,strong) QYZYLiveAnchorViewController *anchorVC;
 @property (nonatomic ,strong) UIView *lineView;
 @property (nonatomic ,strong) WKWebView *webView;
 @property (nonatomic ,strong) UIControl *focusControl;
@@ -186,14 +180,14 @@
 
 - (void)updateLoginStatus {
     weakSelf(self);
-    [self.viewModel requestBaseInfoWithAnchorId:self.anchorId completion:^(NSDictionary * _Nonnull baseInfo) {
-        strongSelf(self);
-        if (baseInfo) {
-            self.detailModel.focusStatus = baseInfo[@"fansType"];
-            self.focusLabel.text = self.detailModel.focusStatus.integerValue ? @"已关注" : @"关注";
-            [self updateFocusControl];
-        }
-    }];
+//    [self.viewModel requestBaseInfoWithAnchorId:self.anchorId completion:^(NSDictionary * _Nonnull baseInfo) {
+//        strongSelf(self);
+//        if (baseInfo) {
+//            self.detailModel.focusStatus = baseInfo[@"fansType"];
+//            self.focusLabel.text = self.detailModel.focusStatus.integerValue ? @"已关注" : @"关注";
+//            [self updateFocusControl];
+//        }
+//    }];
 }
 
 - (void)updateFocusControl {
@@ -217,30 +211,30 @@
     dispatch_group_t request_group = dispatch_group_create();
     
     dispatch_group_enter(request_group);
-    [self.viewModel requestPullInfoWithAnchorId:self.anchorId completion:^(NSDictionary * _Nonnull pullInfo) {
-        self.detailModel.animUrl = [pullInfo[@"animUrl"] isKindOfClass:NSString.class] ? pullInfo[@"animUrl"] : @"";
-        self.detailModel.playAddr = pullInfo[@"playAddr"];
-        self.detailModel.liveTitle = pullInfo[@"liveTitle"];
-        self.detailModel.chatId = [NSString stringWithFormat:@"%@", pullInfo[@"chatId"]];
-        dispatch_group_leave(request_group);
-    }];
-    
-    dispatch_group_enter(request_group);
-    [self.viewModel requestBaseInfoWithAnchorId:self.anchorId completion:^(NSDictionary * _Nonnull baseInfo) {
-        self.detailModel.leagueId = [NSString stringWithFormat:@"%@", baseInfo[@"leagueId"]];
-        self.detailModel.isRobot = baseInfo[@"isRobot"];
-        self.detailModel.fans = baseInfo[@"fans"];
-        self.detailModel.focusStatus = baseInfo[@"fansType"];
-        self.detailModel.nickname = baseInfo[@"nickname"];
-        self.detailModel.userId = baseInfo[@"userId"];
-        self.detailModel.headImageUrl = baseInfo[@"headImageUrl"];
-        self.detailModel.profile = baseInfo[@"systemDesc"];
-        self.detailModel.stb = baseInfo[@"stb"];
-        if ([baseInfo[@"systemDesc"] isKindOfClass:NSNull.class]) {
-            self.detailModel.profile = baseInfo[@"profile"];
-        }
-        dispatch_group_leave(request_group);
-    }];
+//    [self.viewModel requestPullInfoWithAnchorId:self.anchorId completion:^(NSDictionary * _Nonnull pullInfo) {
+//        self.detailModel.animUrl = [pullInfo[@"animUrl"] isKindOfClass:NSString.class] ? pullInfo[@"animUrl"] : @"";
+//        self.detailModel.playAddr = pullInfo[@"playAddr"];
+//        self.detailModel.liveTitle = pullInfo[@"liveTitle"];
+//        self.detailModel.chatId = [NSString stringWithFormat:@"%@", pullInfo[@"chatId"]];
+//        dispatch_group_leave(request_group);
+//    }];
+//    
+//    dispatch_group_enter(request_group);
+//    [self.viewModel requestBaseInfoWithAnchorId:self.anchorId completion:^(NSDictionary * _Nonnull baseInfo) {
+//        self.detailModel.leagueId = [NSString stringWithFormat:@"%@", baseInfo[@"leagueId"]];
+//        self.detailModel.isRobot = baseInfo[@"isRobot"];
+//        self.detailModel.fans = baseInfo[@"fans"];
+//        self.detailModel.focusStatus = baseInfo[@"fansType"];
+//        self.detailModel.nickname = baseInfo[@"nickname"];
+//        self.detailModel.userId = baseInfo[@"userId"];
+//        self.detailModel.headImageUrl = baseInfo[@"headImageUrl"];
+//        self.detailModel.profile = baseInfo[@"systemDesc"];
+//        self.detailModel.stb = baseInfo[@"stb"];
+//        if ([baseInfo[@"systemDesc"] isKindOfClass:NSNull.class]) {
+//            self.detailModel.profile = baseInfo[@"profile"];
+//        }
+//        dispatch_group_leave(request_group);
+//    }];
     
     dispatch_group_notify(request_group, dispatch_get_main_queue(), ^{
         self.focusLabel.text = self.detailModel.focusStatus.integerValue ? @"已关注" : @"关注";
@@ -283,7 +277,7 @@
 //            self.webView.hidden = NO;
 //        }
         self.chatVC.chatId = self.detailModel.chatId;
-        self.anchorVC.detailModel = self.detailModel;
+//        self.anchorVC.detailModel = self.detailModel;
         self.idLabel.text = [NSString stringWithFormat:@"主播ID: %@", self.detailModel.stb];
     });
 }
@@ -341,7 +335,7 @@
 #pragma mark - delegate
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     if (index == 3) {
-        return self.moreVC;
+//        return self.moreVC;
     }
 //    else if (index == 2) {
 //        return self.rankVC;
@@ -349,9 +343,9 @@
     else if (index == 0) {
         return self.chatVC;
     }
-    else if (index == 1) {
-        return self.anchorVC;
-    }
+//    else if (index == 1) {
+//        return self.anchorVC;
+//    }
     return nil;
 }
 
@@ -364,12 +358,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (QYZYLiveDetailViewModel *)viewModel {
-    if (!_viewModel) {
-        _viewModel = [[QYZYLiveDetailViewModel alloc] init];
-    }
-    return _viewModel;
-}
 
 - (QYZYLiveDetailModel *)detailModel {
     if (!_detailModel) {
@@ -468,28 +456,12 @@
     return _containerView;
 }
 
-- (QYZYLiveMoreViewController *)moreVC {
-    if (!_moreVC) {
-        _moreVC = [[QYZYLiveMoreViewController alloc] init];
-        _moreVC.anchorId = self.anchorId;
-    }
-    return _moreVC;
-}
-
 - (QYZYLiveChatViewController *)chatVC {
     if (!_chatVC) {
         _chatVC = [[QYZYLiveChatViewController alloc] init];
         _chatVC.anchorId = self.anchorId;
     }
     return _chatVC;
-}
-
-- (QYZYLiveAnchorViewController *)anchorVC {
-    if (!_anchorVC) {
-        _anchorVC = [[QYZYLiveAnchorViewController alloc] init];
-        _anchorVC.anchorId = self.anchorId;
-    }
-    return _anchorVC;
 }
 
 - (UIView *)lineView {

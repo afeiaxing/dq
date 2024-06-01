@@ -8,9 +8,6 @@
 #import "QYZYLiveViewController.h"
 #import "QYZYLiveMainViewController.h"
 #import "QYZYFootballViewController.h"
-#import "QYZYAppointmentViewController.h"
-#import "QYZYRankViewController.h"
-#import "QYZYSearchController.h"
 #import "QYZYPhoneLoginViewController.h"
 #import "QYZYLiveDetailViewController.h"
 
@@ -85,23 +82,23 @@
 //点击搜索
 - (void)searchClick
 {
-    QYZYSearchController *vc = [[QYZYSearchController alloc]init];
-    weakSelf(self)
-    vc.goToLivePageBlock = ^(NSString * _Nonnull anchorId) {
-        strongSelf(self)
-        QYZYLiveDetailViewController *vc = [[QYZYLiveDetailViewController alloc] init];
-        vc.anchorId = anchorId;
-        [self.navigationController pushViewController:vc animated:YES];
-    };
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:NO];
+//    QYZYSearchController *vc = [[QYZYSearchController alloc]init];
+//    weakSelf(self)
+//    vc.goToLivePageBlock = ^(NSString * _Nonnull anchorId) {
+//        strongSelf(self)
+//        QYZYLiveDetailViewController *vc = [[QYZYLiveDetailViewController alloc] init];
+//        vc.anchorId = anchorId;
+//        [self.navigationController pushViewController:vc animated:YES];
+//    };
+//    vc.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:vc animated:NO];
 }
 
 //排行榜
 - (void)rankClick
 {
-    QYZYRankViewController *vc = [[QYZYRankViewController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
+//    QYZYRankViewController *vc = [[QYZYRankViewController alloc]init];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 //关注
@@ -116,8 +113,8 @@
         return;
     }
     
-    QYZYAppointmentViewController *vc = [[QYZYAppointmentViewController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
+//    QYZYAppointmentViewController *vc = [[QYZYAppointmentViewController alloc]init];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 

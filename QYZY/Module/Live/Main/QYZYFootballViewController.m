@@ -9,7 +9,6 @@
 #import "QYZYScheduleHeaderVIew.h"
 #import "QYZYScheduleTableViewCell.h"
 #import "QYZYFootballViewModel.h"
-#import "QYZYAppointmentViewController.h"
 #import "QYZYPhoneLoginViewController.h"
 
 @interface QYZYFootballViewController ()<UITableViewDelegate,UITableViewDataSource>
