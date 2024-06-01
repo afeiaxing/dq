@@ -9,11 +9,8 @@
 #import "QYZYLiveDetailModel.h"
 #import "ZFIJKPlayerManager.h"
 #import <WebKit/WebKit.h>
-#import "QYZYNewsPostAttentionApi.h"
-#import "QYZYNewsPostAttentionCancelApi.h"
 
 #import "QYZYLiveChatViewController.h"
-#import "QYZYPersonalhomepageViewController.h"
 
 @interface QYZYLiveDetailViewController ()<JXCategoryViewDelegate,JXCategoryListContainerViewDelegate>
 @property (nonatomic ,strong) UIView *statusView;
@@ -294,42 +291,42 @@
 }
 
 - (void)enterUserHomePage {
-    QYZYPersonalhomepageViewController *personalVc = [[QYZYPersonalhomepageViewController alloc] init];
-    personalVc.authorId = self.detailModel.userId;
-    personalVc.hidesBottomBarWhenPushed = YES;
-    [UIViewController.currentViewController.navigationController pushViewController:personalVc animated:YES];
+//    QYZYPersonalhomepageViewController *personalVc = [[QYZYPersonalhomepageViewController alloc] init];
+//    personalVc.authorId = self.detailModel.userId;
+//    personalVc.hidesBottomBarWhenPushed = YES;
+//    [UIViewController.currentViewController.navigationController pushViewController:personalVc animated:YES];
 }
 
 - (void)loadAttentionWithModel:(QYZYLiveDetailModel *)model {
-    QYZYNewsPostAttentionApi *api = [[QYZYNewsPostAttentionApi alloc] init];
-    api.userId = model.userId;
-    weakSelf(self);
-    [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        strongSelf(self);
-        self.focusLabel.text = @"已关注";
-        self.detailModel.focusStatus = @1;
-        [self updateFocusControl];
-        [self.view qyzy_showMsg:@"关注成功"];
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        strongSelf(self);
-        [self.view qyzy_showMsg:@"关注失败"];
-    }];
+//    QYZYNewsPostAttentionApi *api = [[QYZYNewsPostAttentionApi alloc] init];
+//    api.userId = model.userId;
+//    weakSelf(self);
+//    [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        strongSelf(self);
+//        self.focusLabel.text = @"已关注";
+//        self.detailModel.focusStatus = @1;
+//        [self updateFocusControl];
+//        [self.view qyzy_showMsg:@"关注成功"];
+//    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        strongSelf(self);
+//        [self.view qyzy_showMsg:@"关注失败"];
+//    }];
 }
 
 - (void)loadAttentionCancelWithModel:(QYZYLiveDetailModel *)model {
-    QYZYNewsPostAttentionCancelApi *api = [[QYZYNewsPostAttentionCancelApi alloc] init];
-    api.userId = model.userId;
-    weakSelf(self);
-    [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        strongSelf(self);
-        self.focusLabel.text = @"关注";
-        self.detailModel.focusStatus = @0;
-        [self updateFocusControl];
-        [self.view qyzy_showMsg:@"取消关注成功"];
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        strongSelf(self);
-        [self.view qyzy_showMsg:@"取消关注失败"];
-    }];
+//    QYZYNewsPostAttentionCancelApi *api = [[QYZYNewsPostAttentionCancelApi alloc] init];
+//    api.userId = model.userId;
+//    weakSelf(self);
+//    [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        strongSelf(self);
+//        self.focusLabel.text = @"关注";
+//        self.detailModel.focusStatus = @0;
+//        [self updateFocusControl];
+//        [self.view qyzy_showMsg:@"取消关注成功"];
+//    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        strongSelf(self);
+//        [self.view qyzy_showMsg:@"取消关注失败"];
+//    }];
 }
 
 #pragma mark - delegate

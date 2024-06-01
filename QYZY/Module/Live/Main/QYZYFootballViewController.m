@@ -8,13 +8,11 @@
 #import "QYZYFootballViewController.h"
 #import "QYZYScheduleHeaderVIew.h"
 #import "QYZYScheduleTableViewCell.h"
-#import "QYZYFootballViewModel.h"
 #import "QYZYPhoneLoginViewController.h"
 
 @interface QYZYFootballViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView * tableView;
 @property (nonatomic, strong) NSArray * headSectionArr;
-@property (nonatomic, strong) QYZYFootballViewModel *viewModel;
 @property (nonatomic, strong) NSMutableArray *mutableArray;
 @end
 
@@ -35,17 +33,17 @@
 #pragma mark - get network
 - (void)requestGroup {
     
-    self.viewModel.sportType = 1;
-    [self.viewModel requestGroupListWithCompletion:^(NSArray<QYZYMatchListInfoDetailModel *> * _Nonnull groupArray) {
-        [self.mutableArray removeAllObjects];
-        [self.tableView.mj_header endRefreshing];
-        
-        if (groupArray.count != 0) {
-            self.mutableArray =(NSMutableArray *)groupArray;
-            [self addConstraintsAndActions];
-        }
-        [self.tableView reloadData];
-    }];
+//    self.viewModel.sportType = 1;
+//    [self.viewModel requestGroupListWithCompletion:^(NSArray<QYZYMatchListInfoDetailModel *> * _Nonnull groupArray) {
+//        [self.mutableArray removeAllObjects];
+//        [self.tableView.mj_header endRefreshing];
+//
+//        if (groupArray.count != 0) {
+//            self.mutableArray =(NSMutableArray *)groupArray;
+//            [self addConstraintsAndActions];
+//        }
+//        [self.tableView reloadData];
+//    }];
     
 }
 
@@ -62,16 +60,16 @@
     }
     
     
-    [self.viewModel requestappointmenttothegameCompletion:^(NSString * _Nullable msg) {
-        if (!msg) {
-            [self.view qyzy_showMsg:isBook ? @"预约成功!" : @"取消成功!"];
-            model.userIsAppointment = !model.userIsAppointment;
-            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-        }
-        else {
-            [self.view qyzy_showMsg:msg];
-        }
-    } isBook:isBook];
+//    [self.viewModel requestappointmenttothegameCompletion:^(NSString * _Nullable msg) {
+//        if (!msg) {
+//            [self.view qyzy_showMsg:isBook ? @"预约成功!" : @"取消成功!"];
+//            model.userIsAppointment = !model.userIsAppointment;
+//            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+//        }
+//        else {
+//            [self.view qyzy_showMsg:msg];
+//        }
+//    } isBook:isBook];
 }
 
 
@@ -109,8 +107,8 @@
     
     [cell setActionBlock:^{
         NSLog(@"点击预约");
-        self.viewModel.leagueId = (NSNumber *)model.matchId;
-        [weakself requestappointmenttotheWithIndexPath:indexPath model:model];
+//        self.viewModel.leagueId = (NSNumber *)model.matchId;
+//        [weakself requestappointmenttotheWithIndexPath:indexPath model:model];
     }];
     
     return cell;
@@ -192,14 +190,7 @@
     return _mutableArray;
 }
 
-- (QYZYFootballViewModel *)viewModel
-{
-    if (!_viewModel) {
-        _viewModel = [[QYZYFootballViewModel alloc]init];
-    }
-    
-    return _viewModel;
-}
+
 
 
 - (NSString*)getCurrentTimes {
