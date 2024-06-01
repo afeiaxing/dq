@@ -11,12 +11,7 @@
 #import "QYZYEmptyCell.h"
 #import "QYZYCommentInputView.h"
 
-#import "QYZYNewsCommentSubApi.h"
-#import "QYZYNewsCommentInspectionApi.h"
-#import "QYZYNewsSaveCommentApi.h"
-#import "QYZYNewsLikeApi.h"
-#import "QYZYNewsFavoritesApi.h"
-#import "QYZYNewsFavoritesRemoveApi.h"
+
 
 #import "QYZYNewsCommentSubModel.h"
 #import "QYZYNewsCommentSubParentModel.h"
@@ -226,77 +221,77 @@
 }
 
 - (void)loadDataAtPage:(NSInteger)pageNum {
-    QYZYNewsCommentSubApi *api = [[QYZYNewsCommentSubApi alloc] init];
-    api.pageNum = pageNum;
-    api.pageSize = 15;
-    api.commentId = self.commentId;
-    [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [self.tableView.mj_header endRefreshing];
-        [self.tableView.mj_footer endRefreshing];
-        QYZYNewsCommentSubModel *model = [QYZYNewsCommentSubModel yy_modelWithJSON:[request.responseObject valueForKey:@"data"]];
-                
-        self.parentModel = model.parent;
-        
-        NSArray *models = [NSArray yy_modelArrayWithClass:QYZYNewsCommentSubSonCommentsModel.class json:[[[request.responseObject valueForKey:@"data"] valueForKey:@"sonComments"] valueForKey:@"list"]];
-        if ([self.tableView.mj_header isRefreshing]) {
-            [self.tableView.mj_header endRefreshing];
-            self.sonComments = models.mutableCopy;
-        }else {
-            [self.tableView.mj_footer endRefreshing];
-            [self.sonComments addObjectsFromArray:models.mutableCopy];
-        }
-
-        if (models.count < 15) {
-            self.tableView.mj_footer.hidden = YES;
-        }else {
-            self.tableView.mj_footer.hidden = NO;
-        }
-        [self.tableView reloadData];
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [self qyzy_showMsg:request.error.localizedDescription];
-    }];
+//    QYZYNewsCommentSubApi *api = [[QYZYNewsCommentSubApi alloc] init];
+//    api.pageNum = pageNum;
+//    api.pageSize = 15;
+//    api.commentId = self.commentId;
+//    [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        [self.tableView.mj_header endRefreshing];
+//        [self.tableView.mj_footer endRefreshing];
+//        QYZYNewsCommentSubModel *model = [QYZYNewsCommentSubModel yy_modelWithJSON:[request.responseObject valueForKey:@"data"]];
+//
+//        self.parentModel = model.parent;
+//
+//        NSArray *models = [NSArray yy_modelArrayWithClass:QYZYNewsCommentSubSonCommentsModel.class json:[[[request.responseObject valueForKey:@"data"] valueForKey:@"sonComments"] valueForKey:@"list"]];
+//        if ([self.tableView.mj_header isRefreshing]) {
+//            [self.tableView.mj_header endRefreshing];
+//            self.sonComments = models.mutableCopy;
+//        }else {
+//            [self.tableView.mj_footer endRefreshing];
+//            [self.sonComments addObjectsFromArray:models.mutableCopy];
+//        }
+//
+//        if (models.count < 15) {
+//            self.tableView.mj_footer.hidden = YES;
+//        }else {
+//            self.tableView.mj_footer.hidden = NO;
+//        }
+//        [self.tableView reloadData];
+//    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        [self qyzy_showMsg:request.error.localizedDescription];
+//    }];
     
 }
 
 - (void)loadSaveComment:(NSString *)msg {
-    QYZYNewsSaveCommentApi *api = [QYZYNewsSaveCommentApi new];
-    api.content = msg;
-    api.newsId = self.newsId;
-    api.replyId = self.parentModel.ID;
-    [self qyzy_showMsg:@"发布中!"];
-    [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [self qyzy_showMsg:@"发布成功"];
-        [self loadDataAtPage:1];
-        self.commendInputView.textView.text = @"";
-        [self endEditing:YES];
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [self qyzy_showMsg:request.error.localizedDescription];
-    }];
+//    QYZYNewsSaveCommentApi *api = [QYZYNewsSaveCommentApi new];
+//    api.content = msg;
+//    api.newsId = self.newsId;
+//    api.replyId = self.parentModel.ID;
+//    [self qyzy_showMsg:@"发布中!"];
+//    [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        [self qyzy_showMsg:@"发布成功"];
+//        [self loadDataAtPage:1];
+//        self.commendInputView.textView.text = @"";
+//        [self endEditing:YES];
+//    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        [self qyzy_showMsg:request.error.localizedDescription];
+//    }];
 }
 
 - (void)textInspection:(NSString *)msg {
-    QYZYNewsCommentInspectionApi *api = [QYZYNewsCommentInspectionApi new];
-    api.text = msg;
-    [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        id data = request.responseObject;
-        if ([data isKindOfClass:[NSDictionary class]]) {
-            id subData = [data valueForKey:@"data"];
-            if ([subData isKindOfClass:[NSString class]]) {
-                NSString *str = subData;
-                if (str.length == 0) {
-                    [self loadSaveComment:msg];
-                }else {
-                    [self qyzy_showMsg:str];
-                }
-            }else {
-                if (subData == nil ||subData == [NSNull null]) {
-                    [self loadSaveComment:msg];
-                }
-            }
-        }
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [self qyzy_showMsg:request.error.localizedDescription];
-    }];
+//    QYZYNewsCommentInspectionApi *api = [QYZYNewsCommentInspectionApi new];
+//    api.text = msg;
+//    [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        id data = request.responseObject;
+//        if ([data isKindOfClass:[NSDictionary class]]) {
+//            id subData = [data valueForKey:@"data"];
+//            if ([subData isKindOfClass:[NSString class]]) {
+//                NSString *str = subData;
+//                if (str.length == 0) {
+//                    [self loadSaveComment:msg];
+//                }else {
+//                    [self qyzy_showMsg:str];
+//                }
+//            }else {
+//                if (subData == nil ||subData == [NSNull null]) {
+//                    [self loadSaveComment:msg];
+//                }
+//            }
+//        }
+//    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        [self qyzy_showMsg:request.error.localizedDescription];
+//    }];
 }
 
 #pragma mark - UITableViewDelegate && UITableViewDataSource

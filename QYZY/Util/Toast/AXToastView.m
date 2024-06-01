@@ -100,7 +100,7 @@
         UIImage *image = [[UIImage imageNamed:@"common_loading"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         _loadingIV = [[UIImageView alloc] init];
         _loadingIV.image = image;
-        _loadingIV.tintColor = rgb(248, 43, 160);
+        _loadingIV.tintColor = AXSelectColor;
     }
     return _loadingIV;
 }
@@ -110,7 +110,7 @@
         _toastLabel = [[UILabel alloc] init];
         _toastLabel.textColor = AXSelectColor;
         _toastLabel.font = [UIFont systemFontOfSize:14];
-        _toastLabel.text = @"努力加载中";
+        _toastLabel.text = AXToastText;
     }
     return _toastLabel;
 }

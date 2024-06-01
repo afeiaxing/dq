@@ -6,13 +6,8 @@
 //
 
 #import "QYZYPhoneLoginViewController.h"
-#import "QYZYPasswordLoginApi.h"
 #import "QYZYUserModel.h"
-#import "QYZYPasswordLoginViewController.h"
-#import "QYZYSendSMSCodeApi.h"
 #import "QYZYPhoneLoginApi.h"
-#import "QYZYUsesProtocolViewController.h"
-#import "QYZYSettingPasswordViewController.h"
 
 
 NSString * const QYZYLoginSuccessNotification = @"com.qyzy.login.success";
@@ -54,7 +49,7 @@ NSString * const QYZYLoginSuccessNotification = @"com.qyzy.login.success";
 }
 
 - (IBAction)passwordLoginBtnDidClicked:(UIButton *)sender {
-    [self presentViewController:[QYZYPasswordLoginViewController new] animated:true completion:nil];
+//    [self presentViewController:[QYZYPasswordLoginViewController new] animated:true completion:nil];
 }
 
 - (IBAction)codeBtnDidClicked:(UIButton *)sender {
@@ -65,16 +60,7 @@ NSString * const QYZYLoginSuccessNotification = @"com.qyzy.login.success";
     }
     
     self.hasGetCode = true;
-    
-    QYZYSendSMSCodeApi *api = [QYZYSendSMSCodeApi new];
-    api.phone = self.userNameTF.text.qmui_trim;
-    api.type = @"1";
-    [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [self countDownCodeBtn:sender];
-        [self.view qyzy_showMsg:@"验证码发送成功"];
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [self.view qyzy_showMsg:request.error.localizedDescription];
-    }];
+
 }
 
 - (IBAction)agreeBtnDidClicked:(UIButton *)sender {
@@ -84,10 +70,10 @@ NSString * const QYZYLoginSuccessNotification = @"com.qyzy.login.success";
 }
 
 - (IBAction)serviceBtnDidCicked:(UIButton *)sender {
-    QYZYUsesProtocolViewController *vc = [QYZYUsesProtocolViewController new];
-    vc.vcTitle = @"用户协议";
-    vc.url = [[NSBundle mainBundle] URLForResource:@"qwty" withExtension:@"html"];
-    [self presentViewController:vc animated:true completion:nil];
+//    QYZYUsesProtocolViewController *vc = [QYZYUsesProtocolViewController new];
+//    vc.vcTitle = @"用户协议";
+//    vc.url = [[NSBundle mainBundle] URLForResource:@"qwty" withExtension:@"html"];
+//    [self presentViewController:vc animated:true completion:nil];
 }
 
 
@@ -123,10 +109,10 @@ NSString * const QYZYLoginSuccessNotification = @"com.qyzy.login.success";
 
         
         if ([userModel.isRes boolValue] == true) {
-            QYZYSettingPasswordViewController *vc = [QYZYSettingPasswordViewController new];
-            vc.userName = self.userNameTF.text.qmui_trim;
-            vc.ticket = userModel.ticket;
-            [self presentViewController:vc animated:true completion:nil];
+//            QYZYSettingPasswordViewController *vc = [QYZYSettingPasswordViewController new];
+//            vc.userName = self.userNameTF.text.qmui_trim;
+//            vc.ticket = userModel.ticket;
+//            [self presentViewController:vc animated:true completion:nil];
         } else {
             [UIView qyzy_showMsg:@"登录成功"];
             [self dismissViewControllerAnimated:true completion:nil];

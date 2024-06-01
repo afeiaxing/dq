@@ -14,7 +14,6 @@
 #import "QYZYNewsPostAttentionCancelApi.h"
 
 #import "QYZYLiveMoreViewController.h"
-#import "QYZYLiveRankViewController.h"
 #import "QYZYLiveChatViewController.h"
 #import "QYZYLiveAnchorViewController.h"
 #import "QYZYPersonalhomepageViewController.h"
@@ -31,7 +30,6 @@
 @property (nonatomic ,strong) JXCategoryTitleView *categoryView;
 @property (nonatomic ,strong) JXCategoryListContainerView *containerView;
 @property (nonatomic ,strong) QYZYLiveMoreViewController *moreVC;
-@property (nonatomic ,strong) QYZYLiveRankViewController *rankVC;
 @property (nonatomic ,strong) QYZYLiveChatViewController *chatVC;
 @property (nonatomic ,strong) QYZYLiveAnchorViewController *anchorVC;
 @property (nonatomic ,strong) UIView *lineView;
@@ -345,9 +343,9 @@
     if (index == 3) {
         return self.moreVC;
     }
-    else if (index == 2) {
-        return self.rankVC;
-    }
+//    else if (index == 2) {
+//        return self.rankVC;
+//    }
     else if (index == 0) {
         return self.chatVC;
     }
@@ -476,14 +474,6 @@
         _moreVC.anchorId = self.anchorId;
     }
     return _moreVC;
-}
-
-- (QYZYLiveRankViewController *)rankVC {
-    if (!_rankVC) {
-        _rankVC = [[QYZYLiveRankViewController alloc] init];
-        _rankVC.anchorId = self.anchorId;
-    }
-    return _rankVC;
 }
 
 - (QYZYLiveChatViewController *)chatVC {

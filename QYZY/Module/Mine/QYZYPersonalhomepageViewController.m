@@ -12,7 +12,6 @@
 #import "QYZYPiecewiseTableViewCell.h"
 #import "QYZYNewsTableViewCell.h"
 #import "QYZYMineModel.h"
-#import "QYZYNewsDetailViewController.h"
 #import "QYZYCircleContentModel.h"
 #import "QYZYCircleCell.h"
 #import "QYZYNewsPostAttentionCancelApi.h"
@@ -254,13 +253,13 @@
         }
         else
         {
-            QYZYNewsDetailViewController *vc = [[QYZYNewsDetailViewController alloc] initWithNibName:NSStringFromClass(QYZYNewsDetailViewController.class) bundle:nil];
-            NSMutableArray *array = [NSMutableArray array];
-            [array addObjectsFromArray:self.topNewsModels];
-            [array addObjectsFromArray:self.newsModels];
-            QYZYTopBlocksModel *model = array[indexPath.row];
-            vc.newsId = model.newsId;
-            [self.navigationController pushViewController:vc animated:YES];
+//            QYZYNewsDetailViewController *vc = [[QYZYNewsDetailViewController alloc] initWithNibName:NSStringFromClass(QYZYNewsDetailViewController.class) bundle:nil];
+//            NSMutableArray *array = [NSMutableArray array];
+//            [array addObjectsFromArray:self.topNewsModels];
+//            [array addObjectsFromArray:self.newsModels];
+//            QYZYTopBlocksModel *model = array[indexPath.row];
+//            vc.newsId = model.newsId;
+//            [self.navigationController pushViewController:vc animated:YES];
         }
        
     }

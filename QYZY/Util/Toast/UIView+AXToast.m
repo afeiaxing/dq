@@ -15,14 +15,14 @@
 }
 
 - (void)ax_showLoading {
-    [self ax_showLoadingToast:@"努力加载中"
+    [self ax_showLoadingToast:AXToastText
                          type:AXToastTypeLoadingWithBG
                        offset:0
                      duration:0];
 }
 
 - (void)ax_showNoBGLoading{
-    [self ax_showLoadingToast:@"努力加载中"
+    [self ax_showLoadingToast:AXToastText
                          type:AXToastTypeLoadingWithoutBG
                        offset:0
                      duration:0];

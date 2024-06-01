@@ -81,8 +81,6 @@
 		55BF55D228E9C16B00DB476B /* QYZYLiveAnchorHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BF55D128E9C16B00DB476B /* QYZYLiveAnchorHeaderView.m */; };
 		55BF55D428E9C1AC00DB476B /* QYZYLiveAnchorHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55BF55D328E9C1AC00DB476B /* QYZYLiveAnchorHeaderView.xib */; };
 		55D2972328EAB86800C80738 /* QYZYIAPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D2972228EAB86800C80738 /* QYZYIAPManager.m */; };
-		55D2972628EACF2500C80738 /* QYZYLiveFocusControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D2972528EACF2500C80738 /* QYZYLiveFocusControl.m */; };
-		55D2972828EACF3C00C80738 /* QYZYLiveFocusControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55D2972728EACF3C00C80738 /* QYZYLiveFocusControl.xib */; };
 		55D2972F28EAE58800C80738 /* QYZYLiveDynamicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D2972D28EAE58800C80738 /* QYZYLiveDynamicViewController.m */; };
 		55D2973028EAE58800C80738 /* QYZYLiveDynamicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55D2972E28EAE58800C80738 /* QYZYLiveDynamicViewController.xib */; };
 		55D2973328EAE8E200C80738 /* QYZYLiveDynamicApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D2973228EAE8E200C80738 /* QYZYLiveDynamicApi.m */; };
@@ -100,11 +98,6 @@
 		55E0D52628F8379800DDAAB6 /* QYZYMatchOverPhraseApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E0D52528F8379800DDAAB6 /* QYZYMatchOverPhraseApi.m */; };
 		55E0D52C28F8386400DDAAB6 /* QYZYMatchOverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E0D52B28F8386400DDAAB6 /* QYZYMatchOverModel.m */; };
 		55E0D52F28F83D6100DDAAB6 /* QYZYMatchOverEventApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E0D52E28F83D6100DDAAB6 /* QYZYMatchOverEventApi.m */; };
-		55E2393528E7E77F003ED27E /* QYZYLiveRankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E2393428E7E77F003ED27E /* QYZYLiveRankViewController.m */; };
-		55E2393928E7EC31003ED27E /* QYZYLiveRankSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E2393728E7EC31003ED27E /* QYZYLiveRankSubViewController.m */; };
-		55E2393A28E7EC31003ED27E /* QYZYLiveRankSubViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55E2393828E7EC31003ED27E /* QYZYLiveRankSubViewController.xib */; };
-		55E2393E28E7ECA6003ED27E /* QYZYLiveRankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E2393C28E7ECA6003ED27E /* QYZYLiveRankCell.m */; };
-		55E2393F28E7ECA6003ED27E /* QYZYLiveRankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55E2393D28E7ECA6003ED27E /* QYZYLiveRankCell.xib */; };
 		55E2394528E7F70B003ED27E /* QYZYLiveRankDayApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E2394428E7F70B003ED27E /* QYZYLiveRankDayApi.m */; };
 		55E2394B28E8134F003ED27E /* QYZYLiveRankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E2394A28E8134F003ED27E /* QYZYLiveRankModel.m */; };
 		55E2394F28E8296B003ED27E /* QYZYLiveChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E2394E28E8296B003ED27E /* QYZYLiveChatViewController.m */; };
@@ -188,9 +181,6 @@
 		AE4DED7F28EABA1F00CD01C3 /* QYZYNewsPostAttentionApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4DED7E28EABA1F00CD01C3 /* QYZYNewsPostAttentionApi.m */; };
 		AE4DED8228EABA3D00CD01C3 /* QYZYNewsPostAttentionCancelApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4DED8128EABA3D00CD01C3 /* QYZYNewsPostAttentionCancelApi.m */; };
 		AE4DED8B28EAE0FA00CD01C3 /* QYZYNewsCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4DED8A28EAE0FA00CD01C3 /* QYZYNewsCommentModel.m */; };
-		AE4DED8E28EAE15A00CD01C3 /* QYZYNewsCommentsApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4DED8D28EAE15A00CD01C3 /* QYZYNewsCommentsApi.m */; };
-		AE4DED9128EAF39E00CD01C3 /* QYZYNewsCommentInspectionApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4DED9028EAF39E00CD01C3 /* QYZYNewsCommentInspectionApi.m */; };
-		AE4DED9428EAFB4600CD01C3 /* QYZYNewsSaveCommentApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4DED9328EAFB4600CD01C3 /* QYZYNewsSaveCommentApi.m */; };
 		AE4DED9A28EB109200CD01C3 /* QYZYCommendNewsView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4DED9928EB109200CD01C3 /* QYZYCommendNewsView.m */; };
 		AE65E0DF290780E00053CA49 /* QYZYMatchAnalyzeSuperCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE65E0DE290780E00053CA49 /* QYZYMatchAnalyzeSuperCell.m */; };
 		AE65E0E4290781A20053CA49 /* QYZYIntegralCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE65E0E3290781A20053CA49 /* QYZYIntegralCell.m */; };
@@ -199,15 +189,12 @@
 		AE65E0F32907DDBB0053CA49 /* QYZYMatchOverHelpView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE65E0F22907DDBB0053CA49 /* QYZYMatchOverHelpView.m */; };
 		AE65E0F72907E2A10053CA49 /* QYZYMatchOverHelpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE65E0F52907E2A10053CA49 /* QYZYMatchOverHelpCell.m */; };
 		AE65E0F82907E2A10053CA49 /* QYZYMatchOverHelpCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE65E0F62907E2A10053CA49 /* QYZYMatchOverHelpCell.xib */; };
-		AE68007428E93E0D0084E652 /* QYZYNewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE68007228E93E0D0084E652 /* QYZYNewsDetailViewController.m */; };
 		AE68008128E94AF70084E652 /* QYZYTotalNewsLabelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE68008028E94AF70084E652 /* QYZYTotalNewsLabelModel.m */; };
 		AE68008428E94B610084E652 /* QYZYTotalNewsUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AE68008328E94B610084E652 /* QYZYTotalNewsUtil.m */; };
 		AE68008728E96E880084E652 /* QYZYTotalNewsApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AE68008628E96E880084E652 /* QYZYTotalNewsApi.m */; };
-		AE68008E28E994AC0084E652 /* QYZYNewsDetailApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AE68008D28E994AC0084E652 /* QYZYNewsDetailApi.m */; };
 		AE68009228E9AF180084E652 /* QYZYNewsDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE68009128E9AF180084E652 /* QYZYNewsDetailModel.m */; };
 		AE68009528E9B1D70084E652 /* QYZYNewsDetailNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE68009428E9B1D70084E652 /* QYZYNewsDetailNewsModel.m */; };
 		AE68009828E9B1E60084E652 /* QYZYNewsDetailCurrentNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE68009728E9B1E60084E652 /* QYZYNewsDetailCurrentNewsModel.m */; };
-		AE6800A228E9C1920084E652 /* QYZYNewsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE6800A128E9C1920084E652 /* QYZYNewsDetailViewController.xib */; };
 		AE6800AA28E9C1F00084E652 /* QYZYNewsDetailHeadSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE6800A928E9C1F00084E652 /* QYZYNewsDetailHeadSectionView.xib */; };
 		AE78C0BA29067662006A70A3 /* QYZYHistoryHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE78C0B929067662006A70A3 /* QYZYHistoryHeaderView.m */; };
 		AE78C0BD29067678006A70A3 /* QYZYHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE78C0BC29067678006A70A3 /* QYZYHistoryCell.m */; };
@@ -219,13 +206,9 @@
 		AE9FB1AC29064A4300B2033A /* QYZYAnalyzeHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9FB1AB29064A4300B2033A /* QYZYAnalyzeHeaderFooterView.m */; };
 		AE9FB1AE29064A5600B2033A /* QYZYAnalyzeHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE9FB1AD29064A5600B2033A /* QYZYAnalyzeHeaderFooterView.xib */; };
 		AE9FB1B9290656A800B2033A /* QYZYIntegralHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9FB1B8290656A800B2033A /* QYZYIntegralHeaderView.m */; };
-		AEF7067D28EBD97E003FEEFD /* QYZYNewsCommentSubApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF7067C28EBD97E003FEEFD /* QYZYNewsCommentSubApi.m */; };
 		AEF7068028EBDD81003FEEFD /* QYZYNewsCommentSubModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF7067F28EBDD81003FEEFD /* QYZYNewsCommentSubModel.m */; };
 		AEF7068328EBDDAA003FEEFD /* QYZYNewsCommentSubParentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF7068228EBDDAA003FEEFD /* QYZYNewsCommentSubParentModel.m */; };
 		AEF7068628EBDDD7003FEEFD /* QYZYNewsCommentSubSonCommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF7068528EBDDD7003FEEFD /* QYZYNewsCommentSubSonCommentsModel.m */; };
-		AEF7068928EC2EE8003FEEFD /* QYZYNewsLikeApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF7068828EC2EE8003FEEFD /* QYZYNewsLikeApi.m */; };
-		AEF7068C28EC336F003FEEFD /* QYZYNewsFavoritesApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF7068B28EC336F003FEEFD /* QYZYNewsFavoritesApi.m */; };
-		AEF7068F28EC3386003FEEFD /* QYZYNewsFavoritesRemoveApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF7068E28EC3386003FEEFD /* QYZYNewsFavoritesRemoveApi.m */; };
 		AEF7069228EC4738003FEEFD /* QYZYCommentInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF7069128EC4738003FEEFD /* QYZYCommentInputView.m */; };
 		B11C0A5628E9A702001997E8 /* QYZYPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B11C0A5528E9A702001997E8 /* QYZYPhotoManager.m */; };
 		B14A63B728EA919700476EAE /* QYZYPiecewiseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B14A63B628EA919700476EAE /* QYZYPiecewiseTableViewCell.m */; };
@@ -323,8 +306,6 @@
 		F37E5EAB2C04A92D0049FAE1 /* AXMatchListDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5EAA2C04A92D0049FAE1 /* AXMatchListDateView.m */; };
 		F39766022BF3988300E4C861 /* AXNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F39766012BF3988300E4C861 /* AXNetWorkManager.m */; };
 		F39766082BF3993A00E4C861 /* QYZYDataTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F39766072BF3993A00E4C861 /* QYZYDataTools.m */; };
-		F52A4E0828EC18FA002358BC /* QYZYSettingPaswwordApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F52A4E0728EC18FA002358BC /* QYZYSettingPaswwordApi.m */; };
-		F550C7D528F99854000FD3DB /* QYZYGetSetPasswordTicketApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F550C7D428F99854000FD3DB /* QYZYGetSetPasswordTicketApi.m */; };
 		F55103F828E33795001E9BC5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F55103F728E33795001E9BC5 /* AppDelegate.m */; };
 		F551040328E33798001E9BC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F551040228E33798001E9BC5 /* Assets.xcassets */; };
 		F551040628E33798001E9BC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F551040428E33798001E9BC5 /* LaunchScreen.storyboard */; };
@@ -344,16 +325,8 @@
 		F560B5A928E8709200989DE4 /* QYZYTopBlocksModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F560B5A828E8709200989DE4 /* QYZYTopBlocksModel.m */; };
 		F58DF5F028EA992F00CFF18A /* QYZYPhoneLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F58DF5ED28EA992E00CFF18A /* QYZYPhoneLoginViewController.m */; };
 		F58DF5F128EA992F00CFF18A /* QYZYPhoneLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F58DF5EF28EA992F00CFF18A /* QYZYPhoneLoginViewController.xib */; };
-		F58DF5F528EA99D300CFF18A /* QYZYPasswordLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F58DF5F328EA99D300CFF18A /* QYZYPasswordLoginViewController.m */; };
-		F58DF5F628EA99D300CFF18A /* QYZYPasswordLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F58DF5F428EA99D300CFF18A /* QYZYPasswordLoginViewController.xib */; };
-		F58DF5F928EAA5B900CFF18A /* QYZYSendSMSCodeApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F58DF5F828EAA5B900CFF18A /* QYZYSendSMSCodeApi.m */; };
 		F58DF5FC28EAA85700CFF18A /* QYZYPhoneLoginApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F58DF5FB28EAA85700CFF18A /* QYZYPhoneLoginApi.m */; };
-		F58DF60428EAFB4C00CFF18A /* QYZYUsesProtocolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F58DF60228EAFB4C00CFF18A /* QYZYUsesProtocolViewController.m */; };
-		F58DF60528EAFB4C00CFF18A /* QYZYUsesProtocolViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F58DF60328EAFB4C00CFF18A /* QYZYUsesProtocolViewController.xib */; };
 		F58DF60728EB018300CFF18A /* qwty.html in Resources */ = {isa = PBXBuildFile; fileRef = F58DF60628EB018300CFF18A /* qwty.html */; };
-		F58DF60828EB09C000CFF18A /* QYZYPasswordLoginApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E6210D28E5976D00EBB324 /* QYZYPasswordLoginApi.m */; };
-		F58DF60C28EB0CB900CFF18A /* QYZYSettingPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F58DF60A28EB0CB900CFF18A /* QYZYSettingPasswordViewController.m */; };
-		F58DF60D28EB0CB900CFF18A /* QYZYSettingPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F58DF60B28EB0CB900CFF18A /* QYZYSettingPasswordViewController.xib */; };
 		F5CB2BB428E9D31D00DD2AC8 /* UIView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F5CB2BB328E9D31D00DD2AC8 /* UIView+Extensions.m */; };
 /* End PBXBuildFile section */
 
@@ -501,9 +474,6 @@
 		55BF55D328E9C1AC00DB476B /* QYZYLiveAnchorHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QYZYLiveAnchorHeaderView.xib; sourceTree = "<group>"; };
 		55D2972128EAB86800C80738 /* QYZYIAPManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYIAPManager.h; sourceTree = "<group>"; };
 		55D2972228EAB86800C80738 /* QYZYIAPManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYIAPManager.m; sourceTree = "<group>"; };
-		55D2972428EACF2500C80738 /* QYZYLiveFocusControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYLiveFocusControl.h; sourceTree = "<group>"; };
-		55D2972528EACF2500C80738 /* QYZYLiveFocusControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYLiveFocusControl.m; sourceTree = "<group>"; };
-		55D2972728EACF3C00C80738 /* QYZYLiveFocusControl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QYZYLiveFocusControl.xib; sourceTree = "<group>"; };
 		55D2972C28EAE58800C80738 /* QYZYLiveDynamicViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYLiveDynamicViewController.h; sourceTree = "<group>"; };
 		55D2972D28EAE58800C80738 /* QYZYLiveDynamicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYLiveDynamicViewController.m; sourceTree = "<group>"; };
 		55D2972E28EAE58800C80738 /* QYZYLiveDynamicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QYZYLiveDynamicViewController.xib; sourceTree = "<group>"; };
@@ -534,14 +504,6 @@
 		55E0D52B28F8386400DDAAB6 /* QYZYMatchOverModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYMatchOverModel.m; sourceTree = "<group>"; };
 		55E0D52D28F83D6100DDAAB6 /* QYZYMatchOverEventApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYMatchOverEventApi.h; sourceTree = "<group>"; };
 		55E0D52E28F83D6100DDAAB6 /* QYZYMatchOverEventApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYMatchOverEventApi.m; sourceTree = "<group>"; };
-		55E2393328E7E77F003ED27E /* QYZYLiveRankViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYLiveRankViewController.h; sourceTree = "<group>"; };
-		55E2393428E7E77F003ED27E /* QYZYLiveRankViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYLiveRankViewController.m; sourceTree = "<group>"; };
-		55E2393628E7EC31003ED27E /* QYZYLiveRankSubViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYLiveRankSubViewController.h; sourceTree = "<group>"; };
-		55E2393728E7EC31003ED27E /* QYZYLiveRankSubViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYLiveRankSubViewController.m; sourceTree = "<group>"; };
-		55E2393828E7EC31003ED27E /* QYZYLiveRankSubViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QYZYLiveRankSubViewController.xib; sourceTree = "<group>"; };
-		55E2393B28E7ECA6003ED27E /* QYZYLiveRankCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYLiveRankCell.h; sourceTree = "<group>"; };
-		55E2393C28E7ECA6003ED27E /* QYZYLiveRankCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYLiveRankCell.m; sourceTree = "<group>"; };
-		55E2393D28E7ECA6003ED27E /* QYZYLiveRankCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QYZYLiveRankCell.xib; sourceTree = "<group>"; };
 		55E2394328E7F70B003ED27E /* QYZYLiveRankDayApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYLiveRankDayApi.h; sourceTree = "<group>"; };
 		55E2394428E7F70B003ED27E /* QYZYLiveRankDayApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYLiveRankDayApi.m; sourceTree = "<group>"; };
 		55E2394928E8134F003ED27E /* QYZYLiveRankModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYLiveRankModel.h; sourceTree = "<group>"; };
@@ -699,12 +661,6 @@
 		AE4DED8128EABA3D00CD01C3 /* QYZYNewsPostAttentionCancelApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYNewsPostAttentionCancelApi.m; sourceTree = "<group>"; };
 		AE4DED8928EAE0FA00CD01C3 /* QYZYNewsCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYZYNewsCommentModel.h; sourceTree = "<group>"; };
 		AE4DED8A28EAE0FA00CD01C3 /* QYZYNewsCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYZYNewsCommentModel.m; sourceTree = "<group>"; };
-		AE4DED8C28EAE15A00CD01C3 /* QYZYNewsCommentsApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYZYNewsCommentsApi.h; sourceTree = "<group>"; };
-		AE4DED8D28EAE15A00CD01C3 /* QYZYNewsCommentsApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYZYNewsCommentsApi.m; sourceTree = "<group>"; };
-		AE4DED8F28EAF39E00CD01C3 /* QYZYNewsCommentInspectionApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYNewsCommentInspectionApi.h; sourceTree = "<group>"; };
-		AE4DED9028EAF39E00CD01C3 /* QYZYNewsCommentInspectionApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYNewsCommentInspectionApi.m; sourceTree = "<group>"; };
-		AE4DED9228EAFB4600CD01C3 /* QYZYNewsSaveCommentApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYNewsSaveCommentApi.h; sourceTree = "<group>"; };
-		AE4DED9328EAFB4600CD01C3 /* QYZYNewsSaveCommentApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYNewsSaveCommentApi.m; sourceTree = "<group>"; };
 		AE4DED9828EB109200CD01C3 /* QYZYCommendNewsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYCommendNewsView.h; sourceTree = "<group>"; };
 		AE4DED9928EB109200CD01C3 /* QYZYCommendNewsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYCommendNewsView.m; sourceTree = "<group>"; };
 		AE65E0DD290780E00053CA49 /* QYZYMatchAnalyzeSuperCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYZYMatchAnalyzeSuperCell.h; sourceTree = "<group>"; };
@@ -720,23 +676,18 @@
 		AE65E0F42907E2A10053CA49 /* QYZYMatchOverHelpCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYMatchOverHelpCell.h; sourceTree = "<group>"; };
 		AE65E0F52907E2A10053CA49 /* QYZYMatchOverHelpCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYMatchOverHelpCell.m; sourceTree = "<group>"; };
 		AE65E0F62907E2A10053CA49 /* QYZYMatchOverHelpCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QYZYMatchOverHelpCell.xib; sourceTree = "<group>"; };
-		AE68007128E93E0D0084E652 /* QYZYNewsDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYNewsDetailViewController.h; sourceTree = "<group>"; };
-		AE68007228E93E0D0084E652 /* QYZYNewsDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYNewsDetailViewController.m; sourceTree = "<group>"; };
 		AE68007F28E94AF70084E652 /* QYZYTotalNewsLabelModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYTotalNewsLabelModel.h; sourceTree = "<group>"; };
 		AE68008028E94AF70084E652 /* QYZYTotalNewsLabelModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYTotalNewsLabelModel.m; sourceTree = "<group>"; };
 		AE68008228E94B610084E652 /* QYZYTotalNewsUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYTotalNewsUtil.h; sourceTree = "<group>"; };
 		AE68008328E94B610084E652 /* QYZYTotalNewsUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYTotalNewsUtil.m; sourceTree = "<group>"; };
 		AE68008528E96E880084E652 /* QYZYTotalNewsApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYTotalNewsApi.h; sourceTree = "<group>"; };
 		AE68008628E96E880084E652 /* QYZYTotalNewsApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYTotalNewsApi.m; sourceTree = "<group>"; };
-		AE68008C28E994AC0084E652 /* QYZYNewsDetailApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYNewsDetailApi.h; sourceTree = "<group>"; };
-		AE68008D28E994AC0084E652 /* QYZYNewsDetailApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYNewsDetailApi.m; sourceTree = "<group>"; };
 		AE68009028E9AF180084E652 /* QYZYNewsDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYNewsDetailModel.h; sourceTree = "<group>"; };
 		AE68009128E9AF180084E652 /* QYZYNewsDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYNewsDetailModel.m; sourceTree = "<group>"; };
 		AE68009328E9B1D70084E652 /* QYZYNewsDetailNewsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYNewsDetailNewsModel.h; sourceTree = "<group>"; };
 		AE68009428E9B1D70084E652 /* QYZYNewsDetailNewsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYNewsDetailNewsModel.m; sourceTree = "<group>"; };
 		AE68009628E9B1E60084E652 /* QYZYNewsDetailCurrentNewsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYNewsDetailCurrentNewsModel.h; sourceTree = "<group>"; };
 		AE68009728E9B1E60084E652 /* QYZYNewsDetailCurrentNewsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYNewsDetailCurrentNewsModel.m; sourceTree = "<group>"; };
-		AE6800A128E9C1920084E652 /* QYZYNewsDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QYZYNewsDetailViewController.xib; sourceTree = "<group>"; };
 		AE6800A928E9C1F00084E652 /* QYZYNewsDetailHeadSectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QYZYNewsDetailHeadSectionView.xib; sourceTree = "<group>"; };
 		AE78C0B829067662006A70A3 /* QYZYHistoryHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYHistoryHeaderView.h; sourceTree = "<group>"; };
 		AE78C0B929067662006A70A3 /* QYZYHistoryHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYHistoryHeaderView.m; sourceTree = "<group>"; };
@@ -757,20 +708,12 @@
 		AE9FB1AD29064A5600B2033A /* QYZYAnalyzeHeaderFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QYZYAnalyzeHeaderFooterView.xib; sourceTree = "<group>"; };
 		AE9FB1B7290656A800B2033A /* QYZYIntegralHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYIntegralHeaderView.h; sourceTree = "<group>"; };
 		AE9FB1B8290656A800B2033A /* QYZYIntegralHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYIntegralHeaderView.m; sourceTree = "<group>"; };
-		AEF7067B28EBD97E003FEEFD /* QYZYNewsCommentSubApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYNewsCommentSubApi.h; sourceTree = "<group>"; };
-		AEF7067C28EBD97E003FEEFD /* QYZYNewsCommentSubApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYNewsCommentSubApi.m; sourceTree = "<group>"; };
 		AEF7067E28EBDD81003FEEFD /* QYZYNewsCommentSubModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYNewsCommentSubModel.h; sourceTree = "<group>"; };
 		AEF7067F28EBDD81003FEEFD /* QYZYNewsCommentSubModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYNewsCommentSubModel.m; sourceTree = "<group>"; };
 		AEF7068128EBDDAA003FEEFD /* QYZYNewsCommentSubParentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYNewsCommentSubParentModel.h; sourceTree = "<group>"; };
 		AEF7068228EBDDAA003FEEFD /* QYZYNewsCommentSubParentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYNewsCommentSubParentModel.m; sourceTree = "<group>"; };
 		AEF7068428EBDDD7003FEEFD /* QYZYNewsCommentSubSonCommentsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYNewsCommentSubSonCommentsModel.h; sourceTree = "<group>"; };
 		AEF7068528EBDDD7003FEEFD /* QYZYNewsCommentSubSonCommentsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYNewsCommentSubSonCommentsModel.m; sourceTree = "<group>"; };
-		AEF7068728EC2EE8003FEEFD /* QYZYNewsLikeApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYNewsLikeApi.h; sourceTree = "<group>"; };
-		AEF7068828EC2EE8003FEEFD /* QYZYNewsLikeApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYNewsLikeApi.m; sourceTree = "<group>"; };
-		AEF7068A28EC336F003FEEFD /* QYZYNewsFavoritesApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYNewsFavoritesApi.h; sourceTree = "<group>"; };
-		AEF7068B28EC336F003FEEFD /* QYZYNewsFavoritesApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYNewsFavoritesApi.m; sourceTree = "<group>"; };
-		AEF7068D28EC3386003FEEFD /* QYZYNewsFavoritesRemoveApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYNewsFavoritesRemoveApi.h; sourceTree = "<group>"; };
-		AEF7068E28EC3386003FEEFD /* QYZYNewsFavoritesRemoveApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYNewsFavoritesRemoveApi.m; sourceTree = "<group>"; };
 		AEF7069028EC4738003FEEFD /* QYZYCommentInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYCommentInputView.h; sourceTree = "<group>"; };
 		AEF7069128EC4738003FEEFD /* QYZYCommentInputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYCommentInputView.m; sourceTree = "<group>"; };
 		B11C0A5428E9A702001997E8 /* QYZYPhotoManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYPhotoManager.h; sourceTree = "<group>"; };
@@ -964,10 +907,6 @@
 		F39766012BF3988300E4C861 /* AXNetWorkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXNetWorkManager.m; sourceTree = "<group>"; };
 		F39766062BF3993A00E4C861 /* QYZYDataTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYZYDataTools.h; sourceTree = "<group>"; };
 		F39766072BF3993A00E4C861 /* QYZYDataTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYZYDataTools.m; sourceTree = "<group>"; };
-		F52A4E0628EC18FA002358BC /* QYZYSettingPaswwordApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYSettingPaswwordApi.h; sourceTree = "<group>"; };
-		F52A4E0728EC18FA002358BC /* QYZYSettingPaswwordApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYSettingPaswwordApi.m; sourceTree = "<group>"; };
-		F550C7D328F99854000FD3DB /* QYZYGetSetPasswordTicketApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYGetSetPasswordTicketApi.h; sourceTree = "<group>"; };
-		F550C7D428F99854000FD3DB /* QYZYGetSetPasswordTicketApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYGetSetPasswordTicketApi.m; sourceTree = "<group>"; };
 		F55103F328E33795001E9BC5 /* QYZY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QYZY.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F55103F628E33795001E9BC5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F55103F728E33795001E9BC5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1002,25 +941,12 @@
 		F58DF5ED28EA992E00CFF18A /* QYZYPhoneLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYZYPhoneLoginViewController.m; sourceTree = "<group>"; };
 		F58DF5EE28EA992F00CFF18A /* QYZYPhoneLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYZYPhoneLoginViewController.h; sourceTree = "<group>"; };
 		F58DF5EF28EA992F00CFF18A /* QYZYPhoneLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QYZYPhoneLoginViewController.xib; sourceTree = "<group>"; };
-		F58DF5F228EA99D300CFF18A /* QYZYPasswordLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYZYPasswordLoginViewController.h; sourceTree = "<group>"; };
-		F58DF5F328EA99D300CFF18A /* QYZYPasswordLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYZYPasswordLoginViewController.m; sourceTree = "<group>"; };
-		F58DF5F428EA99D300CFF18A /* QYZYPasswordLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QYZYPasswordLoginViewController.xib; sourceTree = "<group>"; };
-		F58DF5F728EAA5B900CFF18A /* QYZYSendSMSCodeApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYSendSMSCodeApi.h; sourceTree = "<group>"; };
-		F58DF5F828EAA5B900CFF18A /* QYZYSendSMSCodeApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYSendSMSCodeApi.m; sourceTree = "<group>"; };
 		F58DF5FA28EAA85700CFF18A /* QYZYPhoneLoginApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYPhoneLoginApi.h; sourceTree = "<group>"; };
 		F58DF5FB28EAA85700CFF18A /* QYZYPhoneLoginApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYPhoneLoginApi.m; sourceTree = "<group>"; };
-		F58DF60128EAFB4C00CFF18A /* QYZYUsesProtocolViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYUsesProtocolViewController.h; sourceTree = "<group>"; };
-		F58DF60228EAFB4C00CFF18A /* QYZYUsesProtocolViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYUsesProtocolViewController.m; sourceTree = "<group>"; };
-		F58DF60328EAFB4C00CFF18A /* QYZYUsesProtocolViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QYZYUsesProtocolViewController.xib; sourceTree = "<group>"; };
 		F58DF60628EB018300CFF18A /* qwty.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = qwty.html; sourceTree = "<group>"; };
-		F58DF60928EB0CB900CFF18A /* QYZYSettingPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYSettingPasswordViewController.h; sourceTree = "<group>"; };
-		F58DF60A28EB0CB900CFF18A /* QYZYSettingPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYSettingPasswordViewController.m; sourceTree = "<group>"; };
-		F58DF60B28EB0CB900CFF18A /* QYZYSettingPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QYZYSettingPasswordViewController.xib; sourceTree = "<group>"; };
 		F5CB2BB228E9D31D00DD2AC8 /* UIView+Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Extensions.h"; sourceTree = "<group>"; };
 		F5CB2BB328E9D31D00DD2AC8 /* UIView+Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extensions.m"; sourceTree = "<group>"; };
 		F5D6AE8428EA8FB100E16E77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Info.plist; sourceTree = "<group>"; };
-		F5E6210C28E5976D00EBB324 /* QYZYPasswordLoginApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYPasswordLoginApi.h; sourceTree = "<group>"; };
-		F5E6210D28E5976D00EBB324 /* QYZYPasswordLoginApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYPasswordLoginApi.m; sourceTree = "<group>"; };
 		FD85AD3E44E561295796CCF8 /* Pods-QYZY.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QYZY.release.xcconfig"; path = "Target Support Files/Pods-QYZY/Pods-QYZY.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1377,24 +1303,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		55E2393228E7E764003ED27E /* Rank */ = {
-			isa = PBXGroup;
-			children = (
-				55E2393328E7E77F003ED27E /* QYZYLiveRankViewController.h */,
-				55E2393428E7E77F003ED27E /* QYZYLiveRankViewController.m */,
-				55E2393628E7EC31003ED27E /* QYZYLiveRankSubViewController.h */,
-				55E2393728E7EC31003ED27E /* QYZYLiveRankSubViewController.m */,
-				55E2393828E7EC31003ED27E /* QYZYLiveRankSubViewController.xib */,
-				55E2393B28E7ECA6003ED27E /* QYZYLiveRankCell.h */,
-				55E2393C28E7ECA6003ED27E /* QYZYLiveRankCell.m */,
-				55E2393D28E7ECA6003ED27E /* QYZYLiveRankCell.xib */,
-				55D2972428EACF2500C80738 /* QYZYLiveFocusControl.h */,
-				55D2972528EACF2500C80738 /* QYZYLiveFocusControl.m */,
-				55D2972728EACF3C00C80738 /* QYZYLiveFocusControl.xib */,
-			);
-			path = Rank;
-			sourceTree = "<group>";
-		};
 		55E2394C28E8292C003ED27E /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -1440,7 +1348,6 @@
 				55BF55CC28E9C0EB00DB476B /* Anchor */,
 				55BF55B828E97FE600DB476B /* Gift */,
 				55E2394C28E8292C003ED27E /* Chat */,
-				55E2393228E7E764003ED27E /* Rank */,
 				55EADDD428E7158E008324AE /* More */,
 				55EADDBE28E6F0EA008324AE /* Models */,
 				55EADDB428E6E741008324AE /* Apis */,
@@ -1862,9 +1769,6 @@
 				AE6800A528E9C1D40084E652 /* Views */,
 				AE68008F28E9AEAD0084E652 /* Models */,
 				AE68008B28E994710084E652 /* Apis */,
-				AE68007128E93E0D0084E652 /* QYZYNewsDetailViewController.h */,
-				AE68007228E93E0D0084E652 /* QYZYNewsDetailViewController.m */,
-				AE6800A128E9C1920084E652 /* QYZYNewsDetailViewController.xib */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -1883,26 +1787,10 @@
 		AE68008B28E994710084E652 /* Apis */ = {
 			isa = PBXGroup;
 			children = (
-				AE68008C28E994AC0084E652 /* QYZYNewsDetailApi.h */,
-				AE68008D28E994AC0084E652 /* QYZYNewsDetailApi.m */,
 				AE4DED7D28EABA1F00CD01C3 /* QYZYNewsPostAttentionApi.h */,
 				AE4DED7E28EABA1F00CD01C3 /* QYZYNewsPostAttentionApi.m */,
 				AE4DED8028EABA3D00CD01C3 /* QYZYNewsPostAttentionCancelApi.h */,
 				AE4DED8128EABA3D00CD01C3 /* QYZYNewsPostAttentionCancelApi.m */,
-				AE4DED8C28EAE15A00CD01C3 /* QYZYNewsCommentsApi.h */,
-				AE4DED8D28EAE15A00CD01C3 /* QYZYNewsCommentsApi.m */,
-				AE4DED8F28EAF39E00CD01C3 /* QYZYNewsCommentInspectionApi.h */,
-				AE4DED9028EAF39E00CD01C3 /* QYZYNewsCommentInspectionApi.m */,
-				AE4DED9228EAFB4600CD01C3 /* QYZYNewsSaveCommentApi.h */,
-				AE4DED9328EAFB4600CD01C3 /* QYZYNewsSaveCommentApi.m */,
-				AEF7067B28EBD97E003FEEFD /* QYZYNewsCommentSubApi.h */,
-				AEF7067C28EBD97E003FEEFD /* QYZYNewsCommentSubApi.m */,
-				AEF7068728EC2EE8003FEEFD /* QYZYNewsLikeApi.h */,
-				AEF7068828EC2EE8003FEEFD /* QYZYNewsLikeApi.m */,
-				AEF7068A28EC336F003FEEFD /* QYZYNewsFavoritesApi.h */,
-				AEF7068B28EC336F003FEEFD /* QYZYNewsFavoritesApi.m */,
-				AEF7068D28EC3386003FEEFD /* QYZYNewsFavoritesRemoveApi.h */,
-				AEF7068E28EC3386003FEEFD /* QYZYNewsFavoritesRemoveApi.m */,
 			);
 			path = Apis;
 			sourceTree = "<group>";
@@ -2671,15 +2559,6 @@
 				F58DF5EE28EA992F00CFF18A /* QYZYPhoneLoginViewController.h */,
 				F58DF5ED28EA992E00CFF18A /* QYZYPhoneLoginViewController.m */,
 				F58DF5EF28EA992F00CFF18A /* QYZYPhoneLoginViewController.xib */,
-				F58DF5F328EA99D300CFF18A /* QYZYPasswordLoginViewController.m */,
-				F58DF5F228EA99D300CFF18A /* QYZYPasswordLoginViewController.h */,
-				F58DF5F428EA99D300CFF18A /* QYZYPasswordLoginViewController.xib */,
-				F58DF60128EAFB4C00CFF18A /* QYZYUsesProtocolViewController.h */,
-				F58DF60228EAFB4C00CFF18A /* QYZYUsesProtocolViewController.m */,
-				F58DF60328EAFB4C00CFF18A /* QYZYUsesProtocolViewController.xib */,
-				F58DF60928EB0CB900CFF18A /* QYZYSettingPasswordViewController.h */,
-				F58DF60A28EB0CB900CFF18A /* QYZYSettingPasswordViewController.m */,
-				F58DF60B28EB0CB900CFF18A /* QYZYSettingPasswordViewController.xib */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -2687,16 +2566,8 @@
 		F5E6210B28E595ED00EBB324 /* Api */ = {
 			isa = PBXGroup;
 			children = (
-				F5E6210C28E5976D00EBB324 /* QYZYPasswordLoginApi.h */,
-				F5E6210D28E5976D00EBB324 /* QYZYPasswordLoginApi.m */,
-				F58DF5F728EAA5B900CFF18A /* QYZYSendSMSCodeApi.h */,
-				F58DF5F828EAA5B900CFF18A /* QYZYSendSMSCodeApi.m */,
 				F58DF5FA28EAA85700CFF18A /* QYZYPhoneLoginApi.h */,
 				F58DF5FB28EAA85700CFF18A /* QYZYPhoneLoginApi.m */,
-				F52A4E0628EC18FA002358BC /* QYZYSettingPaswwordApi.h */,
-				F52A4E0728EC18FA002358BC /* QYZYSettingPaswwordApi.m */,
-				F550C7D328F99854000FD3DB /* QYZYGetSetPasswordTicketApi.h */,
-				F550C7D428F99854000FD3DB /* QYZYGetSetPasswordTicketApi.m */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -2780,7 +2651,6 @@
 				55D2973828EB026F00C80738 /* QYZYLiveNoticeViewController.xib in Resources */,
 				55B10194290151370056CF17 /* QYZYMatchHomeCell.xib in Resources */,
 				9B46F6B828E6F53400941F97 /* QYZYResultAnchorCell.xib in Resources */,
-				55E2393F28E7ECA6003ED27E /* QYZYLiveRankCell.xib in Resources */,
 				AE6800AA28E9C1F00084E652 /* QYZYNewsDetailHeadSectionView.xib in Resources */,
 				F551040328E33798001E9BC5 /* Assets.xcassets in Resources */,
 				9B9A772128E9A8C800809C8D /* QYZYCommendListCell.xib in Resources */,
@@ -2790,15 +2660,9 @@
 				55B04A5528E57C5300A82F1F /* QYZYLiveHomeViewController.xib in Resources */,
 				F58DF5F128EA992F00CFF18A /* QYZYPhoneLoginViewController.xib in Resources */,
 				55EADDE128E71967008324AE /* QYZYLiveMoreViewController.xib in Resources */,
-				F58DF5F628EA99D300CFF18A /* QYZYPasswordLoginViewController.xib in Resources */,
-				55E2393A28E7EC31003ED27E /* QYZYLiveRankSubViewController.xib in Resources */,
-				AE6800A228E9C1920084E652 /* QYZYNewsDetailViewController.xib in Resources */,
-				F58DF60D28EB0CB900CFF18A /* QYZYSettingPasswordViewController.xib in Resources */,
 				55B04A4E28E54AA300A82F1F /* QYZYLiveItemView.xib in Resources */,
 				9B46F68D28E6BD0300941F97 /* QYZYSearchController.xib in Resources */,
 				55B04A4928E545F200A82F1F /* QYZYLiveCell.xib in Resources */,
-				F58DF60528EAFB4C00CFF18A /* QYZYUsesProtocolViewController.xib in Resources */,
-				55D2972828EACF3C00C80738 /* QYZYLiveFocusControl.xib in Resources */,
 				AE9FB1AE29064A5600B2033A /* QYZYAnalyzeHeaderFooterView.xib in Resources */,
 				55A53210290551480008C110 /* QYZYMatchOverEventCell.xib in Resources */,
 				555CE94F28F6D38C0085F1D4 /* QYZYMatchCell.xib in Resources */,
@@ -2873,7 +2737,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F58DF60828EB09C000CFF18A /* QYZYPasswordLoginApi.m in Sources */,
 				55A5320229052E3C0008C110 /* FSCalendarScrollView.m in Sources */,
 				55E0D51D28F8289400DDAAB6 /* QYZYMatchOverViewController.m in Sources */,
 				F39766022BF3988300E4C861 /* AXNetWorkManager.m in Sources */,
@@ -2894,7 +2757,6 @@
 				55B04A8428E5BCEE00A82F1F /* QYZYLiveMainGroupApi.m in Sources */,
 				F37E5E082BF8A4840049FAE1 /* AXMatchLineupPlayerStatsView.m in Sources */,
 				B1B744B828E824B700DD300E /* QYZYMyattentionModel.m in Sources */,
-				F550C7D528F99854000FD3DB /* QYZYGetSetPasswordTicketApi.m in Sources */,
 				9B46F6A328E6D79F00941F97 /* QYZYSearchUtils.m in Sources */,
 				555C687728EC229800044A5E /* QYZYTableEmptyCell.m in Sources */,
 				9B46F69F28E6D04200941F97 /* QYZYSearchCell.m in Sources */,
@@ -2926,7 +2788,6 @@
 				9B8D5B7428EC2DE200B480BA /* QYZYReportModel.m in Sources */,
 				F39766082BF3993A00E4C861 /* QYZYDataTools.m in Sources */,
 				F37E5DC12BF631DC0049FAE1 /* AXMatchSettingViewController.m in Sources */,
-				55E2393528E7E77F003ED27E /* QYZYLiveRankViewController.m in Sources */,
 				9BC0D59A29066A7F0063BCC7 /* QYZYBasketballScoreView.m in Sources */,
 				F37E5E1B2BF9AFE10049FAE1 /* AXMatchAnalysisTraditionalPerformanceView.m in Sources */,
 				55EADDE028E71967008324AE /* QYZYLiveMoreViewController.m in Sources */,
@@ -2946,8 +2807,6 @@
 				55E0D50928F8050E00DDAAB6 /* QYZYMatchDetailApi.m in Sources */,
 				9B8D5B6828EBDC9B00B480BA /* QYZYCancelCollectApi.m in Sources */,
 				55B10193290151370056CF17 /* QYZYMatchHomeCell.m in Sources */,
-				55D2972628EACF2500C80738 /* QYZYLiveFocusControl.m in Sources */,
-				F58DF60C28EB0CB900CFF18A /* QYZYSettingPasswordViewController.m in Sources */,
 				F37E5DEC2BF7810D0049FAE1 /* AXMatchStandingChartCell.m in Sources */,
 				F37E5E292BF9CCDC0049FAE1 /* AXMatchAnalysisAdvancedTeamStatsCell.m in Sources */,
 				55E2395328E82E4D003ED27E /* QYZYLiveChatCell.m in Sources */,
@@ -2966,7 +2825,6 @@
 				55B04A8B28E5C8E000A82F1F /* QYZYLiveMainHotApi.m in Sources */,
 				55A531FF29052E3C0008C110 /* FSCalendarCell.m in Sources */,
 				9BC0D5BD2906B1BE0063BCC7 /* QYZYPlayerDataHeader.m in Sources */,
-				F58DF5F528EA99D300CFF18A /* QYZYPasswordLoginViewController.m in Sources */,
 				B1B744A328E7E73100DD300E /* QYZYMyreservationApi.m in Sources */,
 				F560B5A128E84D5300989DE4 /* QYZYNewsTableViewCell.m in Sources */,
 				F37E5E262BF9CCC50049FAE1 /* AXMatchAnalysisAdvancedQuaterCell.m in Sources */,
@@ -2978,7 +2836,6 @@
 				55E0D51728F826A500DDAAB6 /* QYZYMatchOverHeaderView.m in Sources */,
 				9B8D5B7128EC2BEB00B480BA /* QYZYReportContentApi.m in Sources */,
 				55E0D52628F8379800DDAAB6 /* QYZYMatchOverPhraseApi.m in Sources */,
-				AEF7067D28EBD97E003FEEFD /* QYZYNewsCommentSubApi.m in Sources */,
 				5552ABFE28F935BD00285B25 /* QYZYMatchAnalyzeViewController.m in Sources */,
 				B1B054C728E693BA00030F57 /* QYZYFootballApi.m in Sources */,
 				555C687A28EC569D00044A5E /* QYZYChargeView.m in Sources */,
@@ -3006,15 +2863,12 @@
 				B1B744BE28E8352500DD300E /* QYZYRankViewController.m in Sources */,
 				F37E5E362BFF80AA0049FAE1 /* AXMatchListApi.m in Sources */,
 				9BC0D5AD29069D8C0063BCC7 /* QYZYTeamStaticsModel.m in Sources */,
-				AEF7068928EC2EE8003FEEFD /* QYZYNewsLikeApi.m in Sources */,
 				55BF55AE28E95FFE00DB476B /* QYZYLiveChatFilterApi.m in Sources */,
 				F37E5E8F2C02078D0049FAE1 /* AXMatchDetailApi.m in Sources */,
 				55EADDCD28E706BB008324AE /* ZFIJKPlayerManager.m in Sources */,
 				F36D87622C0B098D001F37F0 /* UIView+CSToast.m in Sources */,
-				55E2393928E7EC31003ED27E /* QYZYLiveRankSubViewController.m in Sources */,
 				B1728B4028E5B11800419F67 /* QYZYFootballViewController.m in Sources */,
 				555C687428EC04B700044A5E /* QYZYCollectionEmptyCell.m in Sources */,
-				AEF7068C28EC336F003FEEFD /* QYZYNewsFavoritesApi.m in Sources */,
 				AE65E0EB2907BFEB0053CA49 /* QYZYAnalyzeSectionTool.m in Sources */,
 				F37E5D9F2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCellModel.m in Sources */,
 				55EADDBD28E6EEEA008324AE /* UIViewController+Extensions.m in Sources */,
@@ -3022,15 +2876,12 @@
 				55A5320129052E3C0008C110 /* FSCalendarCustomView.m in Sources */,
 				55EADDC728E6F30E008324AE /* QYZYDetailBaseInfoApi.m in Sources */,
 				F36D875F2C0B045C001F37F0 /* UIView+AXToast.m in Sources */,
-				AE4DED9128EAF39E00CD01C3 /* QYZYNewsCommentInspectionApi.m in Sources */,
 				AE9FB1B9290656A800B2033A /* QYZYIntegralHeaderView.m in Sources */,
-				AE4DED9428EAFB4600CD01C3 /* QYZYNewsSaveCommentApi.m in Sources */,
 				AE78C0C629068D39006A70A3 /* QYZYHostGuessMatchCell.m in Sources */,
 				55A531FE29052E3C0008C110 /* FSCalendarDateModel.m in Sources */,
 				9BC0D594290665EB0063BCC7 /* QYZYBasketBallPointApi.m in Sources */,
 				555CE94E28F6D38C0085F1D4 /* QYZYMatchCell.m in Sources */,
 				9BC0D56529063F8E0063BCC7 /* QYZYTeamDataViewController.m in Sources */,
-				AE4DED8E28EAE15A00CD01C3 /* QYZYNewsCommentsApi.m in Sources */,
 				F37E5DBA2BF630550049FAE1 /* AXMatchListSectionHeader.m in Sources */,
 				9BC0D5A72906961A0063BCC7 /* QYZYTeamDataStaticsCell.m in Sources */,
 				F560B58C28E6942A00989DE4 /* QYZYUserModel.m in Sources */,
@@ -3091,11 +2942,8 @@
 				F36D875C2C0B0383001F37F0 /* AXToastView.m in Sources */,
 				55E0D50628F7FE0100DDAAB6 /* QYZYMatchDetailViewController.m in Sources */,
 				F37E5DE22BF77C4E0049FAE1 /* AXMatchAnalysisViewController.m in Sources */,
-				F52A4E0828EC18FA002358BC /* QYZYSettingPaswwordApi.m in Sources */,
 				9B46F69728E6C8AD00941F97 /* QYZYHotSearchApi.m in Sources */,
 				9B9A771228E97FEF00809C8D /* QYZYCircleDetailApi.m in Sources */,
-				F58DF5F928EAA5B900CFF18A /* QYZYSendSMSCodeApi.m in Sources */,
-				55E2393E28E7ECA6003ED27E /* QYZYLiveRankCell.m in Sources */,
 				555C687128EBD38400044A5E /* QYZYLiveNoticeApi.m in Sources */,
 				F37E5E8C2C0207390049FAE1 /* AXMatchDetailModel.m in Sources */,
 				55A5320329052E3C0008C110 /* NSDate+FSCalendar.m in Sources */,
@@ -3103,14 +2951,11 @@
 				AE78C0BA29067662006A70A3 /* QYZYHistoryHeaderView.m in Sources */,
 				F37E5E992C03064C0049FAE1 /* AXMatchTools.m in Sources */,
 				B1728B3A28E5937A00419F67 /* QYZYScheduleTableViewCell.m in Sources */,
-				AE68008E28E994AC0084E652 /* QYZYNewsDetailApi.m in Sources */,
-				F58DF60428EAFB4C00CFF18A /* QYZYUsesProtocolViewController.m in Sources */,
 				9BC0D560290639FD0063BCC7 /* QYZYBasketballOverviewController.m in Sources */,
 				F560B5A628E8620C00989DE4 /* QYZYHotNewsApi.m in Sources */,
 				AE4DED9A28EB109200CD01C3 /* QYZYCommendNewsView.m in Sources */,
 				5552AC0228F9363F00285B25 /* QYZYAnalyzeSubViewController.m in Sources */,
 				9BC0D5C12906B50A0063BCC7 /* QYZYPlayerDataModel.m in Sources */,
-				AE68007428E93E0D0084E652 /* QYZYNewsDetailViewController.m in Sources */,
 				F551044028E3FD96001E9BC5 /* NSArray+Extensions.m in Sources */,
 				CB08230A2BF5A9D100027C81 /* AXMatchListOddsCell.m in Sources */,
 				55E0D52228F831D400DDAAB6 /* QYZYMatchOverCell.m in Sources */,
@@ -3147,7 +2992,6 @@
 				B1B744C128E836FE00DD300E /* QYZYPopularListViewController.m in Sources */,
 				55B04A8828E5BE0C00A82F1F /* QYZYLiveMainGroupModel.m in Sources */,
 				F37E5DB42BF62F820049FAE1 /* AXMatchFilterViewController.m in Sources */,
-				AEF7068F28EC3386003FEEFD /* QYZYNewsFavoritesRemoveApi.m in Sources */,
 				B1B0554828E6E4B400030F57 /* QYZYappointmentApi.m in Sources */,
 				55A5320029052E3C0008C110 /* FSCalendarDayModel.m in Sources */,
 				F37E5E9F2C0358210049FAE1 /* AXMatchStandingModel.m in Sources */,
