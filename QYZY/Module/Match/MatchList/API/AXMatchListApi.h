@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AXMatchListApi : YTKRequest
+@interface AXMatchListApi : AXRequest
 
 @end
 

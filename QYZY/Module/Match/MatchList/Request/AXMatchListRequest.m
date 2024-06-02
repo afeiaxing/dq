@@ -12,8 +12,7 @@
 
 - (void)requestMatchListWithcompletion:(void(^)(AXMatchListModel *matchModel))completion{
     AXMatchListApi *api = [AXMatchListApi new];
-    AXNetWorkManager *manager = [AXNetWorkManager new];
-    [manager startWithCompletionBlockWithApi:api Success:^(__kindof YTKBaseRequest * _Nonnull request) {
+    [api ax_startWithCompletionSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         AXMatchListModel *model = [AXMatchListModel yy_modelWithJSON:request.responseJSONObject[@"data"]];
         !completion ? : completion(model);
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {

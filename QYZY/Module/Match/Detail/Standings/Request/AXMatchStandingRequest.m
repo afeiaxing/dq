@@ -15,9 +15,12 @@
     matchId = @"3788364";
     AXMatchStandingApi *api = [AXMatchStandingApi new];
     api.matchId = matchId;
-    AXNetWorkManager *manager = [AXNetWorkManager new];
-    [manager startWithCompletionBlockWithApi:api Success:^(__kindof YTKBaseRequest * _Nonnull request) {
-        AXMatchStandingModel *model = [AXMatchStandingModel yy_modelWithJSON:request.responseJSONObject[@"data"]];
+
+    [api ax_startWithCompletionSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        AXMatchStandingModel *model;
+        if (api.isRequestSuccess) {
+            model = [AXMatchStandingModel yy_modelWithJSON:api.bizData];
+        }
         !completion ? : completion(model);
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         !completion ? : completion(nil);

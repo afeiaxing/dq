@@ -163,6 +163,7 @@
 		F36D875C2C0B0383001F37F0 /* AXToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = F36D875B2C0B0383001F37F0 /* AXToastView.m */; };
 		F36D875F2C0B045C001F37F0 /* UIView+AXToast.m in Sources */ = {isa = PBXBuildFile; fileRef = F36D875E2C0B045C001F37F0 /* UIView+AXToast.m */; };
 		F36D87622C0B098D001F37F0 /* UIView+CSToast.m in Sources */ = {isa = PBXBuildFile; fileRef = F36D87602C0B098C001F37F0 /* UIView+CSToast.m */; };
+		F36D87652C0B8820001F37F0 /* AXRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F36D87642C0B8820001F37F0 /* AXRequest.m */; };
 		F37E5D9F2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5D9B2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCellModel.m */; };
 		F37E5DA02BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5D9C2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCell.m */; };
 		F37E5DA12BF4D7A10049FAE1 /* JXCategoryTitleBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5D9D2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundView.m */; };
@@ -211,7 +212,6 @@
 		F37E5EA22C0358320049FAE1 /* AXMatchStandingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5EA12C0358320049FAE1 /* AXMatchStandingRequest.m */; };
 		F37E5EA52C03584F0049FAE1 /* AXMatchStandingApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5EA42C03584F0049FAE1 /* AXMatchStandingApi.m */; };
 		F37E5EAB2C04A92D0049FAE1 /* AXMatchListDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5EAA2C04A92D0049FAE1 /* AXMatchListDateView.m */; };
-		F39766022BF3988300E4C861 /* AXNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F39766012BF3988300E4C861 /* AXNetWorkManager.m */; };
 		F39766082BF3993A00E4C861 /* QYZYDataTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F39766072BF3993A00E4C861 /* QYZYDataTools.m */; };
 		F55103F828E33795001E9BC5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F55103F728E33795001E9BC5 /* AppDelegate.m */; };
 		F551040328E33798001E9BC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F551040228E33798001E9BC5 /* Assets.xcassets */; };
@@ -534,6 +534,8 @@
 		F36D875E2C0B045C001F37F0 /* UIView+AXToast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+AXToast.m"; sourceTree = "<group>"; };
 		F36D87602C0B098C001F37F0 /* UIView+CSToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CSToast.m"; sourceTree = "<group>"; };
 		F36D87612C0B098C001F37F0 /* UIView+CSToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CSToast.h"; sourceTree = "<group>"; };
+		F36D87632C0B8820001F37F0 /* AXRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXRequest.h; sourceTree = "<group>"; };
+		F36D87642C0B8820001F37F0 /* AXRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXRequest.m; sourceTree = "<group>"; };
 		F37E5D992BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleBackgroundCell.h; sourceTree = "<group>"; };
 		F37E5D9A2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleBackgroundView.h; sourceTree = "<group>"; };
 		F37E5D9B2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryTitleBackgroundCellModel.m; sourceTree = "<group>"; };
@@ -630,8 +632,6 @@
 		F37E5EA42C03584F0049FAE1 /* AXMatchStandingApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchStandingApi.m; sourceTree = "<group>"; };
 		F37E5EA92C04A92D0049FAE1 /* AXMatchListDateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchListDateView.h; sourceTree = "<group>"; };
 		F37E5EAA2C04A92D0049FAE1 /* AXMatchListDateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchListDateView.m; sourceTree = "<group>"; };
-		F39766002BF3988300E4C861 /* AXNetWorkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXNetWorkManager.h; sourceTree = "<group>"; };
-		F39766012BF3988300E4C861 /* AXNetWorkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXNetWorkManager.m; sourceTree = "<group>"; };
 		F39766062BF3993A00E4C861 /* QYZYDataTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYZYDataTools.h; sourceTree = "<group>"; };
 		F39766072BF3993A00E4C861 /* QYZYDataTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYZYDataTools.m; sourceTree = "<group>"; };
 		F55103F328E33795001E9BC5 /* QYZY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QYZY.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1725,13 +1725,13 @@
 			path = API;
 			sourceTree = "<group>";
 		};
-		F39765FF2BF3985E00E4C861 /* AXNetworkManager */ = {
+		F39765FF2BF3985E00E4C861 /* AXRequest */ = {
 			isa = PBXGroup;
 			children = (
-				F39766002BF3988300E4C861 /* AXNetWorkManager.h */,
-				F39766012BF3988300E4C861 /* AXNetWorkManager.m */,
+				F36D87632C0B8820001F37F0 /* AXRequest.h */,
+				F36D87642C0B8820001F37F0 /* AXRequest.m */,
 			);
-			path = AXNetworkManager;
+			path = AXRequest;
 			sourceTree = "<group>";
 		};
 		F55103EA28E33795001E9BC5 = {
@@ -1814,7 +1814,7 @@
 				F36D87592C0B036E001F37F0 /* Toast */,
 				F37E5E962C0306360049FAE1 /* AXMatchTools */,
 				CBFDA1B32BF75CF000D80483 /* ORLineChart */,
-				F39765FF2BF3985E00E4C861 /* AXNetworkManager */,
+				F39765FF2BF3985E00E4C861 /* AXRequest */,
 				55A531EC29052E1B0008C110 /* QYZYCalendar */,
 				55D2972028EAB7ED00C80738 /* QYZYIAPManager */,
 				55E2395528E834D8003ED27E /* QYZYRCManager */,
@@ -2065,7 +2065,6 @@
 			files = (
 				55A5320229052E3C0008C110 /* FSCalendarScrollView.m in Sources */,
 				55E0D51D28F8289400DDAAB6 /* QYZYMatchOverViewController.m in Sources */,
-				F39766022BF3988300E4C861 /* AXNetWorkManager.m in Sources */,
 				55E0D50F28F806DA00DDAAB6 /* QYZYMatchMainModel.m in Sources */,
 				9BC0D5BA2906B16C0063BCC7 /* QYZYPlayerDataCell.m in Sources */,
 				F37E5DFF2BF88F790049FAE1 /* AXMatchLineupPerformersCell.m in Sources */,
@@ -2095,6 +2094,7 @@
 				F37E5DC12BF631DC0049FAE1 /* AXMatchSettingViewController.m in Sources */,
 				9BC0D59A29066A7F0063BCC7 /* QYZYBasketballScoreView.m in Sources */,
 				F37E5E1B2BF9AFE10049FAE1 /* AXMatchAnalysisTraditionalPerformanceView.m in Sources */,
+				F36D87652C0B8820001F37F0 /* AXRequest.m in Sources */,
 				55BF55C728E99B4C00DB476B /* QYZYChatGiftCell.m in Sources */,
 				9BC0D5B029069E860063BCC7 /* QYZYTeamStaticShowupModel.m in Sources */,
 				9B89964429077EDB007D3A79 /* QYZYPlayerDataCollectionCell.m in Sources */,

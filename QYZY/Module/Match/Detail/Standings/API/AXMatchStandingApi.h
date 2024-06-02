@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AXMatchStandingApi : YTKRequest
+@interface AXMatchStandingApi : AXRequest
 
 @property (nonatomic, strong) NSString *matchId;
 

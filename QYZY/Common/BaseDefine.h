@@ -28,6 +28,13 @@ typedef NS_ENUM(NSInteger ,QYZYMatchType) {
 
 #define AXToastText @"Loading..."
 
+/// log
+#ifdef __OPTIMIZE__
+#define AXLog(...) {}
+#else
+#define AXLog(...) NSLog(__VA_ARGS__)
+#endif
+
 #define AXProductTypeKey @2
 
 #define AXLeaguePlaceholderLogo [UIImage imageNamed:@""]
