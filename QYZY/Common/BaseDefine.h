@@ -54,8 +54,6 @@ typedef NS_ENUM(NSInteger ,QYZYMatchType) {
 
 #define ReadLoginAgreementKey @"ReadLoginAgreementKey"
 
-#define QYZYNetworkingFirstAvaliableNotification @"com.domain.networking.first.avaliable"
-
 #endif /* BaseDefine_h */
 
 

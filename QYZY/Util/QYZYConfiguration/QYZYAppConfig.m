@@ -38,13 +38,13 @@
     YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
     config.baseUrl = @"http://114.55.36.227:48084";  // TODO: 域名待配置
     
-    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        if ((status == AFNetworkReachabilityStatusReachableViaWWAN || status == AFNetworkReachabilityStatusReachableViaWiFi)) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:QYZYNetworkingFirstAvaliableNotification object:nil];
-        }
-    
-    }];
+//    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+//    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+//        if ((status == AFNetworkReachabilityStatusReachableViaWWAN || status == AFNetworkReachabilityStatusReachableViaWiFi)) {
+//            [[NSNotificationCenter defaultCenter] postNotificationName:QYZYNetworkingFirstAvaliableNotification object:nil];
+//        }
+//
+//    }];
 }
 
 #pragma mark - Keyboard

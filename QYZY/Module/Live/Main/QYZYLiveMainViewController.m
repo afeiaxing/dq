@@ -35,8 +35,6 @@
     }
     [self setupSubViews];
     [self requestGroup];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestGroup) name:QYZYNetworkingFirstAvaliableNotification object:nil];
 }
 
 - (void)dealloc {

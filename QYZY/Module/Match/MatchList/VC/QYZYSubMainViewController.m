@@ -33,7 +33,6 @@
     self.view.backgroundColor = UIColor.whiteColor;
     [self setupSubViews];
     [self requestData];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestData) name:QYZYNetworkingFirstAvaliableNotification object:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
