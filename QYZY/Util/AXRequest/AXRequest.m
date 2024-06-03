@@ -30,7 +30,7 @@
         }
         success(request);
         AXLog(@"==========RequestSuccess============");
-        AXLog(@"ReuqestURL: %@", request.requestUrl);
+        AXLog(@"ReuqestURL: %@%@", request.baseUrl, request.requestUrl);
         AXLog(@"ResponseData: %@", request.responseJSONObject[@"data"]);
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         long httpCode = request.responseStatusCode;
@@ -40,7 +40,7 @@
         }
         self.isRequestSuccess = false;
         AXLog(@"==========RequestFail============");
-        AXLog(@"ReuqestURL: %@", request.requestUrl);
+        AXLog(@"ReuqestURL: %@%@", request.baseUrl, request.requestUrl);
         AXLog(@"ResponseCode: %ld", httpCode);
         failure(request);
     }];
