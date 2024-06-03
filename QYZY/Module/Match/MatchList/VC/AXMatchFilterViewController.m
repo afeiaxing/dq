@@ -7,10 +7,13 @@
 
 #import "AXMatchFilterViewController.h"
 #import "AXMatchFilterTopView.h"
+#import "AXMatchListSectionHeader.h"
+#import "AXMatchListFilterCell.h"
 
-@interface AXMatchFilterViewController ()
+@interface AXMatchFilterViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) AXMatchFilterTopView *topFilterView;
+@property (nonatomic, strong) UITableView *tableView;
 
 
 @end
@@ -33,6 +36,44 @@
         make.left.top.right.offset(0);
         make.height.mas_offset(48);
     }];
+    
+    [self.view addSubview:self.tableView];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.offset(0);
+        make.top.equalTo(self.topFilterView.mas_bottom);
+    }];
+}
+
+// MARK: UITableViewDelegate,UITableViewDataSource
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    AXMatchListFilterCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchListFilterCell.class) forIndexPath:indexPath];
+    return cell;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 20;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 40;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 5;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return  40;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    AXMatchListSectionHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass(AXMatchListSectionHeader.class)];
+    header.titleString = @"A";
+    return header;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
 }
 
 // MARK: setter & getter
@@ -41,6 +82,22 @@
         _topFilterView = [AXMatchFilterTopView new];
     }
     return _topFilterView;
+}
+
+- (UITableView *)tableView{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        weakSelf(self);
+        _tableView.backgroundColor = rgb(248, 249, 254);
+        _tableView.showsVerticalScrollIndicator = NO;
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        
+        [_tableView registerClass:AXMatchListFilterCell.class forCellReuseIdentifier:NSStringFromClass(AXMatchListFilterCell.class)];
+        [_tableView registerClass:AXMatchListSectionHeader.class forHeaderFooterViewReuseIdentifier:NSStringFromClass(AXMatchListSectionHeader.class)];
+        _tableView.sectionFooterHeight = 0.1;
+    }
+    return _tableView;
 }
 
 @end

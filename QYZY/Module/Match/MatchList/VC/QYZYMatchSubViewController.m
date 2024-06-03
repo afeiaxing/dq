@@ -103,7 +103,22 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     AXMatchListSectionHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass(AXMatchListSectionHeader.class)];
-    header.sectionNum = section;
+    NSString *str;
+    switch (section) {
+        case 0:
+            str = @"Live";
+            break;
+        case 1:
+            str = @"Scheduled";
+            break;
+        case 2:
+            str = @"Result";
+            break;
+            
+        default:
+            break;
+    }
+    header.titleString = str;
     return header;
 }
 

@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AXMatchListSectionHeader : UITableViewHeaderFooterView
 
-@property (nonatomic, assign) NSInteger sectionNum;
+@property (nonatomic, strong) NSString *titleString;
 
 @end
 

@@ -28,21 +28,8 @@
     return self;
 }
 
-- (void)setSectionNum:(NSInteger)sectionNum{
-    switch (sectionNum) {
-        case 0:
-            self.titleLabel.text = @"Live";
-            break;
-        case 1:
-            self.titleLabel.text = @"Scheduled";
-            break;
-        case 2:
-            self.titleLabel.text = @"Result";
-            break;
-            
-        default:
-            break;
-    }
+- (void)setTitleString:(NSString *)titleString{
+    self.titleLabel.text = titleString;
 }
 
 - (UILabel *)titleLabel{
