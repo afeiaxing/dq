@@ -9,6 +9,7 @@
 
 @interface AXMatchListDateView()
 
+@property (nonatomic, assign) AXMatchStatus status;
 @property (nonatomic, strong) NSArray *dataSource;
 @property (nonatomic, strong) UIButton *lastSelectedBtn;
 
@@ -17,8 +18,9 @@
 @implementation AXMatchListDateView
 
 // MARK: lifecycle
-- (instancetype)initWithFrame:(CGRect)frame{
-    if (self = [super initWithFrame:frame]) {
+- (instancetype)initWithStatus:(AXMatchStatus)status{
+    if (self = [super init]) {
+        self.status = status;
         [self setupSubviews];
     }
     return self;
@@ -39,7 +41,6 @@
         [dateBtn setTitleColor:AXSelectColor forState:UIControlStateSelected];
         dateBtn.backgroundColor = rgb(234, 241, 245);
         [dateBtn setTitle:str forState:UIControlStateNormal];
-//        dateBtn.selected = i == 0;
         
         if ((i == 0 && self.status == AXMatchStatusSchedule) || (i == (self.dataSource.count - 1) && self.status == AXMatchStatusResult)) {
             self.lastSelectedBtn = dateBtn;
@@ -89,7 +90,7 @@
         for (int i = 6; i >= 0; i --) {
             [comps setDay:-i];
             NSDate * date = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
-            NSString *dateStr = i == 6 ? @"Today" : [self dateChangeToDataTimeString:date];
+            NSString *dateStr = i == 0 ? @"Today" : [self dateChangeToDataTimeString:date];
             [temp addObject:dateStr];
         }
     } else {

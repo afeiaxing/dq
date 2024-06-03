@@ -154,8 +154,7 @@
 
 - (AXMatchListDateView *)dateView{
     if (!_dateView) {
-        _dateView = [AXMatchListDateView new];
-        _dateView.status = self.status;
+        _dateView = [[AXMatchListDateView alloc] initWithStatus:self.status];
     }
     return _dateView;
 }

@@ -21,8 +21,9 @@ typedef void (^AXMatchListDateViewBlock)(AXMatchStatus status, int index);
 
 @interface AXMatchListDateView : UIView
 
-@property (nonatomic, assign) AXMatchStatus status;
 @property (nonatomic, copy) AXMatchListDateViewBlock block;
+
+- (instancetype)initWithStatus: (AXMatchStatus)status;
 
 @end
 
