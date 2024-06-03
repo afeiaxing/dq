@@ -67,8 +67,6 @@ NSString *reConnectMsg = @"重连中...";
 - (void)addNotification {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willShowKeyboard:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willHideKeyboard:) name:UIKeyboardWillHideNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateLoginStatus) name:QYZYLoginSuccessNotification object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestBalanceData) name:QYZYIAPPaySuccessNotification object:nil];
     
 }
 
@@ -120,13 +118,6 @@ NSString *reConnectMsg = @"重连中...";
         self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, 0, self.tableView.frame.size.width, self.tableView.frame.size.height);
         [self.view layoutIfNeeded];
     } completion:nil];
-}
-
-- (void)updateLoginStatus {
-    [self.putView updateStatusWithUserModel:QYZYUserManager.shareInstance.userModel];
-    if (QYZYUserManager.shareInstance.isLogin) {
-        [self requestBalanceData];
-    }
 }
 
 - (void)setsubViews {

@@ -8,7 +8,6 @@
 #import "QYZYFootballViewController.h"
 #import "QYZYScheduleHeaderVIew.h"
 #import "QYZYScheduleTableViewCell.h"
-#import "QYZYPhoneLoginViewController.h"
 
 @interface QYZYFootballViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView * tableView;
@@ -52,8 +51,8 @@
     BOOL isBook = !model.userIsAppointment;
     if (QYZYUserManager.shareInstance.isLogin == false) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            QYZYPhoneLoginViewController *vc = [QYZYPhoneLoginViewController new];
-            [self presentViewController:vc animated:true completion:nil];
+//            QYZYPhoneLoginViewController *vc = [QYZYPhoneLoginViewController new];
+//            [self presentViewController:vc animated:true completion:nil];
         });
         
         return;

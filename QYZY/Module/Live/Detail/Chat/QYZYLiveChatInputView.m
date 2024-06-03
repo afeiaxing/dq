@@ -6,7 +6,6 @@
 //
 
 #import "QYZYLiveChatInputView.h"
-#import "QYZYPhoneLoginViewController.h"
 
 @interface QYZYLiveChatInputView ()<UITextViewDelegate>
 
@@ -82,8 +81,8 @@
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
     if (!QYZYUserManager.shareInstance.isLogin) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            QYZYPhoneLoginViewController *vc = [QYZYPhoneLoginViewController new];
-            [UIViewController.currentViewController presentViewController:vc animated:true completion:nil];
+//            QYZYPhoneLoginViewController *vc = [QYZYPhoneLoginViewController new];
+//            [UIViewController.currentViewController presentViewController:vc animated:true completion:nil];
         });
         return NO;
     }
@@ -111,8 +110,8 @@
 - (void)giftButtonAction {
     if (!QYZYUserManager.shareInstance.isLogin) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            QYZYPhoneLoginViewController *vc = [QYZYPhoneLoginViewController new];
-            [UIViewController.currentViewController presentViewController:vc animated:true completion:nil];
+//            QYZYPhoneLoginViewController *vc = [QYZYPhoneLoginViewController new];
+//            [UIViewController.currentViewController presentViewController:vc animated:true completion:nil];
         });
         return;
     }

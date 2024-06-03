@@ -54,7 +54,6 @@
     self.fd_prefersNavigationBarHidden = YES;
     self.view.backgroundColor = UIColor.whiteColor;
     [self setsubviews];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateLoginStatus) name:QYZYLoginSuccessNotification object:nil];
     [self setupPlayer];
     [self requestDetailData];
     [self removeOldDetailViewController];
@@ -175,18 +174,6 @@
     [self.player pauseWhenAppResignActive];
 }
 
-- (void)updateLoginStatus {
-    weakSelf(self);
-//    [self.viewModel requestBaseInfoWithAnchorId:self.anchorId completion:^(NSDictionary * _Nonnull baseInfo) {
-//        strongSelf(self);
-//        if (baseInfo) {
-//            self.detailModel.focusStatus = baseInfo[@"fansType"];
-//            self.focusLabel.text = self.detailModel.focusStatus.integerValue ? @"已关注" : @"关注";
-//            [self updateFocusControl];
-//        }
-//    }];
-}
-
 - (void)updateFocusControl {
     if (self.detailModel.focusStatus.boolValue) {
         self.focusControl.backgroundColor = rgb(224, 228, 249);
@@ -282,8 +269,8 @@
 - (void)focusAction {
     if (!QYZYUserManager.shareInstance.isLogin) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            QYZYPhoneLoginViewController *vc = [QYZYPhoneLoginViewController new];
-            [UIViewController.currentViewController presentViewController:vc animated:true completion:nil];
+//            QYZYPhoneLoginViewController *vc = [QYZYPhoneLoginViewController new];
+//            [UIViewController.currentViewController presentViewController:vc animated:true completion:nil];
         });
         return;
     }

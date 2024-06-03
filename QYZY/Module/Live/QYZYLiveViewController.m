@@ -8,7 +8,6 @@
 #import "QYZYLiveViewController.h"
 #import "QYZYLiveMainViewController.h"
 #import "QYZYFootballViewController.h"
-#import "QYZYPhoneLoginViewController.h"
 #import "QYZYLiveDetailViewController.h"
 
 @interface QYZYLiveViewController ()<JXCategoryViewDelegate ,JXCategoryListContainerViewDelegate >
@@ -106,8 +105,8 @@
 {
     if (QYZYUserManager.shareInstance.isLogin == false) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            QYZYPhoneLoginViewController *vc = [QYZYPhoneLoginViewController new];
-            [self presentViewController:vc animated:true completion:nil];
+//            QYZYPhoneLoginViewController *vc = [QYZYPhoneLoginViewController new];
+//            [self presentViewController:vc animated:true completion:nil];
         });
         
         return;

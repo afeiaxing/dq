@@ -30,7 +30,6 @@
 #import <MJRefresh.h>
 #import "UIView+Extensions.h"
 #import "UIScrollView+EmptyDataSet.h"
-#import "QYZYPhoneLoginViewController.h"
 #import <YYText/YYText.h>
 #import "NSString+Category.h"
 #import "QYZYBaseViewController.h"

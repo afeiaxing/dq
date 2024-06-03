@@ -226,9 +226,6 @@
 		F560B58528E5BF1300989DE4 /* QYZYAppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = F560B58428E5BF1300989DE4 /* QYZYAppConfig.m */; };
 		F560B58C28E6942A00989DE4 /* QYZYUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F560B58B28E6942A00989DE4 /* QYZYUserModel.m */; };
 		F560B59028E6A44100989DE4 /* QYZYUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F560B58F28E6A44100989DE4 /* QYZYUserManager.m */; };
-		F58DF5F028EA992F00CFF18A /* QYZYPhoneLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F58DF5ED28EA992E00CFF18A /* QYZYPhoneLoginViewController.m */; };
-		F58DF5F128EA992F00CFF18A /* QYZYPhoneLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F58DF5EF28EA992F00CFF18A /* QYZYPhoneLoginViewController.xib */; };
-		F58DF5FC28EAA85700CFF18A /* QYZYPhoneLoginApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F58DF5FB28EAA85700CFF18A /* QYZYPhoneLoginApi.m */; };
 		F58DF60728EB018300CFF18A /* qwty.html in Resources */ = {isa = PBXBuildFile; fileRef = F58DF60628EB018300CFF18A /* qwty.html */; };
 		F5CB2BB428E9D31D00DD2AC8 /* UIView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F5CB2BB328E9D31D00DD2AC8 /* UIView+Extensions.m */; };
 /* End PBXBuildFile section */
@@ -658,11 +655,6 @@
 		F560B58B28E6942A00989DE4 /* QYZYUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYUserModel.m; sourceTree = "<group>"; };
 		F560B58E28E6A44100989DE4 /* QYZYUserManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYUserManager.h; sourceTree = "<group>"; };
 		F560B58F28E6A44100989DE4 /* QYZYUserManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYUserManager.m; sourceTree = "<group>"; };
-		F58DF5ED28EA992E00CFF18A /* QYZYPhoneLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYZYPhoneLoginViewController.m; sourceTree = "<group>"; };
-		F58DF5EE28EA992F00CFF18A /* QYZYPhoneLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYZYPhoneLoginViewController.h; sourceTree = "<group>"; };
-		F58DF5EF28EA992F00CFF18A /* QYZYPhoneLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QYZYPhoneLoginViewController.xib; sourceTree = "<group>"; };
-		F58DF5FA28EAA85700CFF18A /* QYZYPhoneLoginApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYPhoneLoginApi.h; sourceTree = "<group>"; };
-		F58DF5FB28EAA85700CFF18A /* QYZYPhoneLoginApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYPhoneLoginApi.m; sourceTree = "<group>"; };
 		F58DF60628EB018300CFF18A /* qwty.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = qwty.html; sourceTree = "<group>"; };
 		F5CB2BB228E9D31D00DD2AC8 /* UIView+Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Extensions.h"; sourceTree = "<group>"; };
 		F5CB2BB328E9D31D00DD2AC8 /* UIView+Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extensions.m"; sourceTree = "<group>"; };
@@ -1892,21 +1884,8 @@
 			isa = PBXGroup;
 			children = (
 				F560B58928E693D700989DE4 /* Model */,
-				F5E6210B28E595ED00EBB324 /* Api */,
-				F58DF5EE28EA992F00CFF18A /* QYZYPhoneLoginViewController.h */,
-				F58DF5ED28EA992E00CFF18A /* QYZYPhoneLoginViewController.m */,
-				F58DF5EF28EA992F00CFF18A /* QYZYPhoneLoginViewController.xib */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		F5E6210B28E595ED00EBB324 /* Api */ = {
-			isa = PBXGroup;
-			children = (
-				F58DF5FA28EAA85700CFF18A /* QYZYPhoneLoginApi.h */,
-				F58DF5FB28EAA85700CFF18A /* QYZYPhoneLoginApi.m */,
-			);
-			path = Api;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1987,7 +1966,6 @@
 				F551040328E33798001E9BC5 /* Assets.xcassets in Resources */,
 				55BF55C028E98E3B00DB476B /* QYZYChatGiftView.xib in Resources */,
 				55B04A5528E57C5300A82F1F /* QYZYLiveHomeViewController.xib in Resources */,
-				F58DF5F128EA992F00CFF18A /* QYZYPhoneLoginViewController.xib in Resources */,
 				55B04A4E28E54AA300A82F1F /* QYZYLiveItemView.xib in Resources */,
 				55B04A4928E545F200A82F1F /* QYZYLiveCell.xib in Resources */,
 				AE9FB1AE29064A5600B2033A /* QYZYAnalyzeHeaderFooterView.xib in Resources */,
@@ -2110,7 +2088,6 @@
 				F37E5DEC2BF7810D0049FAE1 /* AXMatchStandingChartCell.m in Sources */,
 				F37E5E292BF9CCDC0049FAE1 /* AXMatchAnalysisAdvancedTeamStatsCell.m in Sources */,
 				55E2395328E82E4D003ED27E /* QYZYLiveChatCell.m in Sources */,
-				F58DF5FC28EAA85700CFF18A /* QYZYPhoneLoginApi.m in Sources */,
 				AE78C0C92906A384006A70A3 /* QYZYAnalyzeIntegralApi.m in Sources */,
 				5552AC0928F960A200285B25 /* QYZYAnalyzeRecentApi.m in Sources */,
 				F37E5E2F2BFA2E3A0049FAE1 /* AXMatchListSettingCell.m in Sources */,
@@ -2175,7 +2152,6 @@
 				9B89965029078E6E007D3A79 /* QYZYPlayerContentCell.m in Sources */,
 				55B04A7A28E5961D00A82F1F /* QYZYLiveMainHeaderView.m in Sources */,
 				55EADDC428E6F15F008324AE /* QYZYLiveDetailModel.m in Sources */,
-				F58DF5F028EA992F00CFF18A /* QYZYPhoneLoginViewController.m in Sources */,
 				F560B59028E6A44100989DE4 /* QYZYUserManager.m in Sources */,
 				55B04A7728E5951500A82F1F /* QYZYLiveMainViewController.m in Sources */,
 				55BF55B728E9744100DB476B /* QYZYLiveBannerModel.m in Sources */,
