@@ -8,21 +8,18 @@
 #import "QYZYMatchViewController.h"
 #import "QYZYSubMainViewController.h"
 #import "QYZYMatchCell.h"
-#import "FSCalendarView.h"
 #import "AXMatchFilterViewController.h"
 #import "AXMatchSettingViewController.h"
 #import "AXDataBaseViewController.h"
 
-@interface QYZYMatchViewController ()<JXCategoryViewDelegate,JXCategoryListContainerViewDelegate,FSCalendarDelegate>
+@interface QYZYMatchViewController ()<JXCategoryViewDelegate,JXCategoryListContainerViewDelegate>
+
+@property (nonatomic, strong) UIView *categoryBgView;
 @property (nonatomic, strong) JXCategoryTitleView *categoryView;
 @property (nonatomic, strong) JXCategoryListContainerView *containerView;
 @property (nonatomic, strong) QYZYSubMainViewController *basketVC;
 @property (nonatomic, strong) AXDataBaseViewController *dataBaseVC;
-@property (nonatomic, strong) UIButton *selectButton;
-@property (nonatomic, strong) NSString *currentDateString;
-@property (nonatomic, strong) UIView *bgView;
-@property (nonatomic, strong) FSCalendarView *calendarView;
-@property (nonatomic, strong) NSDate *calendarDate;
+
 @property (nonatomic, strong) UIView *navigationLine;
 @property (nonatomic, strong) UIButton *filterBtn;
 @property (nonatomic, strong) UIButton *settingBtn;
@@ -33,85 +30,52 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = rgb(248, 249, 254);
-    [self setup];
+    
+    [self setupSubviews];
 }
 
-- (void)setup {
-    self.currentDateString = [NSDate getDateStringWithDate:NSDate.date formatter:@"yyyy-MM-dd"];
-    self.leftItem = nil;
-    self.categoryView.frame = CGRectMake(0, 0, 240, 32);
-//    self.navigationItem.titleView = self.categoryView;
-    [self.navigationController.navigationBar addSubview:self.categoryView];
+- (void)setupSubviews {
+    self.view.backgroundColor = rgb(248, 249, 254);
+    self.fd_prefersNavigationBarHidden = true;
     
-    [self.navigationController.navigationBar addSubview:self.navigationLine];
-    [self.navigationLine mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.offset(0);
-        make.height.mas_equalTo(1);
+    [self.view addSubview:self.categoryBgView];
+    [self.categoryBgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.offset(0);
+        make.height.mas_equalTo(90);
     }];
     
-    [self.navigationController.navigationBar addSubview:self.settingBtn];
+    [self.categoryBgView addSubview:self.categoryView];
+    [self.categoryView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.offset(0);
+        make.bottom.offset(-1);
+        make.size.mas_equalTo(CGSizeMake(240, 32));
+    }];
+    
+    [self.categoryBgView addSubview:self.settingBtn];
     [self.settingBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.offset(-12);
         make.width.height.mas_equalTo(28);
         make.centerY.equalTo(self.categoryView);
     }];
     
-    [self.navigationController.navigationBar addSubview:self.filterBtn];
+    [self.categoryBgView addSubview:self.filterBtn];
     [self.filterBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.settingBtn.mas_left).offset(-12);
         make.width.height.mas_equalTo(28);
         make.centerY.equalTo(self.categoryView);
     }];
-    
-    [self.navigationController.navigationBar addSubview:self.filterBtn];
+
+    [self.categoryBgView addSubview:self.navigationLine];
+    [self.navigationLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.offset(0);
+        make.height.mas_equalTo(1);
+    }];
     
     [self.view addSubview:self.containerView];
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
+        make.left.right.bottom.offset(0);
+        make.top.equalTo(self.categoryBgView.mas_bottom);
     }];
-    [self.view addSubview:self.selectButton];
-    [self.selectButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.mas_equalTo(62);
-        make.right.equalTo(self.view).offset(-4);
-        make.bottom.equalTo(self.view).offset(-TabBarHeight - 28);
-    }];
-}
-
-- (void)selectAction {
-    self.bgView.hidden = NO;
-    self.calendarView.hidden = NO;
-    [UIApplication.sharedApplication.keyWindow addSubview:self.bgView];
-    [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(UIApplication.sharedApplication.keyWindow);
-    }];
-    [self.bgView addSubview:self.calendarView];
-    [self.calendarView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self.bgView);
-        make.size.mas_equalTo(CGSizeMake(kScreenWidth - 32 * 2, 400));
-    }];
-}
-
-- (void)sureAction {
-    if (!self.calendarDate) {
-        return;
-    }
-    NSString *changeString = [NSDate getDateStringWithDate:self.calendarDate formatter:@"yyyy-MM-dd"];
-    if ([self.currentDateString isEqualToString:changeString]) return;
-    self.currentDateString = changeString;
-//    self.footVC.currentDateString = self.currentDateString;
-//    [self.footVC requestData];
-    self.basketVC.currentDateString = self.currentDateString;
-    [self.basketVC requestData];
-}
-
-- (void)cancelAction {
-    self.bgView.hidden = YES;
-    self.calendarView.hidden = YES;
-}
-
-- (void)calendarDidSelectedWithDate:(NSDate *)date {
-    self.calendarDate = date;
 }
 
 #pragma mark - delegate
@@ -199,50 +163,16 @@
     if (!_basketVC) {
         _basketVC = [[QYZYSubMainViewController alloc] init];
 //        _basketVC.matchType = QYZYMatchTypeBasketball;
-        _basketVC.currentDateString = self.currentDateString;
     }
     return _basketVC;
 }
 
-- (UIButton *)selectButton {
-    if (!_selectButton) {
-        _selectButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_selectButton setImage:[UIImage imageNamed:@"match_home_sel"] forState:UIControlStateNormal];
-        [_selectButton addTarget:self action:@selector(selectAction) forControlEvents:UIControlEventTouchUpInside];
-        _selectButton.hidden = true;
+- (UIView *)categoryBgView{
+    if (!_categoryBgView) {
+        _categoryBgView = [UIView new];
+        _categoryBgView.backgroundColor = UIColor.whiteColor;
     }
-    return _selectButton;
-}
-
-- (FSCalendarView *)calendarView{
-    if (!_calendarView) {
-        _calendarView = [[FSCalendarView alloc] initWithFrame:CGRectMake(0, 88, kScreenWidth - 32 * 2, 400) viewType:FSCalendarViewTypeDefault selectDayLimit:30];
-        _calendarView.layer.cornerRadius = 10;
-        _calendarView.layer.masksToBounds = YES;
-        _calendarView.fsDelegate = self;
-        weakSelf(self);
-        _calendarView.cancelBlock = ^{
-            strongSelf(self);
-            [self cancelAction];
-        };
-        _calendarView.conformBlock = ^{
-            strongSelf(self);
-            [self sureAction];
-            [self cancelAction];
-        };
-    }
-    return _calendarView;
-}
-
-- (UIView *)bgView {
-    if (!_bgView) {
-        _bgView = [[UIView alloc] init];
-        _bgView.backgroundColor = rgba(0, 0, 0, 0.5);
-        
-//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelAction)];
-//        [_bgView addGestureRecognizer:tap];
-    }
-    return _bgView;
+    return _categoryBgView;
 }
 
 - (UIView *)navigationLine{

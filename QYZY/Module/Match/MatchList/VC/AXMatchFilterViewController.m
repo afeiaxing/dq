@@ -13,21 +13,20 @@
 
 @implementation AXMatchFilterViewController
 
+// MARK: lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.fd_prefersNavigationBarHidden = YES;
-    self.view.backgroundColor = UIColor.purpleColor;
+    [self setupSubviews];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+// MARK: private
+- (void)setupSubviews{
+    self.view.backgroundColor = UIColor.whiteColor;
 }
-*/
+
+// MARK: setter & getter
+
+
 
 @end
