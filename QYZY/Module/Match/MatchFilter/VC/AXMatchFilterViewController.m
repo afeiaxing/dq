@@ -9,11 +9,13 @@
 #import "AXMatchFilterTopView.h"
 #import "AXMatchListSectionHeader.h"
 #import "AXMatchListFilterCell.h"
+#import "AXMatchFilterBottomView.h"
 
 @interface AXMatchFilterViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) AXMatchFilterTopView *topFilterView;
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) AXMatchFilterBottomView *bottomView;
 
 
 @end
@@ -37,9 +39,16 @@
         make.height.mas_offset(48);
     }];
     
+    [self.view addSubview:self.bottomView];
+    [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.offset(0);
+        make.height.mas_offset(94);
+    }];
+    
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.offset(0);
+        make.left.right.offset(0);
+        make.bottom.equalTo(self.bottomView.mas_top);
         make.top.equalTo(self.topFilterView.mas_bottom);
     }];
 }
@@ -87,7 +96,7 @@
 - (UITableView *)tableView{
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-        weakSelf(self);
+        
         _tableView.backgroundColor = rgb(248, 249, 254);
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.delegate = self;
@@ -98,6 +107,24 @@
         _tableView.sectionFooterHeight = 0.1;
     }
     return _tableView;
+}
+/**
+ _liveVC.requestBlock = ^{
+     strongSelf(self);
+     [self requestData];
+ };
+}
+ */
+- (AXMatchFilterBottomView *)bottomView{
+    if (!_bottomView) {
+        weakSelf(self);
+        _bottomView = [AXMatchFilterBottomView new];
+        _bottomView.block = ^(AXMatchFilterBottomEventType eventType) {
+            
+            
+        };
+    }
+    return _bottomView;
 }
 
 @end

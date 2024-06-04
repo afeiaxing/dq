@@ -166,6 +166,7 @@
 		F36D87652C0B8820001F37F0 /* AXRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F36D87642C0B8820001F37F0 /* AXRequest.m */; };
 		F36D87682C0DDAD6001F37F0 /* AXMatchFilterTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = F36D87672C0DDAD6001F37F0 /* AXMatchFilterTopView.m */; };
 		F36D876B2C0DEEEC001F37F0 /* AXMatchListFilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F36D876A2C0DEEEC001F37F0 /* AXMatchListFilterCell.m */; };
+		F36D87752C0F3AF6001F37F0 /* AXMatchFilterBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = F36D87742C0F3AF6001F37F0 /* AXMatchFilterBottomView.m */; };
 		F37E5D9F2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5D9B2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCellModel.m */; };
 		F37E5DA02BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5D9C2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCell.m */; };
 		F37E5DA12BF4D7A10049FAE1 /* JXCategoryTitleBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5D9D2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundView.m */; };
@@ -539,6 +540,8 @@
 		F36D87672C0DDAD6001F37F0 /* AXMatchFilterTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchFilterTopView.m; sourceTree = "<group>"; };
 		F36D87692C0DEEEC001F37F0 /* AXMatchListFilterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchListFilterCell.h; sourceTree = "<group>"; };
 		F36D876A2C0DEEEC001F37F0 /* AXMatchListFilterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchListFilterCell.m; sourceTree = "<group>"; };
+		F36D87732C0F3AF6001F37F0 /* AXMatchFilterBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchFilterBottomView.h; sourceTree = "<group>"; };
+		F36D87742C0F3AF6001F37F0 /* AXMatchFilterBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchFilterBottomView.m; sourceTree = "<group>"; };
 		F37E5D992BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleBackgroundCell.h; sourceTree = "<group>"; };
 		F37E5D9A2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleBackgroundView.h; sourceTree = "<group>"; };
 		F37E5D9B2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryTitleBackgroundCellModel.m; sourceTree = "<group>"; };
@@ -1398,6 +1401,8 @@
 				F36D87672C0DDAD6001F37F0 /* AXMatchFilterTopView.m */,
 				F36D87692C0DEEEC001F37F0 /* AXMatchListFilterCell.h */,
 				F36D876A2C0DEEEC001F37F0 /* AXMatchListFilterCell.m */,
+				F36D87732C0F3AF6001F37F0 /* AXMatchFilterBottomView.h */,
+				F36D87742C0F3AF6001F37F0 /* AXMatchFilterBottomView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2245,6 +2250,7 @@
 				B1728B3A28E5937A00419F67 /* QYZYScheduleTableViewCell.m in Sources */,
 				9BC0D560290639FD0063BCC7 /* QYZYBasketballOverviewController.m in Sources */,
 				5552AC0228F9363F00285B25 /* QYZYAnalyzeSubViewController.m in Sources */,
+				F36D87752C0F3AF6001F37F0 /* AXMatchFilterBottomView.m in Sources */,
 				9BC0D5C12906B50A0063BCC7 /* QYZYPlayerDataModel.m in Sources */,
 				F551044028E3FD96001E9BC5 /* NSArray+Extensions.m in Sources */,
 				CB08230A2BF5A9D100027C81 /* AXMatchListOddsCell.m in Sources */,
