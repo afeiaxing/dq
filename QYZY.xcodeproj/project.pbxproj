@@ -699,6 +699,8 @@
 		555CE93328F6B3020085F1D4 /* Match */ = {
 			isa = PBXGroup;
 			children = (
+				F36D87702C0F3A59001F37F0 /* MatchSetting */,
+				F36D876D2C0F3A31001F37F0 /* MatchFilter */,
 				F37E5DA22BF4DB900049FAE1 /* MatchList */,
 				55E0D50328F7FDB200DDAAB6 /* Detail */,
 				555CE94A28F6C9F10085F1D4 /* Views */,
@@ -1371,6 +1373,62 @@
 			path = Toast;
 			sourceTree = "<group>";
 		};
+		F36D876D2C0F3A31001F37F0 /* MatchFilter */ = {
+			isa = PBXGroup;
+			children = (
+				F36D876F2C0F3A3F001F37F0 /* View */,
+				F36D876E2C0F3A3A001F37F0 /* VC */,
+			);
+			path = MatchFilter;
+			sourceTree = "<group>";
+		};
+		F36D876E2C0F3A3A001F37F0 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				F37E5DB22BF62F820049FAE1 /* AXMatchFilterViewController.h */,
+				F37E5DB32BF62F820049FAE1 /* AXMatchFilterViewController.m */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		F36D876F2C0F3A3F001F37F0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F36D87662C0DDAD6001F37F0 /* AXMatchFilterTopView.h */,
+				F36D87672C0DDAD6001F37F0 /* AXMatchFilterTopView.m */,
+				F36D87692C0DEEEC001F37F0 /* AXMatchListFilterCell.h */,
+				F36D876A2C0DEEEC001F37F0 /* AXMatchListFilterCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F36D87702C0F3A59001F37F0 /* MatchSetting */ = {
+			isa = PBXGroup;
+			children = (
+				F36D87722C0F3A7A001F37F0 /* View */,
+				F36D87712C0F3A61001F37F0 /* VC */,
+			);
+			path = MatchSetting;
+			sourceTree = "<group>";
+		};
+		F36D87712C0F3A61001F37F0 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				F37E5DBF2BF631DC0049FAE1 /* AXMatchSettingViewController.h */,
+				F37E5DC02BF631DC0049FAE1 /* AXMatchSettingViewController.m */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		F36D87722C0F3A7A001F37F0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F37E5E2D2BFA2E3A0049FAE1 /* AXMatchListSettingCell.h */,
+				F37E5E2E2BFA2E3A0049FAE1 /* AXMatchListSettingCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F37E5D982BF4D7A10049FAE1 /* TitleBackground */ = {
 			isa = PBXGroup;
 			children = (
@@ -1405,10 +1463,6 @@
 				55D50B8828F7BD170043C3A3 /* QYZYSubMainViewController.m */,
 				555CE94528F6C9E90085F1D4 /* QYZYMatchSubViewController.h */,
 				555CE94628F6C9E90085F1D4 /* QYZYMatchSubViewController.m */,
-				F37E5DB22BF62F820049FAE1 /* AXMatchFilterViewController.h */,
-				F37E5DB32BF62F820049FAE1 /* AXMatchFilterViewController.m */,
-				F37E5DBF2BF631DC0049FAE1 /* AXMatchSettingViewController.h */,
-				F37E5DC02BF631DC0049FAE1 /* AXMatchSettingViewController.m */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -1426,12 +1480,6 @@
 				F37E5DB92BF630550049FAE1 /* AXMatchListSectionHeader.m */,
 				F37E5EA92C04A92D0049FAE1 /* AXMatchListDateView.h */,
 				F37E5EAA2C04A92D0049FAE1 /* AXMatchListDateView.m */,
-				F37E5E2D2BFA2E3A0049FAE1 /* AXMatchListSettingCell.h */,
-				F37E5E2E2BFA2E3A0049FAE1 /* AXMatchListSettingCell.m */,
-				F36D87662C0DDAD6001F37F0 /* AXMatchFilterTopView.h */,
-				F36D87672C0DDAD6001F37F0 /* AXMatchFilterTopView.m */,
-				F36D87692C0DEEEC001F37F0 /* AXMatchListFilterCell.h */,
-				F36D876A2C0DEEEC001F37F0 /* AXMatchListFilterCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
