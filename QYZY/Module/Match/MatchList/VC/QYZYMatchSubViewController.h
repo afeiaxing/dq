@@ -17,7 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic ,strong) void(^requestBlock)(void);
 @property (nonatomic, assign) AXMatchStatus status;
 
-- (void)endRefresh;
 @end
 
 NS_ASSUME_NONNULL_END

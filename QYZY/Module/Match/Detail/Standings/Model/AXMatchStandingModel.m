@@ -7,6 +7,10 @@
 
 #import "AXMatchStandingModel.h"
 
+@implementation AXMatchStandingTextLiveModel
+
+@end
+
 @implementation AXMatchStandingAllStatsModel
 
 @end
@@ -20,7 +24,7 @@
 + (NSDictionary *)modelContainerPropertyGenericClass {
     return @{
         @"statistics":[AXMatchStandingAllStatsModel class],
-//        @"awayTeamStats":[AXMatchStandingTeamStatsModel class],
+        @"tlive":[AXMatchStandingTextLiveModel class],
     };
 }
 
@@ -29,7 +33,8 @@
         @"hostTeamStats":@"homeTeam.teamStats",
         @"awayTeamStats": @"awayTeam.teamStats",
         @"scoreDiff": @"trendDetail.scoreDiff",
-        @"statistics": @"statistics"
+        @"statistics": @"statistics",
+        @"tlive": @"tlive",
     };
 }
 

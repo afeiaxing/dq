@@ -10,14 +10,58 @@
 
 @implementation AXMatchListRequest
 
-- (void)requestMatchListWithcompletion:(void(^)(AXMatchListModel *matchModel))completion{
+- (void)requestMatchListWithType: (AXMatchStatus)type
+                          pageNo: (int)pageNo
+                      completion:(void(^)(AXMatchListModel *matchModel))completion{
     AXMatchListApi *api = [AXMatchListApi new];
+    api.pageNo = pageNo;
+    switch (type) {
+        case AXMatchStatusSchedule:
+            api.type = 2;
+            break;
+        case AXMatchStatusLive:
+            api.type = 1;
+            break;
+        case AXMatchStatusResult:
+            api.type = 3;
+            break;
+        default:
+            break;
+    }
     [api ax_startWithCompletionSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        AXMatchListModel *model = [AXMatchListModel yy_modelWithJSON:request.responseJSONObject[@"data"]];
+        AXMatchListModel *model;
+        if (api.isRequestSuccess) {
+            NSArray *array = [NSArray yy_modelArrayWithClass:AXMatchListItemModel.class json:api.bizData];
+            model = [self handleMatchListWithArray:array];
+        }
         !completion ? : completion(model);
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         !completion ? : completion(nil);
     }];
+}
+
+- (AXMatchListModel *)handleMatchListWithArray: (NSArray *)array{
+    AXMatchListModel *model = [AXMatchListModel new];
+    
+    NSMutableArray *schedule = [NSMutableArray array];
+    NSMutableArray *live = [NSMutableArray array];
+    NSMutableArray *result = [NSMutableArray array];
+    
+    for (AXMatchListItemModel *match in array) {
+        if (match.leaguesStatus.intValue == 10) {
+            [result addObject:match];
+        } else if (match.leaguesStatus.intValue == 1) {
+            [schedule addObject:match];
+        } else {
+            [live addObject:match];
+        }
+    }
+    
+    model.schedule = schedule.copy;
+    model.live = live.copy;
+    model.result = result.copy;
+    
+    return model;
 }
 
 @end

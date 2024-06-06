@@ -260,7 +260,7 @@
     
     [self.contentView addSubview:self.point2TintView];
     [self.point2TintView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.centerY.height.equalTo(self.point2BackView);
+        make.left.centerY.height.equalTo(self.point2BackView);
         make.width.mas_equalTo(100);
     }];
     
@@ -272,7 +272,7 @@
     
     [self.contentView addSubview:self.freeThrowTintView];
     [self.freeThrowTintView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.centerY.height.equalTo(self.freeThrowBackView);
+        make.left.centerY.height.equalTo(self.freeThrowBackView);
         make.width.mas_equalTo(100);
     }];
     
@@ -317,27 +317,48 @@
     self.awayFreeThrowPercentLabel.text = standingModel.awayTeamStats.freeThrowAccuracy;
     
     CGFloat backViewW = self.point3BackView.bounds.size.width;
+
+    // 3-point
+    [self handleTintViewLayoutWithHostValue:standingModel.hostTeamStats.threePoints awayValue:standingModel.awayTeamStats.threePoints backView:self.point3BackView tintView:self.point3TintView backViewWidth:backViewW];
     
-    int point3Total = standingModel.hostTeamStats.threePoints.intValue + standingModel.awayTeamStats.threePoints.intValue;
-    CGFloat point3Precent;
-//    if (standingModel.hostTeamStats.threePoints.intValue > standingModel.awayTeamStats.threePoints.intValue) {
-        point3Precent = standingModel.hostTeamStats.threePoints.intValue / point3Total;
-        [self.point3TintView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.centerY.height.equalTo(self.point3BackView);
-//            make.width.mas_equalTo(50);
-                        make.width.mas_equalTo(backViewW * point3Precent);
-        }];
-//    } else {
-//        point3Precent = standingModel.awayTeamStats.threePoints.intValue / point3Total;
-//        [self.point3TintView mas_remakeConstraints:^(MASConstraintMaker *make) {
-//            make.right.centerY.height.equalTo(self.point3BackView);
-//            make.width.mas_equalTo(backViewW * point3Precent);
-//        }];
-//    }
+    // 2-point
+    [self handleTintViewLayoutWithHostValue:standingModel.hostTeamStats.twoPoints awayValue:standingModel.awayTeamStats.twoPoints backView:self.point2BackView tintView:self.point2TintView backViewWidth:backViewW];
     
-    /// TODO: 设置其他进度条
+    // free throw
+    [self handleTintViewLayoutWithHostValue:standingModel.hostTeamStats.freeThrow awayValue:standingModel.awayTeamStats.freeThrow backView:self.freeThrowBackView tintView:self.freeThrowTintView backViewWidth:backViewW];
     
+    // free throw %
+    [self handleTintViewLayoutWithHostValue:standingModel.hostTeamStats.freeThrowAccuracy awayValue:standingModel.awayTeamStats.freeThrowAccuracy backView:self.freeThrowPercentBackView tintView:self.freeThrowPercentTintView backViewWidth:backViewW];
 }
+
+- (void)handleTintViewLayoutWithHostValue: (NSString *)hostValue
+                                awayValue: (NSString *)awayValue
+                                 backView: (UIView *)backView
+                                 tintView: (UIView *)tintView
+                            backViewWidth: (CGFloat)backViewWidth{
+    CGFloat point3Total = hostValue.intValue + awayValue.intValue;
+    CGFloat point3Precent;
+    BOOL isAlignLeft;
+    CGFloat leftMargin;
+    CGFloat tintViewW;
+    if (hostValue.floatValue > awayValue.floatValue) {
+        isAlignLeft = true;
+        point3Precent = hostValue.intValue / point3Total;
+        tintViewW = backViewWidth * point3Precent;
+        leftMargin = 0;
+    } else {
+        isAlignLeft = false;
+        point3Precent = awayValue.intValue / point3Total;
+        tintViewW = backViewWidth * point3Precent;
+        leftMargin = (1 - point3Precent) * backViewWidth;
+    }
+
+    [tintView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(backView).offset(leftMargin);
+        make.width.mas_equalTo(tintViewW);
+    }];
+}
+
 
 - (UIView *)containerView{
     if (!_containerView) {

@@ -9,7 +9,6 @@
 #import "QYZYMatchSubViewController.h"
 #import "QYZYMatchViewModel.h"
 #import "JXCategoryTitleBackgroundView.h"
-#import "AXMatchListRequest.h"
 
 @interface QYZYSubMainViewController ()<JXCategoryViewDelegate,JXCategoryListContainerViewDelegate>
 @property (nonatomic ,strong) JXCategoryTitleBackgroundView *categoryView;
@@ -20,11 +19,8 @@
 @property (nonatomic ,strong) QYZYMatchSubViewController *liveVC;
 @property (nonatomic ,strong) QYZYMatchSubViewController *scheduleVC;
 @property (nonatomic ,strong) QYZYMatchSubViewController *favoriteVC;
-@property (nonatomic, strong) AXMatchListRequest *requestManager;
-@property (nonatomic, strong) NSTimer *timer;
-@end
 
-#define kMatchListRefreshDuration 1500000000000
+@end
 
 @implementation QYZYSubMainViewController
 
@@ -32,24 +28,6 @@
     [super viewDidLoad];
     self.view.backgroundColor = UIColor.whiteColor;
     [self setupSubViews];
-    [self requestData];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    [self.timer invalidate];
-    self.timer = nil;
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    if (!self.timer) {
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:kMatchListRefreshDuration target:self selector:@selector(requestData) userInfo:nil repeats:YES];
-    }
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (UIView *)listView {
@@ -68,30 +46,6 @@
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.view);
         make.top.equalTo(self.categoryView.mas_bottom);
-    }];
-}
-
-- (void)requestData {
-    weakSelf(self);
-    [self.allVC.view ax_showLoading];
-    [self.requestManager requestMatchListWithcompletion:^(AXMatchListModel * _Nonnull matchModel) {
-        [self.liveVC endRefresh];
-        [self.resultVC endRefresh];
-        [self.scheduleVC endRefresh];
-        NSMutableArray *allModel = [NSMutableArray array];
-        if (matchModel.live.count) {
-            [allModel addObject:matchModel.live];
-            self.liveVC.matches = @[matchModel.live];
-        }
-        if (matchModel.schedule.count) {
-            [allModel addObject:matchModel.schedule];
-            self.scheduleVC.matches = @[matchModel.schedule];
-        }
-        if (matchModel.result.count) {
-            [allModel addObject:matchModel.result];
-            self.resultVC.matches = @[matchModel.result];
-        }
-        self.allVC.matches = allModel.copy;
     }];
 }
 
@@ -169,11 +123,11 @@
     if (!_liveVC) {
         _liveVC = [[QYZYMatchSubViewController alloc] init];
         _liveVC.status = AXMatchStatusLive;
-        weakSelf(self);
-        _liveVC.requestBlock = ^{
-            strongSelf(self);
-            [self requestData];
-        };
+//        weakSelf(self);
+//        _liveVC.requestBlock = ^{
+//            strongSelf(self);
+//            [self requestData];
+//        };
     }
     return _liveVC;
 }
@@ -182,11 +136,11 @@
     if (!_resultVC) {
         _resultVC = [[QYZYMatchSubViewController alloc] init];
         _resultVC.status = AXMatchStatusResult;
-        weakSelf(self);
-        _resultVC.requestBlock = ^{
-            strongSelf(self);
-            [self requestData];
-        };
+//        weakSelf(self);
+//        _resultVC.requestBlock = ^{
+//            strongSelf(self);
+//            [self requestData];
+//        };
     }
     return _resultVC;
 }
@@ -195,11 +149,11 @@
     if (!_scheduleVC) {
         _scheduleVC = [[QYZYMatchSubViewController alloc] init];
         _scheduleVC.status = AXMatchStatusSchedule;
-        weakSelf(self);
-        _scheduleVC.requestBlock = ^{
-            strongSelf(self);
-            [self requestData];
-        };
+//        weakSelf(self);
+//        _scheduleVC.requestBlock = ^{
+//            strongSelf(self);
+//            [self requestData];
+//        };
     }
     return _scheduleVC;
 }
@@ -208,11 +162,11 @@
     if (!_allVC) {
         _allVC = [[QYZYMatchSubViewController alloc] init];
         _allVC.status = AXMatchStatusAll;
-        weakSelf(self);
-        _allVC.requestBlock = ^{
-            strongSelf(self);
-            [self requestData];
-        };
+//        weakSelf(self);
+//        _allVC.requestBlock = ^{
+//            strongSelf(self);
+//            [self requestData];
+//        };
     }
     return _allVC;
 }
@@ -221,20 +175,13 @@
     if (!_favoriteVC) {
         _favoriteVC = [[QYZYMatchSubViewController alloc] init];
 //        _favoriteVC.status = AXMatchStatusFavorite;
-        weakSelf(self);
-        _favoriteVC.requestBlock = ^{
-            strongSelf(self);
-            [self requestData];
-        };
+//        weakSelf(self);
+//        _favoriteVC.requestBlock = ^{
+//            strongSelf(self);
+//            [self requestData];
+//        };
     }
     return _favoriteVC;
-}
-
-- (AXMatchListRequest *)requestManager{
-    if (!_requestManager) {
-        _requestManager = [AXMatchListRequest new];
-    }
-    return _requestManager;
 }
 
 @end

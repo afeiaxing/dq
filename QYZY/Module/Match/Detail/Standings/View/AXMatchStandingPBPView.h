@@ -6,10 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AXMatchStandingModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AXMatchStandingPBPView : UIView<JXCategoryListContentViewDelegate>
+
+@property (nonatomic, strong) AXMatchStandingModel *standingModel;
 
 @end
 

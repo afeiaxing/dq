@@ -9,14 +9,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef enum : NSUInteger {
-    AXMatchStatusAll,
-    AXMatchStatusSchedule,
-    AXMatchStatusLive,
-    AXMatchStatusResult,
-//    AXMatchStatusFavorite,
-} AXMatchStatus;
-
 typedef void (^AXMatchListDateViewBlock)(AXMatchStatus status, int index);
 
 @interface AXMatchListDateView : UIView

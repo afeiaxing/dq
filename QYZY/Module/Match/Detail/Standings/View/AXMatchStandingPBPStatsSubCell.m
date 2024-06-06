@@ -81,14 +81,28 @@
 }
 
 // MARK: setter & getter
-- (void)setData:(NSString *)data{
-    self.titleLabel.text = data;
+- (void)setStats:(AXMatchStandingAllStatsModel *)stats{
+    self.titleLabel.text = stats.name;
+    self.homeValueLabel.text = stats.homeScore;
+    self.awayValueLabel.text = stats.awayScore;
+    CGFloat totalScore = stats.homeScore.floatValue + stats.awayScore.floatValue;
+    CGFloat homePrecent = stats.homeScore.floatValue / totalScore;
+    CGFloat awayPrecent = stats.awayScore.floatValue / totalScore;
+    CGFloat backViewWidth = (ScreenWidth - AXMatchStandingPBPStatsSubCellMargin * 2 - 2) / 2;
+    
+    [self.homeTintView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(backViewWidth * homePrecent);
+    }];
+    [self.awayTintView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(backViewWidth * awayPrecent);
+    }];
+    
+    _stats = stats;
 }
 
 - (UILabel *)homeValueLabel {
     if (!_homeValueLabel) {
         _homeValueLabel = [[UILabel alloc] init];
-        _homeValueLabel.text = @"146";
         _homeValueLabel.textColor = rgb(17, 17, 17);
         _homeValueLabel.font = [UIFont systemFontOfSize:12];
     }
@@ -98,7 +112,6 @@
 - (UILabel *)awayValueLabel {
     if (!_awayValueLabel) {
         _awayValueLabel = [[UILabel alloc] init];
-        _awayValueLabel.text = @"90";
         _awayValueLabel.textColor = rgb(17, 17, 17);
         _awayValueLabel.font = [UIFont systemFontOfSize:12];
     }

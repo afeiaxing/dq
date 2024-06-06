@@ -14,7 +14,7 @@
 
 @end
 
-#define kAXHttpRequestSuccessCode 200
+#define kAXHttpRequestSuccessCode 0
 
 @implementation AXRequest
 
@@ -30,8 +30,8 @@
         }
         success(request);
         AXLog(@"==========RequestSuccess============");
-        AXLog(@"ReuqestURL: %@%@", request.baseUrl, request.requestUrl);
-        AXLog(@"ResponseData: %@", request.responseJSONObject[@"data"]);
+        AXLog(@"ReuqestURL: %@", request.requestUrl);
+        AXLog(@"ResponseData: %@", request.responseJSONObject);
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         long httpCode = request.responseStatusCode;
         // TODO: 统一处理返回数据
@@ -40,7 +40,7 @@
         }
         self.isRequestSuccess = false;
         AXLog(@"==========RequestFail============");
-        AXLog(@"ReuqestURL: %@%@", request.baseUrl, request.requestUrl);
+        AXLog(@"ReuqestURL: %@", request.requestUrl);
         AXLog(@"ResponseCode: %ld", httpCode);
         failure(request);
     }];

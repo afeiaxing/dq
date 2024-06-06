@@ -17,7 +17,6 @@
 @property (nonatomic, strong) UILabel *awayName;
 
 @property (nonatomic, strong) UITableView *tableview;
-@property (nonatomic, strong) NSArray *datas;
 
 @end
 
@@ -74,7 +73,7 @@
 
 // MARK: UITableViewDelegate, UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.datas.count;
+    return self.standingModel.statistics.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -83,7 +82,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     AXMatchStandingPBPStatsSubCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchStandingPBPStatsSubCell.class) forIndexPath:indexPath];
-    cell.data = self.datas[indexPath.row];
+    AXMatchStandingAllStatsModel *stats = self.standingModel.statistics[indexPath.row];
+    cell.stats = stats;
     return cell;
 }
 
@@ -96,8 +96,17 @@
 - (void)setMatchModel:(AXMatchListItemModel *)matchModel{
     [self.hostLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.homeTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
     [self.awayLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.awayTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
+    self.hostName.text = matchModel.homeTeamName;
+    self.awayName.text = matchModel.awayTeamName;
     _matchModel = matchModel;
 }
+
+- (void)setStandingModel:(AXMatchStandingModel *)standingModel{
+    _standingModel = standingModel;
+    
+    [self.tableview reloadData];
+}
+
 - (UILabel *)vsLabel {
     if (!_vsLabel) {
         _vsLabel = [[UILabel alloc] init];
@@ -127,7 +136,6 @@
         _hostName = [[UILabel alloc] init];
         _hostName.font = [UIFont systemFontOfSize:12];
         _hostName.textColor = rgb(17, 17, 17);
-        _hostName.text = @"LAL";
     }
     return _hostName;
 }
@@ -137,7 +145,6 @@
         _awayName = [[UILabel alloc] init];
         _awayName.font = [UIFont systemFontOfSize:12];
         _awayName.textColor = rgb(17, 17, 17);
-        _awayName.text = @"BOS";
     }
     return _awayName;
 }
@@ -152,10 +159,6 @@
         return _tableview;
     }
     return _tableview;
-}
-
-- (NSArray *)datas{
-    return @[@"Field Goal", @"Field Goal %", @"3-Point", @"2-Point", @"Free Throw",  @"Free Throw %",];
 }
 
 @end

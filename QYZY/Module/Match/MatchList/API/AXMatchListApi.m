@@ -10,12 +10,16 @@
 @implementation AXMatchListApi
 
 - (NSString *)requestUrl {
-    return @"/app-api/score/matchList/page";
+    return @"/app-api/score/matchList2/page";
 }
 
 - (id)requestArgument {
     NSMutableDictionary *dict = @{}.mutableCopy;
-//    [dict setValue:@"National Women's Basketball League1 East" forKey:@"filter"];
+    if (self.type) {
+        [dict setValue:@(self.type) forKey:@"type"];
+    }
+    [dict setValue:@(self.pageNo) forKey:@"pageNo"];
+    [dict setValue:@50 forKey:@"pageSize"];
     return dict;
 }
 

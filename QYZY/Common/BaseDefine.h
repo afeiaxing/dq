@@ -13,6 +13,14 @@ typedef NS_ENUM(NSInteger ,QYZYMatchType) {
     QYZYMatchTypeBasketball = 2
 };
 
+typedef enum : NSUInteger {
+    AXMatchStatusAll,
+    AXMatchStatusSchedule,
+    AXMatchStatusLive,
+    AXMatchStatusResult,
+//    AXMatchStatusFavorite,
+} AXMatchStatus;
+
 #define ScreenWidth UIScreen.mainScreen.bounds.size.width
 #define ScreenHeight UIScreen.mainScreen.bounds.size.height
 

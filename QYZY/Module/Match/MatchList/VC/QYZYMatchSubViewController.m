@@ -13,15 +13,21 @@
 #import "AXMatchListTableViewCell.h"
 #import "AXMatchListOddsCell.h"
 #import "AXMatchListSectionHeader.h"
+#import "AXMatchListRequest.h"
 
 @interface QYZYMatchSubViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) AXMatchListDateView *dateView;
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, assign) int pageNo;
+@property (nonatomic, strong) AXMatchListRequest *requestManager;
+@property (nonatomic, strong) NSTimer *timer;
 
 @end
 
 #define kAXMatchListDateViewHeight 50
+#define kMatchListRefreshDuration_live 1500
+#define kMatchListRefreshDuration_Schedule 1500
 
 @implementation QYZYMatchSubViewController
 
@@ -32,7 +38,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.pageNo = 1;
     [self setupSubviews];
+    if (self.status == AXMatchStatusResult) {
+        [self requestData];
+    }
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self.timer invalidate];
+    self.timer = nil;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if (!self.timer && self.status != AXMatchStatusResult) {
+        int duration = self.status == AXMatchStatusLive ? kMatchListRefreshDuration_live : kMatchListRefreshDuration_Schedule;
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:duration target:self selector:@selector(requestData) userInfo:nil repeats:YES];
+        [self.timer fire];
+    }
 }
 
 - (void)setupSubviews{
@@ -53,6 +78,44 @@
             make.edges.offset(0);
         }];
     }
+}
+
+- (void)requestData{
+    [self.view ax_showLoading];
+    weakSelf(self);
+    [self.requestManager requestMatchListWithType:self.status pageNo:self.pageNo completion:^(AXMatchListModel * _Nonnull matchModel) {
+        strongSelf(self);
+        [self.view ax_hideLoading];
+        [self endRefresh];
+        NSMutableArray *allModel = [NSMutableArray array];
+        if (matchModel.live && matchModel.live.count) {
+            [allModel addObject:matchModel.live];
+        }
+        if (matchModel.schedule && matchModel.schedule.count) {
+            [allModel addObject:matchModel.schedule];
+        }
+        if (matchModel.result && matchModel.result.count) {
+            [allModel addObject:matchModel.result];
+        }
+        
+        switch (self.status) {
+            case AXMatchStatusAll:
+                self.matches = allModel.copy;
+                break;
+            case AXMatchStatusSchedule:
+                self.matches = @[matchModel.schedule];
+                break;
+            case AXMatchStatusLive:
+                self.matches = @[matchModel.live];
+                break;
+            case AXMatchStatusResult:
+                self.matches = @[matchModel.result];
+                break;
+                
+            default:
+                break;
+        }
+    }];
 }
 
 - (void)setMatches:(NSArray *)matches {
@@ -88,7 +151,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 30;
+    return self.status == AXMatchStatusAll ? 30 : 0.1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -102,6 +165,10 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (self.status != AXMatchStatusAll) {
+        return nil;
+    }
+    
     AXMatchListSectionHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass(AXMatchListSectionHeader.class)];
     NSString *str;
     switch (section) {
@@ -157,6 +224,13 @@
         _dateView = [[AXMatchListDateView alloc] initWithStatus:self.status];
     }
     return _dateView;
+}
+
+- (AXMatchListRequest *)requestManager{
+    if (!_requestManager) {
+        _requestManager = [AXMatchListRequest new];
+    }
+    return _requestManager;
 }
 
 @end

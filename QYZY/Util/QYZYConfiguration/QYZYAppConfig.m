@@ -37,6 +37,7 @@
     
     YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
     config.baseUrl = @"http://114.55.36.227:48084";  // TODO: 域名待配置
+//    config.baseUrl = @"https://bifenh5.c66uat.com";  // TODO: 域名待配置
     
 //    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
 //    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {

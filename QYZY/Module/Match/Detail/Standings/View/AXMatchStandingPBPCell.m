@@ -82,6 +82,12 @@
     _matchModel = matchModel;
 }
 
+- (void)setStandingModel:(AXMatchStandingModel *)standingModel{
+    self.pbpView.standingModel = standingModel;
+    self.statsView.standingModel = standingModel;
+    _standingModel = standingModel;
+}
+
 - (UIView *)colorBgView{
     if (!_colorBgView) {
         _colorBgView = [UIView new];

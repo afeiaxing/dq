@@ -13,6 +13,8 @@
 @property (nonatomic, strong) NSArray *quarters;
 @property (nonatomic, strong) NSArray *quarterTitleBtns;
 @property (nonatomic, strong) UIButton *lastSelectedBtn;
+@property (nonatomic, strong) NSArray *textLives;
+@property (nonatomic, assign) NSInteger selectIndex;
 
 @property (nonatomic, strong) UITableView *tableview;
 
@@ -65,13 +67,14 @@
     [sender setTitleColor:AXSelectColor forState:UIControlStateNormal];
     sender.backgroundColor = rgb(255, 247, 239);
     self.lastSelectedBtn = sender;
-    // reload data
     NSLog(@"%ld", sender.tag);
+    self.selectIndex = sender.tag;
+    [self.tableview reloadData];
 }
 
 // MARK: UITableViewDelegate, UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return self.textLives.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -90,8 +93,64 @@
 }
 
 // MARK: setter & getter
+- (void)setStandingModel:(AXMatchStandingModel *)standingModel{
+    _standingModel = standingModel;
+    
+    NSMutableArray *q1 = [NSMutableArray array];
+    NSMutableArray *q2 = [NSMutableArray array];
+    NSMutableArray *q3 = [NSMutableArray array];
+    NSMutableArray *q4 = [NSMutableArray array];
+    NSMutableArray *ot = [NSMutableArray array];
+    
+    for (AXMatchStandingTextLiveModel *model in standingModel.tlive) {
+        switch (model.stage.intValue) {
+            case 1:
+                [q1 addObject:model];
+                break;
+            case 2:
+                [q2 addObject:model];
+                break;
+            case 3:
+                [q3 addObject:model];
+                break;
+            case 4:
+                [q4 addObject:model];
+                break;
+            case 5:
+                [ot addObject:model];
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
+    NSMutableArray *temp = [NSMutableArray array];
+    
+    if (q1.count) {
+        [temp addObject:q1];
+    }
+    if (q2.count) {
+        [temp addObject:q2];
+    }
+    if (q3.count) {
+        [temp addObject:q3];
+    }
+    if (q4.count) {
+        [temp addObject:q4];
+    }
+    if (ot.count) {
+        [temp addObject:ot];
+    }
+    
+    self.textLives = temp.copy;
+    
+    /// TODO: 设置header个数
+    [self.tableview reloadData];
+}
+
 - (NSArray *)quarters{
-    return @[@"Q1", @"Q2", @"Q3", @"Q4", @"OT2", @"OT2"];
+    return @[@"Q1", @"Q2", @"Q3", @"Q4", @"OT"];
 }
 
 - (UITableView *)tableview{

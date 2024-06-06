@@ -170,14 +170,22 @@
     
     for (AXMatchListScoreCustomView *view in self.marketViews) {
         if (view.marketType == AXMatchListScoreCustomMarketTypeHandicap) {
-            view.datas = @[model.homeOdds, model.awayOdds];
+            view.datas = @[[self handleNullData:model.homeOdds], [self handleNullData:model.awayOdds]];
         } else if (view.viewType == AXMatchListScoreCustomMarketTypeOU) {
-            view.datas = @[[NSString stringWithFormat:@"O%@",model.ballScore], [NSString stringWithFormat:@"U%@",model.ballScore]];
+            view.datas = @[[NSString stringWithFormat:@"O%@",[self handleNullData:model.ballScore]], [NSString stringWithFormat:@"U%@",[self handleNullData:model.ballScore]]];
         } else if (view.viewType == AXMatchListScoreCustomMarketTypeMoneyline) {
-            view.datas = @[[NSString stringWithFormat:@"%@",model.bigBallOdds], [NSString stringWithFormat:@"%@",model.smallBallOdds]];
+            view.datas = @[[NSString stringWithFormat:@"%@",[self handleNullData:model.bigBallOdds]], [NSString stringWithFormat:@"%@",[self handleNullData:model.smallBallOdds]]];
         }
     }
     
+}
+
+- (NSString *)handleNullData: (NSString *)data{
+    if (data && data.length){
+        return data;
+    } else {
+        return @"";
+    }
 }
 
 - (UIView *)containerView{

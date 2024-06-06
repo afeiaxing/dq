@@ -12,7 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AXMatchListRequest : NSObject
 
-- (void)requestMatchListWithcompletion:(void(^)(AXMatchListModel *matchModel))completion;
+- (void)requestMatchListWithType: (AXMatchStatus)type
+                          pageNo: (int)pageNo
+                      completion:(void(^)(AXMatchListModel *matchModel))completion;
 
 @end
 
