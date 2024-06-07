@@ -216,6 +216,9 @@
 		F37E5EA52C03584F0049FAE1 /* AXMatchStandingApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5EA42C03584F0049FAE1 /* AXMatchStandingApi.m */; };
 		F37E5EAB2C04A92D0049FAE1 /* AXMatchListDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = F37E5EAA2C04A92D0049FAE1 /* AXMatchListDateView.m */; };
 		F39766082BF3993A00E4C861 /* QYZYDataTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F39766072BF3993A00E4C861 /* QYZYDataTools.m */; };
+		F3F097662C1328B100BCEBA7 /* AXMatchLineupRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F097652C1328B100BCEBA7 /* AXMatchLineupRequest.m */; };
+		F3F097692C1328C000BCEBA7 /* AXMatchLineupApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F097682C1328C000BCEBA7 /* AXMatchLineupApi.m */; };
+		F3F0976F2C132B8500BCEBA7 /* AXMatchLineupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F0976E2C132B8500BCEBA7 /* AXMatchLineupModel.m */; };
 		F55103F828E33795001E9BC5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F55103F728E33795001E9BC5 /* AppDelegate.m */; };
 		F551040328E33798001E9BC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F551040228E33798001E9BC5 /* Assets.xcassets */; };
 		F551040628E33798001E9BC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F551040428E33798001E9BC5 /* LaunchScreen.storyboard */; };
@@ -640,6 +643,12 @@
 		F37E5EAA2C04A92D0049FAE1 /* AXMatchListDateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchListDateView.m; sourceTree = "<group>"; };
 		F39766062BF3993A00E4C861 /* QYZYDataTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYZYDataTools.h; sourceTree = "<group>"; };
 		F39766072BF3993A00E4C861 /* QYZYDataTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYZYDataTools.m; sourceTree = "<group>"; };
+		F3F097642C1328B100BCEBA7 /* AXMatchLineupRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchLineupRequest.h; sourceTree = "<group>"; };
+		F3F097652C1328B100BCEBA7 /* AXMatchLineupRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchLineupRequest.m; sourceTree = "<group>"; };
+		F3F097672C1328C000BCEBA7 /* AXMatchLineupApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchLineupApi.h; sourceTree = "<group>"; };
+		F3F097682C1328C000BCEBA7 /* AXMatchLineupApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchLineupApi.m; sourceTree = "<group>"; };
+		F3F0976D2C132B8500BCEBA7 /* AXMatchLineupModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchLineupModel.h; sourceTree = "<group>"; };
+		F3F0976E2C132B8500BCEBA7 /* AXMatchLineupModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchLineupModel.m; sourceTree = "<group>"; };
 		F55103F328E33795001E9BC5 /* QYZY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QYZY.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F55103F628E33795001E9BC5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F55103F728E33795001E9BC5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1565,6 +1574,9 @@
 		F37E5DCA2BF77A600049FAE1 /* Lineup */ = {
 			isa = PBXGroup;
 			children = (
+				F3F097632C13288B00BCEBA7 /* Model */,
+				F3F097622C13288500BCEBA7 /* API */,
+				F3F097612C13287E00BCEBA7 /* Request */,
 				F37E5DFC2BF88EE00049FAE1 /* View */,
 				F37E5DCB2BF77A670049FAE1 /* VC */,
 			);
@@ -1787,6 +1799,33 @@
 				F36D87642C0B8820001F37F0 /* AXRequest.m */,
 			);
 			path = AXRequest;
+			sourceTree = "<group>";
+		};
+		F3F097612C13287E00BCEBA7 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				F3F097642C1328B100BCEBA7 /* AXMatchLineupRequest.h */,
+				F3F097652C1328B100BCEBA7 /* AXMatchLineupRequest.m */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		F3F097622C13288500BCEBA7 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				F3F097672C1328C000BCEBA7 /* AXMatchLineupApi.h */,
+				F3F097682C1328C000BCEBA7 /* AXMatchLineupApi.m */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		F3F097632C13288B00BCEBA7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F3F0976D2C132B8500BCEBA7 /* AXMatchLineupModel.h */,
+				F3F0976E2C132B8500BCEBA7 /* AXMatchLineupModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		F55103EA28E33795001E9BC5 = {
@@ -2138,6 +2177,7 @@
 				9BC0D59A29066A7F0063BCC7 /* QYZYBasketballScoreView.m in Sources */,
 				F37E5E1B2BF9AFE10049FAE1 /* AXMatchAnalysisTraditionalPerformanceView.m in Sources */,
 				F36D87652C0B8820001F37F0 /* AXRequest.m in Sources */,
+				F3F097662C1328B100BCEBA7 /* AXMatchLineupRequest.m in Sources */,
 				55BF55C728E99B4C00DB476B /* QYZYChatGiftCell.m in Sources */,
 				9BC0D5B029069E860063BCC7 /* QYZYTeamStaticShowupModel.m in Sources */,
 				9B89964429077EDB007D3A79 /* QYZYPlayerDataCollectionCell.m in Sources */,
@@ -2154,6 +2194,7 @@
 				F37E5E292BF9CCDC0049FAE1 /* AXMatchAnalysisAdvancedTeamStatsCell.m in Sources */,
 				55E2395328E82E4D003ED27E /* QYZYLiveChatCell.m in Sources */,
 				AE78C0C92906A384006A70A3 /* QYZYAnalyzeIntegralApi.m in Sources */,
+				F3F0976F2C132B8500BCEBA7 /* AXMatchLineupModel.m in Sources */,
 				5552AC0928F960A200285B25 /* QYZYAnalyzeRecentApi.m in Sources */,
 				F37E5E2F2BFA2E3A0049FAE1 /* AXMatchListSettingCell.m in Sources */,
 				AE65E0DF290780E00053CA49 /* QYZYMatchAnalyzeSuperCell.m in Sources */,
@@ -2201,6 +2242,7 @@
 				AE9FB1B9290656A800B2033A /* QYZYIntegralHeaderView.m in Sources */,
 				AE78C0C629068D39006A70A3 /* QYZYHostGuessMatchCell.m in Sources */,
 				55A531FE29052E3C0008C110 /* FSCalendarDateModel.m in Sources */,
+				F3F097692C1328C000BCEBA7 /* AXMatchLineupApi.m in Sources */,
 				9BC0D594290665EB0063BCC7 /* QYZYBasketBallPointApi.m in Sources */,
 				555CE94E28F6D38C0085F1D4 /* QYZYMatchCell.m in Sources */,
 				9BC0D56529063F8E0063BCC7 /* QYZYTeamDataViewController.m in Sources */,

@@ -6,12 +6,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AXMatchLineupModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AXMatchLineupPerformersPlayerView : UIView
 
 @property (nonatomic, assign) NSInteger index;
+@property (nonatomic, strong) AXMatchLineupTopPerformerModel *hostModel;
+@property (nonatomic, strong) AXMatchLineupTopPerformerModel *awayModel;
 
 @end
 

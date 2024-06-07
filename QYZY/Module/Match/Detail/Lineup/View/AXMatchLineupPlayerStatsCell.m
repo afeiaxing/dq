@@ -72,6 +72,12 @@
 }
 
 // MARK: setter & setter
+- (void)setLineupModel:(AXMatchLineupModel *)lineupModel{
+    self.hostPlayerStatsView.playerStats = lineupModel.homePlayerStats;
+    self.awayPlayerStatsView.playerStats = lineupModel.awayPlayerStats;
+    _lineupModel = lineupModel;
+}
+
 - (UILabel *)statsTitleLabel {
     if (!_statsTitleLabel) {
         _statsTitleLabel = [[UILabel alloc] init];

@@ -6,10 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AXMatchLineupModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AXMatchLineupPlayerStatsView : UIView<JXCategoryListContentViewDelegate>
+
+@property (nonatomic, strong) NSArray *playerStats;
 
 @end
 

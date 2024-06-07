@@ -12,7 +12,6 @@
 
 - (void)requestMatchStandingWithMatchId: (NSString *)matchId
                              completion:(void(^)(AXMatchStandingModel *matchModel))completion{
-//    matchId = @"3788364";
     AXMatchStandingApi *api = [AXMatchStandingApi new];
     api.matchId = matchId;
 

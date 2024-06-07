@@ -24,6 +24,8 @@
 
 @end
 
+#define AXMatchLineupPerformersPlayerViewBaseHeight 50
+
 @implementation AXMatchLineupPerformersPlayerView
 
 // MARK: lifecycle
@@ -34,8 +36,6 @@
     }
     return self;
 }
-
-// MARK: delegate
 
 // MARK: private
 - (void)setupSubviews{
@@ -98,9 +98,10 @@
     }];
     
     [self.hostScoreView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.scoreTitle.mas_bottom).offset(5);
+        make.bottom.equalTo(self.hostPlayerName).offset(-10);
         make.centerX.offset(-10);
-        make.size.mas_equalTo(CGSizeMake(16, 50));
+        make.width.mas_equalTo(16);
+        make.height.mas_equalTo(AXMatchLineupPerformersPlayerViewBaseHeight);
     }];
     
     [self.hostScoreLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -109,9 +110,10 @@
     }];
     
     [self.awayScoreView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.hostScoreView);
+        make.bottom.equalTo(self.hostPlayerName).offset(-10);
         make.centerX.offset(10);
-        make.size.mas_equalTo(CGSizeMake(16, 30));
+        make.width.mas_equalTo(16);
+        make.height.mas_equalTo(AXMatchLineupPerformersPlayerViewBaseHeight);
     }];
     
     [self.awayScoreLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -123,6 +125,36 @@
 // MARK: setter & getter
 - (void)setIndex:(NSInteger)index{
     self.titleLabel.text = [NSString stringWithFormat:@"%ld", index + 1];
+}
+
+- (void)setHostModel:(AXMatchLineupTopPerformerModel *)hostModel{
+    [self.hostPlayerLogo sd_setImageWithURL:[NSURL URLWithString:hostModel.playerLogo] placeholderImage:AXTeamPlaceholderLogo];
+    self.hostPlayerName.text = hostModel.playerName;
+    self.hostPlayerNum.text = [NSString stringWithFormat:@"#%@", hostModel.shirtNumber];
+    self.hostScoreLabel.text = hostModel.score;
+    _hostModel = hostModel;
+}
+
+- (void)setAwayModel:(AXMatchLineupTopPerformerModel *)awayModel{
+    [self.awayPlayerLogo sd_setImageWithURL:[NSURL URLWithString:awayModel.playerLogo] placeholderImage:AXTeamPlaceholderLogo];
+    self.awayPlayerName.text = awayModel.playerName;
+    self.awayPlayerNum.text = [NSString stringWithFormat:@"#%@", awayModel.shirtNumber];
+    self.awayScoreLabel.text = awayModel.score;
+    
+    // 设置柱状图高度
+    if (self.hostModel.score.floatValue > awayModel.score.floatValue) {
+        CGFloat precent = awayModel.score.floatValue / self.hostModel.score.floatValue;
+        [self.awayScoreView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(AXMatchLineupPerformersPlayerViewBaseHeight * precent);
+        }];
+    } else {
+        CGFloat precent = self.hostModel.score.floatValue / awayModel.score.floatValue;
+        [self.hostScoreView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(AXMatchLineupPerformersPlayerViewBaseHeight * precent);
+        }];
+    }
+    
+    _awayModel = awayModel;
 }
 
 - (UILabel *)titleLabel {
@@ -139,7 +171,6 @@
 - (UIImageView *)hostPlayerLogo {
     if (!_hostPlayerLogo) {
         _hostPlayerLogo = [[UIImageView alloc] init];
-        _hostPlayerLogo.backgroundColor = UIColor.blackColor;
     }
     return _hostPlayerLogo;
 }
@@ -149,7 +180,6 @@
         _hostPlayerName = [[UILabel alloc] init];
         _hostPlayerName.font = [UIFont systemFontOfSize:12];
         _hostPlayerName.textColor = rgb(17, 17, 17);
-        _hostPlayerName.text = @"Kobe Bryant";
     }
     return _hostPlayerName;
 }
@@ -159,7 +189,6 @@
         _hostPlayerNum = [[UILabel alloc] init];
         _hostPlayerNum.font = [UIFont systemFontOfSize:12];
         _hostPlayerNum.textColor = AXUnSelectColor;
-        _hostPlayerNum.text = @"#24";
     }
     return _hostPlayerNum;
 }
@@ -167,7 +196,6 @@
 - (UIImageView *)awayPlayerLogo {
     if (!_awayPlayerLogo) {
         _awayPlayerLogo = [[UIImageView alloc] init];
-        _awayPlayerLogo.backgroundColor = UIColor.blackColor;
     }
     return _awayPlayerLogo;
 }
@@ -177,7 +205,6 @@
         _awayPlayerName = [[UILabel alloc] init];
         _awayPlayerName.font = [UIFont systemFontOfSize:12];
         _awayPlayerName.textColor = rgb(17, 17, 17);
-        _awayPlayerName.text = @"Jrue Joliday";
     }
     return _awayPlayerName;
 }
@@ -187,7 +214,6 @@
         _awayPlayerNum = [[UILabel alloc] init];
         _awayPlayerNum.font = [UIFont systemFontOfSize:12];
         _awayPlayerNum.textColor = AXUnSelectColor;
-        _awayPlayerNum.text = @"#30";
     }
     return _awayPlayerNum;
 }
@@ -216,7 +242,6 @@
         _hostScoreLabel = [[UILabel alloc] init];
         _hostScoreLabel.font = [UIFont systemFontOfSize:12];
         _hostScoreLabel.textColor = [UIColor blackColor];
-        _hostScoreLabel.text = @"13";
     }
     return _hostScoreLabel;
 }
@@ -235,7 +260,6 @@
         _awayScoreLabel = [[UILabel alloc] init];
         _awayScoreLabel.font = [UIFont systemFontOfSize:12];
         _awayScoreLabel.textColor = [UIColor blackColor];
-        _awayScoreLabel.text = @"9";
     }
     return _awayScoreLabel;
 }

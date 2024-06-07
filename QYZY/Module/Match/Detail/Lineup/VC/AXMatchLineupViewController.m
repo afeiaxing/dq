@@ -8,10 +8,13 @@
 #import "AXMatchLineupViewController.h"
 #import "AXMatchLineupPerformersCell.h"
 #import "AXMatchLineupPlayerStatsCell.h"
+#import "AXMatchLineupRequest.h"
 
 @interface AXMatchLineupViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableview;
+@property (nonatomic, strong) AXMatchLineupRequest *request;
+@property (nonatomic, strong) AXMatchLineupModel *lineupModel;
 
 @end
 
@@ -21,6 +24,7 @@
     [super viewDidLoad];
     
     [self setupSubviews];
+    [self requestData];
 }
 
 // MARK: private
@@ -28,6 +32,17 @@
     [self.view addSubview:self.tableview];
     [self.tableview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.offset(0);
+    }];
+}
+
+- (void)requestData{
+    [self.view ax_showLoading];
+    weakSelf(self);
+    [self.request requestMatchLineupWithMatchId:self.matchModel.matchId completion:^(AXMatchLineupModel * _Nonnull lineupModel) {
+        strongSelf(self);
+        [self.view ax_hideLoading];
+        self.lineupModel = lineupModel;
+        [self.tableview reloadData];
     }];
 }
 
@@ -48,10 +63,11 @@
     if (indexPath.row == 0) {
         AXMatchLineupPerformersCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchLineupPerformersCell.class) forIndexPath:indexPath];
         cell.matchModel = self.matchModel;
+        cell.lineupModel = self.lineupModel;
         return cell;
     } else {
         AXMatchLineupPlayerStatsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchLineupPlayerStatsCell.class) forIndexPath:indexPath];
-
+        cell.lineupModel = self.lineupModel;
         return cell;
     }
 }
@@ -72,6 +88,13 @@
         _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _tableview;
+}
+
+- (AXMatchLineupRequest *)request{
+    if (!_request) {
+        _request = [AXMatchLineupRequest new];
+    }
+    return _request;
 }
 
 @end

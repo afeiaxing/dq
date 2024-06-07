@@ -6,12 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AXMatchLineupModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AXMatchLineupPerformersCell : UITableViewCell
 
 @property (nonatomic, strong) AXMatchListItemModel *matchModel;
+@property (nonatomic, strong) AXMatchLineupModel *lineupModel;
 
 @end
 

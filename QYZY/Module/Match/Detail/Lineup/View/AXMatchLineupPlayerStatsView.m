@@ -6,14 +6,13 @@
 //
 
 #import "AXMatchLineupPlayerStatsView.h"
+#import <objc/runtime.h>
 
 @interface AXMatchLineupPlayerStatsView()
 
-@property (nonatomic, strong) NSArray *players;
-@property (nonatomic, strong) NSArray *stats;
-
 @property (nonatomic, strong) UILabel *playerTitleLabel;
 @property (nonatomic, strong) UIScrollView *containerView;
+@property (nonatomic, strong) NSMutableArray *playerLabels;
 
 @end
 
@@ -43,51 +42,11 @@
         make.size.mas_equalTo(CGSizeMake(titleW, titleH));
     }];
     
-    for (int i = 0; i < self.players.count; i++) {
-        NSString *player = self.players[i];
-        UILabel *label = [self getLabel];
-        label.text = player;
-        [self addSubview:label];
-        
-        [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.offset(0);
-            make.size.mas_equalTo(CGSizeMake(titleW, titleH));
-            make.top.offset(titleH * (i + 1));
-        }];
-    }
-    
-    
-    CGFloat dataLabelW = 70;
     [self addSubview:self.containerView];
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.right.bottom.offset(0);
         make.left.equalTo(self.playerTitleLabel.mas_right);
     }];
-    self.containerView.contentSize = CGSizeMake(dataLabelW * self.stats.count, self.bounds.size.height);
-    
-    for (int i = 0; i < self.stats.count; i++) {
-        NSString *stat = self.stats[i];
-        UILabel *statsTitleLabel = [self getLabel];
-        statsTitleLabel.text = stat;
-        statsTitleLabel.backgroundColor = rgb(255, 247, 239);
-        [self.containerView addSubview:statsTitleLabel];
-        [statsTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.offset(0);
-            make.left.offset(dataLabelW * i);
-            make.size.mas_equalTo(CGSizeMake(dataLabelW, titleH));
-        }];
-        
-        for (int j = 0; j < self.players.count; j++) {
-            UILabel *statsDataLabel = [self getLabel];
-            statsDataLabel.text = [NSString stringWithFormat:@"%d+%d", i, j];
-            [self.containerView addSubview:statsDataLabel];
-            [statsDataLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.offset(titleH * (j + 1));
-                make.left.offset(dataLabelW * i);
-                make.size.mas_equalTo(CGSizeMake(dataLabelW, titleH));
-            }];
-        }
-    }
 }
 
 - (UILabel *)getLabel{
@@ -115,7 +74,85 @@
     border.maskedCorners = kCALayerMinXMaxYCorner;
 }
 
+- (NSArray *)getAllProperties: (AXMatchLineupStatsModel *)model{
+    u_int count;
+    objc_property_t *properties = class_copyPropertyList([model class], &count);
+    NSMutableArray *propertiesArray = [NSMutableArray arrayWithCapacity:count];
+    for (int i = 0; i < count; i++) {
+        const char *propertyName = property_getName(properties[i]);
+        [propertiesArray addObject:[NSString stringWithUTF8String:propertyName]];
+    }
+    free(properties);
+    
+    return propertiesArray;
+}
+
 // MARK: setter & getter
+- (void)setPlayerStats:(NSArray *)playerStats{
+    if (!playerStats.count || playerStats.count == 0) {return;}
+    
+    for (UILabel *label in self.playerLabels) {
+        [label removeFromSuperview];
+    }
+    [self.playerLabels removeAllObjects];
+    
+    CGFloat titleW = 108;
+    CGFloat titleH = 38;
+    
+    // 纵向球员列
+    for (int i = 0; i < playerStats.count; i++) {
+        NSDictionary *model = playerStats[i];
+        UILabel *label = [self getLabel];
+        label.text = [NSString stringWithFormat:@"%@ %@", model[@"playerName"], model[@"shirtNumber"]];
+        [self addSubview:label];
+        [self.playerLabels addObject:label];
+        
+        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.offset(0);
+            make.size.mas_equalTo(CGSizeMake(titleW, titleH));
+            make.top.offset(titleH * (i + 1));
+        }];
+    }
+    
+    // 数据
+    CGFloat dataLabelW = 70;
+    NSMutableDictionary *temp = [NSMutableDictionary dictionaryWithDictionary:playerStats.firstObject];
+    [temp removeObjectsForKeys:@[@"playerName", @"shirtNumber"]];  // 移除不需要的key
+    
+    NSDictionary *model = temp.copy;
+    NSArray *statsTitles = model.allKeys;
+    self.containerView.contentSize = CGSizeMake(dataLabelW * statsTitles.count, self.bounds.size.height);
+    
+    for (int i = 0; i < statsTitles.count; i++) {
+        NSString *stat = statsTitles[i];
+        // 横向stats标题
+        UILabel *statsTitleLabel = [self getLabel];
+        statsTitleLabel.text = [stat uppercaseString];
+        statsTitleLabel.backgroundColor = rgb(255, 247, 239);
+        [self.containerView addSubview:statsTitleLabel];
+        [statsTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.offset(0);
+            make.left.offset(dataLabelW * i);
+            make.size.mas_equalTo(CGSizeMake(dataLabelW, titleH));
+        }];
+        
+        for (int j = 0; j < playerStats.count; j++) {
+            // stats数据
+            NSDictionary *model = playerStats[j];
+            UILabel *statsDataLabel = [self getLabel];
+            statsDataLabel.text = [model valueForKey:stat];
+            [self.containerView addSubview:statsDataLabel];
+            [statsDataLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.offset(titleH * (j + 1));
+                make.left.offset(dataLabelW * i);
+                make.size.mas_equalTo(CGSizeMake(dataLabelW, titleH));
+            }];
+        }
+    }
+    
+    _playerStats = playerStats;
+}
+
 - (UILabel *)playerTitleLabel{
     if (!_playerTitleLabel) {
         _playerTitleLabel = [UILabel new];
@@ -138,12 +175,11 @@
     return _containerView;
 }
 
-- (NSArray *)players {
-    return @[@"K.Bryant 24", @"K.Bryant 24", @"K.Bryant 24", @"K.Bryant 24", @"K.Bryant 24", @"K.Bryant 24", @"K.Bryant 24", @"K.Bryant 24", @"K.Bryant 24", @"K.Bryant 24"];
-}
-
-- (NSArray *)stats{
-    return @[@"Started", @"MIN", @"PTS", @"ATS", @"STL", @"STL1", @"STL2", @"STL3", @"STL4", @"STL5", @"STL6", ];
+- (NSMutableArray *)playerLabels{
+    if (!_playerLabels) {
+        _playerLabels = [NSMutableArray array];
+    }
+    return _playerLabels;
 }
 
 @end

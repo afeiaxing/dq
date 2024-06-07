@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UIImageView *awayLogo;
 @property (nonatomic, strong) UILabel *hostName;
 @property (nonatomic, strong) UILabel *awayName;
+@property (nonatomic, strong) NSMutableArray *performersPlayerViews;
 
 @end
 
@@ -72,13 +73,40 @@
         make.centerX.equalTo(self.awayLogo);
         make.centerY.equalTo(self.hostName);
     }];
+}
+
+// MARK: setter & setter
+- (void)setMatchModel:(AXMatchListItemModel *)matchModel{
+    [self.hostLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.homeTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
+    [self.awayLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.awayTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
+    self.hostName.text = matchModel.homeTeamName;
+    self.awayName.text = matchModel.awayTeamName;
+    _matchModel = matchModel;
+}
+
+- (void)setLineupModel:(AXMatchLineupModel *)lineupModel{
+    if (!lineupModel) {return;}
     
+    for (AXMatchLineupPerformersPlayerView *view in self.performersPlayerViews) {
+        [view removeFromSuperview];
+    }
+    [self.performersPlayerViews removeAllObjects];
     
     CGFloat viewH = 120;
     NSMutableArray *views = [NSMutableArray array];
     for (int i = 0; i < 3; i++) {
         AXMatchLineupPerformersPlayerView *view = [AXMatchLineupPerformersPlayerView new];
         view.index = i;
+        if (i == 0) {
+            view.hostModel = lineupModel.hostTop1Mpdel;
+            view.awayModel = lineupModel.awayTop1Mpdel;
+        } else if (i == 1) {
+            view.hostModel = lineupModel.hostTop2Mpdel;
+            view.awayModel = lineupModel.awayTop2Mpdel;
+        } else {
+            view.hostModel = lineupModel.hostTop3Mpdel;
+            view.awayModel = lineupModel.awayTop3Mpdel;
+        }
         [self.containerView addSubview:view];
         [views addObject:view];
     }
@@ -87,13 +115,7 @@
     [views mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.offset(0);
     }];
-}
-
-// MARK: setter & setter
-- (void)setMatchModel:(AXMatchListItemModel *)matchModel{
-    [self.hostLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.homeTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
-    [self.awayLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.awayTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
-    _matchModel = matchModel;
+    _lineupModel = lineupModel;
 }
 
 - (UIView *)containerView{
@@ -133,7 +155,6 @@
         _hostName = [[UILabel alloc] init];
         _hostName.font = [UIFont systemFontOfSize:12];
         _hostName.textColor = rgb(17, 17, 17);
-        _hostName.text = @"LAL";
     }
     return _hostName;
 }
@@ -143,9 +164,15 @@
         _awayName = [[UILabel alloc] init];
         _awayName.font = [UIFont systemFontOfSize:12];
         _awayName.textColor = rgb(17, 17, 17);
-        _awayName.text = @"BOS";
     }
     return _awayName;
+}
+
+- (NSMutableArray *)performersPlayerViews{
+    if (!_performersPlayerViews) {
+        _performersPlayerViews = [NSMutableArray array];
+    }
+    return _performersPlayerViews;
 }
 
 @end
