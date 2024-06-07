@@ -16,6 +16,7 @@
 @property (nonatomic, strong) UITableView *tableview;
 @property (nonatomic, strong) AXMatchStandingRequest *request;
 @property (nonatomic, strong) AXMatchStandingModel *standingModel;
+@property (nonatomic, strong) NSArray <AXMatchStandingTextLiveModel *>*textLives;
 
 @end
 
@@ -59,6 +60,7 @@
         AXMatchStandingPBPCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchStandingPBPCell.class) forIndexPath:indexPath];
         cell.matchModel = self.matchModel;
         cell.standingModel = self.standingModel;
+        cell.textLives = self.textLives;
         return cell;
     }
 }
@@ -74,6 +76,11 @@
 - (void)requestData{
     [self.request requestMatchStandingWithMatchId:self.matchModel.matchId completion:^(AXMatchStandingModel * _Nonnull matchModel) {
         self.standingModel = matchModel;
+        [self.tableview reloadData];
+    }];
+    
+    [self.request requestMatchTextLiveWithMatchId:self.matchModel.matchId completion:^(NSArray<AXMatchStandingTextLiveModel *> * _Nonnull textLives) {
+        self.textLives = textLives;
         [self.tableview reloadData];
     }];
 }

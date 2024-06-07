@@ -57,7 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) AXMatchStandingTeamStatsModel *hostTeamStats;
 @property (nonatomic, strong) AXMatchStandingTeamStatsModel *awayTeamStats;
 @property (nonatomic, strong) NSArray *statistics;
-@property (nonatomic, strong) NSArray *tlive;
+//@property (nonatomic, strong) NSArray *tlive;
 
 
 @end

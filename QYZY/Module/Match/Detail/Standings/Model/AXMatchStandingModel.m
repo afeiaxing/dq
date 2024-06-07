@@ -24,7 +24,7 @@
 + (NSDictionary *)modelContainerPropertyGenericClass {
     return @{
         @"statistics":[AXMatchStandingAllStatsModel class],
-        @"tlive":[AXMatchStandingTextLiveModel class],
+//        @"tlive":[AXMatchStandingTextLiveModel class],
     };
 }
 
@@ -34,7 +34,7 @@
         @"awayTeamStats": @"awayTeam.teamStats",
         @"scoreDiff": @"trendDetail.scoreDiff",
         @"statistics": @"statistics",
-        @"tlive": @"tlive",
+//        @"tlive": @"tlive",
     };
 }
 

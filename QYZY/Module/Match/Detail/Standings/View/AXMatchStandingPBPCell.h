@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) AXMatchListItemModel *matchModel;
 @property (nonatomic, strong) AXMatchStandingModel *standingModel;
+@property (nonatomic, strong) NSArray <AXMatchStandingTextLiveModel *> *textLives;
 
 @end
 

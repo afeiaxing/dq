@@ -9,6 +9,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@interface AXMatchStandingTextLiveApi : AXRequest
+
+@property (nonatomic, strong) NSString *matchId;
+
+@end
+
 @interface AXMatchStandingApi : AXRequest
 
 @property (nonatomic, strong) NSString *matchId;

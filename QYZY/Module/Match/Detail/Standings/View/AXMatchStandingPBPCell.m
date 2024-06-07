@@ -82,8 +82,12 @@
     _matchModel = matchModel;
 }
 
+- (void)setTextLives:(NSArray<AXMatchStandingTextLiveModel *> *)textLives{
+    self.pbpView.textLives = textLives;
+    _textLives = textLives;
+}
+
 - (void)setStandingModel:(AXMatchStandingModel *)standingModel{
-    self.pbpView.standingModel = standingModel;
     self.statsView.standingModel = standingModel;
     _standingModel = standingModel;
 }

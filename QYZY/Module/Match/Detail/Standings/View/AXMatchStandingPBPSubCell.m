@@ -74,6 +74,15 @@
     self.colorView.backgroundColor = index %2 == 0 ? rgb(143, 0, 255) : rgb(0, 162, 36);
 }
 
+- (void)setModel:(AXMatchStandingTextLiveModel *)model{
+    self.timeLabel.text = model.time;
+    self.quarterLabel.text = model.stage;
+    self.teamLabel.text = model.explain;
+    self.currentScoreLabel.text = model.score;
+    self.addScoreLabel.text = model.singleScore;
+    _model = model;
+}
+
 - (UIView *)colorView{
     if (!_colorView) {
         _colorView = [UIView new];
@@ -88,7 +97,6 @@
    if (!_timeLabel) {
        _timeLabel = [[UILabel alloc] init];
        _timeLabel.font = [UIFont systemFontOfSize:14];
-       _timeLabel.text = @"08:14";
        _timeLabel.textColor = [UIColor blackColor];
    }
    return _timeLabel;
@@ -98,7 +106,6 @@
    if (!_quarterLabel) {
        _quarterLabel = [[UILabel alloc] init];
        _quarterLabel.font = [UIFont systemFontOfSize:14];
-       _quarterLabel.text = @"2nd";
        _quarterLabel.textColor = AXUnSelectColor;
    }
    return _quarterLabel;
@@ -108,7 +115,6 @@
    if (!_teamLabel) {
        _teamLabel = [[UILabel alloc] init];
        _teamLabel.font = [UIFont systemFontOfSize:14];
-       _teamLabel.text = @"Lakers Free Throw";
        _teamLabel.textColor = [UIColor blackColor];
    }
    return _teamLabel;
@@ -118,7 +124,6 @@
    if (!_currentScoreLabel) {
        _currentScoreLabel = [[UILabel alloc] init];
        _currentScoreLabel.font = [UIFont systemFontOfSize:14];
-       _currentScoreLabel.text = @"54-39";
        _currentScoreLabel.textColor = [UIColor blackColor];
    }
    return _currentScoreLabel;
@@ -128,7 +133,6 @@
    if (!_addScoreLabel) {
        _addScoreLabel = [[UILabel alloc] init];
        _addScoreLabel.font = [UIFont systemFontOfSize:14];
-       _addScoreLabel.text = @"+2";
        _addScoreLabel.textColor = [UIColor blackColor];
    }
    return _addScoreLabel;

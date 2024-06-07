@@ -6,12 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AXMatchStandingModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AXMatchStandingPBPSubCell : UITableViewCell
 
 @property (nonatomic, assign) NSInteger index;
+@property (nonatomic, strong) AXMatchStandingTextLiveModel *model;
 
 @end
 

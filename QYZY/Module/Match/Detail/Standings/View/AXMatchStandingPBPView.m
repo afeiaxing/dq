@@ -10,10 +10,9 @@
 
 @interface AXMatchStandingPBPView()<UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) NSArray *quarters;
-@property (nonatomic, strong) NSArray *quarterTitleBtns;
+@property (nonatomic, strong) NSMutableArray *quarterTitleBtns;
 @property (nonatomic, strong) UIButton *lastSelectedBtn;
-@property (nonatomic, strong) NSArray *textLives;
+@property (nonatomic, strong) NSArray *dataSource;
 @property (nonatomic, assign) NSInteger selectIndex;
 
 @property (nonatomic, strong) UITableView *tableview;
@@ -32,32 +31,10 @@
 
 // MARK: private
 - (void)setupSubviews{
-    NSMutableArray *btns = [NSMutableArray array];
-    for (int i = 0; i < self.quarters.count; i++) {
-        NSString *title = self.quarters[i];
-        UIButton *btn = [UIButton new];
-        [btn setTitle:title forState:UIControlStateNormal];
-        [btn setTitleColor:i == 0 ? AXSelectColor : AXUnSelectColor forState:UIControlStateNormal];
-        btn.backgroundColor = i == 0 ? rgb(255, 247, 239) : UIColor.whiteColor;
-        btn.layer.cornerRadius = 15;
-        btn.titleLabel.font = [UIFont systemFontOfSize:14];
-        btn.tag = i;
-        [btn addTarget:self action:@selector(handleBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:btn];
-        [btns addObject:btn];
-    }
-    self.lastSelectedBtn = btns.firstObject;
-
-    [btns mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:48 leadSpacing:55 tailSpacing:55];
-    [btns mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.offset(0);
-        make.height.mas_equalTo(30);
-    }];
-    
     [self addSubview:self.tableview];
     [self.tableview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.offset(0);
-        make.top.equalTo(self.lastSelectedBtn.mas_bottom).offset(24);
+        make.top.offset(30 + 24);
     }];
 }
 
@@ -67,14 +44,14 @@
     [sender setTitleColor:AXSelectColor forState:UIControlStateNormal];
     sender.backgroundColor = rgb(255, 247, 239);
     self.lastSelectedBtn = sender;
-    NSLog(@"%ld", sender.tag);
     self.selectIndex = sender.tag;
     [self.tableview reloadData];
 }
 
 // MARK: UITableViewDelegate, UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.textLives.count;
+    NSArray *array = self.dataSource[self.selectIndex];
+    return array.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -83,7 +60,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     AXMatchStandingPBPSubCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchStandingPBPSubCell.class) forIndexPath:indexPath];
+    NSArray *array = self.dataSource[self.selectIndex];
     cell.index = indexPath.row;
+    cell.model = array[indexPath.row];
     return cell;
 }
 
@@ -93,16 +72,15 @@
 }
 
 // MARK: setter & getter
-- (void)setStandingModel:(AXMatchStandingModel *)standingModel{
-    _standingModel = standingModel;
-    
+- (void)setTextLives:(NSArray<AXMatchStandingTextLiveModel *> *)textLives{
+    if (!textLives.count || textLives.count == 0) {return;}
     NSMutableArray *q1 = [NSMutableArray array];
     NSMutableArray *q2 = [NSMutableArray array];
     NSMutableArray *q3 = [NSMutableArray array];
     NSMutableArray *q4 = [NSMutableArray array];
     NSMutableArray *ot = [NSMutableArray array];
     
-    for (AXMatchStandingTextLiveModel *model in standingModel.tlive) {
+    for (AXMatchStandingTextLiveModel *model in textLives) {
         switch (model.stage.intValue) {
             case 1:
                 [q1 addObject:model];
@@ -143,14 +121,41 @@
         [temp addObject:ot];
     }
     
-    self.textLives = temp.copy;
+    self.dataSource = temp.copy;
     
-    /// TODO: 设置header个数
-    [self.tableview reloadData];
-}
+    for (UIButton *btn in self.quarterTitleBtns) {
+        [btn removeFromSuperview];
+    }
+    
+    [self.quarterTitleBtns removeAllObjects];
+    
+    // 设置小节按钮
+    NSMutableArray *btns = [NSMutableArray array];
+    for (int i = 0; i < self.dataSource.count; i++) {
+        NSString *title = i == 4 ? @"OT" : [NSString stringWithFormat:@"Q%d", i + 1];
+        UIButton *btn = [UIButton new];
+        [btn setTitle:title forState:UIControlStateNormal];
+        [btn setTitleColor:i == 0 ? AXSelectColor : AXUnSelectColor forState:UIControlStateNormal];
+        btn.backgroundColor = i == 0 ? rgb(255, 247, 239) : UIColor.whiteColor;
+        btn.layer.cornerRadius = 15;
+        btn.titleLabel.font = [UIFont systemFontOfSize:14];
+        btn.tag = i;
+        [btn addTarget:self action:@selector(handleBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:btn];
+        [btns addObject:btn];
+    }
+    self.lastSelectedBtn = btns.firstObject;
 
-- (NSArray *)quarters{
-    return @[@"Q1", @"Q2", @"Q3", @"Q4", @"OT"];
+    [btns mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:48 leadSpacing:55 tailSpacing:55];
+    [btns mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.offset(0);
+        make.height.mas_equalTo(30);
+    }];
+    
+    
+    [self.tableview reloadData];
+    
+    _textLives = textLives;
 }
 
 - (UITableView *)tableview{
@@ -163,6 +168,13 @@
         return _tableview;
     }
     return _tableview;
+}
+
+- (NSMutableArray *)quarterTitleBtns{
+    if (!_quarterTitleBtns) {
+        _quarterTitleBtns = [NSMutableArray array];
+    }
+    return _quarterTitleBtns;
 }
 
 @end

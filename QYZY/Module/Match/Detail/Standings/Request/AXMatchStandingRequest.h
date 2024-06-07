@@ -12,8 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AXMatchStandingRequest : NSObject
 
-- (void)requestMatchStandingWithMatchId: (NSString *)matchId
+- (void)requestMatchStandingWithMatchId:(NSString *)matchId
                              completion:(void(^)(AXMatchStandingModel *matchModel))completion;
+
+- (void)requestMatchTextLiveWithMatchId:(NSString *)matchId
+                             completion:(void(^)(NSArray <AXMatchStandingTextLiveModel *>*textLives))completion;
 
 @end
 
