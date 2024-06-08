@@ -15,7 +15,7 @@
                        startTime: (NSString *)startTime
                          endTime: (NSString *)endTime
                           filter: (NSString *)filter
-                      completion: (void(^)(AXMatchListModel *matchModel))completion{
+                      completion: (void(^)(AXMatchListModel *matchModel, BOOL hasMoreData))completion{
     AXMatchListApi *api = [AXMatchListApi new];
     api.pageNo = pageNo;
     switch (type) {
@@ -36,13 +36,15 @@
     api.filter = filter;
     [api ax_startWithCompletionSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         AXMatchListModel *model;
+        BOOL hasMoreData = false;
         if (api.isRequestSuccess) {
             NSArray *array = [NSArray yy_modelArrayWithClass:AXMatchListItemModel.class json:api.bizData];
+            hasMoreData = array.count == AXMatchListRequestPageSize.intValue;
             model = [self handleMatchListWithArray:array];
         }
-        !completion ? : completion(model);
+        !completion ? : completion(model, hasMoreData);
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        !completion ? : completion(nil);
+        !completion ? : completion(nil, false);
     }];
 }
 

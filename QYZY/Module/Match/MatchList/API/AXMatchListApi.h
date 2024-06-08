@@ -9,6 +9,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#define AXMatchListRequestPageSize @100
+
 @interface AXMatchListApi : AXRequest
 
 /// 缺省是全部；1是live；2是scheduled；3是result

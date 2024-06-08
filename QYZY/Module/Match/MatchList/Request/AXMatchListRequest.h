@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
                        startTime: (NSString *)startTime
                          endTime: (NSString *)endTime
                           filter: (NSString *)filter
-                      completion: (void(^)(AXMatchListModel *matchModel))completion;
+                      completion: (void(^)(AXMatchListModel *matchModel, BOOL hasMoreData))completion;
 
 @end
 

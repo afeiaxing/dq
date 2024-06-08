@@ -22,7 +22,8 @@
     [dict setValue:self.endTime forKey:@"endTime"];
     [dict setValue:self.filter forKey:@"filter"];
     [dict setValue:@(self.pageNo) forKey:@"pageNo"];
-    [dict setValue:@100 forKey:@"pageSize"];
+    [dict setValue:AXMatchListRequestPageSize forKey:@"pageSize"];
+    
     return dict;
 }
 

@@ -23,6 +23,8 @@
 @property (nonatomic, strong) AXMatchListRequest *requestManager;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) NSString *dateString;
+@property (nonatomic, strong) NSMutableArray *sectionArray;
+@property (nonatomic, strong) NSMutableDictionary *dataSource;
 
 @end
 
@@ -40,6 +42,8 @@
     [super viewDidLoad];
     
     self.pageNo = 1;
+    self.dataSource = [NSMutableDictionary dictionary];
+    self.sectionArray = [NSMutableArray array];
     [self setupSubviews];
     if (self.status == AXMatchStatusResult) {
         [self requestData];
@@ -81,44 +85,54 @@
     }
 }
 
+- (void)handleDataSource: (NSArray *)array
+                     key: (NSString *)key {
+    NSArray *lastLiveMatches = [self.dataSource valueForKey:key];
+    NSMutableArray *temp;
+    if (lastLiveMatches && lastLiveMatches.count) {
+        temp = [NSMutableArray arrayWithArray:lastLiveMatches];
+        [temp addObjectsFromArray:array];
+    } else {
+        temp = [NSMutableArray arrayWithArray:array];
+    }
+    [self.dataSource setValue:temp forKey:key];
+}
+
 - (void)requestData{
     NSArray *times = [self getDateTimestamp];
     NSString *startTime = times.firstObject;
     NSString *endTime = times.lastObject;
     [self.view ax_showLoading];
     weakSelf(self);
-    [self.requestManager requestMatchListWithType:self.status pageNo:self.pageNo startTime:startTime endTime:endTime filter:@"" completion:^(AXMatchListModel * _Nonnull matchModel) {
+    [self.requestManager requestMatchListWithType:self.status pageNo:self.pageNo startTime:startTime endTime:endTime filter:@"" completion:^(AXMatchListModel * _Nonnull matchModel, BOOL hasMoreData) {
         strongSelf(self);
         [self.view ax_hideLoading];
         [self endRefresh];
-        NSMutableArray *allModel = [NSMutableArray array];
+        if (!hasMoreData) {[self.tableView.mj_footer endRefreshingWithNoMoreData];}
+        
         if (matchModel.live && matchModel.live.count) {
-            [allModel addObject:matchModel.live];
+            if (![self.sectionArray containsObject:@"Live"]) {
+                [self.sectionArray addObject:@"Live"];
+            }
+            [self handleDataSource:matchModel.live key:@"Live"];
+            
         }
         if (matchModel.schedule && matchModel.schedule.count) {
-            [allModel addObject:matchModel.schedule];
+            if (![self.sectionArray containsObject:@"Scheduled"]) {
+                [self.sectionArray addObject:@"Scheduled"];
+            }
+            
+            [self handleDataSource:matchModel.schedule key:@"Scheduled"];
         }
         if (matchModel.result && matchModel.result.count) {
-            [allModel addObject:matchModel.result];
+            if (![self.sectionArray containsObject:@"Result"]) {
+                [self.sectionArray addObject:@"Result"];
+            }
+            
+            [self handleDataSource:matchModel.result key:@"Result"];
         }
         
-        switch (self.status) {
-            case AXMatchStatusAll:
-                self.matches = allModel.copy;
-                break;
-            case AXMatchStatusSchedule:
-                self.matches = @[matchModel.schedule];
-                break;
-            case AXMatchStatusLive:
-                self.matches = @[matchModel.live];
-                break;
-            case AXMatchStatusResult:
-                self.matches = @[matchModel.result];
-                break;
-                
-            default:
-                break;
-        }
+        [self.tableView reloadData];
     }];
 }
 
@@ -129,18 +143,15 @@
     return @[[NSString stringWithFormat:@"%.0f", start], [NSString stringWithFormat:@"%.0f", end]];
 }
 
-- (void)setMatches:(NSArray *)matches {
-    _matches = matches;
-    [self.tableView reloadData];
-}
-
 - (void)endRefresh {
     [self.tableView.mj_header endRefreshing];
+    [self.tableView.mj_footer endRefreshing];
 //    [self.view qyzy_hideLoading];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSArray *array = self.matches[indexPath.section];
+    NSString *key = self.sectionArray[indexPath.section];
+    NSArray *array = [self.dataSource valueForKey:key];
     AXMatchListItemModel *model = array[indexPath.row];
     if (self.status == AXMatchStatusSchedule) {
         AXMatchListOddsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchListOddsCell.class) forIndexPath:indexPath];
@@ -158,7 +169,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return self.matches.count;
+    return self.sectionArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -166,7 +177,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *array = self.matches[section];
+    NSString *key = self.sectionArray[section];
+    NSArray *array = [self.dataSource valueForKey:key];
     return array.count;
 }
 
@@ -179,30 +191,15 @@
     if (self.status != AXMatchStatusAll) {
         return nil;
     }
-    
     AXMatchListSectionHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass(AXMatchListSectionHeader.class)];
-    NSString *str;
-    switch (section) {
-        case 0:
-            str = @"Live";
-            break;
-        case 1:
-            str = @"Scheduled";
-            break;
-        case 2:
-            str = @"Result";
-            break;
-            
-        default:
-            break;
-    }
-    header.titleString = str;
+    header.titleString = self.sectionArray[section];
     return header;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     QYZYMatchDetailViewController *vc = [[QYZYMatchDetailViewController alloc] init];
-    NSArray *array = self.matches[indexPath.section];
+    NSString *key = self.sectionArray[indexPath.section];
+    NSArray *array = [self.dataSource valueForKey:key];
     AXMatchListItemModel *model = array[indexPath.row];
     vc.matchModel = model;
     vc.hidesBottomBarWhenPushed = YES;
@@ -219,7 +216,15 @@
         _tableView.dataSource = self;
         _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             strongSelf(self);
-            !self.requestBlock ? : self.requestBlock();
+            self.pageNo = 1;
+            // 下拉刷新清空数据
+            [self.sectionArray removeAllObjects];
+            [self.dataSource removeAllObjects];
+            [self requestData];
+        }];
+        _tableView.mj_footer = [MJRefreshAutoStateFooter footerWithRefreshingBlock:^{
+            self.pageNo += 1;
+            [self requestData];
         }];
         [_tableView registerClass:AXMatchListTableViewCell.class forCellReuseIdentifier:NSStringFromClass(AXMatchListTableViewCell.class)];
         [_tableView registerClass:AXMatchListOddsCell.class forCellReuseIdentifier:NSStringFromClass(AXMatchListOddsCell.class)];
