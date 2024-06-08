@@ -21,6 +21,10 @@ typedef enum : NSUInteger {
 //    AXMatchStatusFavorite,
 } AXMatchStatus;
 
+typedef void(^AXVoldBlock) (void);
+typedef void(^AXIntBlock) (int num);
+typedef void(^AXStringBlock) (NSString *string);
+
 #define ScreenWidth UIScreen.mainScreen.bounds.size.width
 #define ScreenHeight UIScreen.mainScreen.bounds.size.height
 
