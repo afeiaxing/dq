@@ -74,6 +74,26 @@
 }
 
 // MARK: setter & getter
+- (void)setRivalryRecordModel:(AXMatchAnalysisRivalryRecordModel *)rivalryRecordModel{
+    self.winLabel.text = [NSString stringWithFormat:@"%@ Win", rivalryRecordModel.win];
+    self.loseLabel.text = [NSString stringWithFormat:@"%@ Lose", rivalryRecordModel.lose];
+    self.aveLabel.text = [NSString stringWithFormat:@"AVE \n\n %@ \n\n points", rivalryRecordModel.ave];
+    self.lLabel.text = [NSString stringWithFormat:@"AL \n\n %@ \n\n points", rivalryRecordModel.l];
+    self.moneylineLabel.text = [NSString stringWithFormat:@"Moneyline \n\n %@ \n\n home win", rivalryRecordModel.games];
+    self.ouLabel.text = [NSString stringWithFormat:@"O/U \n\n %@ \n\n Over", rivalryRecordModel.point];
+    _rivalryRecordModel = rivalryRecordModel;
+}
+
+- (void)setTeamRecordModel:(AXMatchAnalysisRivalryRecordModel *)teamRecordModel{
+    self.winLabel.text = [NSString stringWithFormat:@"%@ Win", teamRecordModel.win];
+    self.loseLabel.text = [NSString stringWithFormat:@"%@ Lose", teamRecordModel.lose];
+    self.aveLabel.text = [NSString stringWithFormat:@"AVE \n\n %@ \n\n points", teamRecordModel.ave];
+    self.lLabel.text = [NSString stringWithFormat:@"AL \n\n %@ \n\n points", teamRecordModel.l];
+    self.moneylineLabel.text = [NSString stringWithFormat:@"Moneyline \n\n %@ \n\n home win", teamRecordModel.games];
+    self.ouLabel.text = [NSString stringWithFormat:@"O/U \n\n %@ \n\n Over", teamRecordModel.point];
+    _teamRecordModel = teamRecordModel;
+}
+
 - (UIView *)containerView{
     if (!_containerView) {
         _containerView = [UIView new];
@@ -97,7 +117,6 @@
     if (!_winLabel) {
         _winLabel = [UILabel new];
         _winLabel.backgroundColor = rgb(29, 209, 0);
-        _winLabel.text = @"4 Win";
         _winLabel.textColor = UIColor.whiteColor;
         _winLabel.textAlignment = NSTextAlignmentCenter;
         _winLabel.layer.cornerRadius = 8;
@@ -111,7 +130,6 @@
     if (!_loseLabel) {
         _loseLabel = [UILabel new];
         _loseLabel.backgroundColor = rgb(209, 0, 0);
-        _loseLabel.text = @"2 Lose";
         _loseLabel.textColor = UIColor.whiteColor;
         _loseLabel.textAlignment = NSTextAlignmentCenter;
         _loseLabel.layer.cornerRadius = 8;
@@ -127,7 +145,6 @@
         _aveLabel.numberOfLines = 10;
         _aveLabel.font = [UIFont systemFontOfSize:12];
         _aveLabel.textAlignment = NSTextAlignmentCenter;
-        _aveLabel.text = @"AVE \n\n 99.5 \n\n points";
     }
     return _aveLabel;
 }
@@ -138,7 +155,6 @@
         _lLabel.numberOfLines = 10;
         _lLabel.font = [UIFont systemFontOfSize:12];
         _lLabel.textAlignment = NSTextAlignmentCenter;
-        _lLabel.text = @"L \n\n 122.5 \n\n points";
     }
     return _lLabel;
 }
@@ -149,7 +165,6 @@
         _moneylineLabel.numberOfLines = 10;
         _moneylineLabel.font = [UIFont systemFontOfSize:12];
         _moneylineLabel.textAlignment = NSTextAlignmentCenter;
-        _moneylineLabel.text = @"Moneyline \n\n 50.3% \n\n home win";
     }
     return _moneylineLabel;
 }
@@ -160,7 +175,6 @@
         _ouLabel.numberOfLines = 10;
         _ouLabel.font = [UIFont systemFontOfSize:12];
         _ouLabel.textAlignment = NSTextAlignmentCenter;
-        _ouLabel.text = @"O/U \n\n 14.2% \n\n Over";
     }
     return _ouLabel;
 }

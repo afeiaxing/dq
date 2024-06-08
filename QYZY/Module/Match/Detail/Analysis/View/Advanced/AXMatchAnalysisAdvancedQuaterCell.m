@@ -31,6 +31,12 @@
 @property (nonatomic, strong) NSArray *scoreTitleLabels;
 @property (nonatomic, strong) NSArray *scoreHostLabels;
 
+@property (nonatomic, strong) NSMutableArray *titleLabels;
+@property (nonatomic, strong) NSMutableArray *hostScoreLabels;
+@property (nonatomic, strong) NSMutableArray *hostLossLabels;
+@property (nonatomic, strong) NSMutableArray *awayScoreLabels;
+@property (nonatomic, strong) NSMutableArray *awayLossLabels;
+
 
 @end
 
@@ -59,12 +65,10 @@
     }];
     
     [self.BgView addSubview:self.titleLabel];
-    [self.BgView addSubview:self.titleLabel];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.offset(22);
         make.left.offset(15);
     }];
-    
     
     [self.BgView addSubview:self.scoreBGView];
     [self.scoreBGView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -154,97 +158,6 @@
         make.top.equalTo(self.awayAverageScore.mas_bottom).offset(6);
         make.centerX.equalTo(self.wlLabel);
     }];
-    
-    [self setScores];
-}
-
-// 此处的代码是从standing页面拷贝过来，逻辑待优化
-- (void)setScores{
-    NSArray *hostScore = @[@"1", @"2", @"12", @"12", @"0", @"2"];
-    NSArray *hostLoss = @[@"11", @"12", @"2", @"21", @"10", @"21"];
-    NSArray *awayScore = @[@"3", @"4", @"11", @"2", @"12", @"1"];
-    NSArray *awayLoss = @[@"31", @"14", @"1", @"12", @"2", @"11"];
-    
-    NSInteger quarterCount = hostScore.count;
-    NSArray *quarterTitles;
-    
-    if (5 > quarterCount) {
-        // 无加时
-        quarterTitles = @[@"Q1", @"Q2", @"Q3", @"Q4"];
-    } else if (quarterCount == 5) {
-        // 加时1
-        quarterTitles = @[@"Q1", @"Q2", @"Q3", @"Q4", @"OT1"];
-    } else {
-        // 加时2
-        quarterTitles = @[@"Q1", @"Q2", @"Q3", @"Q4", @"OT1", @"OT2"];
-    }
-    
-    NSArray *hostScores = hostScore;// [self handleScoreArray:score];
-    NSArray *awayScores = awayScore;// [self handleScoreArray:awayScore];
-    
-    NSMutableArray *titleLabels = [NSMutableArray array];
-    NSMutableArray *hostScoreLabels = [NSMutableArray array];
-    NSMutableArray *hostLossLabels = [NSMutableArray array];
-    NSMutableArray *awayScoreLabels = [NSMutableArray array];
-    NSMutableArray *awayLossLabels = [NSMutableArray array];
-    
-    for (int i = 0; i < quarterTitles.count; i++) {
-        // title
-        NSString *title = quarterTitles[i];
-        UILabel *titleLabel = [self getLabelWithText:title TextColor:rgb(130, 134, 163) fontSize:12];
-        [self.scoreBGView addSubview:titleLabel];
-        [titleLabels addObject:titleLabel];
-        
-        // host score
-        NSString *hostScoreString = hostScores[i];
-        UILabel *hostScoreLabel = [self getLabelWithText:hostScoreString TextColor:rgb(130, 134, 163) fontSize:14];
-        [self.scoreBGView addSubview:hostScoreLabel];
-        [hostScoreLabels addObject:hostScoreLabel];
-        
-        // host loss
-        NSString *hostLossString = hostLoss[i];
-        UILabel *hostLossLabel = [self getLabelWithText:hostLossString TextColor:rgb(130, 134, 163) fontSize:14];
-        [self.scoreBGView addSubview:hostLossLabel];
-        [hostLossLabels addObject:hostLossLabel];
-        
-        // away score
-        NSString *awayScoreString = awayScores[i];
-        UILabel *awayScoreLabel = [self getLabelWithText:awayScoreString TextColor:rgb(130, 134, 163) fontSize:14];
-        [self.scoreBGView addSubview:awayScoreLabel];
-        [awayScoreLabels addObject:awayScoreLabel];
-        
-        // away loss
-        NSString *awayLossString = awayLoss[i];
-        UILabel *awayLossLabel = [self getLabelWithText:awayLossString TextColor:rgb(130, 134, 163) fontSize:14];
-        [self.scoreBGView addSubview:awayLossLabel];
-        [awayLossLabels addObject:awayLossLabel];
-    }
-    
-    CGFloat leftMargin = 148;
-    [titleLabels mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:25 leadSpacing:leftMargin tailSpacing:15];
-    [titleLabels mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.scoreTeamTitle);
-    }];
-    
-    [hostScoreLabels mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:25 leadSpacing:leftMargin tailSpacing:15];
-    [hostScoreLabels mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.hostAverageScore);
-    }];
-    
-    [hostLossLabels mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:25 leadSpacing:leftMargin tailSpacing:15];
-    [hostLossLabels mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.hostAverageLoss);
-    }];
-    
-    [awayScoreLabels mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:25 leadSpacing:leftMargin tailSpacing:15];
-    [awayScoreLabels mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.awayAverageScore);
-    }];
-    
-    [awayLossLabels mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:25 leadSpacing:leftMargin tailSpacing:15];
-    [awayLossLabels mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.awayAverageLoss);
-    }];
 }
 
 - (UILabel *)getLabelWithText: (NSString *)text
@@ -267,11 +180,111 @@
     return temp.copy;
 }
 
+- (void)handleRemoveSubView: (NSMutableArray *)array{
+    for (UILabel *label in array) {
+        [label removeFromSuperview];
+    }
+    [array removeAllObjects];
+}
+
 // MARK: setter & getter
 - (void)setMatchModel:(AXMatchListItemModel *)matchModel{
     [self.scoreHostLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.homeTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
     [self.scoreAwayLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.awayTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
+    self.scoreHostName.text = matchModel.homeTeamName;
+    self.scoreAwayName.text = matchModel.awayTeamName;
     _matchModel = matchModel;
+}
+
+- (void)setAdvancedModel:(AXMatchAnalysisAdvancedModel *)advancedModel{
+    NSArray <AXMatchAnalysisAdvancedAlAveModel *> *homeAl = advancedModel.homeAl;
+    NSArray <AXMatchAnalysisAdvancedAlAveModel *> *homeAve = advancedModel.homeAve;
+    NSArray <AXMatchAnalysisAdvancedAlAveModel *> *awayAl = advancedModel.awayAl;
+    NSArray <AXMatchAnalysisAdvancedAlAveModel *> *awayAve = advancedModel.awayAve;
+    NSInteger quarterCount = homeAl.count;
+    if (quarterCount == 0) {return;}
+    if ((quarterCount != homeAve.count) || (quarterCount != awayAl.count) || (quarterCount != awayAve.count)) {
+        return;
+    }
+    
+    // 移除数组元素 & 复式图移除
+    [self handleRemoveSubView:self.titleLabels];
+    [self handleRemoveSubView:self.hostScoreLabels];
+    [self handleRemoveSubView:self.hostLossLabels];
+    [self handleRemoveSubView:self.awayScoreLabels];
+    [self handleRemoveSubView:self.awayLossLabels];
+    
+    for (int i = 0; i < quarterCount; i++) {
+        AXMatchAnalysisAdvancedAlAveModel *homeAlModel = homeAl[i];
+        AXMatchAnalysisAdvancedAlAveModel *homeAveModel = homeAve[i];
+        AXMatchAnalysisAdvancedAlAveModel *awayAlModel = awayAl[i];
+        AXMatchAnalysisAdvancedAlAveModel *awayAveModel = awayAve[i];
+        
+        if (i == 0) {
+            // 平均得失分的Label，可以在这里创建，而不在init里创建，待优化
+            self.hostAverageScore.text = [NSString stringWithFormat:@"Average Score \n %@", homeAveModel.score];
+            self.hostAverageLoss.text = [NSString stringWithFormat:@"Average Loss \n %@", homeAlModel.score];
+            self.awayAverageScore.text = [NSString stringWithFormat:@"Average Score \n %@", awayAveModel.score];
+            self.awayAverageLoss.text = [NSString stringWithFormat:@"Average Loss \n %@", awayAlModel.score];
+        } else {
+            // title
+            UILabel *titleLabel = [self getLabelWithText:homeAlModel.name TextColor:rgb(130, 134, 163) fontSize:12];
+            [self.scoreBGView addSubview:titleLabel];
+            [self.titleLabels addObject:titleLabel];
+            
+            // host score
+            NSString *hostScoreString = homeAveModel.score;
+            UILabel *hostScoreLabel = [self getLabelWithText:hostScoreString TextColor:rgb(130, 134, 163) fontSize:14];
+            [self.scoreBGView addSubview:hostScoreLabel];
+            [self.hostScoreLabels addObject:hostScoreLabel];
+            
+            // host loss
+            NSString *hostLossString = homeAlModel.score;
+            UILabel *hostLossLabel = [self getLabelWithText:hostLossString TextColor:rgb(130, 134, 163) fontSize:14];
+            [self.scoreBGView addSubview:hostLossLabel];
+            [self.hostLossLabels addObject:hostLossLabel];
+            
+            // away score
+            NSString *awayScoreString = awayAveModel.score;
+            UILabel *awayScoreLabel = [self getLabelWithText:awayScoreString TextColor:rgb(130, 134, 163) fontSize:14];
+            [self.scoreBGView addSubview:awayScoreLabel];
+            [self.awayScoreLabels addObject:awayScoreLabel];
+            
+            // away loss
+            NSString *awayLossString = awayAlModel.score;
+            UILabel *awayLossLabel = [self getLabelWithText:awayLossString TextColor:rgb(130, 134, 163) fontSize:14];
+            [self.scoreBGView addSubview:awayLossLabel];
+            [self.awayLossLabels addObject:awayLossLabel];
+        }
+    }
+    
+    CGFloat leftMargin = 148;
+    [self.titleLabels mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:30 leadSpacing:leftMargin tailSpacing:15];
+    [self.titleLabels mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.scoreTeamTitle);
+    }];
+    
+    [self.hostScoreLabels mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:30 leadSpacing:leftMargin tailSpacing:15];
+    [self.hostScoreLabels mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.hostAverageScore);
+    }];
+    
+    [self.hostLossLabels mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:30 leadSpacing:leftMargin tailSpacing:15];
+    [self.hostLossLabels mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.hostAverageLoss);
+    }];
+    
+    [self.awayScoreLabels mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:30 leadSpacing:leftMargin tailSpacing:15];
+    [self.awayScoreLabels mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.awayAverageScore);
+    }];
+    
+    [self.awayLossLabels mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:30 leadSpacing:leftMargin tailSpacing:15];
+    [self.awayLossLabels mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.awayAverageLoss);
+    }];
+    
+    _advancedModel = advancedModel;
 }
 
 - (UIView *)BgView{
@@ -358,7 +371,6 @@
 - (UILabel *)scoreHostName{
     if (!_scoreHostName) {
         _scoreHostName = [UILabel new];
-        _scoreHostName.text = @"LAL";
         _scoreHostName.font = [UIFont systemFontOfSize:14];
         _scoreHostName.textColor = rgb(17, 17, 17);
     }
@@ -368,7 +380,6 @@
 - (UILabel *)hostAverageScore{
     if (!_hostAverageScore) {
         _hostAverageScore = [UILabel new];
-        _hostAverageScore.text = @"Average Score \n 22.5";
         _hostAverageScore.font = [UIFont systemFontOfSize:12];
         _hostAverageScore.textColor = rgb(130, 134, 163);
         _hostAverageScore.numberOfLines = 2;
@@ -380,7 +391,6 @@
 - (UILabel *)hostAverageLoss{
     if (!_hostAverageLoss) {
         _hostAverageLoss = [UILabel new];
-        _hostAverageLoss.text = @"Average Loss \n 12.5";
         _hostAverageLoss.font = [UIFont systemFontOfSize:12];
         _hostAverageLoss.textColor = rgb(130, 134, 163);
         _hostAverageLoss.numberOfLines = 2;
@@ -392,7 +402,6 @@
 - (UILabel *)awayAverageScore{
     if (!_awayAverageScore) {
         _awayAverageScore = [UILabel new];
-        _awayAverageScore.text = @"Average Score \n 32.5";
         _awayAverageScore.font = [UIFont systemFontOfSize:12];
         _awayAverageScore.textColor = rgb(130, 134, 163);
         _awayAverageScore.numberOfLines = 2;
@@ -404,7 +413,6 @@
 - (UILabel *)awayAverageLoss{
     if (!_awayAverageLoss) {
         _awayAverageLoss = [UILabel new];
-        _awayAverageLoss.text = @"Average Loss \n 24.5";
         _awayAverageLoss.font = [UIFont systemFontOfSize:12];
         _awayAverageLoss.textColor = rgb(130, 134, 163);
         _awayAverageLoss.numberOfLines = 2;
@@ -416,7 +424,6 @@
 - (UILabel *)scoreAwayName{
     if (!_scoreAwayName) {
         _scoreAwayName = [UILabel new];
-        _scoreAwayName.text = @"BOS";
         _scoreAwayName.font = [UIFont systemFontOfSize:14];
         _scoreAwayName.textColor = rgb(17, 17, 17);
     }
@@ -429,6 +436,41 @@
         _scoreLineView.backgroundColor = rgba(130, 134, 163, 0.5);
     }
     return _scoreLineView;
+}
+
+- (NSMutableArray *)titleLabels{
+    if (!_titleLabels) {
+        _titleLabels = [NSMutableArray array];
+    }
+    return _titleLabels;
+}
+
+- (NSMutableArray *)hostScoreLabels{
+    if (!_hostScoreLabels) {
+        _hostScoreLabels = [NSMutableArray array];
+    }
+    return _hostScoreLabels;
+}
+
+- (NSMutableArray *)hostLossLabels{
+    if (!_hostLossLabels) {
+        _hostLossLabels = [NSMutableArray array];
+    }
+    return _hostLossLabels;
+}
+
+- (NSMutableArray *)awayScoreLabels{
+    if (!_awayScoreLabels) {
+        _awayScoreLabels = [NSMutableArray array];
+    }
+    return _awayScoreLabels;
+}
+
+- (NSMutableArray *)awayLossLabels{
+    if (!_awayLossLabels) {
+        _awayLossLabels = [NSMutableArray array];
+    }
+    return _awayLossLabels;
 }
 
 @end

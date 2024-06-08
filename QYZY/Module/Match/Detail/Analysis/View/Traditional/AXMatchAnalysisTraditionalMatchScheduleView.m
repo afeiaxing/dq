@@ -11,7 +11,8 @@
 
 @property (nonatomic, strong) UIView *BgView;
 @property (nonatomic, strong) UILabel *scheduleTitleLabel;
-@property (nonatomic, strong) NSArray <NSArray *>*dataSource;
+@property (nonatomic, strong) NSArray *titles;
+@property (nonatomic, strong) NSMutableArray *dataLabels;
 
 @end
 
@@ -45,25 +46,21 @@
     }];
     
     
-    CGFloat titleW = ScreenWidth / self.dataSource.firstObject.count;
+    CGFloat titleW = ScreenWidth / self.titles.count;
     CGFloat titleH = 30;
-    CGFloat dataH = 40;
     
-    for (int i = 0; i < self.dataSource.count; i++) {
-        NSArray *datas = self.dataSource[i];
-        for (int j = 0; j < datas.count; j++) {
-            UILabel *label = [self getLabel];
-            NSString *str = datas[j];
-            label.text = str;
-            label.backgroundColor = i == 0 ? rgb(255, 247, 239) : UIColor.whiteColor;
-            [self addSubview:label];
-            
-            [label mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.offset(titleW * j);
-                make.top.equalTo(self.scheduleTitleLabel.mas_bottom).offset(i == 0 ? 20 : 20 + (titleH + dataH * (i - 1)));
-                make.size.mas_equalTo(CGSizeMake(titleW, i == 0 ? titleH : dataH));
-            }];
-        }
+    for (int i = 0; i < self.titles.count; i++) {
+        UILabel *label = [self getLabel];
+        NSString *str = self.titles[i];
+        label.text = str;
+        label.backgroundColor = rgb(255, 247, 239);
+        [self addSubview:label];
+        
+        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.offset(titleW * i);
+            make.top.equalTo(self.scheduleTitleLabel.mas_bottom).offset(20);
+            make.size.mas_equalTo(CGSizeMake(titleW, titleH));
+        }];
     }
 }
 
@@ -80,6 +77,54 @@
 - (void)setViewType:(AXMatchAnalysisTraditionalMatchViewType)viewType{
     _viewType = viewType;
     self.scheduleTitleLabel.text = viewType == AXMatchAnalysisTraditionalMatchViewType_host ? @"Home Schedule" : @"Away Schedule";
+}
+
+- (void)setScheduleMatchs:(NSArray<AXMatchAnalysisTeamRecordItemModel *> *)scheduleMatchs{
+    if (!scheduleMatchs || scheduleMatchs.count == 0) {return;}
+    
+    for (UILabel *label in self.dataLabels) {
+        [label removeFromSuperview];
+    }
+    [self.dataLabels removeAllObjects];
+    
+    CGFloat titleW = ScreenWidth / self.titles.count;
+    CGFloat titleH = 30;
+    CGFloat dataH = 40;
+    
+    for (int i = 0; i < scheduleMatchs.count; i++) {
+        AXMatchAnalysisTeamRecordItemModel *model = scheduleMatchs[i];
+        for (int j = 0; j < self.titles.count; j++) {
+            UILabel *label = [self getLabel];
+            switch (j) {
+                case 0:
+                    label.text = model.matchDate;
+                    break;
+                case 1:
+                    label.text = model.competitionName;
+                    break;
+                case 2:
+                    label.text = model.games;
+                    break;
+                case 3:
+                    label.text = model.interval;
+                    break;
+                    
+                default:
+                    break;
+            }
+            
+            [self addSubview:label];
+            [self.dataLabels addObject:label];
+            
+            [label mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.offset(titleW * j);
+                make.top.equalTo(self.scheduleTitleLabel.mas_bottom).offset(20 + titleH + dataH * i);
+                make.size.mas_equalTo(CGSizeMake(titleW, dataH));
+            }];
+        }
+    }
+    
+    _scheduleMatchs = scheduleMatchs;
 }
 
 - (UIView *)BgView{
@@ -99,10 +144,15 @@
     return _scheduleTitleLabel;
 }
 
-- (NSArray *)dataSource{
-    return @[@[@"Date", @"League", @"Games", @"Interval"],
-             @[@"Nov 2 24", @"NBA", @"Lakers VS Rockets", @"15:50"],
-             @[@"Nov 2 24", @"NBA", @"Lakers VS Warriors", @"3 Days"]];
+- (NSArray *)titles{
+    return @[@"Date", @"League", @"Games", @"Interval"];
+}
+
+- (NSMutableArray *)dataLabels{
+    if (!_dataLabels) {
+        _dataLabels = [NSMutableArray array];
+    }
+    return _dataLabels;
 }
 
 @end

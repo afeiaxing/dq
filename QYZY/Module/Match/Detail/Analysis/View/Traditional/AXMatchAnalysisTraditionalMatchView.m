@@ -104,11 +104,14 @@
 - (void)setMatchModel:(AXMatchListItemModel *)matchModel{
     if (self.viewType != AXMatchAnalysisTraditionalMatchViewType_away) {
         [self.hostLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.homeTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
+        self.hostName.text = matchModel.homeTeamName;
     } else {
         [self.hostLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.awayTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
+        self.hostName.text = matchModel.awayTeamName;
     }
     
     [self.awayLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.awayTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
+    self.awayName.text = matchModel.awayTeamName;
     _matchModel = matchModel;
 }
 
@@ -134,6 +137,25 @@
     self.scheduleView.viewType = viewType;
 }
 
+// 设置两队历史交锋
+- (void)setRivalryRecordModel:(AXMatchAnalysisRivalryRecordModel *)rivalryRecordModel{
+    if (!rivalryRecordModel) {return;}
+    self.performanceView.rivalryRecordModel = rivalryRecordModel;
+    self.historyView.records = rivalryRecordModel.matchRecords;
+    _rivalryRecordModel = rivalryRecordModel;
+}
+
+// 设置主队 / 客队 历史对阵 & 未来赛程
+- (void)setTeamRecordModel:(AXMatchAnalysisTeamRecordModel *)teamRecordModel{
+    if (!teamRecordModel) {return;}
+    
+    self.performanceView.teamRecordModel = teamRecordModel;
+    self.historyView.records = teamRecordModel.matchRecords;
+    self.scheduleView.scheduleMatchs = self.viewType == AXMatchAnalysisTraditionalMatchViewType_host ? teamRecordModel.homeSchedule : teamRecordModel.awaySchedule;
+    
+    _teamRecordModel = teamRecordModel;
+}
+
 - (UIImageView *)hostLogo{
     if (!_hostLogo) {
         _hostLogo = [UIImageView new];
@@ -153,7 +175,6 @@
         _hostName = [[UILabel alloc] init];
         _hostName.font = [UIFont systemFontOfSize:12];
         _hostName.textColor = rgb(17, 17, 17);
-        _hostName.text = @"LAL";
     }
     return _hostName;
 }
@@ -163,7 +184,6 @@
         _awayName = [[UILabel alloc] init];
         _awayName.font = [UIFont systemFontOfSize:12];
         _awayName.textColor = rgb(17, 17, 17);
-        _awayName.text = @"BOS";
     }
     return _awayName;
 }

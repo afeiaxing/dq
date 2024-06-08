@@ -6,12 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AXMatchAnalysisAdvancedModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AXMatchAnalysisAdvancedTeamStatsView : UIView
 
-@property (nonatomic, strong) NSString *data;
+@property (nonatomic, strong) AXMatchAnalysisAdvancedStatsModel *model;
 
 @end
 

@@ -77,6 +77,21 @@
     self.awayView.matchModel = matchModel;
 }
 
+- (void)setRivalryRecordModel:(AXMatchAnalysisRivalryRecordModel *)rivalryRecordModel{
+    self.allView.rivalryRecordModel = rivalryRecordModel;
+    _rivalryRecordModel = rivalryRecordModel;
+}
+
+- (void)setHostTeamRecordModel:(AXMatchAnalysisTeamRecordModel *)hostTeamRecordModel{
+    self.hostView.teamRecordModel = hostTeamRecordModel;
+    _hostTeamRecordModel = hostTeamRecordModel;
+}
+
+- (void)setAwayTeamRecordModel:(AXMatchAnalysisTeamRecordModel *)awayTeamRecordModel{
+    self.awayView.teamRecordModel = awayTeamRecordModel;
+    _awayTeamRecordModel = awayTeamRecordModel;
+}
+
 - (JXCategoryTitleView *)categoryView {
     if (!_categoryView) {
         _categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 48)];

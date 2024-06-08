@@ -6,10 +6,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AXMatchAnalysisRivalryRecordModel.h"
+#import "AXMatchAnalysisTeamRecordModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AXMatchAnalysisTraditionalPerformanceView : UIView
+
+// 两队历史交锋数据
+@property (nonatomic, strong) AXMatchAnalysisRivalryRecordModel *rivalryRecordModel;
+
+// 主队 / 客队 数据
+@property (nonatomic, strong) AXMatchAnalysisTeamRecordModel *teamRecordModel;
 
 @end
 

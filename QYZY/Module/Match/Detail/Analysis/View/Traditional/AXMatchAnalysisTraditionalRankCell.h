@@ -6,10 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AXMatchAnalysisTeamRankModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AXMatchAnalysisTraditionalRankCell : UITableViewCell
+
+@property (nonatomic, strong) NSArray <AXMatchAnalysisTeamRankModel *>*teamRankModel;
 
 @end
 

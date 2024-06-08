@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AXMatchAnalysisTeamRecordModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,6 +19,7 @@ typedef NS_ENUM(NSInteger, AXMatchAnalysisTraditionalMatchViewType) {
 @interface AXMatchAnalysisTraditionalMatchScheduleView : UIView
 
 @property (nonatomic, assign) AXMatchAnalysisTraditionalMatchViewType viewType;
+@property (nonatomic, strong) NSArray <AXMatchAnalysisTeamRecordItemModel *>*scheduleMatchs;
 
 @end
 

@@ -6,12 +6,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AXMatchAnalysisRivalryRecordModel.h"
+#import "AXMatchAnalysisTeamRecordModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AXMatchAnalysisTraditionalMatchCell : UITableViewCell
 
 @property (nonatomic, strong) AXMatchListItemModel *matchModel;
+@property (nonatomic, strong) AXMatchAnalysisRivalryRecordModel *rivalryRecordModel;
+@property (nonatomic, strong) AXMatchAnalysisTeamRecordModel *hostTeamRecordModel;
+@property (nonatomic, strong) AXMatchAnalysisTeamRecordModel *awayTeamRecordModel;
 
 @end
 

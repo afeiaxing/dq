@@ -18,7 +18,7 @@
 @property (nonatomic, strong) UILabel *awayName;
 
 @property (nonatomic, strong) UIView *statView;
-@property (nonatomic, strong) NSArray *datas;
+@property (nonatomic, strong) NSMutableArray *statsViews;
 
 @end
 
@@ -74,14 +74,33 @@
         make.centerX.offset(0);
         make.centerY.equalTo(self.hostLogo);
     }];
+}
+
+// MARK: setter & getter
+- (void)setMatchModel:(AXMatchListItemModel *)matchModel{
+    [self.hostLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.homeTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
+    [self.awayLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.awayTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
+    self.hostName.text = matchModel.homeTeamName;
+    self.awayName.text = matchModel.awayTeamName;
+    _matchModel = matchModel;
+}
+
+- (void)setTeamStatistics:(NSArray<AXMatchAnalysisAdvancedStatsModel *> *)teamStatistics{
+    if (!teamStatistics || !teamStatistics.count) {return;}
+    
+    for (AXMatchAnalysisAdvancedTeamStatsView *view in self.statsViews) {
+        [view removeFromSuperview];
+    }
+    [self.statsViews removeAllObjects];
     
     CGFloat topMargin = 24;
     CGFloat viewH = 42;
-    for (int i = 0; i < self.datas.count; i++) {
-        NSString *str = self.datas[i];
+    for (int i = 0; i < teamStatistics.count; i++) {
+        AXMatchAnalysisAdvancedStatsModel *model = teamStatistics[i];
         AXMatchAnalysisAdvancedTeamStatsView *view = [AXMatchAnalysisAdvancedTeamStatsView new];
-        view.data = str;
+        view.model = model;
         [self addSubview:view];
+        [self.statsViews addObject:view];
         
         [view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.offset(0);
@@ -89,13 +108,8 @@
             make.height.mas_equalTo(viewH);
         }];
     }
-}
-
-// MARK: setter & getter- (void)setMatchModel:(AXMatchListItemModel *)matchModel{
-- (void)setMatchModel:(AXMatchListItemModel *)matchModel{
-    [self.hostLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.homeTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
-    [self.awayLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.awayTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
-    _matchModel = matchModel;
+    
+    _teamStatistics = teamStatistics;
 }
 
 - (UILabel *)titleLabel {
@@ -137,7 +151,6 @@
         _hostName = [[UILabel alloc] init];
         _hostName.font = [UIFont systemFontOfSize:12];
         _hostName.textColor = rgb(17, 17, 17);
-        _hostName.text = @"LAL";
     }
     return _hostName;
 }
@@ -147,13 +160,15 @@
         _awayName = [[UILabel alloc] init];
         _awayName.font = [UIFont systemFontOfSize:12];
         _awayName.textColor = rgb(17, 17, 17);
-        _awayName.text = @"BOS";
     }
     return _awayName;
 }
 
-- (NSArray *)datas{
-    return @[@"Field Goal \n Point", @"Rebound \n Amount", @"Assist \n Amount", @"Block \n Amount", @"Steal \n Amount",  @"Turnovers \n Amount", @"Field Goal \n %", @"3-Point \n %", @"Free Throw \n %"];
+- (NSMutableArray *)statsViews{
+    if (!_statsViews) {
+        _statsViews = [NSMutableArray new];
+    }
+    return _statsViews;
 }
 
 @end

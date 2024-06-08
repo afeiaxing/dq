@@ -13,7 +13,8 @@
 
 @property (nonatomic, strong) UILabel *rankTitleLabel;
 @property (nonatomic, strong) NSArray *rankTitles;
-@property (nonatomic, strong) NSArray *rankDatas;
+@property (nonatomic, strong) NSArray *hostRankDataLabels;
+@property (nonatomic, strong) NSArray *awayRankDataLabels;
 
 @end
 
@@ -65,30 +66,32 @@
     
     CGFloat rankDataH = 45;
     // host rank
-    for (int i = 0; i < self.rankDatas.count; i++) {
-        NSString *data = self.rankDatas[i];
+    NSMutableArray *hostTemp = [NSMutableArray array];
+    for (int i = 0; i < self.rankTitles.count; i++) {
         UILabel *rankHostLabel = [self getLabel];
-        rankHostLabel.text = data;
         [self.BgView addSubview:rankHostLabel];
+        [hostTemp addObject:rankHostLabel];
         [rankHostLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.rankTitleLabel.mas_bottom).offset(20 + titleH);
             make.left.offset(titleW * i);
             make.size.mas_equalTo(CGSizeMake(titleW, rankDataH));
         }];
     }
+    self.hostRankDataLabels = hostTemp.copy;
     
     // away rank
-    for (int i = 0; i < self.rankDatas.count; i++) {
-        NSString *data = self.rankDatas[i];
+    NSMutableArray *awayTemp = [NSMutableArray array];
+    for (int i = 0; i < self.rankTitles.count; i++) {
         UILabel *rankAwayLabel = [self getLabel];
-        rankAwayLabel.text = data;
         [self.BgView addSubview:rankAwayLabel];
+        [awayTemp addObject:rankAwayLabel];
         [rankAwayLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.rankTitleLabel.mas_bottom).offset(20 + titleH + rankDataH);
             make.left.offset(titleW * i);
             make.size.mas_equalTo(CGSizeMake(titleW, rankDataH));
         }];
     }
+    self.awayRankDataLabels = awayTemp.copy;
 }
 
 - (UILabel *)getLabel{
@@ -98,7 +101,39 @@
     return label;
 }
 
+- (void)handleRankDataWithModel: (AXMatchAnalysisTeamRankModel *)model
+                         labels: (NSArray *)label{
+    if (label.count > 6) {
+        UILabel *rank = label[0];
+        rank.text = model.ranking;
+        
+        UILabel *teamName = label[1];
+        teamName.text = model.teamName;
+        
+        UILabel *wl = label[2];
+        wl.text = model.wl;
+        
+        UILabel *wp = label[3];
+        wp.text = model.wp;
+        
+        UILabel *ave = label[4];
+        ave.text = model.ave;
+        
+        UILabel *al = label[5];
+        al.text = model.al;
+        
+        UILabel *status = label[6];
+        status.text = model.status;
+    }
+}
+
 // MARK: setter & setter
+- (void)setTeamRankModel:(NSArray<AXMatchAnalysisTeamRankModel *> *)teamRankModel{
+    [self handleRankDataWithModel:teamRankModel.firstObject labels:self.hostRankDataLabels];
+    [self handleRankDataWithModel:teamRankModel.lastObject labels:self.awayRankDataLabels];
+    _teamRankModel = teamRankModel;
+}
+
 - (UIView *)BgView{
     if (!_BgView) {
         _BgView = [UIView new];
@@ -119,10 +154,6 @@
 
 - (NSArray *)rankTitles{
     return @[@"Rank", @"Team", @"W/L", @"WP", @"AVE", @"AL", @"Status"];
-}
-
-- (NSArray *)rankDatas{
-    return @[@"10", @"Lakers", @"9/10", @"45.7%", @"111.2", @"118.3", @"2WS"];
 }
 
 

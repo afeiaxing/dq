@@ -8,10 +8,13 @@
 #import "AXMatchAnalysisAdvancedViewController.h"
 #import "AXMatchAnalysisAdvancedQuaterCell.h"
 #import "AXMatchAnalysisAdvancedTeamStatsCell.h"
+#import "AXMatchAnalysisRequest.h"
 
 @interface AXMatchAnalysisAdvancedViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableview;
+@property (nonatomic, strong) AXMatchAnalysisRequest *request;
+@property (nonatomic, strong) AXMatchAnalysisAdvancedModel *advancedModel;
 
 @end
 
@@ -21,6 +24,7 @@
     [super viewDidLoad];
     
     [self setupSubviews];
+    [self requestData];
 }
 
 // MARK: private
@@ -28,6 +32,17 @@
     [self.view addSubview:self.tableview];
     [self.tableview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.offset(0);
+    }];
+}
+
+- (void)requestData{
+    [self.view ax_showLoading];
+    weakSelf(self);
+    [self.request requestTeamAdvancedWithMatchId:self.matchModel.matchId limit:6 completion:^(AXMatchAnalysisAdvancedModel * _Nonnull advancedModel) {
+        strongSelf(self);
+        [self.view ax_hideLoading];
+        self.advancedModel = advancedModel;
+        [self.tableview reloadData];
     }];
 }
 
@@ -48,10 +63,12 @@
     if (indexPath.row == 0) {
         AXMatchAnalysisAdvancedQuaterCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchAnalysisAdvancedQuaterCell.class) forIndexPath:indexPath];
         cell.matchModel = self.matchModel;
+        cell.advancedModel = self.advancedModel;
         return cell;
     } else {
         AXMatchAnalysisAdvancedTeamStatsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchAnalysisAdvancedTeamStatsCell.class) forIndexPath:indexPath];
         cell.matchModel = self.matchModel;
+        cell.teamStatistics = self.advancedModel.teamStatistics;
         return cell;
     }
 }
@@ -72,6 +89,13 @@
         _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _tableview;
+}
+
+- (AXMatchAnalysisRequest *)request{
+    if (!_request) {
+        _request = [AXMatchAnalysisRequest new];
+    }
+    return _request;
 }
 
 @end

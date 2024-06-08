@@ -7,6 +7,8 @@
 
 #import <UIKit/UIKit.h>
 #import "AXMatchAnalysisTraditionalMatchScheduleView.h"
+#import "AXMatchAnalysisRivalryRecordModel.h"
+#import "AXMatchAnalysisTeamRecordModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) AXMatchAnalysisTraditionalMatchViewType viewType;
 @property (nonatomic, strong) AXMatchListItemModel *matchModel;
+@property (nonatomic, strong) AXMatchAnalysisRivalryRecordModel *rivalryRecordModel;
+@property (nonatomic, strong) AXMatchAnalysisTeamRecordModel *teamRecordModel;
 
 @end
 

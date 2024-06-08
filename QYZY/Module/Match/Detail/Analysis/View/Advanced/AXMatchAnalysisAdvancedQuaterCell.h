@@ -6,12 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AXMatchAnalysisAdvancedModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AXMatchAnalysisAdvancedQuaterCell : UITableViewCell
 
 @property (nonatomic, strong) AXMatchListItemModel *matchModel;
+@property (nonatomic, strong) AXMatchAnalysisAdvancedModel *advancedModel;
 
 @end
 

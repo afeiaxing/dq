@@ -41,6 +41,8 @@
     [self addSubview:self.hostTintView];
     [self addSubview:self.awayTintView];
     
+    CGFloat backViewW = [self getBackViewWidth];
+    
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(2);
         make.centerX.equalTo(self);
@@ -50,7 +52,7 @@
     [self.hostBackView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.titleLabel);
         make.right.equalTo(self.titleLabel.mas_left).offset(-20);
-        make.left.offset(16);
+        make.width.mas_equalTo(backViewW);
         make.height.mas_equalTo(8);
     }];
     
@@ -62,7 +64,7 @@
     [self.awayBackView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.height.equalTo(self.hostBackView);
         make.left.equalTo(self.titleLabel.mas_right).offset(20);
-        make.right.offset(-16);
+        make.width.mas_equalTo(backViewW);
     }];
     
     [self.awayTintView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -81,11 +83,37 @@
     }];
 }
 
+- (CGFloat)getBackViewWidth {
+    return (ScreenWidth - 80 - (20 + 16) * 2) / 2;
+}
+
 // MARK: setter & getter
-- (void)setData:(NSString *)data{
-    self.titleLabel.text = data;
-    self.hostValue.text = @"124";
-    self.awayValue.text = @"90";
+- (void)setModel:(AXMatchAnalysisAdvancedStatsModel *)model{
+    self.titleLabel.text = [NSString stringWithFormat:@"%@\n%@", model.name, model.subtitle];
+    self.hostValue.text = model.homeScore;
+    self.awayValue.text = model.awayScore;
+    
+    CGFloat totalValue = model.homeScore.floatValue + model.awayScore.floatValue;
+    CGFloat hostPrecent = model.homeScore.floatValue / totalValue;
+    CGFloat awayPrecent = model.awayScore.floatValue / totalValue;
+    
+    CGFloat backViewW = [self getBackViewWidth];
+    
+    [self.hostTintView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(backViewW * hostPrecent);
+    }];
+    
+    [self.awayTintView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(backViewW * awayPrecent);
+    }];
+
+    [self.hostValue mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.hostTintView);
+    }];
+
+    [self.awayValue mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.awayTintView);
+    }];
 }
 
 - (UILabel *)titleLabel {

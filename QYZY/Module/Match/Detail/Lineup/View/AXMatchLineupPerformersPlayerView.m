@@ -101,7 +101,7 @@
         make.bottom.equalTo(self.hostPlayerName).offset(-10);
         make.centerX.offset(-10);
         make.width.mas_equalTo(16);
-        make.height.mas_equalTo(AXMatchLineupPerformersPlayerViewBaseHeight);
+        make.height.mas_equalTo(0);
     }];
     
     [self.hostScoreLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -113,7 +113,7 @@
         make.bottom.equalTo(self.hostPlayerName).offset(-10);
         make.centerX.offset(10);
         make.width.mas_equalTo(16);
-        make.height.mas_equalTo(AXMatchLineupPerformersPlayerViewBaseHeight);
+        make.height.mas_equalTo(0);
     }];
     
     [self.awayScoreLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -128,6 +128,7 @@
 }
 
 - (void)setHostModel:(AXMatchLineupTopPerformerModel *)hostModel{
+    if (!hostModel) {return;}
     [self.hostPlayerLogo sd_setImageWithURL:[NSURL URLWithString:hostModel.playerLogo] placeholderImage:AXTeamPlaceholderLogo];
     self.hostPlayerName.text = hostModel.playerName;
     self.hostPlayerNum.text = [NSString stringWithFormat:@"#%@", hostModel.shirtNumber];
@@ -136,6 +137,7 @@
 }
 
 - (void)setAwayModel:(AXMatchLineupTopPerformerModel *)awayModel{
+    if (!awayModel) {return;}
     [self.awayPlayerLogo sd_setImageWithURL:[NSURL URLWithString:awayModel.playerLogo] placeholderImage:AXTeamPlaceholderLogo];
     self.awayPlayerName.text = awayModel.playerName;
     self.awayPlayerNum.text = [NSString stringWithFormat:@"#%@", awayModel.shirtNumber];
