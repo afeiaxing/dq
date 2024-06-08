@@ -30,7 +30,11 @@
     return self;
 }
 
-// MARK: delegate
+// MARK: public
++ (CGFloat)viewHeight{
+    CGFloat height = StatusBarHeightConstant + NavigationBarHeight;
+    return height;
+}
 
 // MARK: private
 - (void)setupSubviews{

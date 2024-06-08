@@ -6,6 +6,7 @@
 //
 
 #import "AXMatchDetailHeaderView.h"
+#import "AXMatchDetailNavigationView.h"
 
 @interface AXMatchDetailHeaderView()
 
@@ -33,13 +34,20 @@
     return self;
 }
 
-// MARK: delegate
+// MARK: public
++ (CGFloat)viewHeight{
+    return 204;
+}
 
 // MARK: private
 - (void)setupSubviews{
+    self.backgroundColor = UIColor.blackColor;
+    
     [self addSubview:self.headerBgView];
     [self.headerBgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.offset(0);
+        make.left.right.bottom.offset(0);
+        make.top.offset([AXMatchDetailNavigationView viewHeight]);
+//        make.top.offset(0);
     }];
     
     [self.headerBgView addSubview:self.hostFlag];

@@ -50,6 +50,14 @@
     return self.view;
 }
 
+- (UIScrollView *)listScrollView {
+    return self.containerView.scrollView;
+}
+
+- (void)listViewDidScrollCallback:(void (^)(UIScrollView *))callback {
+    
+}
+
 // MARK: JXCategoryViewDelegate,JXCategoryListContainerViewDelegate
 - (BOOL)categoryView:(JXCategoryBaseView *)categoryView canClickItemAtIndex:(NSInteger)index {
     return categoryView.selectedIndex != index;

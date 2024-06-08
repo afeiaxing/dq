@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AXMatchBetViewController : QYZYBaseViewController<JXCategoryListContentViewDelegate>
+@interface AXMatchBetViewController : QYZYBaseViewController<JXCategoryListContentViewDelegate, JXPagerViewListViewDelegate>
 
 @end
 

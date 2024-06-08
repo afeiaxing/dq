@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AXMatchChatViewController : QYZYBaseViewController<JXCategoryListContentViewDelegate>
+@interface AXMatchChatViewController : QYZYBaseViewController<JXCategoryListContentViewDelegate, JXPagerViewListViewDelegate>
 
 @end
 

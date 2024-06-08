@@ -15,18 +15,20 @@
 #import "AXMatchDetailNavigationView.h"
 #import "AXMatchDetailHeaderView.h"
 
-@interface QYZYMatchDetailViewController ()<JXCategoryViewDelegate,JXCategoryListContainerViewDelegate>
+@interface QYZYMatchDetailViewController ()<JXCategoryViewDelegate, JXPagerViewDelegate>
 
+@property (nonatomic, strong) JXPagerView *pagerView;
 @property (nonatomic, strong) AXMatchDetailNavigationView *topNavitionView;
 @property (nonatomic, strong) AXMatchDetailHeaderView *headerView;
 
+@property (nonatomic, strong) NSArray *childVcs;
 @property (nonatomic, strong) AXMatchBetViewController *betVC;
 @property (nonatomic, strong) AXMatchChatViewController *chatVC;
 @property (nonatomic, strong) AXMatchStandingsViewController *standingsVC;
 @property (nonatomic, strong) AXMatchLineupViewController *lineupVC;
 @property (nonatomic, strong) AXMatchAnalysisViewController *analysisVC;
 @property (nonatomic, strong) JXCategoryTitleView *categoryView;
-@property (nonatomic, strong) JXCategoryListContainerView *containerView;
+
 @property (nonatomic, strong) NSTimer *timer;
 
 @property (nonatomic, strong) AXMatchDetailRequest *request;
@@ -37,14 +39,6 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
-}
-
-- (BOOL)shouldAutorotate{
-    return NO;
-}
-
-- (void)dealloc {
-    [NSNotificationCenter.defaultCenter removeObserver:self];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -63,38 +57,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.fd_prefersNavigationBarHidden = YES;
-    self.view.backgroundColor = UIColor.whiteColor;
+    self.view.backgroundColor = UIColor.blackColor;
     [self setupSubViews];
     [self setInitData];
     [self requestData];
 }
 
 - (void)setupSubViews {
+    CGFloat kNavigationViewHeight = [AXMatchDetailNavigationView viewHeight];
+    self.pagerView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
+    self.pagerView.pinSectionHeaderVerticalOffset = kNavigationViewHeight;  // 控制pinView位置
+    [self.view addSubview:self.pagerView];
+    
     [self.view addSubview:self.topNavitionView];
     [self.topNavitionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.offset(0);
-        make.height.mas_equalTo(StatusBarHeightConstant + NavigationBarHeight);
+        make.height.mas_equalTo(kNavigationViewHeight);
     }];
-    
-    CGFloat headerBGHeight = 204;
-    [self.view addSubview:self.headerView];
-    [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.offset(0);
-        make.top.equalTo(self.topNavitionView.mas_bottom);
-        make.height.mas_equalTo(headerBGHeight);
-    }];
-    
-    [self.view addSubview:self.categoryView];
-    [self.categoryView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self.view);
-        make.height.mas_equalTo(48);
-        make.top.equalTo(self.headerView.mas_bottom);
-    }];
-    [self.view addSubview:self.containerView];
-    [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.bottom.right.equalTo(self.view);
-        make.top.equalTo(self.categoryView.mas_bottom);
-    }];
+    self.childVcs = @[self.betVC, self.chatVC, self.standingsVC, self.lineupVC, self.analysisVC];
 }
 
 - (void)setInitData{
@@ -108,52 +88,51 @@
 }
 
 - (void)requestData {
-    weakSelf(self);
+//    weakSelf(self);
     [self.request requestMatchDetailWithMatchId:self.matchModel.matchId completion:^(AXMatchDetailModel * _Nonnull matchModel) {
+//        strongSelf(self)
         NSLog(@"%@", matchModel);
     }];
-//    [self.viewModel requestMatchDetailWithMatchId:self.matchId completion:^(QYZYMatchMainModel * _Nonnull detailModel) {
-//        strongSelf(self);
-//        detailModel = [QYZYMatchMainModel new];
-//        if (detailModel) {
-//            self.mainModel = detailModel;
-//            [self updateHeaderWithDetailModel:detailModel];
-//            if (detailModel.animUrl.length) {
-//                [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:detailModel.animUrl]]];
-//            } else if (detailModel.obliqueAnimUrl.length) {
-//                [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:detailModel.obliqueAnimUrl]]];
-//            }
-////            self.chatVC.chatId = detailModel.matchId;
-//            self.analyzeVC.detailModel = detailModel;
-//            if (detailModel.sportId.integerValue == 2) {
-//                self.basketballOverVc.detailModel = detailModel;
-//            }else {
-//                self.overVC.detailModel = detailModel;
-//            }
-//        }
-//    }];
 }
 
 #pragma mark - delegate
-- (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
-    if (index == 0) {
-        return self.betVC;
-    } else if (index == 1) {
-        return self.chatVC;
-    } else if (index == 2) {
-        return self.standingsVC;
-    } else if (index == 3) {
-        return self.lineupVC;
-    } else {
-        return self.analysisVC;
-    }
+- (NSUInteger)tableHeaderViewHeightInPagerView:(JXPagerView *)pagerView {
+    return [AXMatchDetailHeaderView viewHeight] + [AXMatchDetailNavigationView viewHeight];  // 控制HeaderView高度、同时控制categoryView位置
+}
+
+- (UIView *)tableHeaderViewInPagerView:(JXPagerView *)pagerView {
+    return self.headerView;
+}
+
+- (NSUInteger)heightForPinSectionHeaderInPagerView:(JXPagerView *)pagerView {
+    return 48;  // 控制categoryView高度
+}
+
+- (UIView *)viewForPinSectionHeaderInPagerView:(JXPagerView *)pagerView {
+    return self.categoryView;
+}
+
+- (NSInteger)numberOfListsInPagerView:(JXPagerView *)pagerView {
+    return self.childVcs.count;
+}
+
+- (id<JXPagerViewListViewDelegate>)pagerView:(JXPagerView *)pagerView initListAtIndex:(NSInteger)index {
+    return self.childVcs[index];
 }
 
 - (NSInteger)numberOfListsInlistContainerView:(JXCategoryListContainerView *)listContainerView {
-    return self.titleArray.count;
+    return self.childVcs.count;
 }
 
 #pragma mark - get
+- (JXPagerView *)pagerView{
+    if (!_pagerView) {
+        _pagerView = [[JXPagerView alloc] initWithDelegate:self listContainerType:JXPagerListContainerType_CollectionView];
+        _pagerView.backgroundColor = UIColor.blackColor;
+    }
+    return _pagerView;
+}
+
 - (AXMatchDetailNavigationView *)topNavitionView{
     if (!_topNavitionView) {
         _topNavitionView = [AXMatchDetailNavigationView new];
@@ -168,7 +147,7 @@
 
 - (AXMatchDetailHeaderView *)headerView{
     if (!_headerView) {
-        _headerView = [AXMatchDetailHeaderView new];
+        _headerView = [[AXMatchDetailHeaderView alloc] initWithFrame:CGRectMake(0, [AXMatchDetailNavigationView viewHeight], ScreenWidth, [AXMatchDetailHeaderView viewHeight])];
     }
     return _headerView;
 }
@@ -219,7 +198,7 @@
         _categoryView.cellWidth = 54;
         _categoryView.cellSpacing = 0;
         _categoryView.backgroundColor = UIColor.whiteColor;
-        _categoryView.listContainer = self.containerView;
+        _categoryView.listContainer = (id<JXCategoryViewListContainer>)self.pagerView.listContainerView;
         
         JXCategoryIndicatorLineView *indicator = [[JXCategoryIndicatorLineView alloc] init];
         indicator.indicatorColor = AXSelectColor;
@@ -235,13 +214,6 @@
 
 - (NSArray *)titleArray {
     return @[@"Bet",@"Chat",@"Standings", @"Lineup", @"Analysis"];
-}
-
-- (JXCategoryListContainerView *)containerView {
-    if (!_containerView) {
-        _containerView = [[JXCategoryListContainerView alloc] initWithType:JXCategoryListContainerType_CollectionView delegate:self];
-    }
-    return _containerView;
 }
 
 - (AXMatchDetailRequest *)request{

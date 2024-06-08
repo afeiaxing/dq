@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) AXVoldBlock block;
 
++ (CGFloat)viewHeight;
+
 @end
 
 NS_ASSUME_NONNULL_END

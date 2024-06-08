@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AXMatchStandingsViewController : QYZYBaseViewController<JXCategoryListContentViewDelegate>
+@interface AXMatchStandingsViewController : QYZYBaseViewController<JXCategoryListContentViewDelegate, JXPagerViewListViewDelegate>
 
 @property (nonatomic, strong) AXMatchListItemModel *matchModel;
 

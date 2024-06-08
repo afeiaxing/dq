@@ -77,6 +77,14 @@
     return self.view;
 }
 
+- (UIScrollView *)listScrollView {
+    return self.tableview;
+}
+
+- (void)listViewDidScrollCallback:(void (^)(UIScrollView *))callback {
+    
+}
+
 // MARK: setter & getter
 - (UITableView *)tableview{
     if (!_tableview) {

@@ -24,4 +24,12 @@
     return self.view;
 }
 
+- (UIScrollView *)listScrollView {
+    return [UIScrollView new];
+}
+
+- (void)listViewDidScrollCallback:(void (^)(UIScrollView *))callback {
+    
+}
+
 @end
