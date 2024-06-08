@@ -62,6 +62,12 @@
 }
 
 // MARK: setter & getter
+- (void)setModel:(AXMatchFilterItenModel *)model{
+    self.leagueNameLabel.text = model.shortName;
+    self.matchCountLabel.text = model.items;
+    _model = model;
+}
+
 - (UIButton *)selectedBtn{
     if (!_selectedBtn) {
         _selectedBtn = [UIButton new];
@@ -75,7 +81,6 @@
 - (UILabel *)leagueNameLabel{
     if (!_leagueNameLabel) {
         _leagueNameLabel = [UILabel new];
-        _leagueNameLabel.text = @"La liga";
         _leagueNameLabel.font = [UIFont systemFontOfSize:14];
     }
     return _leagueNameLabel;
@@ -84,7 +89,6 @@
 - (UILabel *)matchCountLabel{
     if (!_matchCountLabel) {
         _matchCountLabel = [UILabel new];
-        _matchCountLabel.text = @"5";
         _matchCountLabel.font = [UIFont systemFontOfSize:16];
         _matchCountLabel.textColor = rgb(130, 134, 163);
     }

@@ -19,6 +19,7 @@ typedef void(^AXMatchFilterBottomViewBlock) (AXMatchFilterBottomEventType eventT
 
 @interface AXMatchFilterBottomView : UIView
 @property (nonatomic, copy) AXMatchFilterBottomViewBlock block;
+@property (nonatomic, assign) int totalMatchCount;
 
 @end
 

@@ -169,6 +169,9 @@
 		F303A0E92C135B5100230E25 /* AXMatchAnalysisTeamRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A0E82C135B5100230E25 /* AXMatchAnalysisTeamRecordModel.m */; };
 		F303A0EC2C13E97900230E25 /* AXMatchAnalysisAdvancedApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A0EB2C13E97900230E25 /* AXMatchAnalysisAdvancedApi.m */; };
 		F303A0EF2C13E9ED00230E25 /* AXMatchAnalysisAdvancedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A0EE2C13E9ED00230E25 /* AXMatchAnalysisAdvancedModel.m */; };
+		F303A0F52C14296800230E25 /* AXMatchFilterApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A0F42C14296800230E25 /* AXMatchFilterApi.m */; };
+		F303A0F82C14297900230E25 /* AXMatchFilterRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A0F72C14297900230E25 /* AXMatchFilterRequest.m */; };
+		F303A0FB2C14298900230E25 /* AXMatchFilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A0FA2C14298900230E25 /* AXMatchFilterModel.m */; };
 		F36D875C2C0B0383001F37F0 /* AXToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = F36D875B2C0B0383001F37F0 /* AXToastView.m */; };
 		F36D875F2C0B045C001F37F0 /* UIView+AXToast.m in Sources */ = {isa = PBXBuildFile; fileRef = F36D875E2C0B045C001F37F0 /* UIView+AXToast.m */; };
 		F36D87622C0B098D001F37F0 /* UIView+CSToast.m in Sources */ = {isa = PBXBuildFile; fileRef = F36D87602C0B098C001F37F0 /* UIView+CSToast.m */; };
@@ -558,6 +561,12 @@
 		F303A0EB2C13E97900230E25 /* AXMatchAnalysisAdvancedApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchAnalysisAdvancedApi.m; sourceTree = "<group>"; };
 		F303A0ED2C13E9ED00230E25 /* AXMatchAnalysisAdvancedModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchAnalysisAdvancedModel.h; sourceTree = "<group>"; };
 		F303A0EE2C13E9ED00230E25 /* AXMatchAnalysisAdvancedModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchAnalysisAdvancedModel.m; sourceTree = "<group>"; };
+		F303A0F32C14296800230E25 /* AXMatchFilterApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchFilterApi.h; sourceTree = "<group>"; };
+		F303A0F42C14296800230E25 /* AXMatchFilterApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchFilterApi.m; sourceTree = "<group>"; };
+		F303A0F62C14297900230E25 /* AXMatchFilterRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchFilterRequest.h; sourceTree = "<group>"; };
+		F303A0F72C14297900230E25 /* AXMatchFilterRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchFilterRequest.m; sourceTree = "<group>"; };
+		F303A0F92C14298900230E25 /* AXMatchFilterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchFilterModel.h; sourceTree = "<group>"; };
+		F303A0FA2C14298900230E25 /* AXMatchFilterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchFilterModel.m; sourceTree = "<group>"; };
 		F36D875A2C0B0383001F37F0 /* AXToastView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXToastView.h; sourceTree = "<group>"; };
 		F36D875B2C0B0383001F37F0 /* AXToastView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXToastView.m; sourceTree = "<group>"; };
 		F36D875D2C0B045C001F37F0 /* UIView+AXToast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+AXToast.h"; sourceTree = "<group>"; };
@@ -1438,6 +1447,33 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		F303A0F02C14294400230E25 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				F303A0F62C14297900230E25 /* AXMatchFilterRequest.h */,
+				F303A0F72C14297900230E25 /* AXMatchFilterRequest.m */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		F303A0F12C14294A00230E25 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				F303A0F32C14296800230E25 /* AXMatchFilterApi.h */,
+				F303A0F42C14296800230E25 /* AXMatchFilterApi.m */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		F303A0F22C14295100230E25 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F303A0F92C14298900230E25 /* AXMatchFilterModel.h */,
+				F303A0FA2C14298900230E25 /* AXMatchFilterModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		F36D87592C0B036E001F37F0 /* Toast */ = {
 			isa = PBXGroup;
 			children = (
@@ -1454,6 +1490,9 @@
 		F36D876D2C0F3A31001F37F0 /* MatchFilter */ = {
 			isa = PBXGroup;
 			children = (
+				F303A0F22C14295100230E25 /* Model */,
+				F303A0F12C14294A00230E25 /* API */,
+				F303A0F02C14294400230E25 /* Request */,
 				F36D876F2C0F3A3F001F37F0 /* View */,
 				F36D876E2C0F3A3A001F37F0 /* VC */,
 			);
@@ -2228,6 +2267,7 @@
 				F37E5E082BF8A4840049FAE1 /* AXMatchLineupPlayerStatsView.m in Sources */,
 				B1B744B828E824B700DD300E /* QYZYMyattentionModel.m in Sources */,
 				555C687728EC229800044A5E /* QYZYTableEmptyCell.m in Sources */,
+				F303A0FB2C14298900230E25 /* AXMatchFilterModel.m in Sources */,
 				F37E5E212BF9C6410049FAE1 /* AXMatchAnalysisTraditionalMatchScheduleView.m in Sources */,
 				F36D87682C0DDAD6001F37F0 /* AXMatchFilterTopView.m in Sources */,
 				55A5320429052E3C0008C110 /* FSCalendarHeaderView.m in Sources */,
@@ -2350,6 +2390,7 @@
 				9BD7B87028ED2F5C00054799 /* QYZYBaseViewController.m in Sources */,
 				F37E5EA22C0358320049FAE1 /* AXMatchStandingRequest.m in Sources */,
 				55B04A4C28E54A7500A82F1F /* QYZYLiveItemView.m in Sources */,
+				F303A0F52C14296800230E25 /* AXMatchFilterApi.m in Sources */,
 				55E2396728E86117003ED27E /* QYZYLiveChatInputView.m in Sources */,
 				F560B58528E5BF1300989DE4 /* QYZYAppConfig.m in Sources */,
 				55BF55B128E9624200DB476B /* QYZYLiveChatFilterModel.m in Sources */,
@@ -2409,6 +2450,7 @@
 				55B04A8028E5BC9E00A82F1F /* QYZYLiveMainViewModel.m in Sources */,
 				55A5320F290551480008C110 /* QYZYMatchOverEventCell.m in Sources */,
 				55E2395E28E83E60003ED27E /* QYZYRIMManager.m in Sources */,
+				F303A0F82C14297900230E25 /* AXMatchFilterRequest.m in Sources */,
 				55E2396128E842E0003ED27E /* QYZYRIMModel.m in Sources */,
 				F37E5E182BF8ECBA0049FAE1 /* AXMatchAnalysisTraditionalMatchCell.m in Sources */,
 				555C688028EC588700044A5E /* QYZYChargeCell.m in Sources */,

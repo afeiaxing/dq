@@ -97,6 +97,10 @@
 }
 
 // MARK: setter & getter
+- (void)setTotalMatchCount:(int)totalMatchCount{
+    _selectCountLabel.text = [NSString stringWithFormat:@"selected 0 / %d", totalMatchCount];
+}
+
 - (UIButton *)selectAllBtn{
     if (!_selectAllBtn) {
         _selectAllBtn = [UIButton new];
@@ -122,7 +126,6 @@
 - (UILabel *)selectCountLabel{
     if (!_selectCountLabel) {
         _selectCountLabel = [UILabel new];
-        _selectCountLabel.text = @"selected 10 / 12";
         _selectCountLabel.font = [UIFont systemFontOfSize:12];
         _selectCountLabel.textColor = AXUnSelectColor;
     }
