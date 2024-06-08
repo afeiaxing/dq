@@ -223,6 +223,7 @@
         if (CGRectEqualToRect(self.collectionView.frame, CGRectZero) ||  !CGSizeEqualToSize(self.collectionView.bounds.size, self.bounds.size)) {
             self.collectionView.frame = self.bounds;
             [self.collectionView.collectionViewLayout invalidateLayout];
+            [self.collectionView reloadData];
             [self.collectionView setContentOffset:CGPointMake(self.collectionView.bounds.size.width*self.currentIndex, 0) animated:NO];
         }else {
             self.collectionView.frame = self.bounds;
@@ -261,7 +262,16 @@
     }
     id<JXPagerViewListViewDelegate> list = _validListDict[@(indexPath.item)];
     if (list != nil) {
-        [list listView].frame = cell.contentView.bounds;
+        //fixme:如果list是UIViewController，如果这里的frame修改是`[list listView].frame = cell.bounds;`。那么就必须给list vc添加如下代码:
+        //- (void)loadView {
+        //    self.view = [[UIView alloc] init];
+        //}
+        //所以，总感觉是把UIViewController当做普通view使用，导致了系统内部的bug。所以，缓兵之计就是用下面的方法，暂时解决问题。
+        if ([list isKindOfClass:[UIViewController class]]) {
+            [list listView].frame = cell.contentView.bounds;
+        } else {
+            [list listView].frame = cell.bounds;
+        }
         [cell.contentView addSubview:[list listView]];
     }
     return cell;
@@ -277,7 +287,7 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(listContainerViewDidScroll:)]) {
         [self.delegate listContainerViewDidScroll:scrollView];
     }
-    if (!scrollView.isDragging && !scrollView.isTracking) {
+    if (!scrollView.isDragging && !scrollView.isTracking && !scrollView.isDecelerating) {
         return;
     }
     CGFloat ratio = scrollView.contentOffset.x/scrollView.bounds.size.width;
@@ -421,16 +431,24 @@
     }
     _validListDict[@(index)] = list;
 
-    if (self.containerType == JXPagerListContainerType_ScrollView) {
-        [list listView].frame = CGRectMake(index*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
-        [self.scrollView addSubview:[list listView]];
-    }else {
-        UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
-        for (UIView *subview in cell.contentView.subviews) {
-            [subview removeFromSuperview];
+    switch (self.containerType) {
+        case JXPagerListContainerType_ScrollView: {
+            [list listView].frame = CGRectMake(index*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
+            [self.scrollView addSubview:[list listView]];
+            break;
         }
-        [list listView].frame = cell.contentView.bounds;
-        [cell.contentView addSubview:[list listView]];
+        case JXPagerListContainerType_CollectionView: {
+            UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+            if (cell != nil) {
+                for (UIView *subview in cell.contentView.subviews) {
+                    [subview removeFromSuperview];
+                }
+                [list listView].frame = cell.contentView.bounds;
+                [cell.contentView addSubview:[list listView]];
+            }
+            break;
+        }
+
     }
 }
 

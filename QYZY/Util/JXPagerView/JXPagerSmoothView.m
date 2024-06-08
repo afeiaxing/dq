@@ -176,8 +176,7 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
             [listHeader addSubview:self.pagerHeaderContainerView];
         }
         self.listHeaderDict[@(indexPath.item)] = listHeader;
-        [listScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew
-                            context:nil];
+        [listScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
         [listScrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
     }
     for (id<JXPagerSmoothViewListViewDelegate> listItem in self.listDict.allValues) {
