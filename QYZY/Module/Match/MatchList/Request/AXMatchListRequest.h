@@ -14,7 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)requestMatchListWithType: (AXMatchStatus)type
                           pageNo: (int)pageNo
-                      completion:(void(^)(AXMatchListModel *matchModel))completion;
+                       startTime: (NSString *)startTime
+                         endTime: (NSString *)endTime
+                          filter: (NSString *)filter
+                      completion: (void(^)(AXMatchListModel *matchModel))completion;
 
 @end
 

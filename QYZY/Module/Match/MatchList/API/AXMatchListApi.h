@@ -14,6 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 缺省是全部；1是live；2是scheduled；3是result
 @property (nonatomic, assign) int type;
 @property (nonatomic, assign) int pageNo;
+@property (nonatomic, strong) NSString *startTime;
+@property (nonatomic, strong) NSString *endTime;
+@property (nonatomic, strong) NSString *filter;
 
 @end
 

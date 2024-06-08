@@ -11,6 +11,7 @@
 
 @property (nonatomic, assign) AXMatchStatus status;
 @property (nonatomic, strong) NSArray *dataSource;
+@property (nonatomic, strong) NSArray *dateArray;
 @property (nonatomic, strong) UIButton *lastSelectedBtn;
 
 @end
@@ -76,7 +77,9 @@
     sender.selected = true;
     self.lastSelectedBtn.selected = false;
     self.lastSelectedBtn = sender;
-    NSLog(@"handleDateEvent");
+    
+    NSString *dateStr = self.dateArray[sender.tag];
+    !self.block ? : self.block(self.status, dateStr);
 }
 
 - (void)handleDateData{
@@ -85,23 +88,29 @@
     NSDateComponents * comps = [[NSDateComponents alloc] init];
     
     NSMutableArray *temp = [NSMutableArray array];
+    NSMutableArray *tempDateArrays = [NSMutableArray array];
 
     if (self.status == AXMatchStatusResult) {
         for (int i = 6; i >= 0; i --) {
             [comps setDay:-i];
             NSDate * date = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
             NSString *dateStr = i == 0 ? @"Today" : [self dateChangeToDataTimeString:date];
+            NSString *tempStr = [self getDateString:date];
             [temp addObject:dateStr];
+            [tempDateArrays addObject:tempStr];
         }
     } else {
         for (int i = 0; i<7; i++) {
             [comps setDay:i];
             NSDate * date = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
             NSString *dateStr = i == 0 ? @"Today" : [self dateChangeToDataTimeString:date];
+            NSString *tempStr = [self getDateString:date];
             [temp addObject:dateStr];
+            [tempDateArrays addObject:tempStr];
         }
     }
     self.dataSource = temp.copy;
+    self.dateArray = tempDateArrays.copy;
 }
 
 //转成 dateFormat
@@ -120,7 +129,12 @@
     return subStr;
 }
 
-// MARK: setter & getter
+- (NSString *)getDateString:(NSDate *)date{
+    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+    fmt.dateFormat = @"yyyy-MM-dd";
+    NSString *stringDate = [fmt stringFromDate:date];
+    return stringDate;
+}
 
 
 @end

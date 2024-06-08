@@ -145,6 +145,9 @@
     
     // 设置柱状图高度
     if (self.hostModel.score.floatValue > awayModel.score.floatValue) {
+        [self.hostScoreView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(AXMatchLineupPerformersPlayerViewBaseHeight);
+        }];
         CGFloat precent = awayModel.score.floatValue / self.hostModel.score.floatValue;
         [self.awayScoreView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(AXMatchLineupPerformersPlayerViewBaseHeight * precent);
@@ -153,6 +156,9 @@
         CGFloat precent = self.hostModel.score.floatValue / awayModel.score.floatValue;
         [self.hostScoreView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(AXMatchLineupPerformersPlayerViewBaseHeight * precent);
+        }];
+        [self.awayScoreView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(AXMatchLineupPerformersPlayerViewBaseHeight);
         }];
     }
     

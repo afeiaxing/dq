@@ -12,7 +12,10 @@
 
 - (void)requestMatchListWithType: (AXMatchStatus)type
                           pageNo: (int)pageNo
-                      completion:(void(^)(AXMatchListModel *matchModel))completion{
+                       startTime: (NSString *)startTime
+                         endTime: (NSString *)endTime
+                          filter: (NSString *)filter
+                      completion: (void(^)(AXMatchListModel *matchModel))completion{
     AXMatchListApi *api = [AXMatchListApi new];
     api.pageNo = pageNo;
     switch (type) {
@@ -28,6 +31,9 @@
         default:
             break;
     }
+    api.startTime = startTime;
+    api.endTime = endTime;
+    api.filter = filter;
     [api ax_startWithCompletionSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         AXMatchListModel *model;
         if (api.isRequestSuccess) {

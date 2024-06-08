@@ -18,8 +18,11 @@
     if (self.type) {
         [dict setValue:@(self.type) forKey:@"type"];
     }
+    [dict setValue:self.startTime forKey:@"startTime"];
+    [dict setValue:self.endTime forKey:@"endTime"];
+    [dict setValue:self.filter forKey:@"filter"];
     [dict setValue:@(self.pageNo) forKey:@"pageNo"];
-    [dict setValue:@50 forKey:@"pageSize"];
+    [dict setValue:@100 forKey:@"pageSize"];
     return dict;
 }
 

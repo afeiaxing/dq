@@ -22,6 +22,7 @@
 @property (nonatomic, assign) int pageNo;
 @property (nonatomic, strong) AXMatchListRequest *requestManager;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) NSString *dateString;
 
 @end
 
@@ -81,9 +82,12 @@
 }
 
 - (void)requestData{
+    NSArray *times = [self getDateTimestamp];
+    NSString *startTime = times.firstObject;
+    NSString *endTime = times.lastObject;
     [self.view ax_showLoading];
     weakSelf(self);
-    [self.requestManager requestMatchListWithType:self.status pageNo:self.pageNo completion:^(AXMatchListModel * _Nonnull matchModel) {
+    [self.requestManager requestMatchListWithType:self.status pageNo:self.pageNo startTime:startTime endTime:endTime filter:@"" completion:^(AXMatchListModel * _Nonnull matchModel) {
         strongSelf(self);
         [self.view ax_hideLoading];
         [self endRefresh];
@@ -116,6 +120,13 @@
                 break;
         }
     }];
+}
+
+- (NSArray *)getDateTimestamp{
+    if (!self.dateString) {return nil;}
+    NSTimeInterval start = [NSDate getDayStartTimestampWithDateString:self.dateString];
+    NSTimeInterval end = [NSDate getDayEndTimestampWithDateString:self.dateString];
+    return @[[NSString stringWithFormat:@"%.0f", start], [NSString stringWithFormat:@"%.0f", end]];
 }
 
 - (void)setMatches:(NSArray *)matches {
@@ -222,6 +233,12 @@
 - (AXMatchListDateView *)dateView{
     if (!_dateView) {
         _dateView = [[AXMatchListDateView alloc] initWithStatus:self.status];
+        weakSelf(self);
+        _dateView.block = ^(AXMatchStatus status, NSString * _Nonnull dateString) {
+            strongSelf(self);
+            self.dateString = dateString;
+            [self requestData];
+        };
     }
     return _dateView;
 }

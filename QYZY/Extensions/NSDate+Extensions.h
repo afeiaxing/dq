@@ -19,6 +19,15 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)getDateStringWithDate:(NSDate *)date formatter:(NSString *)formatter;
 + (NSInteger)getDaysInMonthFromDate:(NSDate*)date;
 
+/// 获取某一天的开始时间戳（0点）
++ (NSTimeInterval)getDayStartTimestampWithDateString: (NSString *)dateString;
+/// 获取某一天的结束时间戳（23:59:59）
++ (NSTimeInterval)getDayEndTimestampWithDateString: (NSString *)dateString;
+// 将时间由"2024-06-08"转换成 "Sat, 8 Jun"
++ (NSString *)getScheduleMatchTimeWithDatestring: (NSString *)datestring;
+// 将时间由"1717831800"转换成 "Sat, 8 Jun"
++ (NSString *)getScheduleMatchTimeWithTimestamp: (NSString *)timestamp;
+
 @end
 
 NS_ASSUME_NONNULL_END

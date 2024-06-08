@@ -87,4 +87,88 @@
     return [self dateComponentsWeekday].weekday;
 }
 
++ (NSTimeInterval)getDayStartTimestampWithDateString: (NSString *)dateString{
+    // 创建日期格式化器
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    // 将字符串转换为日期
+    NSDate *date = [dateFormatter dateFromString:dateString];
+    
+    // 获取当前日历
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    // 获取日期的开始和结束时间
+    NSDate *startOfDay;
+    
+    // 获取这一天的起始时间
+    [calendar rangeOfUnit:NSCalendarUnitDay startDate:&startOfDay interval:NULL forDate:date];
+    
+    // 获取时间戳
+    NSTimeInterval startOfDayTimestamp = [startOfDay timeIntervalSince1970];
+    
+    return startOfDayTimestamp;
+}
+
++ (NSTimeInterval)getDayEndTimestampWithDateString: (NSString *)dateString{
+    // 创建日期格式化器
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    // 将字符串转换为日期
+    NSDate *date = [dateFormatter dateFromString:dateString];
+    
+    // 获取当前日历
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    // 获取日期的开始和结束时间
+    NSDate *startOfDay;
+    NSDate *endOfDay;
+    
+    // 获取这一天的起始时间
+    [calendar rangeOfUnit:NSCalendarUnitDay startDate:&startOfDay interval:NULL forDate:date];
+    
+    // 获取这一天的结束时间（次日0点）
+    endOfDay = [calendar dateByAddingUnit:NSCalendarUnitDay value:1 toDate:startOfDay options:0];
+    
+    // 获取时间戳
+    NSTimeInterval endOfDayTimestamp = [endOfDay timeIntervalSince1970];
+    return endOfDayTimestamp - 1;
+}
+
+// 将时间
++ (NSString *)getScheduleMatchTimeWithDatestring: (NSString *)datestring{
+    // 创建日期格式化器
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    // 设置输入日期格式
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    // 将字符串转换为日期对象
+    NSDate *date = [dateFormatter dateFromString:datestring];
+    
+    // 设置输出日期格式
+    [dateFormatter setDateFormat:@"EEE, d MMM"];
+    
+    // 将日期对象转换为目标格式字符串
+    NSString *formattedDateString = [dateFormatter stringFromDate:date];
+    
+    return formattedDateString;
+}
+
++ (NSString *)getScheduleMatchTimeWithTimestamp: (NSString *)timestamp{
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp.integerValue];
+    
+    // 创建日期格式化器
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    // 设置输出日期格式
+    [dateFormatter setDateFormat:@"EEE, d MMM"];
+    
+    // 将日期对象转换为目标格式字符串
+    NSString *formattedDateString = [dateFormatter stringFromDate:date];
+    
+    return formattedDateString;
+}
+
 @end

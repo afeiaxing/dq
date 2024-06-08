@@ -175,9 +175,21 @@
     }];
     
     self.matchTime.text = [NSString axTimestampToDate:model.matchTime format:@"HH:mm"];
-    int min = model.residualTime.intValue / 60;
-    int second = model.residualTime.intValue % 60;
-    self.matchState.text = [NSString stringWithFormat:@"%@ %d:%d", [AXMatchTools handleMatchStatusText:model.leaguesStatus.intValue], min, second];
+    if (model.leaguesStatus.intValue == 10) {
+        self.matchState.text = @"End";
+        self.matchState.textColor = rgb(255, 0, 31);
+        self.matchState.backgroundColor = rgba(255, 0, 31, 0.1);
+    } else if (model.leaguesStatus.intValue == 1) {
+        self.matchState.text = [NSDate getScheduleMatchTimeWithTimestamp:model.matchTime];
+        self.matchState.textColor = AXSelectColor;
+        self.matchState.backgroundColor = rgba(255, 88, 0, 0.1);
+    } else {
+        int min = model.residualTime.intValue / 60;
+        int second = model.residualTime.intValue % 60;
+        self.matchState.text = [NSString stringWithFormat:@"%@ %d:%d", [AXMatchTools handleMatchStatusText:model.leaguesStatus.intValue], min, second];
+        self.matchState.textColor = rgb(65, 187, 24);
+        self.matchState.backgroundColor = rgba(65, 187, 24, 0.1);
+    }
     
     /// 赛事状态：1:未开赛，2:第1节，3:第1节完，4:第2节，5:第2节完，6:第3节，:第3节完，8:第4节，9:加时，10:完
     // 设置比分
@@ -308,8 +320,6 @@
     if (!_matchState) {
         _matchState = [UILabel new];
         _matchState.font = [UIFont systemFontOfSize:10];
-        _matchState.textColor = rgb(65, 187, 24);
-        _matchState.backgroundColor = rgba(65, 187, 24, 0.1);
         _matchState.layer.cornerRadius = 9;
         _matchState.layer.masksToBounds = true;
         _matchState.textAlignment = NSTextAlignmentCenter;
