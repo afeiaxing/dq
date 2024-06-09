@@ -17,6 +17,10 @@
 
 @property (nonatomic, strong) UIView *lineH;
 
+@property (nonatomic, strong) UILabel *hostRank;
+@property (nonatomic, strong) UILabel *awayRank;
+@property (nonatomic, strong) UIImageView *hostLiveFlag;
+@property (nonatomic, strong) UIImageView *awayLiveFlag;
 @property (nonatomic, strong) UIImageView *hostLogo;
 @property (nonatomic, strong) UIImageView *awayLogo;
 @property (nonatomic, strong) UILabel *hostName;
@@ -29,6 +33,9 @@
 @property (nonatomic, strong) NSArray *scoreViews;
 
 @end
+
+#define kAXMatchListScoreViewLeftMargin 182
+#define kAXMatchListScoreViewRightMargin 17
 
 @implementation AXMatchListTableViewCell
 
@@ -72,11 +79,38 @@
         make.height.mas_equalTo(1);
     }];
     
+    [self.containerView addSubview:self.hostRank];
+    [self.hostRank mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.offset(12);
+        make.top.equalTo(self.lineH.mas_bottom).offset(18);
+        make.width.mas_equalTo(23);
+    }];
+    
+    [self.containerView addSubview:self.hostLiveFlag];
+    [self.hostLiveFlag mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.offset(6);
+        make.top.equalTo(self.lineH.mas_bottom).offset(16);
+        make.size.mas_equalTo(CGSizeMake(26, 22));
+    }];
+    
     [self.containerView addSubview:self.hostLogo];
     [self.hostLogo mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.offset(35);
         make.top.equalTo(self.lineH.mas_bottom).offset(18);
         make.size.mas_equalTo(CGSizeMake(24, 24));
+    }];
+    
+    [self.containerView addSubview:self.awayLiveFlag];
+    [self.awayLiveFlag mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.width.height.equalTo(self.hostLiveFlag);
+        make.top.equalTo(self.hostLiveFlag.mas_bottom).offset(14);
+    }];
+    
+    [self.containerView addSubview:self.awayRank];
+    [self.awayRank mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.hostRank);
+        make.top.equalTo(self.hostRank.mas_bottom).offset(19);
+        make.width.equalTo(self.hostRank);
     }];
     
     [self.containerView addSubview:self.awayLogo];
@@ -133,19 +167,23 @@
         make.size.mas_equalTo(CGSizeMake(218, 28));
     }];
     
+    int scoreViewCount = 6; // q1,q2,q3,q4,ot,tot，最多6个
+    CGFloat scoreViewW = (ScreenWidth - kAXMatchListScoreViewLeftMargin - kAXMatchListScoreViewRightMargin) / scoreViewCount;
     NSMutableArray *temp = [NSMutableArray array];
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < scoreViewCount; i++) {
         AXMatchListScoreCustomView *view = [AXMatchListScoreCustomView new];
         view.viewType = (AXMatchListScoreCustomViewType)i;
         [self.containerView addSubview:view];
         [temp addObject:view];
+        
+        [view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.offset(kAXMatchListScoreViewLeftMargin + scoreViewW * i);
+            make.width.mas_equalTo(scoreViewW);
+            make.height.mas_equalTo(65);
+            make.top.equalTo(self.lineH.mas_bottom).offset(6);
+        }];
     }
     self.scoreViews = temp.copy;
-    [self.scoreViews mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:20 leadSpacing:182 tailSpacing:17];
-    [self.scoreViews mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(65);
-        make.top.equalTo(self.lineH.mas_bottom).offset(6);
-    }];
 }
 
 - (void)handleLabelHidden: (NSArray <UILabel *>*)labels hide: (BOOL)hide{
@@ -164,6 +202,12 @@
 - (void)setModel:(AXMatchListItemModel *)model{
     [self.leagueLogo sd_setImageWithURL:[NSURL URLWithString:model.leaguesLogo] placeholderImage:AXLeaguePlaceholderLogo];
     self.leagueName.text = model.leaguesName;
+    self.hostRank.text = model.homePosition;
+    self.awayRank.text = model.awayPosition;
+    self.hostRank.hidden = !(model.leaguesStatus.intValue == 1 || model.leaguesStatus.intValue == 10);
+    self.awayRank.hidden = !(model.leaguesStatus.intValue == 1 || model.leaguesStatus.intValue == 10);
+    self.hostLiveFlag.hidden = (model.leaguesStatus.intValue == 1 || model.leaguesStatus.intValue == 10);
+    self.awayLiveFlag.hidden = (model.leaguesStatus.intValue == 1 || model.leaguesStatus.intValue == 10);
     [self.hostLogo sd_setImageWithURL:[NSURL URLWithString:model.homeTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
     [self.awayLogo sd_setImageWithURL:[NSURL URLWithString:model.awayTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
     self.hostName.text = model.homeTeamName;
@@ -174,15 +218,13 @@
         make.left.offset(154);
     }];
     
+    [self.apLogoBtn setImage:[UIImage imageNamed:model.leaguesStatus.intValue == 10 ? @"ap_logo1" : @"ap_logo2"] forState:UIControlStateNormal];
+    
     self.matchTime.text = [NSString axTimestampToDate:model.matchTime format:@"HH:mm"];
     if (model.leaguesStatus.intValue == 10) {
         self.matchState.text = @"End";
         self.matchState.textColor = rgb(255, 0, 31);
         self.matchState.backgroundColor = rgba(255, 0, 31, 0.1);
-    } else if (model.leaguesStatus.intValue == 1) {
-        self.matchState.text = [NSDate getScheduleMatchTimeWithTimestamp:model.matchTime];
-        self.matchState.textColor = AXSelectColor;
-        self.matchState.backgroundColor = rgba(255, 88, 0, 0.1);
     } else {
         int min = model.residualTime.intValue / 60;
         int second = model.residualTime.intValue % 60;
@@ -197,11 +239,10 @@
     AXMatchListScoreCustomView *q2View = self.scoreViews[1];
     AXMatchListScoreCustomView *q3View = self.scoreViews[2];
     AXMatchListScoreCustomView *q4View = self.scoreViews[3];
-    AXMatchListScoreCustomView *ot1View = self.scoreViews[4];
+    AXMatchListScoreCustomView *otView = self.scoreViews[4];
     AXMatchListScoreCustomView *totalView = self.scoreViews[5];
     totalView.datas = @[model.homeTotalScore, model.awayTotalScore];
     
-    NSMutableArray *temp = [NSMutableArray arrayWithArray:@[q1View, q2View, q3View, q4View]];
     
     q1View.datas = @[model.homeScoreList.firstObject, model.awayscoreList.firstObject];
     
@@ -217,21 +258,32 @@
     q4View.datas = @[q4 && model.homeScoreList.count > 3 ? model.homeScoreList[3] : @"-",
                      q4 && model.awayscoreList.count > 3 ? model.awayscoreList[3] : @"-"];
     
-    BOOL ot1 = model.leaguesStatus.intValue == 9 || model.homeScoreList.count > 4;  // 当前为加时；或者是结束了加时有值
-    if (ot1) {
-        [temp addObject:ot1View];
-    }
-    ot1View.hidden = !ot1;
-    ot1View.datas = @[ot1 && model.homeScoreList.count > 4 ? model.homeScoreList[4] : @"-",
+    BOOL ot = model.leaguesStatus.intValue == 9 || model.homeScoreList.count > 4;  // 当前为加时；或者是结束了加时有值
+
+    otView.hidden = !ot;
+    otView.datas = @[ot && model.homeScoreList.count > 4 ? model.homeScoreList[4] : @"-",
                      q4 && model.awayscoreList.count > 4 ? model.awayscoreList[4] : @"-"];
     
     // 重新布局比分
-    
-//    [temp mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:20 leadSpacing:182 tailSpacing:17];
-//    [temp mas_remakeConstraints:^(MASConstraintMaker *make) {
-//        make.height.mas_equalTo(65);
-//        make.top.equalTo(self.lineH.mas_bottom).offset(6);
-//    }];
+    int scoreViewCount = ot ? 6 : 5;
+    CGFloat scoreViewW = (ScreenWidth - kAXMatchListScoreViewLeftMargin - kAXMatchListScoreViewRightMargin) / scoreViewCount;
+    for (int i = 0; i < self.scoreViews.count; i++) {
+        AXMatchListScoreCustomView *view = self.scoreViews[i];
+        // 设置ot view是否隐藏
+        if (i == self.scoreViews.count - 2) {
+            view.hidden = !ot;
+        }
+        
+        CGFloat leftPostion = kAXMatchListScoreViewLeftMargin + scoreViewW * i;
+        // 设置tot view位置
+        if ((i == self.scoreViews.count - 1) && !ot) {
+            leftPostion = kAXMatchListScoreViewLeftMargin + scoreViewW * (i - 1);  // 如果没有ot，tot view的位置往左侧挪动一位
+        }
+        [view mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.offset(leftPostion);
+            make.width.mas_equalTo(scoreViewW);
+        }];
+    }
 }
 
 - (UIView *)containerView{
@@ -274,9 +326,46 @@
     return _lineH;
 }
 
+- (UILabel *)hostRank{
+    if (!_hostRank) {
+        _hostRank = [UILabel new];
+        _hostRank.font = [UIFont systemFontOfSize:16];
+        _hostRank.textColor = rgb(130, 134, 163);
+    }
+    return _hostRank;
+}
+
+- (UIImageView *)hostLiveFlag{
+    if (!_hostLiveFlag) {
+        _hostLiveFlag = [UIImageView new];
+        _hostLiveFlag.image = [UIImage imageNamed:@"match_list_live"];
+        _hostLiveFlag.contentMode = UIViewContentModeScaleAspectFill;
+    }
+    return _hostLiveFlag;
+}
+
+- (UILabel *)awayRank{
+    if (!_awayRank) {
+        _awayRank = [UILabel new];
+        _awayRank.font = [UIFont systemFontOfSize:16];
+        _awayRank.textColor = rgb(130, 134, 163);
+    }
+    return _awayRank;
+}
+
+- (UIImageView *)awayLiveFlag{
+    if (!_awayLiveFlag) {
+        _awayLiveFlag = [UIImageView new];
+        _awayLiveFlag.image = [UIImage imageNamed:@"match_list_live"];
+        _awayLiveFlag.contentMode = UIViewContentModeScaleAspectFill;
+    }
+    return _awayLiveFlag;
+}
+
 - (UIImageView *)hostLogo{
     if (!_hostLogo) {
         _hostLogo = [UIImageView new];
+        _hostLogo.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _hostLogo;
 }
@@ -284,6 +373,7 @@
 - (UIImageView *)awayLogo{
     if (!_awayLogo) {
         _awayLogo = [UIImageView new];
+        _awayLogo.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _awayLogo;
 }
@@ -291,7 +381,8 @@
 - (UILabel *)hostName{
     if (!_hostName) {
         _hostName = [UILabel new];
-        _hostName.font = [UIFont systemFontOfSize:14];
+        _hostName.font = [UIFont systemFontOfSize:10];
+        _hostName.numberOfLines = 2;
         _hostName.textColor = rgb(17, 17, 17);
     }
     return _hostName;
@@ -300,7 +391,8 @@
 - (UILabel *)awayName{
     if (!_awayName) {
         _awayName = [UILabel new];
-        _awayName.font = [UIFont systemFontOfSize:14];
+        _awayName.font = [UIFont systemFontOfSize:10];
+        _awayName.numberOfLines = 2;
         _awayName.textColor = rgb(17, 17, 17);
     }
     return _awayName;
@@ -341,7 +433,6 @@
 - (UIButton *)apLogoBtn{
     if (!_apLogoBtn) {
         _apLogoBtn = [UIButton new];
-        [_apLogoBtn setImage:[UIImage imageNamed:@"ap_logo2"] forState:UIControlStateNormal];
     }
     return _apLogoBtn;
 }

@@ -28,6 +28,9 @@
 
 @end
 
+#define kAXMatchListMarketViewLeftMargin 220
+#define kAXMatchListMarketViewRightMargin 17
+
 @implementation AXMatchListOddsCell
 
 // MARK: lifecycle
@@ -133,19 +136,23 @@
         make.size.mas_equalTo(CGSizeMake(218, 28));
     }];
     
+    int marketViewCount = 3;
+    CGFloat marketViewW = (ScreenWidth - kAXMatchListMarketViewLeftMargin - kAXMatchListMarketViewRightMargin) / marketViewCount;
     NSMutableArray *temp = [NSMutableArray array];
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < marketViewCount; i++) {
         AXMatchListScoreCustomView *view = [AXMatchListScoreCustomView new];
-        view.viewType = (AXMatchListScoreCustomViewType)i;
+        view.marketType = (AXMatchListScoreCustomMarketType)i;
         [self.containerView addSubview:view];
         [temp addObject:view];
+        
+        [view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.offset(kAXMatchListMarketViewLeftMargin + marketViewW * i);
+            make.width.mas_equalTo(marketViewW);
+            make.height.mas_equalTo(65);
+            make.top.equalTo(lineH.mas_bottom).offset(6);
+        }];
     }
     self.marketViews = temp.copy;
-    [self.marketViews mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:50 leadSpacing:200 tailSpacing:19];
-    [self.marketViews mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(50);
-        make.top.equalTo(lineH.mas_bottom).offset(6);
-    }];
 }
 
 // MARK: setter & getter
@@ -164,9 +171,7 @@
     }];
     
     self.matchTime.text = [NSString axTimestampToDate:model.matchTime format:@"HH:mm"];
-    int min = model.residualTime.intValue / 60;
-    int second = model.residualTime.intValue % 60;
-    self.matchState.text = [NSString stringWithFormat:@"%@ %d:%d", [AXMatchTools handleMatchStatusText:model.leaguesStatus.intValue], min, second];
+    self.matchState.text = [NSDate getScheduleMatchTimeWithTimestamp:model.matchTime];
     
     for (AXMatchListScoreCustomView *view in self.marketViews) {
         if (view.marketType == AXMatchListScoreCustomMarketTypeHandicap) {
@@ -223,6 +228,7 @@
 - (UIImageView *)hostLogo{
     if (!_hostLogo) {
         _hostLogo = [UIImageView new];
+        _hostLogo.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _hostLogo;
 }
@@ -230,6 +236,7 @@
 - (UIImageView *)awayLogo{
     if (!_awayLogo) {
         _awayLogo = [UIImageView new];
+        _awayLogo.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _awayLogo;
 }
@@ -265,8 +272,8 @@
     if (!_matchState) {
         _matchState = [UILabel new];
         _matchState.font = [UIFont systemFontOfSize:10];
-        _matchState.textColor = rgb(65, 187, 24);
-        _matchState.backgroundColor = rgba(65, 187, 24, 0.1);
+        _matchState.textColor = AXSelectColor;
+        _matchState.backgroundColor = rgba(255, 88, 0, 0.1);
         _matchState.layer.cornerRadius = 9;
         _matchState.layer.masksToBounds = true;
         _matchState.textAlignment = NSTextAlignmentCenter;

@@ -68,13 +68,12 @@
             break;
         case AXMatchListScoreCustomViewTot:
             self.titleLabel.text = @"Tot.";
+            self.hostScore.textColor = AXSelectColor;
+            self.awayScore.textColor = AXSelectColor;
             break;
         default:
             break;
     }
-    
-    self.hostScore.text = @"22";
-    self.awayScore.text = @"13";
 }
 
 - (void)setMarketType:(AXMatchListScoreCustomMarketType)marketType{

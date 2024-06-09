@@ -153,7 +153,7 @@
     NSString *key = self.sectionArray[indexPath.section];
     NSArray *array = [self.dataSource valueForKey:key];
     AXMatchListItemModel *model = array[indexPath.row];
-    if (self.status == AXMatchStatusSchedule) {
+    if (model.leaguesStatus.intValue == 1) {
         AXMatchListOddsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchListOddsCell.class) forIndexPath:indexPath];
         cell.model = model;
         return cell;
@@ -214,6 +214,7 @@
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             strongSelf(self);
             self.pageNo = 1;
