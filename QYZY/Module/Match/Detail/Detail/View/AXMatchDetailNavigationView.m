@@ -6,14 +6,15 @@
 //
 
 #import "AXMatchDetailNavigationView.h"
+#import "AXMarqueeView.h"
 
 @interface AXMatchDetailNavigationView()
 
 @property (nonatomic ,strong) UIView *statusView;
 @property (nonatomic ,strong) UIView *navigationView;
 @property (nonatomic ,strong) UIImageView *headerBgView;
-@property (nonatomic, strong) UILabel *topHostName;
-@property (nonatomic, strong) UILabel *topAwayName;
+@property (nonatomic, strong) AXMarqueeView *hostName;
+@property (nonatomic, strong) AXMarqueeView *awayName;
 @property (nonatomic, strong) UIImageView *topHostLogo;
 @property (nonatomic, strong) UIImageView *topAwayLogo;
 @property (nonatomic ,strong) UIButton *backButton;
@@ -50,15 +51,12 @@
         make.height.mas_equalTo(NavigationBarHeight);
     }];
     
-    [self.navigationView addSubview:self.topHostName];
-    [self.topHostName mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.offset(-50);
-        make.centerY.offset(0);
-    }];
+    [self.navigationView addSubview:self.hostName];
+    self.hostName.frame = CGRectMake(100, 3, 100, 40);
     
     [self.navigationView addSubview:self.topHostLogo];
     [self.topHostLogo mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.topHostName.mas_left).offset(-8);
+        make.right.equalTo(self.hostName.mas_left).offset(-8);
         make.centerY.offset(0);
         make.width.height.mas_equalTo(15);
     }];
@@ -70,11 +68,8 @@
         make.width.height.mas_equalTo(15);
     }];
     
-    [self.navigationView addSubview:self.topAwayName];
-    [self.topAwayName mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.topAwayLogo.mas_right).offset(8);
-        make.centerY.offset(0);
-    }];
+    [self.navigationView addSubview:self.awayName];
+    self.awayName.frame = CGRectMake((ScreenWidth / 2) + 50 + 15, 3, 100, 40);
     
     [self addSubview:self.backButton];
     [self.backButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -91,9 +86,9 @@
 // MARK: setter & getter
 - (void)setMatchModel:(AXMatchListItemModel *)matchModel{
     [self.topHostLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.homeTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
-    self.topHostName.text = matchModel.homeTeamName;
+    self.hostName.text = matchModel.homeTeamName;
     [self.topAwayLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.awayTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
-    self.topAwayName.text = matchModel.awayTeamName;
+    self.awayName.text = matchModel.awayTeamName;
     
     _matchModel = matchModel;
 }
@@ -122,6 +117,13 @@
     return _topHostLogo;
 }
 
+- (AXMarqueeView *)hostName{
+    if (!_hostName) {
+        _hostName = [AXMarqueeView new];
+    }
+    return _hostName;
+}
+
 - (UIImageView *)topAwayLogo{
     if (!_topAwayLogo) {
         _topAwayLogo = [UIImageView new];
@@ -130,22 +132,11 @@
     return _topAwayLogo;
 }
 
-- (UILabel *)topHostName{
-    if (!_topHostName) {
-        _topHostName = [UILabel new];
-        _topHostName.textColor = UIColor.whiteColor;
-        _topHostName.font = [UIFont systemFontOfSize:14];
+- (AXMarqueeView *)awayName{
+    if (!_awayName) {
+        _awayName = [AXMarqueeView new];
     }
-    return _topHostName;
-}
-
-- (UILabel *)topAwayName{
-    if (!_topAwayName) {
-        _topAwayName = [UILabel new];
-        _topAwayName.textColor = UIColor.whiteColor;
-        _topAwayName.font = [UIFont systemFontOfSize:14];
-    }
-    return _topAwayName;
+    return _awayName;
 }
 
 - (UIButton *)backButton {

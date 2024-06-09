@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -155,6 +155,7 @@
 		CB1D7A3A2C0022DA005248E5 /* AXDataBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1D7A392C0022DA005248E5 /* AXDataBaseViewController.m */; };
 		CB32C7A92BF5FA9A00B2E277 /* AXStreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB32C7A82BF5FA9A00B2E277 /* AXStreamViewController.m */; };
 		CB32C7AF2BF5FD9100B2E277 /* AXProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB32C7AE2BF5FD9100B2E277 /* AXProfileViewController.m */; };
+		CB840B932C158FDB00EE27AF /* AXMarqueeView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB840B922C158FDB00EE27AF /* AXMarqueeView.m */; };
 		CBFDA1BE2BF75CF000D80483 /* ORChartUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFDA1B42BF75CF000D80483 /* ORChartUtilities.m */; };
 		CBFDA1BF2BF75CF000D80483 /* ORLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFDA1B52BF75CF000D80483 /* ORLineChartView.m */; };
 		CBFDA1C02BF75CF000D80483 /* ORLineChartConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFDA1B62BF75CF000D80483 /* ORLineChartConfig.m */; };
@@ -535,6 +536,8 @@
 		CB32C7A82BF5FA9A00B2E277 /* AXStreamViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXStreamViewController.m; sourceTree = "<group>"; };
 		CB32C7AD2BF5FD9100B2E277 /* AXProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXProfileViewController.h; sourceTree = "<group>"; };
 		CB32C7AE2BF5FD9100B2E277 /* AXProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXProfileViewController.m; sourceTree = "<group>"; };
+		CB840B912C158FDB00EE27AF /* AXMarqueeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMarqueeView.h; sourceTree = "<group>"; };
+		CB840B922C158FDB00EE27AF /* AXMarqueeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMarqueeView.m; sourceTree = "<group>"; };
 		CBFDA1B42BF75CF000D80483 /* ORChartUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORChartUtilities.m; sourceTree = "<group>"; };
 		CBFDA1B52BF75CF000D80483 /* ORLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORLineChartView.m; sourceTree = "<group>"; };
 		CBFDA1B62BF75CF000D80483 /* ORLineChartConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORLineChartConfig.m; sourceTree = "<group>"; };
@@ -1397,6 +1400,15 @@
 			path = VC;
 			sourceTree = "<group>";
 		};
+		CB840B902C158FA700EE27AF /* AXMarqueeView */ = {
+			isa = PBXGroup;
+			children = (
+				CB840B912C158FDB00EE27AF /* AXMarqueeView.h */,
+				CB840B922C158FDB00EE27AF /* AXMarqueeView.m */,
+			);
+			path = AXMarqueeView;
+			sourceTree = "<group>";
+		};
 		CBFDA1B32BF75CF000D80483 /* ORLineChart */ = {
 			isa = PBXGroup;
 			children = (
@@ -2052,6 +2064,7 @@
 		F551043428E344F9001E9BC5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				CB840B902C158FA700EE27AF /* AXMarqueeView */,
 				9BD7B86D28ED2F4200054799 /* BaseVc */,
 				9B9A771628E99ADD00809C8D /* Navigation */,
 				F551043528E34520001E9BC5 /* QYZYPrefix.pch */,
@@ -2323,6 +2336,7 @@
 				F37E5E292BF9CCDC0049FAE1 /* AXMatchAnalysisAdvancedTeamStatsCell.m in Sources */,
 				55E2395328E82E4D003ED27E /* QYZYLiveChatCell.m in Sources */,
 				AE78C0C92906A384006A70A3 /* QYZYAnalyzeIntegralApi.m in Sources */,
+				CB840B932C158FDB00EE27AF /* AXMarqueeView.m in Sources */,
 				F3F0976F2C132B8500BCEBA7 /* AXMatchLineupModel.m in Sources */,
 				5552AC0928F960A200285B25 /* QYZYAnalyzeRecentApi.m in Sources */,
 				F37E5E2F2BFA2E3A0049FAE1 /* AXMatchListSettingCell.m in Sources */,
