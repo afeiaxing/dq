@@ -48,6 +48,9 @@
 
 // MARK: UITableViewDelegate, UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (!self.lineupModel.homePlayerStats.count && !self.lineupModel.awayPlayerStats.count) {
+        return 1;   // 如果没有主、客队球员数据，就隐藏第二组
+    }
     return 2;
 }
 
@@ -78,7 +81,8 @@
 }
 
 - (UIScrollView *)listScrollView {
-    return self.tableview;
+    return [UIScrollView new];
+//    return self.tableview;
 }
 
 - (void)listViewDidScrollCallback:(void (^)(UIScrollView *))callback {

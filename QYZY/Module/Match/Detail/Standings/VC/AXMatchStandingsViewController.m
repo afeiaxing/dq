@@ -32,6 +32,9 @@
 
 // MARK: UITableViewDelegate, UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (!self.textLives.count && !self.standingModel.statistics.count) {
+        return 2;  // 如果没有 文字直播 和 技术统计，就隐藏第三组
+    }
     return 3;
 }
 
@@ -91,7 +94,8 @@
 }
 
 - (UIScrollView *)listScrollView {
-    return self.tableview;
+    return [UIScrollView new];
+//    return self.tableview;
 }
 
 - (void)listViewDidScrollCallback:(void (^)(UIScrollView *))callback {

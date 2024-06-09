@@ -46,8 +46,9 @@
     self.sectionArray = [NSMutableArray array];
     [self setupSubviews];
     if (self.status == AXMatchStatusResult) {
-        [self requestData];
+        [self requestData];   // 赛果页面，只需要请求一次
     }
+    [self.view ax_showLoading];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -102,7 +103,6 @@
     NSArray *times = [self getDateTimestamp];
     NSString *startTime = times.firstObject;
     NSString *endTime = times.lastObject;
-    [self.view ax_showLoading];
     weakSelf(self);
     [self.requestManager requestMatchListWithType:self.status pageNo:self.pageNo startTime:startTime endTime:endTime filter:@"" completion:^(AXMatchListModel * _Nonnull matchModel, BOOL hasMoreData) {
         strongSelf(self);
