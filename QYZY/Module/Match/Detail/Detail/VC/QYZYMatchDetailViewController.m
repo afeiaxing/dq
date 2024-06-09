@@ -74,7 +74,8 @@
         make.left.right.top.offset(0);
         make.height.mas_equalTo(kNavigationViewHeight);
     }];
-    self.childVcs = @[self.betVC, self.chatVC, self.standingsVC, self.lineupVC, self.analysisVC];
+//    self.childVcs = @[self.betVC, self.chatVC, self.standingsVC, self.lineupVC, self.analysisVC];
+    self.childVcs = @[self.standingsVC, self.lineupVC, self.analysisVC];
 }
 
 - (void)setInitData{
@@ -213,7 +214,8 @@
 }
 
 - (NSArray *)titleArray {
-    return @[@"Bet",@"Chat",@"Standings", @"Lineup", @"Analysis"];
+//    return @[@"Bet",@"Chat",@"Standings", @"Lineup", @"Analysis"];
+    return @[@"Standings", @"Lineup", @"Analysis"];
 }
 
 - (AXMatchDetailRequest *)request{

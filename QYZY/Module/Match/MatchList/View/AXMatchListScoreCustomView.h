@@ -30,6 +30,8 @@ typedef NS_ENUM(NSInteger ,AXMatchListScoreCustomMarketType) {
 @property (nonatomic, assign) AXMatchListScoreCustomMarketType marketType;
 @property (nonatomic, strong) NSArray *datas;
 
+- (instancetype)initWithHostscoreTopMargin: (CGFloat)hostscoreTopMargin;
+
 @end
 
 NS_ASSUME_NONNULL_END

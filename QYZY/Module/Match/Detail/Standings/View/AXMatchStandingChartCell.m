@@ -34,9 +34,14 @@
 
 @end
 
+// 折线图
 #define kMatchStandingChartLeftMargin 78
 #define kMatchStandingChartRightMargin 12
 #define kMatchStandingChartHeight 128
+
+// 比分
+#define kAXMatchScoreViewLeftMargin 126
+#define kAXMatchScoreViewRightMargin 15
 
 @implementation AXMatchStandingChartCell
 
@@ -130,12 +135,14 @@
     [self.scoreHostName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.scoreHostLogo.mas_right).offset(11);
         make.centerY.equalTo(self.scoreHostColorView);
+        make.width.mas_equalTo(45);
     }];
     
     [self.scoreBGView addSubview:self.scoreAwayName];
     [self.scoreAwayName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.scoreHostName);
         make.centerY.equalTo(self.scoreAwayColorView);
+        make.width.equalTo(self.scoreHostName);
     }];
     
     [self.scoreBGView addSubview:self.scoreLineView];
@@ -145,19 +152,23 @@
         make.size.mas_equalTo(CGSizeMake(1, 80));
     }];
     
+    int scoreViewCount = 6; // q1,q2,q3,q4,ot,tot，最多6个
+    CGFloat scoreViewW = (ScreenWidth - kAXMatchScoreViewLeftMargin - kAXMatchScoreViewRightMargin) / scoreViewCount;
     NSMutableArray *temp = [NSMutableArray array];
-    for (int i = 0; i < 6; i++) {
-        AXMatchListScoreCustomView *view = [AXMatchListScoreCustomView new];
+    for (int i = 0; i < scoreViewCount; i++) {
+        AXMatchListScoreCustomView *view = [[AXMatchListScoreCustomView alloc] initWithHostscoreTopMargin:25];
         view.viewType = (AXMatchListScoreCustomViewType)i;
-        [self.containerView addSubview:view];
+        [self.scoreBGView addSubview:view];
         [temp addObject:view];
+        
+        [view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.offset(kAXMatchScoreViewLeftMargin + scoreViewW * i);
+            make.width.mas_equalTo(scoreViewW);
+            make.height.mas_equalTo(82);
+            make.top.equalTo(self.scoreBGView).offset(16);
+        }];
     }
     self.scoreViews = temp.copy;
-    [self.scoreViews mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:20 leadSpacing:126 tailSpacing:15];
-    [self.scoreViews mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(85);
-        make.top.equalTo(self.scoreBGView).offset(16);
-    }];
 }
 
 // MARK: setter & setter
@@ -168,8 +179,8 @@
     [self.awayLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.awayTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
     [self.scoreHostLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.homeTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
     [self.scoreAwayLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.awayTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
-    self.scoreHostName.text = @"LAL";
-    self.scoreAwayName.text = @"BOS";
+    self.scoreHostName.text = matchModel.homeTeamName;
+    self.scoreAwayName.text = matchModel.awayTeamName;
     
     /// 赛事状态：1:未开赛，2:第1节，3:第1节完，4:第2节，5:第2节完，6:第3节，:第3节完，8:第4节，9:加时，10:完
     // 设置比分
@@ -177,7 +188,7 @@
     AXMatchListScoreCustomView *q2View = self.scoreViews[1];
     AXMatchListScoreCustomView *q3View = self.scoreViews[2];
     AXMatchListScoreCustomView *q4View = self.scoreViews[3];
-    AXMatchListScoreCustomView *ot1View = self.scoreViews[4];
+    AXMatchListScoreCustomView *otView = self.scoreViews[4];
     AXMatchListScoreCustomView *totalView = self.scoreViews[5];
     totalView.datas = @[matchModel.homeTotalScore, matchModel.awayTotalScore];
     
@@ -197,21 +208,34 @@
     q4View.datas = @[q4 && matchModel.homeScoreList.count > 3 ? matchModel.homeScoreList[3] : @"-",
                      q4 && matchModel.awayscoreList.count > 3 ? matchModel.awayscoreList[3] : @"-"];
     
-    BOOL ot1 = matchModel.leaguesStatus.intValue == 9 || matchModel.homeScoreList.count > 4;  // 当前为加时；或者是结束了加时有值
-    if (ot1) {
-        [temp addObject:ot1View];
+    BOOL ot = matchModel.leaguesStatus.intValue == 9 || matchModel.homeScoreList.count > 4;  // 当前为加时；或者是结束了加时有值
+    if (ot) {
+        [temp addObject:otView];
     }
-    ot1View.hidden = !ot1;
-    ot1View.datas = @[ot1 && matchModel.homeScoreList.count > 4 ? matchModel.homeScoreList[4] : @"-",
+    otView.hidden = !ot;
+    otView.datas = @[ot && matchModel.homeScoreList.count > 4 ? matchModel.homeScoreList[4] : @"-",
                      q4 && matchModel.awayscoreList.count > 4 ? matchModel.awayscoreList[4] : @"-"];
     
     // 重新布局比分
-    
-//    [temp mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:20 leadSpacing:182 tailSpacing:17];
-//    [temp mas_remakeConstraints:^(MASConstraintMaker *make) {
-//        make.height.mas_equalTo(65);
-//        make.top.equalTo(self.lineH.mas_bottom).offset(6);
-//    }];
+    int scoreViewCount = ot ? 6 : 5;
+    CGFloat scoreViewW = (ScreenWidth - kAXMatchScoreViewLeftMargin - kAXMatchScoreViewRightMargin - kMatchStandingChartRightMargin - 12) / scoreViewCount;
+    for (int i = 0; i < self.scoreViews.count; i++) {
+        AXMatchListScoreCustomView *view = self.scoreViews[i];
+        // 设置ot view是否隐藏
+        if (i == self.scoreViews.count - 2) {
+            view.hidden = !ot;
+        }
+        
+        CGFloat leftPostion = kAXMatchScoreViewLeftMargin + scoreViewW * i;
+        // 设置tot view位置
+        if ((i == self.scoreViews.count - 1) && !ot) {
+            leftPostion = kAXMatchScoreViewLeftMargin + scoreViewW * (i - 1);  // 如果没有ot，tot view的位置往左侧挪动一位
+        }
+        [view mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.offset(leftPostion);
+            make.width.mas_equalTo(scoreViewW);
+        }];
+    }
 }
 
 - (void)setStandingModel:(AXMatchStandingModel *)standingModel{
@@ -250,7 +274,7 @@
 
 - (AXMatchStandingPolylineView *)polylineView{
     if (!_polylineView) {
-        _polylineView = [[AXMatchStandingPolylineView alloc] initWithFrame:CGRectMake(kMatchStandingChartLeftMargin, 20, [UIScreen mainScreen].bounds.size.width - kMatchStandingChartLeftMargin - kMatchStandingChartRightMargin, kMatchStandingChartHeight)];
+        _polylineView = [[AXMatchStandingPolylineView alloc] initWithFrame:CGRectMake(kMatchStandingChartLeftMargin, 20, ScreenWidth - kMatchStandingChartLeftMargin - kMatchStandingChartRightMargin, kMatchStandingChartHeight)];
     }
     return _polylineView;
 }

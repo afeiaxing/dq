@@ -9,6 +9,7 @@
 
 @interface AXMatchListScoreCustomView()
 
+@property (nonatomic, assign) CGFloat hostscoreTopMargin;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *hostScore;
 @property (nonatomic, strong) UILabel *awayScore;
@@ -18,8 +19,9 @@
 @implementation AXMatchListScoreCustomView
 
 // MARK: lifecycle
-- (instancetype)initWithFrame:(CGRect)frame{
-    if (self = [super initWithFrame:frame]) {
+- (instancetype)initWithHostscoreTopMargin: (CGFloat)hostscoreTopMargin{
+    if (self = [super init]) {
+        self.hostscoreTopMargin = hostscoreTopMargin;
         [self setupSubviews];
     }
     return self;
@@ -36,7 +38,11 @@
     
     [self addSubview:self.hostScore];
     [self.hostScore mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.titleLabel.mas_bottom).offset(7);
+        if (self.hostscoreTopMargin != 0) {
+            make.top.equalTo(self.titleLabel.mas_bottom).offset(self.hostscoreTopMargin);
+        } else {
+            make.top.equalTo(self.titleLabel.mas_bottom).offset(7);
+        }
         make.centerX.offset(0);
     }];
     

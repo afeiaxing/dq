@@ -182,12 +182,14 @@
     [self.hostName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.hostLogo);
         make.top.equalTo(self.hostLogo.mas_bottom).offset(10);
+        make.width.mas_equalTo(60);
     }];
 
     [self.containerView addSubview:self.awayName];
     [self.awayName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.awayLogo);
         make.centerY.equalTo(self.hostName);
+        make.width.equalTo(self.hostName);
     }];
     
     [self.containerView addSubview:self.hostFoulsTitle];
@@ -501,6 +503,7 @@
 - (UIImageView *)hostLogo{
     if (!_hostLogo) {
         _hostLogo = [UIImageView new];
+        _hostLogo.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _hostLogo;
 }
@@ -508,6 +511,7 @@
 - (UIImageView *)awayLogo{
     if (!_awayLogo) {
         _awayLogo = [UIImageView new];
+        _awayLogo.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _awayLogo;
 }

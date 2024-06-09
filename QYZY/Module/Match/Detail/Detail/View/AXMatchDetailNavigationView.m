@@ -117,6 +117,7 @@
 - (UIImageView *)topHostLogo{
     if (!_topHostLogo) {
         _topHostLogo = [UIImageView new];
+        _topHostLogo.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _topHostLogo;
 }
@@ -124,6 +125,7 @@
 - (UIImageView *)topAwayLogo{
     if (!_topAwayLogo) {
         _topAwayLogo = [UIImageView new];
+        _topAwayLogo.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _topAwayLogo;
 }

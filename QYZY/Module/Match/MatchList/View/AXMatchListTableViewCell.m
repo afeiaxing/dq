@@ -171,7 +171,7 @@
     CGFloat scoreViewW = (ScreenWidth - kAXMatchListScoreViewLeftMargin - kAXMatchListScoreViewRightMargin) / scoreViewCount;
     NSMutableArray *temp = [NSMutableArray array];
     for (int i = 0; i < scoreViewCount; i++) {
-        AXMatchListScoreCustomView *view = [AXMatchListScoreCustomView new];
+        AXMatchListScoreCustomView *view = [[AXMatchListScoreCustomView alloc] initWithHostscoreTopMargin:0];
         view.viewType = (AXMatchListScoreCustomViewType)i;
         [self.containerView addSubview:view];
         [temp addObject:view];

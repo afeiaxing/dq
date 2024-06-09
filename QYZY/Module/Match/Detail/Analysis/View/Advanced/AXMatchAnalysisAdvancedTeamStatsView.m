@@ -97,6 +97,10 @@
     CGFloat hostPrecent = model.homeScore.floatValue / totalValue;
     CGFloat awayPrecent = model.awayScore.floatValue / totalValue;
     
+    // 兼容返回异常数据
+    hostPrecent = hostPrecent > 0 ? hostPrecent : 0.01;
+    awayPrecent = awayPrecent > 0 ? awayPrecent : 0.01;
+    
     CGFloat backViewW = [self getBackViewWidth];
     
     [self.hostTintView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -130,6 +134,7 @@
     if (!_hostValue) {
         _hostValue = [[UILabel alloc] init];
         _hostValue.font = [UIFont systemFontOfSize:12];
+        _hostValue.text = @"-";
     }
     return _hostValue;
 }
@@ -138,6 +143,7 @@
     if (!_awayValue) {
         _awayValue = [[UILabel alloc] init];
         _awayValue.font = [UIFont systemFontOfSize:12];
+        _awayValue.text = @"-";
     }
     return _awayValue;
 }

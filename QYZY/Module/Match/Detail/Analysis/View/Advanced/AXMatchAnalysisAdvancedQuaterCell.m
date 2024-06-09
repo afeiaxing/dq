@@ -113,6 +113,7 @@
     [self.scoreHostName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.scoreHostLogo.mas_bottom).offset(11);
         make.centerX.equalTo(self.scoreHostLogo);
+        make.width.mas_equalTo(60);
     }];
     
     [self.scoreBGView addSubview:self.hostAverageScore];
@@ -145,6 +146,7 @@
     [self.scoreAwayName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.scoreAwayLogo);
         make.top.equalTo(self.scoreAwayLogo.mas_bottom).offset(11);
+        make.width.equalTo(self.scoreHostName);
     }];
     
     [self.scoreBGView addSubview:self.awayAverageScore];
@@ -357,6 +359,7 @@
 - (UIImageView *)scoreHostLogo{
     if (!_scoreHostLogo) {
         _scoreHostLogo = [UIImageView new];
+        _scoreHostLogo.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _scoreHostLogo;
 }
@@ -364,6 +367,7 @@
 - (UIImageView *)scoreAwayLogo{
     if (!_scoreAwayLogo) {
         _scoreAwayLogo = [UIImageView new];
+        _scoreAwayLogo.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _scoreAwayLogo;
 }

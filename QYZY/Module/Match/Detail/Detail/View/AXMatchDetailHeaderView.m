@@ -168,7 +168,7 @@
 - (UIImageView *)hostLogo {
     if (!_hostLogo) {
         _hostLogo = [[UIImageView alloc] init];
-        _hostLogo.image = [UIImage imageNamed:@"match_team_logo"];
+        _hostLogo.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _hostLogo;
 }
@@ -176,7 +176,7 @@
 - (UIImageView *)awayLogo {
     if (!_awayLogo) {
         _awayLogo = [[UIImageView alloc] init];
-        _awayLogo.image = [UIImage imageNamed:@"match_team_logo"];
+        _awayLogo.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _awayLogo;
 }
