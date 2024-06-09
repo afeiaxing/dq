@@ -243,6 +243,8 @@
         _dateView.block = ^(AXMatchStatus status, NSString * _Nonnull dateString) {
             strongSelf(self);
             self.dateString = dateString;
+            [self.sectionArray removeAllObjects];
+            [self.dataSource removeAllObjects];
             [self requestData];
         };
     }

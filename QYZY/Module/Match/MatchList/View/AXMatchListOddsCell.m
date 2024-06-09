@@ -15,6 +15,8 @@
 @property (nonatomic, strong) UILabel *leagueName;
 @property (nonatomic, strong) UIButton *collectBtn;
 
+@property (nonatomic, strong) UILabel *hostRank;
+@property (nonatomic, strong) UILabel *awayRank;
 @property (nonatomic, strong) UIImageView *hostLogo;
 @property (nonatomic, strong) UIImageView *awayLogo;
 @property (nonatomic, strong) UILabel *hostName;
@@ -75,11 +77,25 @@
         make.height.mas_equalTo(1);
     }];
     
+    [self.containerView addSubview:self.hostRank];
+    [self.hostRank mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.offset(12);
+        make.top.equalTo(lineH.mas_bottom).offset(18);
+        make.width.mas_equalTo(23);
+    }];
+    
     [self.containerView addSubview:self.hostLogo];
     [self.hostLogo mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.offset(35);
         make.top.equalTo(lineH.mas_bottom).offset(18);
         make.size.mas_equalTo(CGSizeMake(24, 24));
+    }];
+    
+    [self.containerView addSubview:self.awayRank];
+    [self.awayRank mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.hostRank);
+        make.top.equalTo(self.hostRank.mas_bottom).offset(19);
+        make.width.equalTo(self.hostRank);
     }];
     
     [self.containerView addSubview:self.awayLogo];
@@ -159,6 +175,8 @@
 - (void)setModel:(AXMatchListItemModel *)model{
     [self.leagueLogo sd_setImageWithURL:[NSURL URLWithString:model.leaguesLogo] placeholderImage:AXLeaguePlaceholderLogo];
     self.leagueName.text = model.leaguesName;
+    self.hostRank.text = model.homePosition;
+    self.awayRank.text = model.awayPosition;
     [self.hostLogo sd_setImageWithURL:[NSURL URLWithString:model.homeTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
     [self.awayLogo sd_setImageWithURL:[NSURL URLWithString:model.awayTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
     self.hostName.text = model.homeTeamName;
@@ -223,6 +241,24 @@
         [_collectBtn setImage:[UIImage imageNamed:@"match_list_collect"] forState:UIControlStateNormal];
     }
     return _collectBtn;
+}
+
+- (UILabel *)hostRank{
+    if (!_hostRank) {
+        _hostRank = [UILabel new];
+        _hostRank.font = [UIFont systemFontOfSize:16];
+        _hostRank.textColor = rgb(130, 134, 163);
+    }
+    return _hostRank;
+}
+
+- (UILabel *)awayRank{
+    if (!_awayRank) {
+        _awayRank = [UILabel new];
+        _awayRank.font = [UIFont systemFontOfSize:16];
+        _awayRank.textColor = rgb(130, 134, 163);
+    }
+    return _awayRank;
 }
 
 - (UIImageView *)hostLogo{
