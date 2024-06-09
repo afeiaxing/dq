@@ -29,8 +29,8 @@
 @end
 
 #define kAXMatchListDateViewHeight 50
-#define kMatchListRefreshDuration_live 1500
-#define kMatchListRefreshDuration_Schedule 1500
+#define kMatchListRefreshDuration_live 5
+#define kMatchListRefreshDuration_Schedule 60
 
 @implementation QYZYMatchSubViewController
 
@@ -134,6 +134,8 @@
         
         [self.tableView reloadData];
     }];
+    
+    AXLog(@"~~~赛事列表：列表接口调用");
 }
 
 - (NSArray *)getDateTimestamp{

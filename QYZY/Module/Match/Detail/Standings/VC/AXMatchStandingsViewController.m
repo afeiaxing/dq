@@ -17,8 +17,11 @@
 @property (nonatomic, strong) AXMatchStandingRequest *request;
 @property (nonatomic, strong) AXMatchStandingModel *standingModel;
 @property (nonatomic, strong) NSArray <AXMatchStandingTextLiveModel *>*textLives;
+@property (nonatomic, strong) NSTimer *timer;
 
 @end
+
+#define kAXMatchStandingRefreshDuration 30
 
 @implementation AXMatchStandingsViewController
 
@@ -28,6 +31,19 @@
     
     [self setupSubviews];
     [self requestData];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self.timer invalidate];
+    self.timer = nil;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if (!self.timer) {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:kAXMatchStandingRefreshDuration target:self selector:@selector(requestData) userInfo:nil repeats:YES];
+    }
 }
 
 // MARK: UITableViewDelegate, UITableViewDataSource
@@ -86,6 +102,8 @@
         self.textLives = textLives;
         [self.tableview reloadData];
     }];
+    
+    AXLog(@"~~~赛事详情：Standing接口调用");
 }
 
 // MARK: JXCategoryListContentViewDelegate

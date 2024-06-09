@@ -6,14 +6,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AXMatchDetailModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AXMatchDetailRequest : NSObject
 
 - (void)requestMatchDetailWithMatchId: (NSString *)matchId
-                           completion:(void(^)(AXMatchDetailModel *matchModel))completion;
+                           completion: (void(^)(NSArray <AXMatchListItemModel *> *matchArray))completion;
 
 @end
 

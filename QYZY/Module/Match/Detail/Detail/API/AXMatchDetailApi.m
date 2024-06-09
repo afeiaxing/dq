@@ -15,7 +15,7 @@
 
 - (id)requestArgument {
     NSMutableDictionary *dict = @{}.mutableCopy;
-    [dict setValue:self.matchId forKey:@"matchId"];
+    [dict setValue:self.matchId forKey:@"matchIds"];
     return dict;
 }
 

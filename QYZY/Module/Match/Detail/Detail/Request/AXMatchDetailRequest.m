@@ -11,16 +11,16 @@
 @implementation AXMatchDetailRequest
 
 - (void)requestMatchDetailWithMatchId: (NSString *)matchId
-                           completion:(void(^)(AXMatchDetailModel *matchModel))completion{
+                           completion: (void(^)(NSArray <AXMatchListItemModel *> *matchArray))completion{
     AXMatchDetailApi *api = [AXMatchDetailApi new];
     api.matchId = matchId;
     
     [api ax_startWithCompletionSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        AXMatchDetailModel *model;
+        NSArray *array;
         if (api.isRequestSuccess) {
-            model = [AXMatchDetailModel yy_modelWithJSON:api.bizData];
+            array = [NSArray yy_modelArrayWithClass:AXMatchListItemModel.class json:api.bizData];
         }
-        !completion ? : completion(model);
+        !completion ? : completion(array);
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         !completion ? : completion(nil);
     }];

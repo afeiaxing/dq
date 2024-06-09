@@ -35,6 +35,8 @@
 
 @end
 
+#define kAXMatchDetailHeaderRefreshDuration 30
+
 @implementation QYZYMatchDetailViewController
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -50,7 +52,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     if (!self.timer) {
-//        self.timer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(timerLoadDetailData) userInfo:nil repeats:YES];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:kAXMatchDetailHeaderRefreshDuration target:self selector:@selector(requestData) userInfo:nil repeats:YES];
     }
 }
 
@@ -89,11 +91,15 @@
 }
 
 - (void)requestData {
-//    weakSelf(self);
-    [self.request requestMatchDetailWithMatchId:self.matchModel.matchId completion:^(AXMatchDetailModel * _Nonnull matchModel) {
-//        strongSelf(self)
-        NSLog(@"%@", matchModel);
+    weakSelf(self);
+    [self.request requestMatchDetailWithMatchId:self.matchModel.matchId completion:^(NSArray<AXMatchListItemModel *> * _Nonnull matchArray) {
+        if (matchArray && matchArray.count) {
+            self.matchModel = matchArray.firstObject;
+            [self setInitData];
+        }
     }];
+    
+    AXLog(@"~~~赛事详情：header接口调用");
 }
 
 #pragma mark - delegate
