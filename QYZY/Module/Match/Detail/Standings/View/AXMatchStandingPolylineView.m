@@ -6,10 +6,12 @@
 //
 
 #import "AXMatchStandingPolylineView.h"
+#import "AXDashedLineView.h"
 
 @interface AXMatchStandingPolylineView()
 
 @property (nonatomic, assign) NSInteger maxScoreDiff;
+@property (nonatomic, strong) NSArray *dashedLines;
 
 @end
 
@@ -21,9 +23,26 @@
 // MARK: lifecycle
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        
+        [self setupSubviews];
     }
     return self;
+}
+
+- (void)setupSubviews{
+    NSMutableArray *temp = [NSMutableArray array];
+    CGFloat dashedLineMargin = (self.bounds.size.width - kAXMatchStandingPolylineViewMarginRight) / 4;
+    for (int i = 0; i < 5; i++) {
+        AXDashedLineView *dashedLine = [AXDashedLineView new];
+        [self addSubview:dashedLine];
+        [temp addObject:dashedLine];
+        [temp mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.offset(dashedLineMargin * i);
+            make.top.bottom.offset(0);
+            make.width.mas_equalTo(1);
+        }];
+    }
+    
+    self.dashedLines = temp.copy;
 }
 
 // MARK: private
@@ -119,7 +138,7 @@
     CGFloat originX = 0;
     CGFloat ViewW = screenW - originX - kAXMatchStandingPolylineViewMarginRight;
     
-    CGFloat offSetX = ViewW / totalCount;
+    CGFloat offSetX = ViewW / totalCount;  // 间隔需要兼容进行中的赛事
     CGFloat originY = screenH / 2;
     CGFloat minY = ((screenH - kAXMatchStandingPolylineViewMarginV * 2) / 2) / self.maxScoreDiff;
     
@@ -156,6 +175,11 @@
         shapeLayer.fillColor = i % 2 == 0 ? rgb(143, 0, 255).CGColor : rgb(0, 162, 36).CGColor;
         shapeLayer.strokeColor = i % 2 == 0 ? rgb(143, 0, 255).CGColor : rgb(0, 162, 36).CGColor;
         shapeLayer.lineWidth = 1;
+    }
+    
+    // 将虚线移动到顶部
+    for (UIView *dashedView in self.dashedLines) {
+        [self bringSubviewToFront:dashedView];
     }
 }
 

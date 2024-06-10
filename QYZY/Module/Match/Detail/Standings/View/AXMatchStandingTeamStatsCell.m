@@ -354,6 +354,14 @@
         tintViewW = backViewWidth * point3Precent;
         leftMargin = (1 - point3Precent) * backViewWidth;
     }
+    
+    // 兼容服务器返回异常数据，例如“-”，会导致算出的数值为“NaN”
+    if (isnan(leftMargin)) {
+        leftMargin = 0.01;
+    }
+    if (isnan(tintViewW)) {
+        tintViewW = 0.01;
+    }
 
     [tintView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(backView).offset(leftMargin);

@@ -90,6 +90,14 @@
     CGFloat awayPrecent = stats.awayScore.floatValue / totalScore;
     CGFloat backViewWidth = (ScreenWidth - AXMatchStandingPBPStatsSubCellMargin * 2 - 2) / 2;
     
+    // 兼容服务器返回异常数据，例如“-”，会导致算出的数值为“NaN”
+    if (isnan(homePrecent)) {
+        homePrecent = 0.01;
+    }
+    if (isnan(awayPrecent)) {
+        awayPrecent = 0.01;
+    }
+    
     [self.homeTintView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(backViewWidth * homePrecent);
     }];

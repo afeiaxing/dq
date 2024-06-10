@@ -190,11 +190,14 @@
     AXMatchListScoreCustomView *q4View = self.scoreViews[3];
     AXMatchListScoreCustomView *otView = self.scoreViews[4];
     AXMatchListScoreCustomView *totalView = self.scoreViews[5];
-    totalView.datas = @[matchModel.homeTotalScore, matchModel.awayTotalScore];
     
-    NSMutableArray *temp = [NSMutableArray arrayWithArray:@[q1View, q2View, q3View, q4View]];
+    BOOL isScheduleStatus = matchModel.leaguesStatus.intValue == 1;
+    totalView.datas = @[isScheduleStatus ? @"-" : matchModel.homeTotalScore, isScheduleStatus ? @"-" : matchModel.awayTotalScore];
     
-    q1View.datas = @[matchModel.homeScoreList.firstObject, matchModel.awayscoreList.firstObject];
+    BOOL q1 = matchModel.leaguesStatus.intValue >= 2;
+
+    q1View.datas = @[q1 && matchModel.homeScoreList.count > 0 ? matchModel.homeScoreList[0] : @"-",
+                     q1 && matchModel.awayscoreList.count > 0 ? matchModel.awayscoreList[0] : @"-"];
     
     BOOL q2 = matchModel.leaguesStatus.intValue >= 4;
     q2View.datas = @[q2 && matchModel.homeScoreList.count > 1 ? matchModel.homeScoreList[1] : @"-",
@@ -209,9 +212,7 @@
                      q4 && matchModel.awayscoreList.count > 3 ? matchModel.awayscoreList[3] : @"-"];
     
     BOOL ot = matchModel.leaguesStatus.intValue == 9 || matchModel.homeScoreList.count > 4;  // 当前为加时；或者是结束了加时有值
-    if (ot) {
-        [temp addObject:otView];
-    }
+
     otView.hidden = !ot;
     otView.datas = @[ot && matchModel.homeScoreList.count > 4 ? matchModel.homeScoreList[4] : @"-",
                      q4 && matchModel.awayscoreList.count > 4 ? matchModel.awayscoreList[4] : @"-"];
@@ -247,7 +248,9 @@
             [temp addObject:scoreDiff];
         }
     }
-    self.polylineView.scoreDiffs = temp.copy;;
+    if (temp.count) {
+        self.polylineView.scoreDiffs = temp.copy;
+    }
 }
 
 - (UIView *)containerView{
