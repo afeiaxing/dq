@@ -175,6 +175,8 @@
 - (void)setMatchModel:(AXMatchListItemModel *)matchModel{
     _matchModel = matchModel;
     
+    self.polylineView.matchModel = matchModel;
+    
     [self.hostLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.homeTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
     [self.awayLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.awayTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
     [self.scoreHostLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.homeTeamLogo] placeholderImage:AXTeamPlaceholderLogo];

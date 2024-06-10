@@ -37,6 +37,7 @@
 #import "AXMatchTools.h"
 #import "UIView+AXToast.h"
 #import "AXRequest.h"
+#import "UIColor+AXGradient.h"
 #import "JXPagerView.h"
 
 #endif /* qyzy_pch */

@@ -176,6 +176,7 @@
 		F303A0FF2C1454A300230E25 /* AXMatchDetailNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A0FE2C1454A300230E25 /* AXMatchDetailNavigationView.m */; };
 		F303A1022C1456F900230E25 /* AXMatchDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A1012C1456F900230E25 /* AXMatchDetailHeaderView.m */; };
 		F303A1182C17209A00230E25 /* AXDashedLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A1172C17209A00230E25 /* AXDashedLineView.m */; };
+		F303A11B2C173EF400230E25 /* UIColor+AXGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A11A2C173EF400230E25 /* UIColor+AXGradient.m */; };
 		F36D875C2C0B0383001F37F0 /* AXToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = F36D875B2C0B0383001F37F0 /* AXToastView.m */; };
 		F36D875F2C0B045C001F37F0 /* UIView+AXToast.m in Sources */ = {isa = PBXBuildFile; fileRef = F36D875E2C0B045C001F37F0 /* UIView+AXToast.m */; };
 		F36D87622C0B098D001F37F0 /* UIView+CSToast.m in Sources */ = {isa = PBXBuildFile; fileRef = F36D87602C0B098C001F37F0 /* UIView+CSToast.m */; };
@@ -579,6 +580,8 @@
 		F303A1012C1456F900230E25 /* AXMatchDetailHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchDetailHeaderView.m; sourceTree = "<group>"; };
 		F303A1162C17209A00230E25 /* AXDashedLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXDashedLineView.h; sourceTree = "<group>"; };
 		F303A1172C17209A00230E25 /* AXDashedLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXDashedLineView.m; sourceTree = "<group>"; };
+		F303A1192C173EF400230E25 /* UIColor+AXGradient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+AXGradient.h"; sourceTree = "<group>"; };
+		F303A11A2C173EF400230E25 /* UIColor+AXGradient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AXGradient.m"; sourceTree = "<group>"; };
 		F36D875A2C0B0383001F37F0 /* AXToastView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXToastView.h; sourceTree = "<group>"; };
 		F36D875B2C0B0383001F37F0 /* AXToastView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXToastView.m; sourceTree = "<group>"; };
 		F36D875D2C0B045C001F37F0 /* UIView+AXToast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+AXToast.h"; sourceTree = "<group>"; };
@@ -2103,6 +2106,8 @@
 				F5CB2BB328E9D31D00DD2AC8 /* UIView+Extensions.m */,
 				AE78C0D92906AB4A006A70A3 /* NSArray+QYZYAdd.h */,
 				AE78C0DA2906AB4A006A70A3 /* NSArray+QYZYAdd.m */,
+				F303A1192C173EF400230E25 /* UIColor+AXGradient.h */,
+				F303A11A2C173EF400230E25 /* UIColor+AXGradient.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2345,6 +2350,7 @@
 				5519478028E6C1CA0088C134 /* QYZYLiveListModel.m in Sources */,
 				55E0D50928F8050E00DDAAB6 /* QYZYMatchDetailApi.m in Sources */,
 				55B10193290151370056CF17 /* QYZYMatchHomeCell.m in Sources */,
+				F303A11B2C173EF400230E25 /* UIColor+AXGradient.m in Sources */,
 				F37E5DEC2BF7810D0049FAE1 /* AXMatchStandingChartCell.m in Sources */,
 				F37E5E292BF9CCDC0049FAE1 /* AXMatchAnalysisAdvancedTeamStatsCell.m in Sources */,
 				55E2395328E82E4D003ED27E /* QYZYLiveChatCell.m in Sources */,

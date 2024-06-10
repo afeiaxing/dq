@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AXMatchStandingPolylineView : UIView
 
+@property (nonatomic, strong) AXMatchListItemModel *matchModel;
 @property (nonatomic, strong) NSArray *scoreDiffs;
 
 @end

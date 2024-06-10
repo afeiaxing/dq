@@ -12,6 +12,7 @@
 
 @property (nonatomic, assign) NSInteger maxScoreDiff;
 @property (nonatomic, strong) NSArray *dashedLines;
+@property (nonatomic, strong) NSMutableArray *layerArray;
 
 @end
 
@@ -132,13 +133,19 @@
     }
     [sectionArr addObject:arr1];
     
+    // 移除之前画的折线
+    for (CAShapeLayer *shapeLayer in self.layerArray) {
+        [shapeLayer removeFromSuperlayer];
+    }
+    [self.layerArray removeAllObjects];
+    
     // 划折线
     CGFloat screenW = self.bounds.size.width;
     CGFloat screenH = self.bounds.size.height;
     CGFloat originX = 0;
     CGFloat ViewW = screenW - originX - kAXMatchStandingPolylineViewMarginRight;
     
-    CGFloat offSetX = ViewW / totalCount;  // 间隔需要兼容进行中的赛事
+    CGFloat offSetX = ViewW / totalCount;  // 间隔需要兼容进行中的赛事，根据self.matchModel的比赛状态来
     CGFloat originY = screenH / 2;
     CGFloat minY = ((screenH - kAXMatchStandingPolylineViewMarginV * 2) / 2) / self.maxScoreDiff;
     
@@ -171,8 +178,12 @@
         // 创建 shapeLayer
         CAShapeLayer *shapeLayer = [[CAShapeLayer alloc]init];
         [self.layer addSublayer:shapeLayer];
+        [self.layerArray addObject:shapeLayer];
         shapeLayer.path = path.CGPath;
-        shapeLayer.fillColor = i % 2 == 0 ? rgb(143, 0, 255).CGColor : rgb(0, 162, 36).CGColor;
+        CGFloat layerHeight = self.bounds.size.height / 2;
+        UIColor *hostGradientColor = [UIColor colorWithGradientFromColor:rgba(143, 0, 255, 0.5) toColor:rgba(143, 0, 255, 0) withHeight:layerHeight];
+        UIColor *awayGradientColor = [UIColor colorWithGradientFromColor:rgba(0, 162, 36, 0) toColor:rgba(0, 162, 36, 0.5) withHeight:layerHeight];
+        shapeLayer.fillColor = i % 2 == 0 ? hostGradientColor.CGColor : awayGradientColor.CGColor;
         shapeLayer.strokeColor = i % 2 == 0 ? rgb(143, 0, 255).CGColor : rgb(0, 162, 36).CGColor;
         shapeLayer.lineWidth = 1;
     }
@@ -187,6 +198,13 @@
 - (void)setScoreDiffs:(NSArray *)scoreDiffs{
     [self handleDrawAxis:scoreDiffs];
     [self handleDrawPolyline:scoreDiffs];
+}
+
+- (NSMutableArray *)layerArray{
+    if (!_layerArray) {
+        _layerArray = [NSMutableArray array];
+    }
+    return _layerArray;
 }
 
 @end

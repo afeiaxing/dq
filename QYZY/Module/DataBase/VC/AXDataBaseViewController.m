@@ -24,6 +24,10 @@ static CGFloat KBottomSpaceValue = 34.0f;
     
     self.view.backgroundColor = UIColor.whiteColor;
     
+    UIView *testView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    testView.backgroundColor = [UIColor colorWithGradientFromColor:rgba(143, 0, 255, 0.5) toColor:rgba(143, 0, 255, 0) withHeight:100];
+    [self.view addSubview:testView];
+    
     _gradientLayer = [CAGradientLayer layer];
     NSArray *colors = @[(__bridge id)rgba(143, 0, 255, 1).CGColor,
                         (__bridge id)rgba(143, 0, 255, 0).CGColor,
