@@ -248,6 +248,7 @@
             [self.sectionArray removeAllObjects];
             [self.dataSource removeAllObjects];
             [self requestData];
+            [self.view ax_showLoading];
         };
     }
     return _dateView;

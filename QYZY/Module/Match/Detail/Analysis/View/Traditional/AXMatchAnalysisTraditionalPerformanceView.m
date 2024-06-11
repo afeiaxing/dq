@@ -75,6 +75,17 @@
 
 // MARK: setter & getter
 - (void)setRivalryRecordModel:(AXMatchAnalysisRivalryRecordModel *)rivalryRecordModel{
+    CGFloat winlostTotalWidth = ScreenWidth - 16 * 4 - 5;
+    CGFloat totalCount = rivalryRecordModel.win.floatValue + rivalryRecordModel.lose.floatValue;
+    CGFloat winPrecent = rivalryRecordModel.win.floatValue / totalCount;
+    // 兼容服务器返回异常数据，例如“-”，会导致算出的数值为“NaN”
+    if (isnan(winPrecent)) {
+        winPrecent = 0.5;
+    }
+    [self.winLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(winlostTotalWidth * winPrecent);
+    }];
+    
     self.winLabel.text = [NSString stringWithFormat:@"%@ Win", rivalryRecordModel.win];
     self.loseLabel.text = [NSString stringWithFormat:@"%@ Lose", rivalryRecordModel.lose];
     self.aveLabel.text = [NSString stringWithFormat:@"AVE \n\n %@ \n\n points", rivalryRecordModel.ave];
@@ -84,7 +95,18 @@
     _rivalryRecordModel = rivalryRecordModel;
 }
 
-- (void)setTeamRecordModel:(AXMatchAnalysisRivalryRecordModel *)teamRecordModel{
+- (void)setTeamRecordModel:(AXMatchAnalysisTeamRecordModel *)teamRecordModel{
+    CGFloat winlostTotalWidth = ScreenWidth - 16 * 4 - 5;
+    CGFloat totalCount = teamRecordModel.win.floatValue + teamRecordModel.lose.floatValue;
+    CGFloat winPrecent = teamRecordModel.win.floatValue / totalCount;
+    // 兼容服务器返回异常数据，例如“-”，会导致算出的数值为“NaN”
+    if (isnan(winPrecent)) {
+        winPrecent = 0.5;
+    }
+    [self.winLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(winlostTotalWidth * winPrecent);
+    }];
+    
     self.winLabel.text = [NSString stringWithFormat:@"%@ Win", teamRecordModel.win];
     self.loseLabel.text = [NSString stringWithFormat:@"%@ Lose", teamRecordModel.lose];
     self.aveLabel.text = [NSString stringWithFormat:@"AVE \n\n %@ \n\n points", teamRecordModel.ave];
