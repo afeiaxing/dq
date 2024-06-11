@@ -144,6 +144,15 @@
     CGFloat screenH = self.bounds.size.height;
     CGFloat originX = 0;
     CGFloat ViewW = screenW - originX - kAXMatchStandingPolylineViewMarginRight;
+    int matchStatus = self.matchModel.leaguesStatus.intValue;
+    
+    // 进行中的赛事，按照赛事进行的时间，来计算视图的宽度
+    if (matchStatus > 1 && matchStatus < 10) {
+        CGFloat currentSec = self.matchModel.residualTime.floatValue;
+        CGFloat totalSec = 12 * 4 * 60;  // 全场时间按照4节，一节12分钟算
+        CGFloat currentPrecent = MIN(currentSec / totalSec, 1.0);
+        ViewW = ViewW * currentPrecent;
+    }
     
     CGFloat offSetX = ViewW / totalCount;  // 间隔需要兼容进行中的赛事，根据self.matchModel的比赛状态来
     CGFloat originY = screenH / 2;
