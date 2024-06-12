@@ -101,7 +101,7 @@
         make.bottom.equalTo(self.hostPlayerName).offset(-10);
         make.centerX.offset(-10);
         make.width.mas_equalTo(16);
-        make.height.mas_equalTo(0);
+        make.height.mas_equalTo(4);
     }];
     
     [self.hostScoreLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -113,7 +113,7 @@
         make.bottom.equalTo(self.hostPlayerName).offset(-10);
         make.centerX.offset(10);
         make.width.mas_equalTo(16);
-        make.height.mas_equalTo(0);
+        make.height.mas_equalTo(4);
     }];
     
     [self.awayScoreLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -179,6 +179,8 @@
 - (UIImageView *)hostPlayerLogo {
     if (!_hostPlayerLogo) {
         _hostPlayerLogo = [[UIImageView alloc] init];
+        _hostPlayerLogo.contentMode = UIViewContentModeScaleAspectFit;
+        _hostPlayerLogo.image = AXTeamPlaceholderLogo;
     }
     return _hostPlayerLogo;
 }
@@ -197,6 +199,7 @@
         _hostPlayerNum = [[UILabel alloc] init];
         _hostPlayerNum.font = [UIFont systemFontOfSize:12];
         _hostPlayerNum.textColor = AXUnSelectColor;
+        _hostPlayerNum.text = @"#";
     }
     return _hostPlayerNum;
 }
@@ -204,6 +207,8 @@
 - (UIImageView *)awayPlayerLogo {
     if (!_awayPlayerLogo) {
         _awayPlayerLogo = [[UIImageView alloc] init];
+        _awayPlayerLogo.contentMode = UIViewContentModeScaleAspectFit;
+        _awayPlayerLogo.image = AXTeamPlaceholderLogo;
     }
     return _awayPlayerLogo;
 }
@@ -222,6 +227,7 @@
         _awayPlayerNum = [[UILabel alloc] init];
         _awayPlayerNum.font = [UIFont systemFontOfSize:12];
         _awayPlayerNum.textColor = AXUnSelectColor;
+        _awayPlayerNum.text = @"#";
     }
     return _awayPlayerNum;
 }
