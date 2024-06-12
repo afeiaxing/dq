@@ -11,6 +11,7 @@
 @interface AXMatchStandingPolylineView()
 
 @property (nonatomic, assign) NSInteger maxScoreDiff;
+@property (nonatomic, assign) BOOL isHostLeadFirst;
 @property (nonatomic, strong) NSArray *dashedLines;
 @property (nonatomic, strong) NSMutableArray *layerArray;
 
@@ -58,10 +59,18 @@
         make.centerY.offset(0);
     }];
     
+    // 判断是主队先领先，还是客队先领先
+    for (NSNumber *num in array) {
+        if (num.intValue != 0) {
+            self.isHostLeadFirst = num.intValue > 0;
+            break;
+        }
+    }
+    
     int maxScoreDiff = 0;
     for (NSNumber *scoreDiff in array) {
         if (abs(scoreDiff.intValue) > maxScoreDiff) {
-            maxScoreDiff = scoreDiff.intValue;
+            maxScoreDiff = abs(scoreDiff.intValue);
         }
     }
     self.maxScoreDiff = maxScoreDiff;
@@ -192,8 +201,29 @@
         CGFloat layerHeight = self.bounds.size.height / 2;
         UIColor *hostGradientColor = [UIColor colorWithGradientFromColor:rgba(143, 0, 255, 0.5) toColor:rgba(143, 0, 255, 0) withHeight:layerHeight];
         UIColor *awayGradientColor = [UIColor colorWithGradientFromColor:rgba(0, 162, 36, 0) toColor:rgba(0, 162, 36, 0.5) withHeight:layerHeight];
-        shapeLayer.fillColor = i % 2 == 0 ? hostGradientColor.CGColor : awayGradientColor.CGColor;
-        shapeLayer.strokeColor = i % 2 == 0 ? rgb(143, 0, 255).CGColor : rgb(0, 162, 36).CGColor;
+
+        /**
+         * 主队领先用紫色，客队领先用绿色
+         * 主队先领先，偶数：紫色，单数：绿色
+         * 客队先领先，偶数：绿色，单数：紫色
+         */
+        UIColor *purpleFillColor = [UIColor colorWithGradientFromColor:rgba(143, 0, 255, 0.5) toColor:rgba(143, 0, 255, 0) withHeight:layerHeight];
+        UIColor *purpleStrokeColor = rgb(143, 0, 255);
+        UIColor *greenFillColor = [UIColor colorWithGradientFromColor:rgba(0, 162, 36, 0) toColor:rgba(0, 162, 36, 0.5) withHeight:layerHeight];
+        UIColor *greenStrokeColor = rgb(0, 162, 36);
+
+        struct CGColor *fillColor;
+        struct CGColor *strokeColor;
+        if (self.isHostLeadFirst) {
+            fillColor = i % 2 == 0 ? purpleFillColor.CGColor : greenFillColor.CGColor;
+            strokeColor = i % 2 == 0 ? purpleStrokeColor.CGColor : greenStrokeColor.CGColor;
+        } else {
+            fillColor = i % 2 == 0 ? greenFillColor.CGColor : purpleFillColor.CGColor;
+            strokeColor = i % 2 == 0 ? greenStrokeColor.CGColor : purpleStrokeColor.CGColor;
+        }
+        
+        shapeLayer.fillColor = fillColor;
+        shapeLayer.strokeColor = strokeColor;
         shapeLayer.lineWidth = 1;
     }
     
