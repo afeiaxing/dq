@@ -40,7 +40,7 @@
     
     [self.view addSubview:self.containerView];
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.categoryView.mas_bottom).offset(23);
+        make.top.equalTo(self.categoryView.mas_bottom).offset(10);
         make.left.right.offset(0);
         make.bottom.offset(0);
     }];

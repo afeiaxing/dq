@@ -34,6 +34,14 @@
     [self requestData];
 }
 
+// MARK: private
+- (void)setupSubviews{
+    [self.view addSubview:self.tableview];
+    [self.tableview mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.offset(0);
+    }];
+}
+
 - (void)requestData{
     [self.view ax_showLoading];
     weakSelf(self);
@@ -65,15 +73,6 @@
     }];
 }
 
-// MARK: private
-- (void)setupSubviews{
-    [self.view addSubview:self.tableview];
-    [self.tableview mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.offset(0);
-    }];
-}
-
-
 // MARK: UITableViewDelegate, UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 2;
@@ -84,9 +83,9 @@
         return 181;
     } else {
         if (self.isRequest10) {
-            return self.matchRecordCellSelctIndex == 0 ? 913 : 1083; //713;  // 主客队交锋:913, 单队历史记录:1183
+            return self.matchRecordCellSelctIndex == 0 ? 913 : 1083; //713;  // 主客队交锋:913, 单队历史记录:1083
         } else {
-            return self.matchRecordCellSelctIndex == 0 ? 713 : 883; //713;  // 主客队交锋:713, 单队历史记录:983
+            return self.matchRecordCellSelctIndex == 0 ? 713 : 883; //713;  // 主客队交锋:713, 单队历史记录:883
         }
     }
 }
