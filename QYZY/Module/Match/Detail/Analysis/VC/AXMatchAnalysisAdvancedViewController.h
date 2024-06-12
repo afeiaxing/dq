@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) AXMatchListItemModel *matchModel;
 
+@property (nonatomic, copy) void(^scrollCallback)(UIScrollView *scrollView);
+
 @end
 
 NS_ASSUME_NONNULL_END

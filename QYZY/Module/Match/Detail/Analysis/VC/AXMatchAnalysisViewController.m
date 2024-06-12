@@ -15,6 +15,7 @@
 @property (nonatomic, strong) JXCategoryListContainerView *containerView;
 @property (nonatomic, strong) AXMatchAnalysisTraditionalViewController *traditionalVC;
 @property (nonatomic, strong) AXMatchAnalysisAdvancedViewController *advancedVC;
+@property (nonatomic, copy) void(^scrollCallback)(UIScrollView *scrollView);
 
 @end
 
@@ -55,7 +56,7 @@
 }
 
 - (void)listViewDidScrollCallback:(void (^)(UIScrollView *))callback {
-    
+    self.scrollCallback = callback;
 }
 
 // MARK: JXCategoryViewDelegate,JXCategoryListContainerViewDelegate
@@ -123,6 +124,11 @@
 - (AXMatchAnalysisTraditionalViewController *)traditionalVC{
     if (!_traditionalVC) {
         _traditionalVC = [AXMatchAnalysisTraditionalViewController new];
+        weakSelf(self)
+        _traditionalVC.scrollCallback = ^(UIScrollView *scrollView) {
+            strongSelf(self)
+            self.scrollCallback(scrollView);
+        };
     }
     return _traditionalVC;
 }
@@ -130,6 +136,11 @@
 - (AXMatchAnalysisAdvancedViewController *)advancedVC{
     if (!_advancedVC) {
         _advancedVC = [AXMatchAnalysisAdvancedViewController new];
+        weakSelf(self)
+        _advancedVC.scrollCallback = ^(UIScrollView *scrollView) {
+            strongSelf(self)
+            self.scrollCallback(scrollView);
+        };
     }
     return _advancedVC;
 }

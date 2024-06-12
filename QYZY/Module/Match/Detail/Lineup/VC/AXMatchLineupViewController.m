@@ -15,6 +15,7 @@
 @property (nonatomic, strong) UITableView *tableview;
 @property (nonatomic, strong) AXMatchLineupRequest *request;
 @property (nonatomic, strong) AXMatchLineupModel *lineupModel;
+@property (nonatomic, copy) void(^scrollCallback)(UIScrollView *scrollView);
 
 @end
 
@@ -81,12 +82,15 @@
 }
 
 - (UIScrollView *)listScrollView {
-    return [UIScrollView new];
-//    return self.tableview;
+    return self.tableview;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    !self.scrollCallback ?: self.scrollCallback(scrollView);
 }
 
 - (void)listViewDidScrollCallback:(void (^)(UIScrollView *))callback {
-    
+    self.scrollCallback = callback;
 }
 
 // MARK: setter & getter

@@ -18,6 +18,7 @@
 @property (nonatomic, strong) AXMatchStandingModel *standingModel;
 @property (nonatomic, strong) NSArray <AXMatchStandingTextLiveModel *>*textLives;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, copy) void(^scrollCallback)(UIScrollView *scrollView);
 
 @end
 
@@ -112,12 +113,15 @@
 }
 
 - (UIScrollView *)listScrollView {
-    return [UIScrollView new];
-//    return self.tableview;
+    return self.tableview;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    !self.scrollCallback ?: self.scrollCallback(scrollView);
 }
 
 - (void)listViewDidScrollCallback:(void (^)(UIScrollView *))callback {
-    
+    self.scrollCallback = callback;
 }
 
 // MARK: setter & getter
