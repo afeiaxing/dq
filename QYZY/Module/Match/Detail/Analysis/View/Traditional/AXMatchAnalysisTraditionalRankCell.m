@@ -13,6 +13,8 @@
 @property (nonatomic, strong) UIView *BgView;
 
 @property (nonatomic, strong) UILabel *rankTitleLabel;
+@property (nonatomic, strong) UIButton *tipsBtn;
+@property (nonatomic, strong) UIImageView *tipsView;
 @property (nonatomic, strong) AXSwitchView *switchView;
 @property (nonatomic, strong) NSArray *rankTitles;
 @property (nonatomic, strong) NSArray *hostRankDataLabels;
@@ -32,6 +34,10 @@
     return self;
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    self.tipsView.hidden = true;
+}
+
 // MARK: private
 - (void)setupSubviews{
     self.contentView.backgroundColor = rgb(247, 247, 247);
@@ -44,8 +50,22 @@
     
     [self.BgView addSubview:self.rankTitleLabel];
     [self.rankTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.offset(0);
+        make.left.offset(16);
         make.top.offset(23);
+    }];
+    
+    [self.BgView addSubview:self.tipsBtn];
+    [self.tipsBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.rankTitleLabel);
+        make.left.equalTo(self.rankTitleLabel.mas_right).offset(9);
+        make.size.mas_equalTo(CGSizeMake(14, 14));
+    }];
+    
+    [self.BgView addSubview:self.tipsView];
+    [self.tipsView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.offset(0);
+        make.top.equalTo(self.rankTitleLabel.mas_bottom).offset(5);
+        make.size.mas_equalTo(CGSizeMake(170, 160));
     }];
     
     [self.BgView addSubview:self.switchView];
@@ -135,6 +155,11 @@
     }
 }
 
+- (void)handleTipsEvent{
+    self.tipsView.hidden = false;
+    [self.BgView bringSubviewToFront:self.tipsView];
+}
+
 // MARK: setter & setter
 - (void)setTeamRankModel:(NSArray<AXMatchAnalysisTeamRankModel *> *)teamRankModel{
     [self handleRankDataWithModel:teamRankModel.firstObject labels:self.hostRankDataLabels];
@@ -158,6 +183,24 @@
         _rankTitleLabel.text = @"Team Ranking";
     }
     return _rankTitleLabel;
+}
+
+- (UIButton *)tipsBtn{
+    if (!_tipsBtn) {
+        _tipsBtn = [UIButton new];
+        [_tipsBtn setImage:[UIImage imageNamed:@"match_detail_tips"] forState:UIControlStateNormal];
+        [_tipsBtn addTarget:self action:@selector(handleTipsEvent) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _tipsBtn;
+}
+
+- (UIImageView *)tipsView{
+    if (!_tipsView) {
+        _tipsView = [UIImageView new];
+        _tipsView.image = [UIImage imageNamed:@"match_detail_ranktips"];
+        _tipsView.hidden = true;
+    }
+    return _tipsView;
 }
 
 - (AXSwitchView *)switchView{

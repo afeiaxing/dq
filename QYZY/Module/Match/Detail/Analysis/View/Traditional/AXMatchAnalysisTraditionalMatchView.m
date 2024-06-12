@@ -164,6 +164,10 @@
 }
 
 - (void)setIsRequest10:(BOOL)isRequest10{
+    [self.historyView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(isRequest10 ? 560 : 360);
+    }];
+    
     self.performanceView.isRequest10 = isRequest10;
     _isRequest10 = isRequest10;
 }

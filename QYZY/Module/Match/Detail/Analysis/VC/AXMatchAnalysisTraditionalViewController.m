@@ -20,6 +20,7 @@
 @property (nonatomic, strong) AXMatchAnalysisTeamRecordModel *awayTeamRecordModel;
 // 是否请求10条数据，yes：10，no：6
 @property (nonatomic, assign) BOOL isRequest10;
+@property (nonatomic, assign) int matchRecordCellSelctIndex;
 
 @end
 
@@ -82,7 +83,11 @@
     if (indexPath.row == 0) {
         return 181;
     } else {
-        return 983; //713;  // 主客队交锋:713, 单队历史记录:983
+        if (self.isRequest10) {
+            return self.matchRecordCellSelctIndex == 0 ? 913 : 1083; //713;  // 主客队交锋:913, 单队历史记录:1183
+        } else {
+            return self.matchRecordCellSelctIndex == 0 ? 713 : 883; //713;  // 主客队交锋:713, 单队历史记录:983
+        }
     }
 }
 
@@ -105,6 +110,12 @@
         cell.hostTeamRecordModel = self.hostTeamRecordModel;
         cell.awayTeamRecordModel = self.awayTeamRecordModel;
         cell.isRequest10 = self.isRequest10;
+        weakSelf(self)
+        cell.block = ^(int num) {
+            strongSelf(self)
+            self.matchRecordCellSelctIndex = num;
+            [tableView reloadData];
+        };
         return cell;
     }
 }

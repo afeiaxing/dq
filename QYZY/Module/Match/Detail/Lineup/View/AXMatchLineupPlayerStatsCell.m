@@ -11,6 +11,8 @@
 @interface AXMatchLineupPlayerStatsCell()<JXCategoryViewDelegate,JXCategoryListContainerViewDelegate>
 
 @property (nonatomic, strong) UILabel *statsTitleLabel;
+@property (nonatomic, strong) UIButton *tipsBtn;
+@property (nonatomic, strong) UIImageView *tipsView;
 @property (nonatomic, strong) JXCategoryTitleView *categoryView;
 @property (nonatomic, strong) JXCategoryListContainerView *containerView;
 @property (nonatomic, strong) AXMatchLineupPlayerStatsView *hostPlayerStatsView;
@@ -30,6 +32,10 @@
     return self;
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    self.tipsView.hidden = true;
+}
+
 // MARK: private
 - (void)setupSubviews{
     [self.contentView addSubview:self.categoryView];
@@ -45,12 +51,31 @@
         make.top.equalTo(self.categoryView.mas_bottom).offset(30);
     }];
     
+    [self.contentView addSubview:self.tipsBtn];
+    [self.tipsBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.statsTitleLabel);
+        make.left.equalTo(self.statsTitleLabel.mas_right).offset(9);
+        make.size.mas_equalTo(CGSizeMake(14, 14));
+    }];
+    
+    [self.contentView addSubview:self.tipsView];
+    [self.tipsView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.offset(0);
+        make.top.equalTo(self.statsTitleLabel.mas_bottom).offset(5);
+        make.size.mas_equalTo(CGSizeMake(293, 192));
+    }];
+    
     [self.contentView addSubview:self.containerView];
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.statsTitleLabel.mas_bottom).offset(26);
         make.left.right.offset(0);
         make.bottom.offset(0);
     }];
+}
+
+- (void)handleTipsEvent{
+    self.tipsView.hidden = false;
+    [self.contentView bringSubviewToFront:self.tipsView];
 }
 
 // MARK: JXCategoryViewDelegate,JXCategoryListContainerViewDelegate,FSCalendarDelegate
@@ -86,6 +111,24 @@
         _statsTitleLabel.text = @"Player Statistics";
     }
     return _statsTitleLabel;
+}
+
+- (UIButton *)tipsBtn{
+    if (!_tipsBtn) {
+        _tipsBtn = [UIButton new];
+        [_tipsBtn setImage:[UIImage imageNamed:@"match_detail_tips"] forState:UIControlStateNormal];
+        [_tipsBtn addTarget:self action:@selector(handleTipsEvent) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _tipsBtn;
+}
+
+- (UIImageView *)tipsView{
+    if (!_tipsView) {
+        _tipsView = [UIImageView new];
+        _tipsView.image = [UIImage imageNamed:@"match_detail_statstips"];
+        _tipsView.hidden = true;
+    }
+    return _tipsView;
 }
 
 - (JXCategoryTitleView *)categoryView {

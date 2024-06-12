@@ -55,6 +55,10 @@
     return categoryView.selectedIndex != index;
 }
 
+- (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index{
+    !self.block ? : self.block((int)index);
+}
+
 - (NSInteger)numberOfListsInlistContainerView:(JXCategoryListContainerView *)listContainerView {
     return self.categoryView.titles.count;
 }
@@ -111,6 +115,7 @@
         _categoryView.cellSpacing = 0;
         _categoryView.backgroundColor = UIColor.whiteColor;
         _categoryView.listContainer = self.containerView;
+        _categoryView.delegate = self;
         
         JXCategoryIndicatorLineView *indicator = [[JXCategoryIndicatorLineView alloc] init];
         indicator.indicatorColor = AXSelectColor;
