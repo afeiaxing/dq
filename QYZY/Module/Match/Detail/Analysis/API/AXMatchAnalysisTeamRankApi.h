@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface AXMatchAnalysisTeamRankApi : AXRequest
 
 @property (nonatomic, strong) NSString *matchId;
+@property (nonatomic, assign) int limit;
 
 @end
 

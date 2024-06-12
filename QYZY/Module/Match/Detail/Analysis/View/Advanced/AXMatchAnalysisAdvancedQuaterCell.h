@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) AXMatchListItemModel *matchModel;
 @property (nonatomic, strong) AXMatchAnalysisAdvancedModel *advancedModel;
+@property (nonatomic, copy) AXBoolBlock block;
 
 @end
 

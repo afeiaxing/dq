@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) AXMatchAnalysisRivalryRecordModel *rivalryRecordModel;
 @property (nonatomic, strong) AXMatchAnalysisTeamRecordModel *hostTeamRecordModel;
 @property (nonatomic, strong) AXMatchAnalysisTeamRecordModel *awayTeamRecordModel;
+@property (nonatomic, assign) BOOL isRequest10;
 
 @end
 

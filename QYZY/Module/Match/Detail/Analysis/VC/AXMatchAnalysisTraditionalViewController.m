@@ -18,6 +18,8 @@
 @property (nonatomic, strong) AXMatchAnalysisRivalryRecordModel *rivalryRecordModel;
 @property (nonatomic, strong) AXMatchAnalysisTeamRecordModel *hostTeamRecordModel;
 @property (nonatomic, strong) AXMatchAnalysisTeamRecordModel *awayTeamRecordModel;
+// 是否请求10条数据，yes：10，no：6
+@property (nonatomic, assign) BOOL isRequest10;
 
 @end
 
@@ -34,27 +36,28 @@
 - (void)requestData{
     [self.view ax_showLoading];
     weakSelf(self);
-    [self.request requestTeamRankWithMatchId:self.matchModel.matchId completion:^(NSArray<AXMatchAnalysisTeamRankModel *> * _Nonnull teamRankModel) {
+    int limit = self.isRequest10 ? 10 : 6;
+    [self.request requestTeamRankWithMatchId:self.matchModel.matchId limit: limit completion:^(NSArray<AXMatchAnalysisTeamRankModel *> * _Nonnull teamRankModel) {
         strongSelf(self);
         [self.view ax_hideLoading];
         self.teamRankModel = teamRankModel;
         [self.tableview reloadData];
     }];
     
-    [self.request requestRivalryRecordWithMatchId:self.matchModel.matchId completion:^(AXMatchAnalysisRivalryRecordModel * _Nonnull rivalryRecordModel) {
+    [self.request requestRivalryRecordWithMatchId:self.matchModel.matchId limit: limit completion:^(AXMatchAnalysisRivalryRecordModel * _Nonnull rivalryRecordModel) {
         strongSelf(self);
         [self.view ax_hideLoading];
         self.rivalryRecordModel = rivalryRecordModel;
         [self.tableview reloadData];
     }];
     
-    [self.request requestTeamRecordWithMatchId:self.matchModel.matchId isHostTeam:true completion:^(AXMatchAnalysisTeamRecordModel * _Nonnull teamRecordModel) {
+    [self.request requestTeamRecordWithMatchId:self.matchModel.matchId isHostTeam:true limit: limit completion:^(AXMatchAnalysisTeamRecordModel * _Nonnull teamRecordModel) {
         strongSelf(self);
         self.hostTeamRecordModel = teamRecordModel;
         [self.tableview reloadData];
     }];
     
-    [self.request requestTeamRecordWithMatchId:self.matchModel.matchId isHostTeam:false completion:^(AXMatchAnalysisTeamRecordModel * _Nonnull teamRecordModel) {
+    [self.request requestTeamRecordWithMatchId:self.matchModel.matchId isHostTeam:false limit: limit completion:^(AXMatchAnalysisTeamRecordModel * _Nonnull teamRecordModel) {
         strongSelf(self);
         self.awayTeamRecordModel = teamRecordModel;
         [self.tableview reloadData];
@@ -87,6 +90,13 @@
     if (indexPath.row == 0) {
         AXMatchAnalysisTraditionalRankCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchAnalysisTraditionalRankCell.class) forIndexPath:indexPath];
         cell.teamRankModel = self.teamRankModel;
+        weakSelf(self)
+        cell.block = ^(BOOL isValue) {
+            strongSelf(self)
+            self.isRequest10 = isValue;
+            [self requestData];
+            [self.view ax_showLoading];
+        };
         return cell;
     } else {
         AXMatchAnalysisTraditionalMatchCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchAnalysisTraditionalMatchCell.class) forIndexPath:indexPath];
@@ -94,6 +104,7 @@
         cell.rivalryRecordModel = self.rivalryRecordModel;
         cell.hostTeamRecordModel = self.hostTeamRecordModel;
         cell.awayTeamRecordModel = self.awayTeamRecordModel;
+        cell.isRequest10 = self.isRequest10;
         return cell;
     }
 }

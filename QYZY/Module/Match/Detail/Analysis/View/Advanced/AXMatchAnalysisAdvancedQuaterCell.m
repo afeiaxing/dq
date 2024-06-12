@@ -6,11 +6,13 @@
 //
 
 #import "AXMatchAnalysisAdvancedQuaterCell.h"
+#import "AXSwitchView.h"
 
 @interface AXMatchAnalysisAdvancedQuaterCell()
 
 @property (nonatomic, strong) UIView *BgView;
 @property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) AXSwitchView *switchView;
 
 @property (nonatomic, strong) UIView *scoreBGView;
 @property (nonatomic, strong) UILabel *scoreTeamTitle;
@@ -68,6 +70,13 @@
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.offset(22);
         make.left.offset(15);
+    }];
+    
+    [self.BgView addSubview:self.switchView];
+    [self.switchView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.offset(-19);
+        make.centerY.equalTo(self.titleLabel);
+        make.size.mas_equalTo(CGSizeMake([AXSwitchView viewWidth], [AXSwitchView viewHeight]));
     }];
     
     [self.BgView addSubview:self.scoreBGView];
@@ -305,6 +314,18 @@
         _titleLabel.text = @"Single Quarter";
     }
     return _titleLabel;
+}
+
+- (AXSwitchView *)switchView{
+    if (!_switchView) {
+        _switchView = [AXSwitchView new];
+        weakSelf(self)
+        _switchView.block = ^(BOOL isValue) {
+            strongSelf(self)
+            !self.block ? : self.block(isValue);
+        };
+    }
+    return _switchView;
 }
 
 - (UIView *)scoreBGView{

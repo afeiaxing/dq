@@ -17,7 +17,7 @@
     NSMutableDictionary *dict = @{}.mutableCopy;
     [dict setValue:self.matchId forKey:@"matchId"];
     [dict setValue:AXProductTypeKey forKey:@"productType"];
-    [dict setValue:@1000 forKey:@"limit"];
+    [dict setValue:@(self.limit) forKey:@"limit"];
     return dict;
 }
 

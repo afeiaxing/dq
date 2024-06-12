@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) BOOL isHostTeam;
 @property (nonatomic, strong) NSString *matchId;
+@property (nonatomic, assign) int limit;
 
 @end
 

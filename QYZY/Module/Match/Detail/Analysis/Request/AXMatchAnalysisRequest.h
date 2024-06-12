@@ -17,15 +17,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 排名
 - (void)requestTeamRankWithMatchId:(NSString *)matchId
+                             limit:(int)limit
                         completion:(void(^)(NSArray < AXMatchAnalysisTeamRankModel *>*teamRankModel))completion;
 
 /// 两队历史交锋
 - (void)requestRivalryRecordWithMatchId:(NSString *)matchId
+                                  limit:(int)limit
                              completion:(void(^)(AXMatchAnalysisRivalryRecordModel *rivalryRecordModel))completion;
 
 /// 主、客队各自赛过 & 未来赛程
 - (void)requestTeamRecordWithMatchId:(NSString *)matchId
                           isHostTeam: (BOOL)isHostTeam
+                               limit:(int)limit
                           completion:(void(^)(AXMatchAnalysisTeamRecordModel *teamRecordModel))completion;
 
 /// Advanced

@@ -158,6 +158,16 @@
     _teamRecordModel = teamRecordModel;
 }
 
+- (void)setIsHost:(BOOL)isHost{
+    self.performanceView.isHost = isHost;
+    _isHost = isHost;
+}
+
+- (void)setIsRequest10:(BOOL)isRequest10{
+    self.performanceView.isRequest10 = isRequest10;
+    _isRequest10 = isRequest10;
+}
+
 - (UIImageView *)hostLogo{
     if (!_hostLogo) {
         _hostLogo = [UIImageView new];

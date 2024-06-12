@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface AXMatchAnalysisTraditionalRankCell : UITableViewCell
 
 @property (nonatomic, strong) NSArray <AXMatchAnalysisTeamRankModel *>*teamRankModel;
+@property (nonatomic, copy) AXBoolBlock block;
 
 @end
 

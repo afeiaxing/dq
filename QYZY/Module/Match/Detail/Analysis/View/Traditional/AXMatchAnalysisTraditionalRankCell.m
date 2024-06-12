@@ -6,12 +6,14 @@
 //
 
 #import "AXMatchAnalysisTraditionalRankCell.h"
+#import "AXSwitchView.h"
 
 @interface AXMatchAnalysisTraditionalRankCell()
 
 @property (nonatomic, strong) UIView *BgView;
 
 @property (nonatomic, strong) UILabel *rankTitleLabel;
+@property (nonatomic, strong) AXSwitchView *switchView;
 @property (nonatomic, strong) NSArray *rankTitles;
 @property (nonatomic, strong) NSArray *hostRankDataLabels;
 @property (nonatomic, strong) NSArray *awayRankDataLabels;
@@ -41,10 +43,16 @@
     }];
     
     [self.BgView addSubview:self.rankTitleLabel];
-    [self.BgView addSubview:self.rankTitleLabel];
     [self.rankTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.offset(0);
         make.top.offset(23);
+    }];
+    
+    [self.BgView addSubview:self.switchView];
+    [self.switchView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.offset(-19);
+        make.centerY.equalTo(self.rankTitleLabel);
+        make.size.mas_equalTo(CGSizeMake([AXSwitchView viewWidth], [AXSwitchView viewHeight]));
     }];
     
     CGFloat titleW = ScreenWidth / self.rankTitles.count;
@@ -150,6 +158,18 @@
         _rankTitleLabel.text = @"Team Ranking";
     }
     return _rankTitleLabel;
+}
+
+- (AXSwitchView *)switchView{
+    if (!_switchView) {
+        _switchView = [AXSwitchView new];
+        weakSelf(self)
+        _switchView.block = ^(BOOL isValue) {
+            strongSelf(self)
+            !self.block ? : self.block(isValue);
+        };
+    }
+    return _switchView;
 }
 
 - (NSArray *)rankTitles{

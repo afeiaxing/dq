@@ -23,6 +23,7 @@ typedef enum : NSUInteger {
 
 typedef void(^AXVoldBlock) (void);
 typedef void(^AXIntBlock) (int num);
+typedef void(^AXBoolBlock) (BOOL isValue);
 typedef void(^AXStringBlock) (NSString *string);
 
 #define ScreenWidth UIScreen.mainScreen.bounds.size.width

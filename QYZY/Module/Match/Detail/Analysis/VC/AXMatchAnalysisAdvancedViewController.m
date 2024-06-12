@@ -15,6 +15,8 @@
 @property (nonatomic, strong) UITableView *tableview;
 @property (nonatomic, strong) AXMatchAnalysisRequest *request;
 @property (nonatomic, strong) AXMatchAnalysisAdvancedModel *advancedModel;
+// 是否请求10条数据，yes：10，no：6
+@property (nonatomic, assign) BOOL isRequest10;
 
 @end
 
@@ -38,7 +40,8 @@
 - (void)requestData{
     [self.view ax_showLoading];
     weakSelf(self);
-    [self.request requestTeamAdvancedWithMatchId:self.matchModel.matchId limit:6 completion:^(AXMatchAnalysisAdvancedModel * _Nonnull advancedModel) {
+    int limit = self.isRequest10 ? 10 : 6;
+    [self.request requestTeamAdvancedWithMatchId:self.matchModel.matchId limit:limit completion:^(AXMatchAnalysisAdvancedModel * _Nonnull advancedModel) {
         strongSelf(self);
         [self.view ax_hideLoading];
         self.advancedModel = advancedModel;
@@ -64,6 +67,13 @@
         AXMatchAnalysisAdvancedQuaterCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchAnalysisAdvancedQuaterCell.class) forIndexPath:indexPath];
         cell.matchModel = self.matchModel;
         cell.advancedModel = self.advancedModel;
+        weakSelf(self)
+        cell.block = ^(BOOL isValue) {
+            strongSelf(self)
+            self.isRequest10 = isValue;
+            [self requestData];
+            [self.view ax_showLoading];
+        };
         return cell;
     } else {
         AXMatchAnalysisAdvancedTeamStatsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchAnalysisAdvancedTeamStatsCell.class) forIndexPath:indexPath];

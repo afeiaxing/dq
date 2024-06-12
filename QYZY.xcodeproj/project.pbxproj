@@ -178,6 +178,7 @@
 		F303A1182C17209A00230E25 /* AXDashedLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A1172C17209A00230E25 /* AXDashedLineView.m */; };
 		F303A11B2C173EF400230E25 /* UIColor+AXGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A11A2C173EF400230E25 /* UIColor+AXGradient.m */; };
 		F303A11F2C18775D00230E25 /* AXSlantedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A11E2C18775D00230E25 /* AXSlantedView.m */; };
+		F303A1232C197B1800230E25 /* AXSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A1222C197B1800230E25 /* AXSwitchView.m */; };
 		F36D875C2C0B0383001F37F0 /* AXToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = F36D875B2C0B0383001F37F0 /* AXToastView.m */; };
 		F36D875F2C0B045C001F37F0 /* UIView+AXToast.m in Sources */ = {isa = PBXBuildFile; fileRef = F36D875E2C0B045C001F37F0 /* UIView+AXToast.m */; };
 		F36D87622C0B098D001F37F0 /* UIView+CSToast.m in Sources */ = {isa = PBXBuildFile; fileRef = F36D87602C0B098C001F37F0 /* UIView+CSToast.m */; };
@@ -585,6 +586,8 @@
 		F303A11A2C173EF400230E25 /* UIColor+AXGradient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AXGradient.m"; sourceTree = "<group>"; };
 		F303A11D2C18775D00230E25 /* AXSlantedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXSlantedView.h; sourceTree = "<group>"; };
 		F303A11E2C18775D00230E25 /* AXSlantedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXSlantedView.m; sourceTree = "<group>"; };
+		F303A1212C197B1800230E25 /* AXSwitchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXSwitchView.h; sourceTree = "<group>"; };
+		F303A1222C197B1800230E25 /* AXSwitchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXSwitchView.m; sourceTree = "<group>"; };
 		F36D875A2C0B0383001F37F0 /* AXToastView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXToastView.h; sourceTree = "<group>"; };
 		F36D875B2C0B0383001F37F0 /* AXToastView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXToastView.m; sourceTree = "<group>"; };
 		F36D875D2C0B045C001F37F0 /* UIView+AXToast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+AXToast.h"; sourceTree = "<group>"; };
@@ -1530,6 +1533,15 @@
 			path = AXSlantedView;
 			sourceTree = "<group>";
 		};
+		F303A1202C197B0600230E25 /* AXSwitchView */ = {
+			isa = PBXGroup;
+			children = (
+				F303A1212C197B1800230E25 /* AXSwitchView.h */,
+				F303A1222C197B1800230E25 /* AXSwitchView.m */,
+			);
+			path = AXSwitchView;
+			sourceTree = "<group>";
+		};
 		F36D87592C0B036E001F37F0 /* Toast */ = {
 			isa = PBXGroup;
 			children = (
@@ -2091,6 +2103,7 @@
 		F551043428E344F9001E9BC5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F303A1202C197B0600230E25 /* AXSwitchView */,
 				F303A11C2C18774500230E25 /* AXSlantedView */,
 				F303A1152C17208500230E25 /* AXDashedLineView */,
 				CB840B902C158FA700EE27AF /* AXMarqueeView */,
@@ -2324,6 +2337,7 @@
 				55B04A7328E593CB00A82F1F /* JXPagerListRefreshView.m in Sources */,
 				AE65E0F32907DDBB0053CA49 /* QYZYMatchOverHelpView.m in Sources */,
 				F36D876B2C0DEEEC001F37F0 /* AXMatchListFilterCell.m in Sources */,
+				F303A1232C197B1800230E25 /* AXSwitchView.m in Sources */,
 				CB32C7AF2BF5FD9100B2E277 /* AXProfileViewController.m in Sources */,
 				555CE93F28F6B82E0085F1D4 /* QYZYMatchApi.m in Sources */,
 				F37E5E082BF8A4840049FAE1 /* AXMatchLineupPlayerStatsView.m in Sources */,

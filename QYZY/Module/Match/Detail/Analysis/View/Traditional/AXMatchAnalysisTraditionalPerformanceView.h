@@ -19,6 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 // 主队 / 客队 数据
 @property (nonatomic, strong) AXMatchAnalysisTeamRecordModel *teamRecordModel;
 
+@property (nonatomic, assign) BOOL isHost;
+@property (nonatomic, assign) BOOL isRequest10;
+
 @end
 
 NS_ASSUME_NONNULL_END

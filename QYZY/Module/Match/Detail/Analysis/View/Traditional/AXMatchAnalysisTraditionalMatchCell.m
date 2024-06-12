@@ -92,6 +92,13 @@
     _awayTeamRecordModel = awayTeamRecordModel;
 }
 
+- (void)setIsRequest10:(BOOL)isRequest10{
+    self.allView.isRequest10 = isRequest10;
+    self.hostView.isRequest10 = isRequest10;
+    self.awayView.isRequest10 = isRequest10;
+    _isRequest10 = isRequest10;
+}
+
 - (JXCategoryTitleView *)categoryView {
     if (!_categoryView) {
         _categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 48)];
@@ -130,6 +137,7 @@
     if (!_allView) {
         _allView = [AXMatchAnalysisTraditionalMatchView new];
         _allView.viewType = AXMatchAnalysisTraditionalMatchViewType_all;
+        _allView.isHost = true;
     }
     return _allView;
 }
@@ -138,6 +146,7 @@
     if (!_hostView) {
         _hostView = [AXMatchAnalysisTraditionalMatchView new];
         _hostView.viewType = AXMatchAnalysisTraditionalMatchViewType_host;
+        _hostView.isHost = true;
     }
     return _hostView;
 }
@@ -146,6 +155,7 @@
     if (!_awayView) {
         _awayView = [AXMatchAnalysisTraditionalMatchView new];
         _awayView.viewType = AXMatchAnalysisTraditionalMatchViewType_away;
+        _awayView.isHost = false;
     }
     return _awayView;
 }

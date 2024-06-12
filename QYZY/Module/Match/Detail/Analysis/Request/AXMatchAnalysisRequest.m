@@ -14,9 +14,11 @@
 @implementation AXMatchAnalysisRequest
 
 - (void)requestTeamRankWithMatchId:(NSString *)matchId
-                             completion:(void(^)(NSArray < AXMatchAnalysisTeamRankModel *>*teamRankModel))completion{
+                             limit:(int)limit
+                        completion:(void(^)(NSArray < AXMatchAnalysisTeamRankModel *>*teamRankModel))completion{
     AXMatchAnalysisTeamRankApi *api = [AXMatchAnalysisTeamRankApi new];
     api.matchId = matchId;
+    api.limit = limit;
     [api ax_startWithCompletionSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         NSArray *array;
         if (api.isRequestSuccess) {
@@ -29,9 +31,11 @@
 }
 
 - (void)requestRivalryRecordWithMatchId:(NSString *)matchId
-                                  completion:(void(^)(AXMatchAnalysisRivalryRecordModel *rivalryRecordModel))completion{
+                                  limit:(int)limit
+                             completion:(void(^)(AXMatchAnalysisRivalryRecordModel *rivalryRecordModel))completion{
     AXMatchAnalysisRivalryRecordApi *api = [AXMatchAnalysisRivalryRecordApi new];
     api.matchId = matchId;
+    api.limit = limit;
     [api ax_startWithCompletionSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         AXMatchAnalysisRivalryRecordModel *model;
         if (api.isRequestSuccess) {
@@ -45,9 +49,11 @@
 
 - (void)requestTeamRecordWithMatchId:(NSString *)matchId
                           isHostTeam: (BOOL)isHostTeam
+                               limit:(int)limit
                           completion:(void(^)(AXMatchAnalysisTeamRecordModel *teamRecordModel))completion{
     AXMatchAnalysisTeamRecordApi *api = [AXMatchAnalysisTeamRecordApi new];
     api.matchId = matchId;
+    api.limit = limit;
     api.isHostTeam = isHostTeam;
     [api ax_startWithCompletionSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         AXMatchAnalysisTeamRecordModel *model;

@@ -116,6 +116,11 @@
     _teamRecordModel = teamRecordModel;
 }
 
+- (void)setIsRequest10:(BOOL)isRequest10{
+    NSString *team = self.isHost ? @"HOME-led" : @"AWAY-led";
+    self.titleLabel.text = [NSString stringWithFormat:@"%@ performance from the last %d matches", team, isRequest10 ? 10: 6];
+}
+
 - (UIView *)containerView{
     if (!_containerView) {
         _containerView = [UIView new];
@@ -129,7 +134,6 @@
 - (UILabel *)titleLabel{
     if (!_titleLabel) {
         _titleLabel = [UILabel new];
-        _titleLabel.text = @"HOME-led performance from the last 6 matches";
         _titleLabel.font = [UIFont systemFontOfSize:12];
     }
     return _titleLabel;
