@@ -49,8 +49,8 @@ typedef void(^AXStringBlock) (NSString *string);
 
 #define AXProductTypeKey @2
 
-#define AXLeaguePlaceholderLogo [UIImage imageNamed:@""]
-#define AXTeamPlaceholderLogo [UIImage imageNamed:@""]
+#define AXLeaguePlaceholderLogo [UIImage imageNamed:@"match_team_placeholder"]
+#define AXTeamPlaceholderLogo [UIImage imageNamed:@"match_team_placeholder"]
 
 #define weakSelf(type)  __weak typeof(type) weak##type = type;
 #define strongSelf(type)  __strong typeof(weak##type) type = weak##type;
