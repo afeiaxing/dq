@@ -26,11 +26,14 @@
 @property (nonatomic, strong) NSMutableArray *sectionArray;
 @property (nonatomic, strong) NSMutableDictionary *dataSource;
 
+@property (nonatomic, strong) NSString *batchMatchIds;
+@property (nonatomic, strong) NSMutableDictionary *batchDataSource;
+
 @end
 
 #define kAXMatchListDateViewHeight 50
 #define kMatchListRefreshDuration_live 5
-#define kMatchListRefreshDuration_Schedule 60
+#define kMatchListRefreshDuration_Schedule 30
 
 @implementation QYZYMatchSubViewController
 
@@ -44,10 +47,10 @@
     self.pageNo = 1;
     self.dataSource = [NSMutableDictionary dictionary];
     self.sectionArray = [NSMutableArray array];
+    self.batchDataSource = [NSMutableDictionary dictionary];
     [self setupSubviews];
-    if (self.status == AXMatchStatusResult) {
-        [self requestData];   // 赛果页面，只需要请求一次
-    }
+    
+    [self requestMatchListData];
     [self.view ax_showLoading];
 }
 
@@ -61,8 +64,7 @@
     [super viewDidAppear:animated];
     if (!self.timer && self.status != AXMatchStatusResult) {
         int duration = self.status == AXMatchStatusLive ? kMatchListRefreshDuration_live : kMatchListRefreshDuration_Schedule;
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:duration target:self selector:@selector(requestData) userInfo:nil repeats:YES];
-        [self.timer fire];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:duration target:self selector:@selector(requestMatchBatchListData) userInfo:nil repeats:YES];
     }
 }
 
@@ -99,7 +101,8 @@
     [self.dataSource setValue:temp forKey:key];
 }
 
-- (void)requestData{
+/// 获取赛事列表
+- (void)requestMatchListData{
     NSArray *times = [self getDateTimestamp];
     NSString *startTime = times.firstObject;
     NSString *endTime = times.lastObject;
@@ -132,6 +135,19 @@
             [self handleDataSource:matchModel.result key:@"Result"];
         }
         
+        self.batchMatchIds = self.requestManager.batchMatchIds;
+        [self.tableView reloadData];
+    }];
+}
+
+/// 轮询调用
+- (void)requestMatchBatchListData{
+    NSString *matchIds = self.batchMatchIds;
+    [self.requestManager requestBatchMatchWithMatchId:matchIds completion:^(NSArray<AXMatchListItemModel *> * _Nonnull matchArray) {
+        for (AXMatchListItemModel *model in matchArray) {
+            [self.batchDataSource setValue:model forKey:model.matchId];
+        }
+        
         [self.tableView reloadData];
     }];
     
@@ -145,43 +161,38 @@
     return @[[NSString stringWithFormat:@"%.0f", start], [NSString stringWithFormat:@"%.0f", end]];
 }
 
+- (AXMatchListItemModel *)getMatchModel: (NSIndexPath *)indexPath{
+    NSString *key = self.sectionArray[indexPath.section];
+    NSArray *array = [self.dataSource valueForKey:key];
+    AXMatchListItemModel *model = array[indexPath.row];
+    
+    AXMatchListItemModel *temp = [self.batchDataSource valueForKey:model.matchId];;
+    if (temp) {
+        model = temp;
+    }
+    
+    return model;
+}
+
 - (void)endRefresh {
     [self.tableView.mj_header endRefreshing];
     [self.tableView.mj_footer endRefreshing];
 //    [self.view qyzy_hideLoading];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *key = self.sectionArray[indexPath.section];
-    NSArray *array = [self.dataSource valueForKey:key];
-    AXMatchListItemModel *model = array[indexPath.row];
-    if (model.leaguesStatus.intValue == 1) {
-        AXMatchListOddsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchListOddsCell.class) forIndexPath:indexPath];
-        cell.model = model;
-        return cell;
-    } else {
-        AXMatchListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchListTableViewCell.class) forIndexPath:indexPath];
-        cell.model = model;
-        return cell;
-    }
-    
-//        QYZYTableEmptyCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(QYZYTableEmptyCell.class) forIndexPath:indexPath];
-//        cell.contentView.backgroundColor = UIColor.whiteColor;
-//        return cell;
-}
-
+// MARK: UITableViewDelegate,UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return self.sectionArray.count;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return self.status == AXMatchStatusAll ? 30 : 0.1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSString *key = self.sectionArray[section];
     NSArray *array = [self.dataSource valueForKey:key];
     return array.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return self.status == AXMatchStatusAll ? 30 : 0.1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -198,11 +209,26 @@
     return header;
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    AXMatchListItemModel *model = [self getMatchModel:indexPath];
+    if (model.leaguesStatus.intValue == 1) {
+        AXMatchListOddsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchListOddsCell.class) forIndexPath:indexPath];
+        cell.model = model;
+        return cell;
+    } else {
+        AXMatchListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchListTableViewCell.class) forIndexPath:indexPath];
+        cell.model = model;
+        return cell;
+    }
+    
+//        QYZYTableEmptyCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(QYZYTableEmptyCell.class) forIndexPath:indexPath];
+//        cell.contentView.backgroundColor = UIColor.whiteColor;
+//        return cell;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     QYZYMatchDetailViewController *vc = [[QYZYMatchDetailViewController alloc] init];
-    NSString *key = self.sectionArray[indexPath.section];
-    NSArray *array = [self.dataSource valueForKey:key];
-    AXMatchListItemModel *model = array[indexPath.row];
+    AXMatchListItemModel *model = [self getMatchModel:indexPath];
     vc.matchModel = model;
     vc.hidesBottomBarWhenPushed = YES;
     [UIViewController.currentViewController.navigationController pushViewController:vc animated:YES];
@@ -223,11 +249,11 @@
             // 下拉刷新清空数据
             [self.sectionArray removeAllObjects];
             [self.dataSource removeAllObjects];
-            [self requestData];
+            [self requestMatchListData];
         }];
         _tableView.mj_footer = [MJRefreshAutoStateFooter footerWithRefreshingBlock:^{
             self.pageNo += 1;
-            [self requestData];
+            [self requestMatchListData];
         }];
         [_tableView registerClass:AXMatchListTableViewCell.class forCellReuseIdentifier:NSStringFromClass(AXMatchListTableViewCell.class)];
         [_tableView registerClass:AXMatchListOddsCell.class forCellReuseIdentifier:NSStringFromClass(AXMatchListOddsCell.class)];
@@ -247,7 +273,7 @@
             self.dateString = dateString;
             [self.sectionArray removeAllObjects];
             [self.dataSource removeAllObjects];
-            [self requestData];
+            [self requestMatchListData];
             [self.view ax_showLoading];
         };
     }

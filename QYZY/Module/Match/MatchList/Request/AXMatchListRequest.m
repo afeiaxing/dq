@@ -7,9 +7,11 @@
 
 #import "AXMatchListRequest.h"
 #import "AXMatchListApi.h"
+#import "AXMatchBatchApi.h"
 
 @implementation AXMatchListRequest
 
+// MARK: Public
 - (void)requestMatchListWithType: (AXMatchStatus)type
                           pageNo: (int)pageNo
                        startTime: (NSString *)startTime
@@ -48,6 +50,23 @@
     }];
 }
 
+- (void)requestBatchMatchWithMatchId: (NSString *)matchIds
+                          completion: (void(^)(NSArray <AXMatchListItemModel *> *matchArray))completion{
+    AXMatchBatchApi *api = [AXMatchBatchApi new];
+    api.matchIds = matchIds;
+    
+    [api ax_startWithCompletionSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSArray *array;
+        if (api.isRequestSuccess) {
+            array = [NSArray yy_modelArrayWithClass:AXMatchListItemModel.class json:api.bizData];
+        }
+        !completion ? : completion(array);
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        !completion ? : completion(nil);
+    }];
+}
+
+// MARK: Private
 - (AXMatchListModel *)handleMatchListWithArray: (NSArray *)array{
     AXMatchListModel *model = [AXMatchListModel new];
     
@@ -55,19 +74,28 @@
     NSMutableArray *live = [NSMutableArray array];
     NSMutableArray *result = [NSMutableArray array];
     
-    for (AXMatchListItemModel *match in array) {
-        if (match.leaguesStatus.intValue == 10) {
-            [result addObject:match];
-        } else if (match.leaguesStatus.intValue == 1) {
-            [schedule addObject:match];
+    NSMutableString *temp = [NSMutableString string];
+    
+    for (AXMatchListItemModel *model in array) {
+        if (model.leaguesStatus.intValue == 10) {
+            [result addObject:model];
+        } else if (model.leaguesStatus.intValue == 1) {
+            [schedule addObject:model];
+//            [temp appendFormat:@"%@,", model.matchId];
         } else {
-            [live addObject:match];
+            [live addObject:model];
+            [temp appendFormat:@"%@,", model.matchId];
         }
     }
     
     model.schedule = schedule.copy;
     model.live = live.copy;
     model.result = result.copy;
+    
+    if (temp.length > 0) {
+        [temp replaceCharactersInRange:NSMakeRange(temp.length - 1, 1) withString:@""];
+    }
+    self.batchMatchIds = temp.copy;
     
     return model;
 }

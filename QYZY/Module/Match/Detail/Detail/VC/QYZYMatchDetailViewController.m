@@ -11,7 +11,7 @@
 #import "AXMatchStandingsViewController.h"
 #import "AXMatchLineupViewController.h"
 #import "AXMatchAnalysisViewController.h"
-#import "AXMatchDetailRequest.h"
+#import "AXMatchListRequest.h"
 #import "AXMatchDetailNavigationView.h"
 #import "AXMatchDetailHeaderView.h"
 
@@ -31,7 +31,7 @@
 
 @property (nonatomic, strong) NSTimer *timer;
 
-@property (nonatomic, strong) AXMatchDetailRequest *request;
+@property (nonatomic, strong) AXMatchListRequest *request;
 
 @end
 
@@ -92,8 +92,9 @@
 
 - (void)requestData {
     weakSelf(self);
-    [self.request requestMatchDetailWithMatchId:self.matchModel.matchId completion:^(NSArray<AXMatchListItemModel *> * _Nonnull matchArray) {
+    [self.request requestBatchMatchWithMatchId:self.matchModel.matchId completion:^(NSArray<AXMatchListItemModel *> * _Nonnull matchArray) {
         if (matchArray && matchArray.count) {
+            strongSelf(self)
             self.matchModel = matchArray.firstObject;
             [self setInitData];
         }
@@ -224,9 +225,9 @@
     return @[@"Standings", @"Lineup", @"Analysis"];
 }
 
-- (AXMatchDetailRequest *)request{
+- (AXMatchListRequest *)request{
     if (!_request) {
-        _request = [AXMatchDetailRequest new];
+        _request = [AXMatchListRequest new];
     }
     return _request;
 }
