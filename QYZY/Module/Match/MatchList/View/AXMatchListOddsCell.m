@@ -156,7 +156,7 @@
     CGFloat marketViewW = (ScreenWidth - kAXMatchListMarketViewLeftMargin - kAXMatchListMarketViewRightMargin) / marketViewCount;
     NSMutableArray *temp = [NSMutableArray array];
     for (int i = 0; i < marketViewCount; i++) {
-        AXMatchListScoreCustomView *view = [AXMatchListScoreCustomView new];
+        AXMatchListScoreCustomView *view = [[AXMatchListScoreCustomView alloc] initWithHostscoreTopMargin:0];
         view.marketType = (AXMatchListScoreCustomMarketType)i;
         [self.containerView addSubview:view];
         [temp addObject:view];
@@ -182,7 +182,8 @@
     self.hostName.text = model.homeTeamName;
     self.awayName.text = model.awayTeamName;
     self.handicap.text = model.spread;
-    self.handicap.text = [NSString stringWithFormat:@"%.1f", fabsf(model.spread.floatValue)];
+    NSString *handicap = [self handleNullData:model.spread];
+    self.handicap.text = handicap.length ? [NSString stringWithFormat:@"%.1f", fabsf(model.spread.floatValue)] : handicap;
     [self.handicap mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(model.spread.intValue > 0 ? self.hostLogo : self.awayLogo);
         make.left.offset(154);
@@ -194,9 +195,12 @@
     for (AXMatchListScoreCustomView *view in self.marketViews) {
         if (view.marketType == AXMatchListScoreCustomMarketTypeHandicap) {
             view.datas = @[[self handleNullData:model.homeOdds], [self handleNullData:model.awayOdds]];
-        } else if (view.viewType == AXMatchListScoreCustomMarketTypeOU) {
-            view.datas = @[[NSString stringWithFormat:@"O%@",[self handleNullData:model.ballScore]], [NSString stringWithFormat:@"U%@",[self handleNullData:model.ballScore]]];
-        } else if (view.viewType == AXMatchListScoreCustomMarketTypeMoneyline) {
+        } else if (view.marketType == AXMatchListScoreCustomMarketTypeOU) {
+            NSString *ou = [self handleNullData:model.ballScore];
+            NSString *o = ou.length ? [NSString stringWithFormat:@"O%@",ou] : @"";
+            NSString *u = ou.length ? [NSString stringWithFormat:@"U%@",ou] : @"";
+            view.datas = @[o, u];
+        } else if (view.marketType == AXMatchListScoreCustomMarketTypeMoneyline) {
             view.datas = @[[NSString stringWithFormat:@"%@",[self handleNullData:model.bigBallOdds]], [NSString stringWithFormat:@"%@",[self handleNullData:model.smallBallOdds]]];
         }
     }

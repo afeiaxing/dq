@@ -32,6 +32,12 @@ typedef NS_ENUM(NSInteger ,AXMatchListScoreCustomMarketType) {
 
 - (instancetype)initWithHostscoreTopMargin: (CGFloat)hostscoreTopMargin;
 
+// 禁用不应该使用的初始化方法
++ (instancetype)new NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
+- (instancetype)initWithCoder:(NSCoder *)coder NS_UNAVAILABLE;
+
 @end
 
 NS_ASSUME_NONNULL_END
