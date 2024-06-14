@@ -12,6 +12,12 @@
 #import "AXMatchFilterBottomView.h"
 #import "AXMatchFilterRequest.h"
 
+typedef enum : NSUInteger {
+    AXMatchListFilterTypeAll,
+    AXMatchListFilterTypeNBA,
+    AXMatchListFilterTypePBA,
+} AXMatchListFilterType;
+
 @interface AXMatchFilterViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) AXMatchFilterTopView *topFilterView;
@@ -22,6 +28,10 @@
 @property (nonatomic, strong) NSArray *indexArray;
 @property (nonatomic, strong) NSDictionary *dataSource;
 @property (nonatomic, assign) int totalMatchCount;
+
+@property (nonatomic, assign) AXMatchListFilterType filterType;
+@property (nonatomic, strong) AXMatchFilterItenModel *nbaFilterModel;
+@property (nonatomic, strong) AXMatchFilterItenModel *pbaFilterModel;
 
 @end
 
@@ -102,34 +112,114 @@
     self.bottomView.totalMatchCount = self.totalMatchCount;
 }
 
-// 计算赛事总数
+// 计算赛事总数，和赋值nba和pba Model
 - (void)handleTotalMatchCount: (NSArray *)array{
     for (AXMatchFilterItenModel *model in array) {
         self.totalMatchCount += model.items.intValue;
+    
+        model.isSelected = true;  // 默认选中
+        if ([model.shortName isEqualToString:@"NBA"]) {
+            self.nbaFilterModel = model;
+        }
+        
+        if ([model.shortName isEqualToString:@"PBA"]) {
+            self.pbaFilterModel = model;
+        }
     }
 }
 
+// 切换all、nba、pba
+- (void)handleFilterWithIndex: (int)index{
+    self.filterType = (AXMatchListFilterType)index;
+    [self.tableView reloadData];
+}
+
+// 全选
+- (void)handleSelectAll {
+    for (NSString *str in self.indexArray) {
+        NSArray *modelArray = [self.dataSource valueForKey:str];
+        for (AXMatchFilterItenModel *model in modelArray) {
+            model.isSelected = true;
+        }
+    }
+//    self.nbaFilterModel.isSelected = true;
+//    self.pbaFilterModel.isSelected = true;
+    
+    [self.tableView reloadData];
+}
+
+// 反选
+- (void)handleReverse {
+    for (NSString *str in self.indexArray) {
+        NSArray *modelArray = [self.dataSource valueForKey:str];
+        for (AXMatchFilterItenModel *model in modelArray) {
+            model.isSelected = !model.isSelected;
+        }
+    }
+//    self.nbaFilterModel.isSelected = !self.nbaFilterModel.isSelected;
+//    self.pbaFilterModel.isSelected = !self.pbaFilterModel.isSelected;
+    
+    [self.tableView reloadData];
+}
+
+// 确认
+- (void)handeConfirm{
+    NSMutableArray *temp = [NSMutableArray array];
+    BOOL isSelectAll = true;
+    for (NSString *str in self.indexArray) {
+        NSArray *modelArray = [self.dataSource valueForKey:str];
+        for (AXMatchFilterItenModel *model in modelArray) {
+            if (model.isSelected) {
+                [temp addObject:model.shortName];
+            } else {
+                isSelectAll = false;
+            }
+        }
+    }
+    
+    !self.block ? : self.block(isSelectAll, temp.copy);
+}
+
 // MARK: UITableViewDelegate,UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    if (self.filterType == AXMatchListFilterTypeNBA) {
+        return self.nbaFilterModel ? 1 : 0;
+    } else if (self.filterType == AXMatchListFilterTypePBA) {
+        return self.pbaFilterModel ? 1 : 0;
+    } else {
+        return self.indexArray.count;
+    }
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (self.filterType == AXMatchListFilterTypeNBA) {
+        return self.nbaFilterModel ? 1 : 0;
+    } else if (self.filterType == AXMatchListFilterTypePBA) {
+        return self.pbaFilterModel ? 1 : 0;
+    } else {
+        NSString *indexString = self.indexArray[section];
+        NSArray *array = [self.dataSource valueForKey:indexString];
+        return array.count;
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AXMatchListFilterCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(AXMatchListFilterCell.class) forIndexPath:indexPath];
     NSString *indexString = self.indexArray[indexPath.section];
     NSArray *array = [self.dataSource valueForKey:indexString];
-    cell.model = array[indexPath.row];
+    
+    if (self.filterType == AXMatchListFilterTypeNBA) {
+        cell.model = self.nbaFilterModel;
+    } else if (self.filterType == AXMatchListFilterTypePBA) {
+        cell.model = self.pbaFilterModel;
+    } else {
+        cell.model = array[indexPath.row];
+    }
     return cell;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return self.indexArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 40;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSString *indexString = self.indexArray[section];
-    NSArray *array = [self.dataSource valueForKey:indexString];
-    return array.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -146,6 +236,11 @@
 - (AXMatchFilterTopView *)topFilterView{
     if (!_topFilterView) {
         _topFilterView = [AXMatchFilterTopView new];
+        weakSelf(self)
+        _topFilterView.block = ^(int num) {
+            strongSelf(self)
+            [self handleFilterWithIndex:num];
+        };
     }
     return _topFilterView;
 }
@@ -165,13 +260,7 @@
     }
     return _tableView;
 }
-/**
- _liveVC.requestBlock = ^{
-     strongSelf(self);
-     [self requestData];
- };
-}
- */
+
 - (AXMatchFilterBottomView *)bottomView{
     if (!_bottomView) {
         weakSelf(self);
@@ -180,12 +269,13 @@
             strongSelf(self)
             switch (eventType) {
                 case AXMatchFilterBottomEvent_selectall:
-                    AXLog(@"AXMatchFilterBottomEvent_selectall");
+                    [self handleSelectAll];
                     break;
                 case AXMatchFilterBottomEvent_reverse:
-                    AXLog(@"AXMatchFilterBottomEvent_reverse");
+                    [self handleReverse];
                     break;
                 case AXMatchFilterBottomEvent_confirm:
+                    [self handeConfirm];
                     [self.navigationController popViewControllerAnimated:true];
                     break;
                     

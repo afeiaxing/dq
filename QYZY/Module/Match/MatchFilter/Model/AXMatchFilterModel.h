@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *shortName;
 @property (nonatomic, strong) NSString *items;
 
+@property (nonatomic, assign) BOOL isSelected;
+
 @end
 
 @interface AXMatchFilterModel : NSObject

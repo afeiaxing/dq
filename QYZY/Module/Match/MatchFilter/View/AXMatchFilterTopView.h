@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AXMatchFilterTopView : UIView
 
+@property (nonatomic, copy) AXIntBlock block;
+
 @end
 
 NS_ASSUME_NONNULL_END

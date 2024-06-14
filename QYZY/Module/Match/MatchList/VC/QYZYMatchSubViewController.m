@@ -29,6 +29,8 @@
 @property (nonatomic, strong) NSString *batchMatchIds;
 @property (nonatomic, strong) NSMutableDictionary *batchDataSource;
 
+@property (nonatomic, strong) NSString *filterString;
+
 @end
 
 #define kAXMatchListDateViewHeight 50
@@ -39,6 +41,16 @@
 
 - (UIView *)listView {
     return self.view;
+}
+
+- (void)handleFilterDataWithLeagues: (NSString *)leagues{
+    self.filterString = leagues;
+    
+    [self.sectionArray removeAllObjects];
+    [self.dataSource removeAllObjects];
+    
+    [self requestMatchListData];
+    [self.view ax_showLoading];
 }
 
 - (void)viewDidLoad {
@@ -107,7 +119,7 @@
     NSString *startTime = times.firstObject;
     NSString *endTime = times.lastObject;
     weakSelf(self);
-    [self.requestManager requestMatchListWithType:self.status pageNo:self.pageNo startTime:startTime endTime:endTime filter:@"" completion:^(AXMatchListModel * _Nonnull matchModel, BOOL hasMoreData) {
+    [self.requestManager requestMatchListWithType:self.status pageNo:self.pageNo startTime:startTime endTime:endTime filter:self.filterString completion:^(AXMatchListModel * _Nonnull matchModel, BOOL hasMoreData) {
         strongSelf(self);
         [self.view ax_hideLoading];
         [self endRefresh];

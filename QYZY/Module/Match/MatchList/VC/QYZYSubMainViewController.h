@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic ,assign) QYZYMatchType matchType;
 @property (nonatomic, strong) NSString *currentDateString;
 
+- (void)handleFilterDataWithLeagues: (NSString *)leagues;
+
 @end
 
 NS_ASSUME_NONNULL_END

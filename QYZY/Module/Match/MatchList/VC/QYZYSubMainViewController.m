@@ -20,6 +20,8 @@
 @property (nonatomic ,strong) QYZYMatchSubViewController *scheduleVC;
 @property (nonatomic ,strong) QYZYMatchSubViewController *favoriteVC;
 
+@property (nonatomic, assign) AXMatchStatus currentMatchStatus;
+
 @end
 
 @implementation QYZYSubMainViewController
@@ -27,7 +29,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = UIColor.whiteColor;
+    self.currentMatchStatus = AXMatchStatusAll;
     [self setupSubViews];
+}
+
+- (void)handleFilterDataWithLeagues: (NSString *)leagues{
+    if (self.currentMatchStatus == AXMatchStatusAll) {
+        [self.allVC handleFilterDataWithLeagues:leagues];
+    } else if (self.currentMatchStatus == AXMatchStatusSchedule) {
+        [self.scheduleVC handleFilterDataWithLeagues:leagues];
+    } else if (self.currentMatchStatus == AXMatchStatusLive) {
+        [self.liveVC handleFilterDataWithLeagues:leagues];
+    } else if (self.currentMatchStatus == AXMatchStatusResult) {
+        [self.resultVC handleFilterDataWithLeagues:leagues];
+    }
 }
 
 - (UIView *)listView {
@@ -52,6 +67,10 @@
 #pragma mark - delegate
 - (BOOL)categoryView:(JXCategoryBaseView *)categoryView canClickItemAtIndex:(NSInteger)index {
     return categoryView.selectedIndex != index;
+}
+
+- (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index{
+    self.currentMatchStatus = index;
 }
 
 - (NSInteger)numberOfListsInlistContainerView:(JXCategoryListContainerView *)listContainerView {

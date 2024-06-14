@@ -59,12 +59,14 @@
 
 - (void)handleBtnEvent: (UIButton *)btn{
     btn.selected = !btn.selected;
+    self.model.isSelected = !self.model.isSelected;
 }
 
 // MARK: setter & getter
 - (void)setModel:(AXMatchFilterItenModel *)model{
     self.leagueNameLabel.text = model.shortName;
     self.matchCountLabel.text = model.items;
+    self.selectedBtn.selected = model.isSelected;
     _model = model;
 }
 

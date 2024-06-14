@@ -24,6 +24,8 @@
 @property (nonatomic, strong) UIButton *filterBtn;
 @property (nonatomic, strong) UIButton *settingBtn;
 
+@property (nonatomic, strong) NSString *filterString;
+
 @end
 
 @implementation QYZYMatchViewController
@@ -99,6 +101,25 @@
 - (void)handleFilterBtnEvent{
     AXMatchFilterViewController *vc = [AXMatchFilterViewController new];
     vc.hidesBottomBarWhenPushed = YES;
+    vc.block = ^(BOOL isSelectAll, NSArray * _Nonnull selectLeagues) {
+        if (isSelectAll) {
+            self.filterString = nil;
+        } else {
+            NSMutableString *str = [NSMutableString string];
+            
+            for (NSString *leagueName in selectLeagues) {
+                [str appendFormat:@"%@,@,", leagueName];
+            }
+            
+            if (str.length) {
+                [str replaceCharactersInRange:NSMakeRange(str.length - 3, 3) withString:@""];
+            }
+            
+            self.filterString = str.copy;
+        }
+        
+        [self.basketVC handleFilterDataWithLeagues:self.filterString];
+    };
     [self.navigationController pushViewController:vc animated:true];
 }
 

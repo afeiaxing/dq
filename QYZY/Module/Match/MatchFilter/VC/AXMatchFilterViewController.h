@@ -9,7 +9,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^AXMatchFilterBlock) (BOOL isSelectAll, NSArray *selectLeagues);
+
 @interface AXMatchFilterViewController : QYZYBaseViewController
+
+@property (nonatomic, copy) AXMatchFilterBlock block;
 
 @end
 

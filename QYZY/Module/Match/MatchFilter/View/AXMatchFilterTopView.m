@@ -27,7 +27,8 @@
 
 // MARK: private
 - (void)setupSubviews{
-    NSArray *dataSource = @[@"ALL", @"HOT", @"NBA", @"PBA"];
+//    NSArray *dataSource = @[@"ALL", @"HOT", @"NBA", @"PBA"];
+    NSArray *dataSource = @[@"ALL", @"NBA", @"PBA"];
     CGFloat leftMargin = 16;
     
     NSMutableArray *btns = [NSMutableArray array];
@@ -49,6 +50,7 @@
         btn.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, -5);
         btn.backgroundColor = i == 0 ? rgba(255, 88, 0, 0.05) : UIColor.whiteColor;
         [btn addTarget:self action:@selector(handleBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
+        btn.tag = i;
         [btns addObject:btn];
     }
     
@@ -73,6 +75,8 @@
     self.lastSelectedBtn.selected = false;
     
     self.lastSelectedBtn = btn;
+    
+    !self.block ? : self.block((int)btn.tag);
 }
 
 // MARK: setter & getter
