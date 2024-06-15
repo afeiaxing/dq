@@ -98,7 +98,6 @@
 		55EADDC928E70392008324AE /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55EADDC828E70391008324AE /* IJKMediaFramework.framework */; };
 		55EADDCD28E706BB008324AE /* ZFIJKPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EADDCB28E706BA008324AE /* ZFIJKPlayerManager.m */; };
 		55EADDCF28E70863008324AE /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 55EADDCE28E70863008324AE /* libc++.tbd */; };
-		9B21D03028EA844200AC6F0D /* QYZYEmptyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B21D02F28EA844200AC6F0D /* QYZYEmptyCell.m */; };
 		9B89964429077EDB007D3A79 /* QYZYPlayerDataCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B89964329077EDB007D3A79 /* QYZYPlayerDataCollectionCell.m */; };
 		9B89964729077EF2007D3A79 /* QYZYPlayerDataHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B89964629077EF2007D3A79 /* QYZYPlayerDataHeaderCell.m */; };
 		9B89964A29077FB5007D3A79 /* QYZYPlayerTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B89964929077FB5007D3A79 /* QYZYPlayerTitleCell.m */; };
@@ -144,7 +143,6 @@
 		B14A63BD28EAF05700476EAE /* QYZYMineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B14A63BC28EAF05700476EAE /* QYZYMineModel.m */; };
 		B1728B3728E58BFE00419F67 /* QYZYScheduleHeaderVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = B1728B3628E58BFE00419F67 /* QYZYScheduleHeaderVIew.m */; };
 		B1728B3A28E5937A00419F67 /* QYZYScheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B1728B3928E5937A00419F67 /* QYZYScheduleTableViewCell.m */; };
-		B1728B4028E5B11800419F67 /* QYZYFootballViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1728B3F28E5B11800419F67 /* QYZYFootballViewController.m */; };
 		B189E9CE28ED556F00F17247 /* question.json in Resources */ = {isa = PBXBuildFile; fileRef = B189E9CD28ED556F00F17247 /* question.json */; };
 		B189E9DD28ED5EA800F17247 /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B189E9DC28ED5EA800F17247 /* NSString+Category.m */; };
 		B1B744A028E7DC3E00DD300E /* QYZYMatchListInfoDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B7449F28E7DC3E00DD300E /* QYZYMatchListInfoDetailModel.m */; };
@@ -180,6 +178,7 @@
 		F303A11F2C18775D00230E25 /* AXSlantedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A11E2C18775D00230E25 /* AXSlantedView.m */; };
 		F303A1232C197B1800230E25 /* AXSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A1222C197B1800230E25 /* AXSwitchView.m */; };
 		F303A1262C1B1CC900230E25 /* AXMatchBatchApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A1252C1B1CC900230E25 /* AXMatchBatchApi.m */; };
+		F303A1292C1D3BF800230E25 /* AXStreamDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A1282C1D3BF800230E25 /* AXStreamDetailViewController.m */; };
 		F36D875C2C0B0383001F37F0 /* AXToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = F36D875B2C0B0383001F37F0 /* AXToastView.m */; };
 		F36D875F2C0B045C001F37F0 /* UIView+AXToast.m in Sources */ = {isa = PBXBuildFile; fileRef = F36D875E2C0B045C001F37F0 /* UIView+AXToast.m */; };
 		F36D87622C0B098D001F37F0 /* UIView+CSToast.m in Sources */ = {isa = PBXBuildFile; fileRef = F36D87602C0B098C001F37F0 /* UIView+CSToast.m */; };
@@ -241,8 +240,6 @@
 		F551040328E33798001E9BC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F551040228E33798001E9BC5 /* Assets.xcassets */; };
 		F551040628E33798001E9BC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F551040428E33798001E9BC5 /* LaunchScreen.storyboard */; };
 		F551040928E33798001E9BC5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F551040828E33798001E9BC5 /* main.m */; };
-		F551042728E33DB6001E9BC5 /* QYZYLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F551042528E33DB6001E9BC5 /* QYZYLiveViewController.m */; };
-		F551042828E33DB6001E9BC5 /* QYZYLiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F551042628E33DB6001E9BC5 /* QYZYLiveViewController.xib */; };
 		F551043928E3467F001E9BC5 /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F551043828E3467F001E9BC5 /* NSString+Extensions.m */; };
 		F551043D28E3EDC0001E9BC5 /* UIDevice+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F551043C28E3EDC0001E9BC5 /* UIDevice+Extensions.m */; };
 		F551044028E3FD96001E9BC5 /* NSArray+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F551043F28E3FD96001E9BC5 /* NSArray+Extensions.m */; };
@@ -428,8 +425,6 @@
 		55EADDCB28E706BA008324AE /* ZFIJKPlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFIJKPlayerManager.m; sourceTree = "<group>"; };
 		55EADDCC28E706BB008324AE /* ZFIJKPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFIJKPlayerManager.h; sourceTree = "<group>"; };
 		55EADDCE28E70863008324AE /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		9B21D02E28EA844200AC6F0D /* QYZYEmptyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYEmptyCell.h; sourceTree = "<group>"; };
-		9B21D02F28EA844200AC6F0D /* QYZYEmptyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYEmptyCell.m; sourceTree = "<group>"; };
 		9B89964229077EDB007D3A79 /* QYZYPlayerDataCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYPlayerDataCollectionCell.h; sourceTree = "<group>"; };
 		9B89964329077EDB007D3A79 /* QYZYPlayerDataCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYPlayerDataCollectionCell.m; sourceTree = "<group>"; };
 		9B89964529077EF2007D3A79 /* QYZYPlayerDataHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYPlayerDataHeaderCell.h; sourceTree = "<group>"; };
@@ -518,8 +513,6 @@
 		B1728B3628E58BFE00419F67 /* QYZYScheduleHeaderVIew.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYScheduleHeaderVIew.m; sourceTree = "<group>"; };
 		B1728B3828E5937A00419F67 /* QYZYScheduleTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYScheduleTableViewCell.h; sourceTree = "<group>"; };
 		B1728B3928E5937A00419F67 /* QYZYScheduleTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYScheduleTableViewCell.m; sourceTree = "<group>"; };
-		B1728B3E28E5B11800419F67 /* QYZYFootballViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYFootballViewController.h; sourceTree = "<group>"; };
-		B1728B3F28E5B11800419F67 /* QYZYFootballViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYFootballViewController.m; sourceTree = "<group>"; };
 		B189E9CD28ED556F00F17247 /* question.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = question.json; sourceTree = "<group>"; };
 		B189E9DB28ED5EA800F17247 /* NSString+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Category.h"; sourceTree = "<group>"; };
 		B189E9DC28ED5EA800F17247 /* NSString+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Category.m"; sourceTree = "<group>"; };
@@ -589,6 +582,8 @@
 		F303A1222C197B1800230E25 /* AXSwitchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXSwitchView.m; sourceTree = "<group>"; };
 		F303A1242C1B1CC900230E25 /* AXMatchBatchApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchBatchApi.h; sourceTree = "<group>"; };
 		F303A1252C1B1CC900230E25 /* AXMatchBatchApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchBatchApi.m; sourceTree = "<group>"; };
+		F303A1272C1D3BF800230E25 /* AXStreamDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXStreamDetailViewController.h; sourceTree = "<group>"; };
+		F303A1282C1D3BF800230E25 /* AXStreamDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXStreamDetailViewController.m; sourceTree = "<group>"; };
 		F36D875A2C0B0383001F37F0 /* AXToastView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXToastView.h; sourceTree = "<group>"; };
 		F36D875B2C0B0383001F37F0 /* AXToastView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXToastView.m; sourceTree = "<group>"; };
 		F36D875D2C0B045C001F37F0 /* UIView+AXToast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+AXToast.h"; sourceTree = "<group>"; };
@@ -709,9 +704,6 @@
 		F551040228E33798001E9BC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F551040528E33798001E9BC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F551040828E33798001E9BC5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F551042428E33DB6001E9BC5 /* QYZYLiveViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYLiveViewController.h; sourceTree = "<group>"; };
-		F551042528E33DB6001E9BC5 /* QYZYLiveViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYLiveViewController.m; sourceTree = "<group>"; };
-		F551042628E33DB6001E9BC5 /* QYZYLiveViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QYZYLiveViewController.xib; sourceTree = "<group>"; };
 		F551043528E34520001E9BC5 /* QYZYPrefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYPrefix.pch; sourceTree = "<group>"; };
 		F551043728E3467F001E9BC5 /* NSString+Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Extensions.h"; sourceTree = "<group>"; };
 		F551043828E3467F001E9BC5 /* NSString+Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extensions.m"; sourceTree = "<group>"; };
@@ -921,8 +913,6 @@
 			children = (
 				55B04A7528E5951500A82F1F /* QYZYLiveMainViewController.h */,
 				55B04A7628E5951500A82F1F /* QYZYLiveMainViewController.m */,
-				B1728B3E28E5B11800419F67 /* QYZYFootballViewController.h */,
-				B1728B3F28E5B11800419F67 /* QYZYFootballViewController.m */,
 				55B04A8128E5BCA500A82F1F /* Apis */,
 				55B04A5028E57C2700A82F1F /* Home */,
 				55B04A7D28E5BC7E00A82F1F /* ViewModels */,
@@ -1291,8 +1281,6 @@
 		9BD94FFF28E6930B000298A6 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				9B21D02E28EA844200AC6F0D /* QYZYEmptyCell.h */,
-				9B21D02F28EA844200AC6F0D /* QYZYEmptyCell.m */,
 				555C687528EC229800044A5E /* QYZYTableEmptyCell.h */,
 				555C687628EC229800044A5E /* QYZYTableEmptyCell.m */,
 				555C687228EC04B700044A5E /* QYZYCollectionEmptyCell.h */,
@@ -1388,6 +1376,8 @@
 			children = (
 				CB32C7A72BF5FA9A00B2E277 /* AXStreamViewController.h */,
 				CB32C7A82BF5FA9A00B2E277 /* AXStreamViewController.m */,
+				F303A1272C1D3BF800230E25 /* AXStreamDetailViewController.h */,
+				F303A1282C1D3BF800230E25 /* AXStreamDetailViewController.m */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -2054,9 +2044,6 @@
 		F551041128E338AE001E9BC5 /* Live */ = {
 			isa = PBXGroup;
 			children = (
-				F551042428E33DB6001E9BC5 /* QYZYLiveViewController.h */,
-				F551042528E33DB6001E9BC5 /* QYZYLiveViewController.m */,
-				F551042628E33DB6001E9BC5 /* QYZYLiveViewController.xib */,
 				9BD94FFF28E6930B000298A6 /* Search */,
 				55EADDAF28E6E297008324AE /* Detail */,
 				55B04A8528E5BDE500A82F1F /* Models */,
@@ -2239,7 +2226,6 @@
 				555C688128EC588700044A5E /* QYZYChargeCell.xib in Resources */,
 				55E2395428E82E4D003ED27E /* QYZYLiveChatCell.xib in Resources */,
 				F58DF60728EB018300CFF18A /* qwty.html in Resources */,
-				F551042828E33DB6001E9BC5 /* QYZYLiveViewController.xib in Resources */,
 				55E0D51E28F8289400DDAAB6 /* QYZYMatchOverViewController.xib in Resources */,
 				F551040628E33798001E9BC5 /* LaunchScreen.storyboard in Resources */,
 				55B10194290151370056CF17 /* QYZYMatchHomeCell.xib in Resources */,
@@ -2352,7 +2338,6 @@
 				55A5320B290545F90008C110 /* QYZYMatchEventModel.m in Sources */,
 				9B89964729077EF2007D3A79 /* QYZYPlayerDataHeaderCell.m in Sources */,
 				F37E5DD92BF77BD60049FAE1 /* AXMatchChatViewController.m in Sources */,
-				9B21D03028EA844200AC6F0D /* QYZYEmptyCell.m in Sources */,
 				F39766082BF3993A00E4C861 /* QYZYDataTools.m in Sources */,
 				F37E5DC12BF631DC0049FAE1 /* AXMatchSettingViewController.m in Sources */,
 				9BC0D59A29066A7F0063BCC7 /* QYZYBasketballScoreView.m in Sources */,
@@ -2405,6 +2390,7 @@
 				F37E5E122BF8EA980049FAE1 /* AXMatchAnalysisTraditionalMatchView.m in Sources */,
 				55B04A5428E57C5300A82F1F /* QYZYLiveHomeViewController.m in Sources */,
 				CB1D7A3A2C0022DA005248E5 /* AXDataBaseViewController.m in Sources */,
+				F303A1292C1D3BF800230E25 /* AXStreamDetailViewController.m in Sources */,
 				552B0F3A28E6A62B00D81F45 /* QYZYLiveListApi.m in Sources */,
 				CB32C7A92BF5FA9A00B2E277 /* AXStreamViewController.m in Sources */,
 				F37E5DF22BF852870049FAE1 /* AXMatchStandingPBPView.m in Sources */,
@@ -2413,7 +2399,6 @@
 				9BC0D5AD29069D8C0063BCC7 /* QYZYTeamStaticsModel.m in Sources */,
 				55EADDCD28E706BB008324AE /* ZFIJKPlayerManager.m in Sources */,
 				F36D87622C0B098D001F37F0 /* UIView+CSToast.m in Sources */,
-				B1728B4028E5B11800419F67 /* QYZYFootballViewController.m in Sources */,
 				555C687428EC04B700044A5E /* QYZYCollectionEmptyCell.m in Sources */,
 				AE65E0EB2907BFEB0053CA49 /* QYZYAnalyzeSectionTool.m in Sources */,
 				F37E5D9F2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCellModel.m in Sources */,
@@ -2470,7 +2455,6 @@
 				55E2396728E86117003ED27E /* QYZYLiveChatInputView.m in Sources */,
 				F560B58528E5BF1300989DE4 /* QYZYAppConfig.m in Sources */,
 				55BF55B128E9624200DB476B /* QYZYLiveChatFilterModel.m in Sources */,
-				F551042728E33DB6001E9BC5 /* QYZYLiveViewController.m in Sources */,
 				B1B744A028E7DC3E00DD300E /* QYZYMatchListInfoDetailModel.m in Sources */,
 				B1728B3728E58BFE00419F67 /* QYZYScheduleHeaderVIew.m in Sources */,
 				F37E5E2C2BF9D59C0049FAE1 /* AXMatchAnalysisAdvancedTeamStatsView.m in Sources */,

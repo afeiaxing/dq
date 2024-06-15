@@ -6,7 +6,7 @@
 //
 
 #import "AppDelegate.h"
-#import "QYZYLiveViewController.h"
+#import "QYZYLiveMainViewController.h"
 #import "QYZYMatchViewController.h"
 #import "QYZYAppConfig.h"
 #import "JPUSHService.h"
@@ -47,7 +47,7 @@
     
     [self addChildVCWithTabbarVC:tabbarVC vc:QYZYMatchViewController.new title:@"For You" selectedImage:@"tabSaichengH" image:@"tabSaichengN"];
     [self addChildVCWithTabbarVC:tabbarVC vc:AXStreamViewController.new title:@"Top Games" selectedImage:@"tabZhiboH" image:@"tabZhiboN"];
-    [self addChildVCWithTabbarVC:tabbarVC vc:QYZYLiveViewController.new title:@"News" selectedImage:@"tabZixunH" image:@"tabZixunN"];
+    [self addChildVCWithTabbarVC:tabbarVC vc:QYZYLiveMainViewController.new title:@"News" selectedImage:@"tabZixunH" image:@"tabZixunN"];
     [self addChildVCWithTabbarVC:tabbarVC vc:AXProfileViewController.new title:@"Profile" selectedImage:@"tabWodeH" image:@"tabWodeN"];
     
     tabbarVC.selectedIndex = 0;
