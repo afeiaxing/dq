@@ -6,7 +6,6 @@
 //
 
 #import "QYZYLiveHomeViewController.h"
-#import "QYZYLiveDetailViewController.h"
 #import "QYZYLiveMainViewModel.h"
 #import "QYZYLiveCell.h"
 #import "QYZYCollectionEmptyCell.h"
@@ -82,12 +81,12 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (self.liveArray.count) {
-        QYZYLiveDetailViewController *vc = [QYZYLiveDetailViewController new];
-        if (self.liveArray.count > indexPath.row) {
-            vc.anchorId = self.liveArray[indexPath.row].anchorId;
-        }
-        vc.hidesBottomBarWhenPushed = YES;
-        [UIViewController.currentViewController.navigationController pushViewController:vc animated:YES];
+//        QYZYLiveDetailViewController *vc = [QYZYLiveDetailViewController new];
+//        if (self.liveArray.count > indexPath.row) {
+//            vc.anchorId = self.liveArray[indexPath.row].anchorId;
+//        }
+//        vc.hidesBottomBarWhenPushed = YES;
+//        [UIViewController.currentViewController.navigationController pushViewController:vc animated:YES];
     }
 }
 

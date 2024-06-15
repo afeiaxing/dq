@@ -135,9 +135,9 @@
 }
 
 - (void)replay {
-    weakSelf(self)
+    @zf_weakify(self)
     [self seekToTime:0 completionHandler:^(BOOL finished) {
-        strongSelf(self)
+        @zf_strongify(self)
         if (finished) {
             [self play];
         }
@@ -450,7 +450,7 @@
 
 - (void)setVolume:(float)volume {
     _volume = MIN(MAX(0, volume), 1);
-    self.player.playbackVolume = volume;
+    self.player.playbackVolume = _volume;
 }
 
 @end

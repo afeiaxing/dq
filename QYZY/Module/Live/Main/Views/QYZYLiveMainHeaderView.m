@@ -8,7 +8,6 @@
 #import "QYZYLiveMainHeaderView.h"
 #import "QYZYLiveItemView.h"
 #import "QYZYLiveMainHeaderCell.h"
-#import "QYZYLiveDetailViewController.h"
 
 @interface QYZYLiveMainHeaderView ()<UICollectionViewDelegate ,UICollectionViewDataSource ,UICollectionViewDelegateFlowLayout,SDCycleScrollViewDelegate>
 
@@ -105,10 +104,10 @@
 }
 
 - (void)enterLiveDetailWithAnchorId:(NSString *)anchorId {
-    QYZYLiveDetailViewController *vc = [QYZYLiveDetailViewController new];
-    vc.anchorId = anchorId;
-    vc.hidesBottomBarWhenPushed = YES;
-    [UIViewController.currentViewController.navigationController pushViewController:vc animated:YES];
+//    QYZYLiveDetailViewController *vc = [QYZYLiveDetailViewController new];
+//    vc.anchorId = anchorId;
+//    vc.hidesBottomBarWhenPushed = YES;
+//    [UIViewController.currentViewController.navigationController pushViewController:vc animated:YES];
 }
 
 @end

@@ -16,7 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.fd_prefersNavigationBarHidden = true;
     
     self.view.backgroundColor = UIColor.whiteColor;
     
@@ -25,6 +26,7 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     AXStreamDetailViewController *vc = [AXStreamDetailViewController new];
+    vc.hidesBottomBarWhenPushed = true;
     [self.navigationController pushViewController:vc animated:true];
 }
 
