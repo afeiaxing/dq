@@ -36,6 +36,31 @@ typedef void(^AXStringBlock) (NSString *string);
 #define PingFangSC_Medium @"PingFangSC-Medium"
 #define PingFangSC_Semibold @"PingFangSC-Semibold"
 
+
+//MARK: - font
+// System font.
+#define AX_System_Font(value)   [UIFont systemFontOfSize:(value)]
+
+// Bold system font.
+#define AX_BoldSystemFont(value)    [UIFont boldSystemFontOfSize:(value)]
+
+// 设计图上 用到的 BarlowCondensed-Medium
+#define AX_BarlowMedium_Font(value) [UIFont fontWithName:@"BarlowCondensed-Medium" size:(value)];
+
+// 设计图上 用到的 DINCondensed-Bold 字体
+#define AX_Condensed_Bold_Font(value)   [UIFont fontWithName:@"DINCondensed-Bold" size:(value)]
+
+// 设计图上 用到的 DINAlternate-Bold 字体
+#define AX_DINAlternate_Bold_Font(value)    [UIFont fontWithName:@"DINAlternate-Bold" size:(value)]
+
+// PingFangSC
+#define AX_PingFangLight_Font(value)    [UIFont fontWithName:@"PingFangSC-Light" size:(value)]
+#define AX_PingFangRegular_Font(value)  [UIFont fontWithName:@"PingFangSC-Regular" size:(value)]
+#define AX_PingFangMedium_Font(value)   [UIFont fontWithName:@"PingFangSC-Medium" size:(value)]
+#define AX_PingFangSemibold_Font(value) [UIFont fontWithName:@"PingFangSC-Semibold" size:(value)]
+#define AX_PingFangHKSemibold_Font(value)   [UIFont fontWithName:@"PingFang-HK-Semibold" size:(value)]
+#define AX_PingFangHKRegular_Font(value)   [UIFont fontWithName:@"PingFangHK-Regular" size:(value)]
+
 #define  AXSelectColor rgb(255,88,0)
 #define  AXUnSelectColor rgb(130,134,163)
 

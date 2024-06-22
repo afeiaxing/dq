@@ -381,7 +381,7 @@
 - (UILabel *)statsTitleLabel {
     if (!_statsTitleLabel) {
         _statsTitleLabel = [[UILabel alloc] init];
-        _statsTitleLabel.font = [UIFont systemFontOfSize:16];
+        _statsTitleLabel.font = AX_PingFangMedium_Font(16);
         _statsTitleLabel.textColor = rgb(17, 17, 17);
         _statsTitleLabel.text = @"Team Stats";
     }

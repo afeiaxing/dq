@@ -151,19 +151,30 @@
     // 划折线
     CGFloat screenW = self.bounds.size.width;
     CGFloat screenH = self.bounds.size.height;
-    CGFloat originX = 0;
-    CGFloat ViewW = screenW - originX - kAXMatchStandingPolylineViewMarginRight;
+    CGFloat ViewW = screenW - kAXMatchStandingPolylineViewMarginRight;
     int matchStatus = self.matchModel.leaguesStatus.intValue;
     
     // 进行中的赛事，按照赛事进行的时间，来计算视图的宽度
     if (matchStatus > 1 && matchStatus < 10) {
-        CGFloat currentSec = self.matchModel.residualTime.floatValue;
+        CGFloat currentSec = 0;
+        CGFloat currentGoingSec = 12 * 60 - self.matchModel.residualTime.floatValue;  // 当前节经过的时间 = 12分钟 - 当前节剩余时间
+        if (matchStatus == 2 || matchStatus == 3) {
+            currentSec = currentGoingSec;  // 第一节的总进行时间等于residualTime
+        } else if (matchStatus == 4 || matchStatus == 5) {
+            currentSec = currentGoingSec + 12 * 60;  // 第二节的总进行时间等于residualTime + 1节12分钟
+        } else if (matchStatus == 6 || matchStatus == 7) {
+            currentSec = currentGoingSec + 12 * 60 * 2;  // 第三节的总进行时间等于residualTime + 2节12 * 2分钟
+        } else {
+            currentSec = currentGoingSec + 12 * 60 * 3;  // 第四节的总进行时间等于residualTime + 3节12 * 3分钟
+        }
+        
         CGFloat totalSec = 12 * 4 * 60;  // 全场时间按照4节，一节12分钟算
         CGFloat currentPrecent = MIN(currentSec / totalSec, 1.0);
         ViewW = ViewW * currentPrecent;
     }
     
-    CGFloat offSetX = ViewW / totalCount;  // 间隔需要兼容进行中的赛事，根据self.matchModel的比赛状态来
+    // 这里-1是因为后面最后一个折线点会前移一个单位，所以在这里计算offSetX时，把值算大一些，最后前移一个单位，就刚好对齐
+    CGFloat offSetX = ViewW / (totalCount - 1);
     CGFloat originY = screenH / 2;
     CGFloat minY = ((screenH - kAXMatchStandingPolylineViewMarginV * 2) / 2) / self.maxScoreDiff;
     
@@ -171,7 +182,7 @@
     for (int i = 0; i < sectionArr.count; i++) {
         NSArray *arr = sectionArr[i];
         
-        CGFloat posX = originX + offSetX * index;
+        CGFloat posX = offSetX * index;
         if (i != 0) {
             posX -= offSetX;  // 将后面的折线往前挪一个宽度
         }
@@ -182,7 +193,7 @@
         
         for (int j = 0; j < arr.count; j++) {
             NSNumber *scoreD = arr[j];
-            CGFloat x = originX + offSetX * index;
+            CGFloat x = offSetX * index;
             if ((i == sectionArr.count - 1) && (j == arr.count -1)) {
                 x -= offSetX;   // 最后一个点，X轴然回移一个单位
             }
@@ -199,17 +210,15 @@
         [self.layerArray addObject:shapeLayer];
         shapeLayer.path = path.CGPath;
         CGFloat layerHeight = self.bounds.size.height / 2;
-        UIColor *hostGradientColor = [UIColor colorWithGradientFromColor:rgba(143, 0, 255, 0.5) toColor:rgba(143, 0, 255, 0) withHeight:layerHeight];
-        UIColor *awayGradientColor = [UIColor colorWithGradientFromColor:rgba(0, 162, 36, 0) toColor:rgba(0, 162, 36, 0.5) withHeight:layerHeight];
-
+        
         /**
          * 主队领先用紫色，客队领先用绿色
          * 主队先领先，偶数：紫色，单数：绿色
          * 客队先领先，偶数：绿色，单数：紫色
          */
-        UIColor *purpleFillColor = [UIColor colorWithGradientFromColor:rgba(143, 0, 255, 0.5) toColor:rgba(143, 0, 255, 0) withHeight:layerHeight];
+        UIColor *purpleFillColor = [UIColor colorWithGradientFromColor:rgba(143, 0, 255, 0) toColor:rgba(143, 0, 255, 0.5) withHeight:layerHeight];
         UIColor *purpleStrokeColor = rgb(143, 0, 255);
-        UIColor *greenFillColor = [UIColor colorWithGradientFromColor:rgba(0, 162, 36, 0) toColor:rgba(0, 162, 36, 0.5) withHeight:layerHeight];
+        UIColor *greenFillColor = [UIColor colorWithGradientFromColor:rgba(0, 162, 36, 0.5) toColor:rgba(0, 162, 36, 0) withHeight:layerHeight];
         UIColor *greenStrokeColor = rgb(0, 162, 36);
 
         struct CGColor *fillColor;

@@ -73,6 +73,7 @@
     [self.hostName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.hostLogo.mas_bottom).offset(6);
         make.centerX.equalTo(self.hostLogo);
+        make.width.mas_equalTo(75);
     }];
     [self.headerBgView addSubview:self.awayLogo];
     [self.awayLogo mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -82,7 +83,7 @@
     }];
     [self.headerBgView addSubview:self.awayName];
     [self.awayName mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.hostName);
+        make.centerY.width.equalTo(self.hostName);
         make.centerX.equalTo(self.awayLogo);
     }];
     
@@ -186,6 +187,8 @@
         _hostName = [[UILabel alloc] init];
         _hostName.textColor = UIColor.whiteColor;
         _hostName.font = [UIFont fontWithName:@"PingFangSC-Regular" size:12];
+        _hostName.numberOfLines = 2;
+        _hostName.textAlignment = NSTextAlignmentCenter;
     }
     return _hostName;
 }
@@ -195,6 +198,8 @@
         _awayName = [[UILabel alloc] init];
         _awayName.textColor = UIColor.whiteColor;
         _awayName.font = [UIFont fontWithName:@"PingFangSC-Regular" size:12];
+        _awayName.numberOfLines = 2;
+        _awayName.textAlignment = NSTextAlignmentCenter;
     }
     return _awayName;
 }
