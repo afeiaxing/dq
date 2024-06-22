@@ -101,6 +101,37 @@
     
 }
 
+- (void)handleSetAttributedWithLabel: (UILabel *)label
+                                   q: (NSString *)q
+                                time: (NSString *)time{
+    // 创建NSMutableAttributedString
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] init];
+    
+    // 创建第一段文字的属性
+    NSString *firstString = q;
+    NSDictionary *firstAttributes = @{
+        NSForegroundColorAttributeName: UIColor.whiteColor,
+        NSFontAttributeName: AX_PingFangRegular_Font(12)
+    };
+    NSAttributedString *firstAttributedString = [[NSAttributedString alloc] initWithString:firstString attributes:firstAttributes];
+    
+    // 创建第二段文字的属性
+    NSString *secondString = [NSString stringWithFormat:@" %@", time];
+    NSDictionary *secondAttributes = @{
+        NSForegroundColorAttributeName: UIColor.whiteColor,
+        NSFontAttributeName: AX_PingFangSemibold_Font(12)
+    };
+    NSAttributedString *secondAttributedString = [[NSAttributedString alloc] initWithString:secondString attributes:secondAttributes];
+    
+    // 将两段文字添加到NSMutableAttributedString中
+    [attributedString appendAttributedString:firstAttributedString];
+    [attributedString appendAttributedString:secondAttributedString];
+    
+    // 将富文本赋值给UILabel
+    label.attributedText = attributedString;
+}
+
+
 // MARK: setter & getter
 - (void)setMatchModel:(AXMatchListItemModel *)matchModel{
     if (matchModel.leaguesStatus.intValue == 1) {
@@ -110,7 +141,9 @@
     } else {
         int min = matchModel.residualTime.intValue / 60;
         int second = matchModel.residualTime.intValue % 60;
-        self.timeLabel.text = [NSString stringWithFormat:@"%@ %d:%d", [AXMatchTools handleMatchStatusText:matchModel.leaguesStatus.intValue], min, second];
+        NSString *q = [AXMatchTools handleMatchStatusText:matchModel.leaguesStatus.intValue];
+        NSString *time = [NSString stringWithFormat:@"%d:%d", min, second];
+        [self handleSetAttributedWithLabel:self.timeLabel q:q time:time];
     }
     self.hostName.text = matchModel.homeTeamName;
     [self.hostLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.homeTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
@@ -161,7 +194,7 @@
     if (!_timeLabel) {
         _timeLabel = [[UILabel alloc] init];
         _timeLabel.textColor = rgba(255, 255, 255, 0.8);
-        _timeLabel.font = [UIFont fontWithName:PingFangSC_Regular size:12];
+        _timeLabel.font = AX_PingFangMedium_Font(12);
     }
     return _timeLabel;
 }
@@ -208,7 +241,7 @@
     if (!_scoreLabel) {
         _scoreLabel = [[UILabel alloc] init];
         _scoreLabel.textColor = UIColor.whiteColor;
-        _scoreLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:32];
+        _scoreLabel.font = AX_PingFangSemibold_Font(32);
     }
     return _scoreLabel;
 }

@@ -60,6 +60,7 @@
 - (void)handleBtnEvent: (UIButton *)btn{
     btn.selected = !btn.selected;
     self.model.isSelected = !self.model.isSelected;
+    !self.block ? : self.block(btn.selected, self.model.items.intValue);
 }
 
 // MARK: setter & getter
@@ -83,7 +84,7 @@
 - (UILabel *)leagueNameLabel{
     if (!_leagueNameLabel) {
         _leagueNameLabel = [UILabel new];
-        _leagueNameLabel.font = [UIFont systemFontOfSize:14];
+        _leagueNameLabel.font = AX_PingFangMedium_Font(14);
     }
     return _leagueNameLabel;
 }
@@ -91,7 +92,7 @@
 - (UILabel *)matchCountLabel{
     if (!_matchCountLabel) {
         _matchCountLabel = [UILabel new];
-        _matchCountLabel.font = [UIFont systemFontOfSize:16];
+        _matchCountLabel.font = AX_PingFangMedium_Font(16);
         _matchCountLabel.textColor = rgb(130, 134, 163);
     }
     return _matchCountLabel;

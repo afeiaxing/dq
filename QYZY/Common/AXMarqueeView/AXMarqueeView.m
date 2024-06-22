@@ -64,7 +64,7 @@
 - (UILabel *)marqueeLabel{
     if (!_marqueeLabel) {
         _marqueeLabel = [UILabel new];
-        _marqueeLabel.font = [UIFont systemFontOfSize:14];
+        _marqueeLabel.font = AX_PingFangMedium_Font(14);
         self.marqueeLabel.textColor = UIColor.whiteColor;
     }
     return _marqueeLabel;

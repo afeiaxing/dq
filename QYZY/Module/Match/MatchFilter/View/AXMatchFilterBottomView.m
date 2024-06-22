@@ -13,6 +13,7 @@
 @property (nonatomic, strong) UIButton *reverseBtn;
 @property (nonatomic, strong) UILabel *selectCountLabel;
 @property (nonatomic, strong) UIButton *confirmBtn;
+@property (nonatomic, assign) int currentCount;
 
 @end
 
@@ -26,7 +27,18 @@
     return self;
 }
 
-// MARK: delegate
+// MARK: Public
+- (void)handleUpdateCount: (int)count
+               isIncrease: (BOOL)isIncrease{
+    int currentCount;
+    if (isIncrease) {
+        currentCount = self.currentCount += count;
+    } else {
+        currentCount = self.currentCount -= count;
+    }
+    
+    [self handleSetAttributedWithLabel:self.selectCountLabel selectCount:currentCount totalCount:self.totalMatchCount];
+}
 
 // MARK: private
 - (void)setupSubviews{
@@ -96,9 +108,41 @@
     !self.block ? : self.block(AXMatchFilterBottomEvent_confirm);
 }
 
+- (void)handleSetAttributedWithLabel: (UILabel *)label
+                         selectCount: (int)selectCount
+                          totalCount: (int)totalCount{
+    // 创建NSMutableAttributedString
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] init];
+    
+    // 创建第一段文字的属性
+    NSString *firstString = [NSString stringWithFormat:@"%d", selectCount];
+    NSDictionary *firstAttributes = @{
+        NSForegroundColorAttributeName: AXSelectColor,
+        NSFontAttributeName: AX_PingFangMedium_Font(12)
+    };
+    NSAttributedString *firstAttributedString = [[NSAttributedString alloc] initWithString:firstString attributes:firstAttributes];
+    
+    // 创建第二段文字的属性
+    NSString *secondString = [NSString stringWithFormat:@" / %d", totalCount];
+    NSDictionary *secondAttributes = @{
+        NSForegroundColorAttributeName: AXUnSelectColor,
+    };
+    NSAttributedString *secondAttributedString = [[NSAttributedString alloc] initWithString:secondString attributes:secondAttributes];
+    
+    // 将两段文字添加到NSMutableAttributedString中
+    [attributedString appendAttributedString:[[NSAttributedString alloc] initWithString:@"Selected "]];
+    [attributedString appendAttributedString:firstAttributedString];
+    [attributedString appendAttributedString:secondAttributedString];
+    
+    // 将富文本赋值给UILabel
+    label.attributedText = attributedString;
+}
+
 // MARK: setter & getter
 - (void)setTotalMatchCount:(int)totalMatchCount{
-    _selectCountLabel.text = [NSString stringWithFormat:@"selected 0 / %d", totalMatchCount];
+    [self handleSetAttributedWithLabel:self.selectCountLabel selectCount:totalMatchCount totalCount:totalMatchCount];
+    self.currentCount = totalMatchCount;
+    _totalMatchCount = totalMatchCount;
 }
 
 - (UIButton *)selectAllBtn{
@@ -126,7 +170,7 @@
 - (UILabel *)selectCountLabel{
     if (!_selectCountLabel) {
         _selectCountLabel = [UILabel new];
-        _selectCountLabel.font = [UIFont systemFontOfSize:12];
+        _selectCountLabel.font = AX_PingFangRegular_Font(12);
         _selectCountLabel.textColor = AXUnSelectColor;
     }
     return _selectCountLabel;
@@ -139,7 +183,7 @@
         [_confirmBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
         [_confirmBtn addTarget:self action:@selector(handleConfirm) forControlEvents:UIControlEventTouchUpInside];
         _confirmBtn.backgroundColor = AXSelectColor;
-        _confirmBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        _confirmBtn.titleLabel.font = AX_PingFangSemibold_Font(15);
         _confirmBtn.layer.cornerRadius = 16;
         _confirmBtn.layer.masksToBounds = true;
     }

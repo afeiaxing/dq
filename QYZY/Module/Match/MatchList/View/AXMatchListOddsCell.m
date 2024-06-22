@@ -284,7 +284,7 @@
 - (UILabel *)hostName{
     if (!_hostName) {
         _hostName = [UILabel new];
-        _hostName.font = [UIFont systemFontOfSize:10];
+        _hostName.font = AX_PingFangMedium_Font(10);
         _hostName.numberOfLines = 2;
         _hostName.textColor = rgb(17, 17, 17);
     }
@@ -294,7 +294,7 @@
 - (UILabel *)awayName{
     if (!_awayName) {
         _awayName = [UILabel new];
-        _awayName.font = [UIFont systemFontOfSize:10];
+        _awayName.font = AX_PingFangMedium_Font(10);
         _awayName.numberOfLines = 2;
         _awayName.textColor = rgb(17, 17, 17);
     }

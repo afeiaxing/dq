@@ -201,8 +201,8 @@
         _categoryView.titles = self.titleArray;
         _categoryView.titleColor = rgb(17, 17, 17);
         _categoryView.titleSelectedColor = AXSelectColor;
-        _categoryView.titleFont = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
-        _categoryView.titleSelectedFont = [UIFont fontWithName:@"PingFangSC-Semibold" size:16];
+        _categoryView.titleFont = AX_PingFangRegular_Font(14);
+        _categoryView.titleSelectedFont = AX_PingFangSemibold_Font(14);
         _categoryView.cellWidth = 54;
         _categoryView.cellSpacing = 0;
         _categoryView.backgroundColor = UIColor.whiteColor;

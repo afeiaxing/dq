@@ -51,7 +51,7 @@
         }
         
         [dateBtn addTarget:self action:@selector(handleDateEvent:) forControlEvents:UIControlEventTouchUpInside];
-        dateBtn.titleLabel.font = [UIFont systemFontOfSize:10];
+        dateBtn.titleLabel.font = AX_PingFangMedium_Font(12);
         dateBtn.titleLabel.numberOfLines = 2;
         dateBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
         dateBtn.tag = i;

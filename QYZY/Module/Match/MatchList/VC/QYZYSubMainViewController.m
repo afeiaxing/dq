@@ -52,8 +52,8 @@
 - (void)setupSubViews {
     [self.view addSubview:self.categoryView];
     [self.categoryView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.offset(12);
-        make.right.offset(-12);
+        make.left.offset(0);
+        make.right.offset(-80);
         make.top.offset(0);
         make.height.mas_equalTo(48);
     }];
@@ -101,7 +101,9 @@
         _categoryView.titleSelectedColor = rgb(255, 88, 0);
         _categoryView.titleFont = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
         _categoryView.titleSelectedFont = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
-        _categoryView.cellWidth = 60;
+//        _categoryView.cellWidth = JXCategoryViewAutomaticDimension;
+        _categoryView.cellWidthIncrement = 20;
+//        _categoryView.contentEdgeInsetLeft = -5;
         _categoryView.cellSpacing = 0;
         _categoryView.borderLineWidth = 1;
         _categoryView.selectedBorderColor = rgb(255, 88, 0);

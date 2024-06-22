@@ -215,6 +215,9 @@ typedef enum : NSUInteger {
     } else {
         cell.model = array[indexPath.row];
     }
+    cell.block = ^(BOOL isSelected, int count) {
+        [self.bottomView handleUpdateCount:count isIncrease:isSelected];
+    };
     return cell;
 }
 

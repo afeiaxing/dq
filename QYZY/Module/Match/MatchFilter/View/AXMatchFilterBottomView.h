@@ -18,8 +18,12 @@ typedef NS_ENUM(NSInteger, AXMatchFilterBottomEventType) {
 typedef void(^AXMatchFilterBottomViewBlock) (AXMatchFilterBottomEventType eventType);
 
 @interface AXMatchFilterBottomView : UIView
+
 @property (nonatomic, copy) AXMatchFilterBottomViewBlock block;
 @property (nonatomic, assign) int totalMatchCount;
+
+- (void)handleUpdateCount: (int)count
+               isIncrease: (BOOL)isIncrease;
 
 @end
 

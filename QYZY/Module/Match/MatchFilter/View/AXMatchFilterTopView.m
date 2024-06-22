@@ -42,7 +42,7 @@
         [btn setImage:[UIImage imageNamed:@"matchlist_filter_icon1"] forState:UIControlStateNormal];
         [btn setImage:[UIImage imageNamed:@"matchlist_filter_icon2"] forState:UIControlStateSelected];
         [btn setImage:[UIImage imageNamed:@"matchlist_filter_icon2"] forState:UIControlStateHighlighted];
-        btn.titleLabel.font = [UIFont systemFontOfSize:14];
+        btn.titleLabel.font = AX_PingFangMedium_Font(14);
         btn.layer.borderColor = i == 0 ? AXSelectColor.CGColor : rgb(234, 241, 245).CGColor;
         btn.layer.borderWidth = 1;
         btn.layer.cornerRadius = 15;

@@ -117,7 +117,7 @@
     if (!_hostScore) {
         _hostScore = [UILabel new];
         _hostScore.textColor = rgb(153, 153, 153);
-        _hostScore.font = [UIFont systemFontOfSize:12];
+        _hostScore.font = AX_PingFangMedium_Font(12);
     }
     return _hostScore;
 }
@@ -126,7 +126,7 @@
     if (!_awayScore) {
         _awayScore = [UILabel new];
         _awayScore.textColor = rgb(153, 153, 153);
-        _awayScore.font = [UIFont systemFontOfSize:12];
+        _awayScore.font = AX_PingFangMedium_Font(12);
     }
     return _awayScore;
 }
