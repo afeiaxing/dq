@@ -13,6 +13,7 @@
 @property (nonatomic, strong) UILabel *playerTitleLabel;
 @property (nonatomic, strong) UIScrollView *containerView;
 @property (nonatomic, strong) NSMutableArray *playerLabels;
+@property (nonatomic, strong) NSArray *statsTitles;
 
 @end
 
@@ -87,6 +88,36 @@
     return propertiesArray;
 }
 
+- (void)handleSetAttributedWithLabel: (UILabel *)label
+                          playerName: (NSString *)playerName
+                            playerNo: (NSString *)playerNo{
+    // 创建NSMutableAttributedString
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] init];
+    
+    // 创建第一段文字的属性
+    NSString *firstString = playerName;
+    NSDictionary *firstAttributes = @{
+        NSForegroundColorAttributeName: UIColor.blackColor,
+        NSFontAttributeName: [UIFont systemFontOfSize:12]
+    };
+    NSAttributedString *firstAttributedString = [[NSAttributedString alloc] initWithString:firstString attributes:firstAttributes];
+    
+    // 创建第二段文字的属性
+    NSString *secondString = [NSString stringWithFormat:@" %@", playerNo];
+    NSDictionary *secondAttributes = @{
+        NSForegroundColorAttributeName: rgb(130, 134, 163),
+        NSFontAttributeName: [UIFont systemFontOfSize:10]
+    };
+    NSAttributedString *secondAttributedString = [[NSAttributedString alloc] initWithString:secondString attributes:secondAttributes];
+    
+    // 将两段文字添加到NSMutableAttributedString中
+    [attributedString appendAttributedString:firstAttributedString];
+    [attributedString appendAttributedString:secondAttributedString];
+    
+    // 将富文本赋值给UILabel
+    label.attributedText = attributedString;
+}
+
 // MARK: setter & getter
 - (void)setPlayerStats:(NSArray *)playerStats{
     if (!playerStats.count || playerStats.count == 0) {return;}
@@ -103,7 +134,7 @@
     for (int i = 0; i < playerStats.count; i++) {
         NSDictionary *model = playerStats[i];
         UILabel *label = [self getLabel];
-        label.text = [NSString stringWithFormat:@"%@ %@", model[@"playerName"], model[@"shirtNumber"]];
+        [self handleSetAttributedWithLabel:label playerName:model[@"playerName"] playerNo:model[@"shirtNumber"]];
         [self addSubview:label];
         [self.playerLabels addObject:label];
         
@@ -119,15 +150,16 @@
     NSMutableDictionary *temp = [NSMutableDictionary dictionaryWithDictionary:playerStats.firstObject];
     [temp removeObjectsForKeys:@[@"playerName", @"shirtNumber"]];  // 移除不需要的key
     
-    NSDictionary *model = temp.copy;
-    NSArray *statsTitles = model.allKeys;
+//    NSDictionary *model = temp.copy;
+    NSArray *statsTitles = self.statsTitles;
+//    NSArray *statsTitles = model.allKeys;
     self.containerView.contentSize = CGSizeMake(dataLabelW * statsTitles.count, self.bounds.size.height);
     
     for (int i = 0; i < statsTitles.count; i++) {
         NSString *stat = statsTitles[i];
         // 横向stats标题
         UILabel *statsTitleLabel = [self getLabel];
-        statsTitleLabel.text = [stat uppercaseString];
+        statsTitleLabel.text = i == 0 ? @"Started" : [stat uppercaseString];
         statsTitleLabel.backgroundColor = rgb(255, 247, 239);
         [self.containerView addSubview:statsTitleLabel];
         [statsTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -140,7 +172,13 @@
             // stats数据
             NSDictionary *model = playerStats[j];
             UILabel *statsDataLabel = [self getLabel];
-            statsDataLabel.text = [model valueForKey:stat];
+            if ([stat isEqualToString:@"started"]) {
+                NSString *str = [model valueForKey:stat];
+                statsDataLabel.text = [str isEqualToString:@"yes"] ? @"Y" : @"N";
+            } else {
+                statsDataLabel.text = [model valueForKey:stat];
+            }
+            
             [self.containerView addSubview:statsDataLabel];
             [statsDataLabel mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.offset(titleH * (j + 1));
@@ -180,6 +218,10 @@
         _playerLabels = [NSMutableArray array];
     }
     return _playerLabels;
+}
+
+- (NSArray *)statsTitles{
+    return @[@"started", @"min", @"pts", @"reb", @"ast", @"fg", @"threePt", @"ft", @"oreb", @"dreb", @"stl", @"blk", @"tov", @"pf"];
 }
 
 @end

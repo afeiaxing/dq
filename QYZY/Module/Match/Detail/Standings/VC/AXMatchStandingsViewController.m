@@ -16,7 +16,7 @@
 @property (nonatomic, strong) UITableView *tableview;
 @property (nonatomic, strong) AXMatchStandingRequest *request;
 @property (nonatomic, strong) AXMatchStandingModel *standingModel;
-@property (nonatomic, strong) NSArray <AXMatchStandingTextLiveModel *>*textLives;
+@property (nonatomic, strong) NSDictionary *textLives;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, copy) void(^scrollCallback)(UIScrollView *scrollView);
 
@@ -99,7 +99,7 @@
         [self.tableview reloadData];
     }];
     
-    [self.request requestMatchTextLiveWithMatchId:self.matchModel.matchId completion:^(NSArray<AXMatchStandingTextLiveModel *> * _Nonnull textLives) {
+    [self.request requestMatchTextLiveWithMatchId:self.matchModel.matchId completion:^(NSDictionary * _Nonnull textLives) {
         self.textLives = textLives;
         [self.tableview reloadData];
     }];

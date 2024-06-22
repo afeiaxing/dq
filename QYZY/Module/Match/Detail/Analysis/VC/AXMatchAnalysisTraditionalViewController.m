@@ -48,9 +48,11 @@
     int limit = self.isRequest10 ? 10 : 6;
     [self.request requestTeamRankWithMatchId:self.matchModel.matchId limit: limit completion:^(NSArray<AXMatchAnalysisTeamRankModel *> * _Nonnull teamRankModel) {
         strongSelf(self);
-        [self.view ax_hideLoading];
-        self.teamRankModel = teamRankModel;
-        [self.tableview reloadData];
+        if (teamRankModel.count) {
+            [self.view ax_hideLoading];
+            self.teamRankModel = teamRankModel;
+            [self.tableview reloadData];
+        }
     }];
     
     [self.request requestRivalryRecordWithMatchId:self.matchModel.matchId limit: limit completion:^(AXMatchAnalysisRivalryRecordModel * _Nonnull rivalryRecordModel) {

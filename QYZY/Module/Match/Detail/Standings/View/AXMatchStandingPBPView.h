@@ -12,7 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AXMatchStandingPBPView : UIView<JXCategoryListContentViewDelegate>
 
-@property (nonatomic, strong) NSArray <AXMatchStandingTextLiveModel *> *textLives;
+@property (nonatomic, strong) NSDictionary *textLives;
+
+@property (nonatomic, strong) AXMatchListItemModel *matchModel;
 
 @end
 

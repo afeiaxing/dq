@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *matchId;
 @property (nonatomic, assign) int limit;
+@property (nonatomic, strong) NSString *type;
 
 @end
 

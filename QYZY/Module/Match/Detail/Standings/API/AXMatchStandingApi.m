@@ -18,7 +18,8 @@
     [dict setValue:self.matchId forKey:@"matchId"];
     [dict setValue:AXProductTypeKey forKey:@"productType"];
     [dict setValue:@1 forKey:@"page"];
-    [dict setValue:@5000 forKey:@"pageSize"];
+    [dict setValue:@1000 forKey:@"pageSize"];
+    [dict setValue:self.statusId forKey:@"statusId"];
     return dict;
 }
 

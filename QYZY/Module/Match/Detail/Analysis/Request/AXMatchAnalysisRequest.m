@@ -16,16 +16,37 @@
 - (void)requestTeamRankWithMatchId:(NSString *)matchId
                              limit:(int)limit
                         completion:(void(^)(NSArray < AXMatchAnalysisTeamRankModel *>*teamRankModel))completion{
-    AXMatchAnalysisTeamRankApi *api = [AXMatchAnalysisTeamRankApi new];
-    api.matchId = matchId;
-    api.limit = limit;
-    [api ax_startWithCompletionSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        NSArray *array;
-        if (api.isRequestSuccess) {
-            array = [NSArray yy_modelArrayWithClass:AXMatchAnalysisTeamRankModel.class json:api.bizData[@"teamRankings"]];
+    AXMatchAnalysisTeamRankApi *hostApi = [AXMatchAnalysisTeamRankApi new];
+    hostApi.matchId = matchId;
+    hostApi.limit = limit;
+    hostApi.type = @"home";
+    
+    AXMatchAnalysisTeamRankApi *awayApi = [AXMatchAnalysisTeamRankApi new];
+    awayApi.matchId = matchId;
+    awayApi.limit = limit;
+    awayApi.type = @"away";
+    
+    YTKBatchRequest *batchRequest = [[YTKBatchRequest alloc] initWithRequestArray:@[hostApi, awayApi]];
+    [batchRequest startWithCompletionBlockWithSuccess:^(YTKBatchRequest * _Nonnull batchRequest) {
+        NSArray *requests = batchRequest.requestArray;
+        AXMatchAnalysisTeamRankApi *hostRequest = (AXMatchAnalysisTeamRankApi *)requests[0];
+        AXMatchAnalysisTeamRankApi *awayRequest = (AXMatchAnalysisTeamRankApi *)requests[1];
+        
+        NSMutableArray *temp = [NSMutableArray array];
+        
+        NSArray *hostArray = hostRequest.responseJSONObject[@"data"][@"teamRankings"];
+        NSArray *awayArray = awayRequest.responseJSONObject[@"data"][@"teamRankings"];
+        
+        if (hostArray.count) {
+            AXMatchAnalysisTeamRankModel *model = [AXMatchAnalysisTeamRankModel yy_modelWithJSON:hostArray.firstObject];
+            if (model) {[temp addObject:model];}
         }
-        !completion ? : completion(array);
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        if (awayArray.count) {
+            AXMatchAnalysisTeamRankModel *model = [AXMatchAnalysisTeamRankModel yy_modelWithJSON:awayArray.firstObject];
+            if (model) {[temp addObject:model];}
+        }
+        !completion ? : completion(temp.copy);
+    } failure:^(YTKBatchRequest * _Nonnull batchRequest) {
         !completion ? : completion(nil);
     }];
 }

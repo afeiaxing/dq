@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
                              completion:(void(^)(AXMatchStandingModel *matchModel))completion;
 
 - (void)requestMatchTextLiveWithMatchId:(NSString *)matchId
-                             completion:(void(^)(NSArray <AXMatchStandingTextLiveModel *>*textLives))completion;
+                             completion:(void(^)(NSDictionary *textLives))completion;
 
 @end
 

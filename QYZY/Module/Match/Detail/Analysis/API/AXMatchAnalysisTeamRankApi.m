@@ -18,6 +18,7 @@
     [dict setValue:self.matchId forKey:@"matchId"];
     [dict setValue:AXProductTypeKey forKey:@"productType"];
     [dict setValue:@(self.limit) forKey:@"limit"];
+    [dict setValue:self.type forKey:@"type"];
     return dict;
 }
 

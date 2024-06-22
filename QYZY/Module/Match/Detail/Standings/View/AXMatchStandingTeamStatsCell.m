@@ -528,6 +528,7 @@
     if (!_hostName) {
         _hostName = [[UILabel alloc] init];
         _hostName.font = [UIFont systemFontOfSize:12];
+        _hostName.textAlignment = NSTextAlignmentCenter;
         _hostName.textColor = rgb(17, 17, 17);
     }
     return _hostName;
@@ -537,6 +538,7 @@
     if (!_awayName) {
         _awayName = [[UILabel alloc] init];
         _awayName.font = [UIFont systemFontOfSize:12];
+        _awayName.textAlignment = NSTextAlignmentCenter;
         _awayName.textColor = rgb(17, 17, 17);
     }
     return _awayName;

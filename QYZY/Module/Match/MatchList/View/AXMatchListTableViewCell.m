@@ -19,8 +19,8 @@
 
 @property (nonatomic, strong) UILabel *hostRank;
 @property (nonatomic, strong) UILabel *awayRank;
-@property (nonatomic, strong) UIImageView *hostLiveFlag;
-@property (nonatomic, strong) UIImageView *awayLiveFlag;
+@property (nonatomic, strong) UILabel *hostLiveFlag;
+@property (nonatomic, strong) UILabel *awayLiveFlag;
 @property (nonatomic, strong) UIImageView *hostLogo;
 @property (nonatomic, strong) UIImageView *awayLogo;
 @property (nonatomic, strong) UILabel *hostName;
@@ -335,11 +335,16 @@
     return _hostRank;
 }
 
-- (UIImageView *)hostLiveFlag{
+- (UILabel *)hostLiveFlag{
     if (!_hostLiveFlag) {
-        _hostLiveFlag = [UIImageView new];
-        _hostLiveFlag.image = [UIImage imageNamed:@"match_list_live"];
-        _hostLiveFlag.contentMode = UIViewContentModeScaleAspectFill;
+        _hostLiveFlag = [UILabel new];
+        _hostLiveFlag.text = @"Live";
+        _hostLiveFlag.textAlignment = NSTextAlignmentCenter;
+        _hostLiveFlag.textColor = rgb(73, 210, 27);
+        _hostLiveFlag.font = [UIFont systemFontOfSize:8];
+        _hostLiveFlag.layer.cornerRadius = 11;
+        _hostLiveFlag.layer.masksToBounds = true;
+        _hostLiveFlag.backgroundColor = rgba(65, 187, 24, 0.05);
     }
     return _hostLiveFlag;
 }
@@ -353,11 +358,16 @@
     return _awayRank;
 }
 
-- (UIImageView *)awayLiveFlag{
+- (UILabel *)awayLiveFlag{
     if (!_awayLiveFlag) {
-        _awayLiveFlag = [UIImageView new];
-        _awayLiveFlag.image = [UIImage imageNamed:@"match_list_live"];
-        _awayLiveFlag.contentMode = UIViewContentModeScaleAspectFill;
+        _awayLiveFlag = [UILabel new];
+        _awayLiveFlag.text = @"Live";
+        _awayLiveFlag.textAlignment = NSTextAlignmentCenter;
+        _awayLiveFlag.textColor = rgb(73, 210, 27);
+        _awayLiveFlag.font = [UIFont systemFontOfSize:8];
+        _awayLiveFlag.layer.cornerRadius = 11;
+        _awayLiveFlag.layer.masksToBounds = true;
+        _awayLiveFlag.backgroundColor = rgba(65, 187, 24, 0.05);
     }
     return _awayLiveFlag;
 }

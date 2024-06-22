@@ -43,7 +43,7 @@
     
     [self.containerView addSubview:self.titleLabel];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.offset(0);
+        make.left.offset(16);
         make.top.offset(22);
     }];
     
@@ -82,12 +82,17 @@
     if (isnan(winPrecent)) {
         winPrecent = 0.5;
     }
+    
+    // 兼容全胜、全负的情况
+    winPrecent = MIN(winPrecent, 0.9);
+    winPrecent = MAX(winPrecent, 0.1);
+    
     [self.winLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(winlostTotalWidth * winPrecent);
     }];
     
-    self.winLabel.text = [NSString stringWithFormat:@"%@ Win", rivalryRecordModel.win];
-    self.loseLabel.text = [NSString stringWithFormat:@"%@ Lose", rivalryRecordModel.lose];
+    self.winLabel.text = rivalryRecordModel.win.intValue == 0 ? @"0" : [NSString stringWithFormat:@"%@ Win", rivalryRecordModel.win];
+    self.loseLabel.text = rivalryRecordModel.lose.intValue == 0 ? @"0" :  [NSString stringWithFormat:@"%@ Lose", rivalryRecordModel.lose];
     self.aveLabel.text = [NSString stringWithFormat:@"AVE \n\n %@ \n\n points", rivalryRecordModel.ave];
     self.lLabel.text = [NSString stringWithFormat:@"AL \n\n %@ \n\n points", rivalryRecordModel.l];
     self.moneylineLabel.text = [NSString stringWithFormat:@"Moneyline \n\n %@ \n\n home win", rivalryRecordModel.games];
@@ -103,12 +108,17 @@
     if (isnan(winPrecent)) {
         winPrecent = 0.5;
     }
+    
+    // 兼容全胜、全负的情况
+    winPrecent = MIN(winPrecent, 0.9);
+    winPrecent = MAX(winPrecent, 0.1);
+    
     [self.winLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(winlostTotalWidth * winPrecent);
     }];
     
-    self.winLabel.text = [NSString stringWithFormat:@"%@ Win", teamRecordModel.win];
-    self.loseLabel.text = [NSString stringWithFormat:@"%@ Lose", teamRecordModel.lose];
+    self.winLabel.text = teamRecordModel.win.intValue == 0 ? @"0" : [NSString stringWithFormat:@"%@ Win", teamRecordModel.win];
+    self.loseLabel.text = teamRecordModel.lose.intValue == 0 ? @"0" : [NSString stringWithFormat:@"%@ Lose", teamRecordModel.lose];
     self.aveLabel.text = [NSString stringWithFormat:@"AVE \n\n %@ \n\n points", teamRecordModel.ave];
     self.lLabel.text = [NSString stringWithFormat:@"AL \n\n %@ \n\n points", teamRecordModel.l];
     self.moneylineLabel.text = [NSString stringWithFormat:@"Moneyline \n\n %@ \n\n home win", teamRecordModel.games];
@@ -145,6 +155,7 @@
         _winLabel.backgroundColor = rgb(29, 209, 0);
         _winLabel.textColor = UIColor.whiteColor;
         _winLabel.textAlignment = NSTextAlignmentCenter;
+        _winLabel.font = [UIFont systemFontOfSize:12];
         _winLabel.layer.cornerRadius = 8;
         _winLabel.layer.maskedCorners = kCALayerMinXMinYCorner | kCALayerMinXMaxYCorner;
         _winLabel.layer.masksToBounds = true;
@@ -158,6 +169,7 @@
         _loseLabel.backgroundColor = rgb(209, 0, 0);
         _loseLabel.textColor = UIColor.whiteColor;
         _loseLabel.textAlignment = NSTextAlignmentCenter;
+        _loseLabel.font = [UIFont systemFontOfSize:12];
         _loseLabel.layer.cornerRadius = 8;
         _loseLabel.layer.maskedCorners = kCALayerMaxXMinYCorner | kCALayerMaxXMaxYCorner;
         _loseLabel.layer.masksToBounds = true;

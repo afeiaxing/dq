@@ -79,10 +79,11 @@
 // MARK: setter & setter
 - (void)setMatchModel:(AXMatchListItemModel *)matchModel{
     self.statsView.matchModel = matchModel;
+    self.pbpView.matchModel = matchModel;
     _matchModel = matchModel;
 }
 
-- (void)setTextLives:(NSArray<AXMatchStandingTextLiveModel *> *)textLives{
+- (void)setTextLives:(NSDictionary *)textLives{
     self.pbpView.textLives = textLives;
     _textLives = textLives;
 }

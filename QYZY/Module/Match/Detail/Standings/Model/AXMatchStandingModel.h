@@ -29,6 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *singleScore;
 /// 得分球队(1-主队，2-客队)
 @property (nonatomic, strong) NSString *pointTeam;
+/// 得分球队(1-主队，2-客队)
+@property (nonatomic, strong) NSString *teamType;
 
 @end
 

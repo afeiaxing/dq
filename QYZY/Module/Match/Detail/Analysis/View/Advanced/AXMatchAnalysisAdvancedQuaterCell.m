@@ -397,6 +397,7 @@
     if (!_scoreHostName) {
         _scoreHostName = [UILabel new];
         _scoreHostName.font = [UIFont systemFontOfSize:14];
+        _scoreHostName.textAlignment = NSTextAlignmentCenter;
         _scoreHostName.textColor = rgb(17, 17, 17);
     }
     return _scoreHostName;
@@ -450,6 +451,7 @@
     if (!_scoreAwayName) {
         _scoreAwayName = [UILabel new];
         _scoreAwayName.font = [UIFont systemFontOfSize:14];
+        _scoreAwayName.textAlignment = NSTextAlignmentCenter;
         _scoreAwayName.textColor = rgb(17, 17, 17);
     }
     return _scoreAwayName;

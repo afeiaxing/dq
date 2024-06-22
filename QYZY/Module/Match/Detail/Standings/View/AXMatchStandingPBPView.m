@@ -72,54 +72,47 @@
 }
 
 // MARK: setter & getter
-- (void)setTextLives:(NSArray<AXMatchStandingTextLiveModel *> *)textLives{
-    if (!textLives.count || textLives.count == 0) {return;}
-    NSMutableArray *q1 = [NSMutableArray array];
-    NSMutableArray *q2 = [NSMutableArray array];
-    NSMutableArray *q3 = [NSMutableArray array];
-    NSMutableArray *q4 = [NSMutableArray array];
-    NSMutableArray *ot = [NSMutableArray array];
-    
-    for (AXMatchStandingTextLiveModel *model in textLives) {
-        switch (model.stage.intValue) {
-            case 1:
-                [q1 addObject:model];
-                break;
-            case 2:
-                [q2 addObject:model];
-                break;
-            case 3:
-                [q3 addObject:model];
-                break;
-            case 4:
-                [q4 addObject:model];
-                break;
-            case 5:
-                [ot addObject:model];
-                break;
-                
-            default:
-                break;
-        }
-    }
+- (void)setMatchModel:(AXMatchListItemModel *)matchModel{
+
+    _matchModel = matchModel;
+}
+
+- (void)setTextLives:(NSDictionary *)textLives{
+    if (!textLives.allKeys.count || textLives.allKeys.count == 0) {return;}
+    NSArray *q1 = [textLives valueForKey:@"Q1"];
+    NSArray *q2 = [textLives valueForKey:@"Q2"];
+    NSArray *q3 = [textLives valueForKey:@"Q3"];
+    NSArray *q4 = [textLives valueForKey:@"Q4"];
     
     NSMutableArray *temp = [NSMutableArray array];
     
     if (q1.count) {
         [temp addObject:q1];
+    } else {
+        [temp addObject:@[]];
     }
+    
     if (q2.count) {
         [temp addObject:q2];
+    } else {
+        [temp addObject:@[]];
     }
+    
     if (q3.count) {
         [temp addObject:q3];
+    } else {
+        [temp addObject:@[]];
     }
+    
     if (q4.count) {
         [temp addObject:q4];
+    } else {
+        [temp addObject:@[]];
     }
-    if (ot.count) {
-        [temp addObject:ot];
-    }
+    
+//    if (ot.count) {
+//        [temp addObject:ot];
+//    }
     
     self.dataSource = temp.copy;
     
