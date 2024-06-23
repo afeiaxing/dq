@@ -10,9 +10,6 @@
 		1F580373038DE644CE020BBC /* libPods-QYZY.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E36BC3D9AB2657CB1D30D00 /* libPods-QYZY.a */; };
 		5506E31329078A7C00246492 /* QYZYMatchAnalyzeRankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5506E31229078A7C00246492 /* QYZYMatchAnalyzeRankModel.m */; };
 		5506E3162907C62F00246492 /* QYZYFutureRecordsApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5506E3152907C62F00246492 /* QYZYFutureRecordsApi.m */; };
-		5552ABFE28F935BD00285B25 /* QYZYMatchAnalyzeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5552ABFD28F935BD00285B25 /* QYZYMatchAnalyzeViewController.m */; };
-		5552AC0228F9363F00285B25 /* QYZYAnalyzeSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5552AC0028F9363F00285B25 /* QYZYAnalyzeSubViewController.m */; };
-		5552AC0328F9363F00285B25 /* QYZYAnalyzeSubViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5552AC0128F9363F00285B25 /* QYZYAnalyzeSubViewController.xib */; };
 		5552AC0628F9393200285B25 /* QYZYAnalyzeHistoryApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5552AC0528F9393200285B25 /* QYZYAnalyzeHistoryApi.m */; };
 		5552AC0928F960A200285B25 /* QYZYAnalyzeRecentApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5552AC0828F960A200285B25 /* QYZYAnalyzeRecentApi.m */; };
 		555C687728EC229800044A5E /* QYZYTableEmptyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 555C687628EC229800044A5E /* QYZYTableEmptyCell.m */; };
@@ -33,8 +30,6 @@
 		55A5320529052E3C0008C110 /* FSCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A531FC29052E3C0008C110 /* FSCalendarView.m */; };
 		55A532082905454E0008C110 /* QYZYMatchEventApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A532072905454E0008C110 /* QYZYMatchEventApi.m */; };
 		55A5320B290545F90008C110 /* QYZYMatchEventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5320A290545F90008C110 /* QYZYMatchEventModel.m */; };
-		55A5320F290551480008C110 /* QYZYMatchOverEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5320D290551480008C110 /* QYZYMatchOverEventCell.m */; };
-		55A53210290551480008C110 /* QYZYMatchOverEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55A5320E290551480008C110 /* QYZYMatchOverEventCell.xib */; };
 		55B04A6F28E593CB00A82F1F /* JXPagerListContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B04A6628E593CB00A82F1F /* JXPagerListContainerView.m */; };
 		55B04A7028E593CB00A82F1F /* JXPagerMainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B04A6728E593CB00A82F1F /* JXPagerMainTableView.m */; };
 		55B04A7128E593CB00A82F1F /* JXPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B04A6828E593CB00A82F1F /* JXPagerView.m */; };
@@ -47,11 +42,6 @@
 		55E0D50628F7FE0100DDAAB6 /* QYZYMatchDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E0D50528F7FE0100DDAAB6 /* QYZYMatchDetailViewController.m */; };
 		55E0D50928F8050E00DDAAB6 /* QYZYMatchDetailApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E0D50828F8050E00DDAAB6 /* QYZYMatchDetailApi.m */; };
 		55E0D50F28F806DA00DDAAB6 /* QYZYMatchMainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E0D50E28F806DA00DDAAB6 /* QYZYMatchMainModel.m */; };
-		55E0D51728F826A500DDAAB6 /* QYZYMatchOverHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E0D51628F826A500DDAAB6 /* QYZYMatchOverHeaderView.m */; };
-		55E0D51D28F8289400DDAAB6 /* QYZYMatchOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E0D51B28F8289400DDAAB6 /* QYZYMatchOverViewController.m */; };
-		55E0D51E28F8289400DDAAB6 /* QYZYMatchOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55E0D51C28F8289400DDAAB6 /* QYZYMatchOverViewController.xib */; };
-		55E0D52228F831D400DDAAB6 /* QYZYMatchOverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E0D52028F831D400DDAAB6 /* QYZYMatchOverCell.m */; };
-		55E0D52328F831D400DDAAB6 /* QYZYMatchOverCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55E0D52128F831D400DDAAB6 /* QYZYMatchOverCell.xib */; };
 		55E0D52628F8379800DDAAB6 /* QYZYMatchOverPhraseApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E0D52528F8379800DDAAB6 /* QYZYMatchOverPhraseApi.m */; };
 		55E0D52C28F8386400DDAAB6 /* QYZYMatchOverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E0D52B28F8386400DDAAB6 /* QYZYMatchOverModel.m */; };
 		55E0D52F28F83D6100DDAAB6 /* QYZYMatchOverEventApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E0D52E28F83D6100DDAAB6 /* QYZYMatchOverEventApi.m */; };
@@ -60,48 +50,10 @@
 		55EADDBD28E6EEEA008324AE /* UIViewController+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EADDBC28E6EEEA008324AE /* UIViewController+Extensions.m */; };
 		55EADDC928E70392008324AE /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55EADDC828E70391008324AE /* IJKMediaFramework.framework */; };
 		55EADDCF28E70863008324AE /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 55EADDCE28E70863008324AE /* libc++.tbd */; };
-		9B89964429077EDB007D3A79 /* QYZYPlayerDataCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B89964329077EDB007D3A79 /* QYZYPlayerDataCollectionCell.m */; };
-		9B89964729077EF2007D3A79 /* QYZYPlayerDataHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B89964629077EF2007D3A79 /* QYZYPlayerDataHeaderCell.m */; };
-		9B89964A29077FB5007D3A79 /* QYZYPlayerTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B89964929077FB5007D3A79 /* QYZYPlayerTitleCell.m */; };
-		9B89964D2907884F007D3A79 /* QYZYPlayerInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B89964C2907884E007D3A79 /* QYZYPlayerInfoModel.m */; };
-		9B89965029078E6E007D3A79 /* QYZYPlayerContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B89964F29078E6E007D3A79 /* QYZYPlayerContentCell.m */; };
 		9B9A771928E99AF900809C8D /* QYZYCustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9A771828E99AF900809C8D /* QYZYCustomNavigationController.m */; };
-		9BC0D560290639FD0063BCC7 /* QYZYBasketballOverviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0D55F290639FD0063BCC7 /* QYZYBasketballOverviewController.m */; };
-		9BC0D56529063F8E0063BCC7 /* QYZYTeamDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0D56429063F8E0063BCC7 /* QYZYTeamDataViewController.m */; };
-		9BC0D56829063F9D0063BCC7 /* QYZYPlayerDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0D56729063F9D0063BCC7 /* QYZYPlayerDataController.m */; };
-		9BC0D56C290643040063BCC7 /* QYZYBasketballOverViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0D56B290643040063BCC7 /* QYZYBasketballOverViewCell.m */; };
-		9BC0D594290665EB0063BCC7 /* QYZYBasketBallPointApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0D593290665EB0063BCC7 /* QYZYBasketBallPointApi.m */; };
-		9BC0D597290668900063BCC7 /* QYZYPeriodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0D596290668900063BCC7 /* QYZYPeriodModel.m */; };
-		9BC0D59A29066A7F0063BCC7 /* QYZYBasketballScoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0D59929066A7F0063BCC7 /* QYZYBasketballScoreView.m */; };
-		9BC0D59D29066EB60063BCC7 /* QYZYScoreCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0D59C29066EB60063BCC7 /* QYZYScoreCollectionViewCell.m */; };
-		9BC0D5A0290685360063BCC7 /* QYZYSituationFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0D59F290685360063BCC7 /* QYZYSituationFooterView.m */; };
-		9BC0D5A429068E330063BCC7 /* QYZYTeamNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0D5A329068E330063BCC7 /* QYZYTeamNameCell.m */; };
-		9BC0D5A72906961A0063BCC7 /* QYZYTeamDataStaticsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0D5A62906961A0063BCC7 /* QYZYTeamDataStaticsCell.m */; };
-		9BC0D5AA29069BA70063BCC7 /* QYZYBasketballTeamStatApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0D5A929069BA70063BCC7 /* QYZYBasketballTeamStatApi.m */; };
-		9BC0D5AD29069D8C0063BCC7 /* QYZYTeamStaticsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0D5AC29069D8C0063BCC7 /* QYZYTeamStaticsModel.m */; };
-		9BC0D5B029069E860063BCC7 /* QYZYTeamStaticShowupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0D5AF29069E860063BCC7 /* QYZYTeamStaticShowupModel.m */; };
-		9BC0D5B62906AD140063BCC7 /* QYZYPlayersApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0D5B52906AD140063BCC7 /* QYZYPlayersApi.m */; };
-		9BC0D5BA2906B16C0063BCC7 /* QYZYPlayerDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0D5B92906B16C0063BCC7 /* QYZYPlayerDataCell.m */; };
-		9BC0D5BD2906B1BE0063BCC7 /* QYZYPlayerDataHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0D5BC2906B1BE0063BCC7 /* QYZYPlayerDataHeader.m */; };
-		9BC0D5C12906B50A0063BCC7 /* QYZYPlayerDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0D5C02906B50A0063BCC7 /* QYZYPlayerDataModel.m */; };
 		9BD7B87028ED2F5C00054799 /* QYZYBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD7B86F28ED2F5C00054799 /* QYZYBaseViewController.m */; };
-		AE65E0DF290780E00053CA49 /* QYZYMatchAnalyzeSuperCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE65E0DE290780E00053CA49 /* QYZYMatchAnalyzeSuperCell.m */; };
-		AE65E0E4290781A20053CA49 /* QYZYIntegralCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE65E0E3290781A20053CA49 /* QYZYIntegralCell.m */; };
-		AE65E0E82907BF240053CA49 /* QYZYAnalyzeSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE65E0E72907BF240053CA49 /* QYZYAnalyzeSectionModel.m */; };
-		AE65E0EB2907BFEB0053CA49 /* QYZYAnalyzeSectionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = AE65E0EA2907BFEB0053CA49 /* QYZYAnalyzeSectionTool.m */; };
-		AE65E0F32907DDBB0053CA49 /* QYZYMatchOverHelpView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE65E0F22907DDBB0053CA49 /* QYZYMatchOverHelpView.m */; };
-		AE65E0F72907E2A10053CA49 /* QYZYMatchOverHelpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE65E0F52907E2A10053CA49 /* QYZYMatchOverHelpCell.m */; };
-		AE65E0F82907E2A10053CA49 /* QYZYMatchOverHelpCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE65E0F62907E2A10053CA49 /* QYZYMatchOverHelpCell.xib */; };
-		AE78C0BA29067662006A70A3 /* QYZYHistoryHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE78C0B929067662006A70A3 /* QYZYHistoryHeaderView.m */; };
-		AE78C0BD29067678006A70A3 /* QYZYHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE78C0BC29067678006A70A3 /* QYZYHistoryCell.m */; };
-		AE78C0C029068B72006A70A3 /* QYZYMatchAnalyzeFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE78C0BF29068B72006A70A3 /* QYZYMatchAnalyzeFooterView.m */; };
-		AE78C0C329068D1E006A70A3 /* QYZYMatchHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE78C0C229068D1E006A70A3 /* QYZYMatchHeaderView.m */; };
-		AE78C0C629068D39006A70A3 /* QYZYHostGuessMatchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE78C0C529068D39006A70A3 /* QYZYHostGuessMatchCell.m */; };
 		AE78C0C92906A384006A70A3 /* QYZYAnalyzeIntegralApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AE78C0C82906A384006A70A3 /* QYZYAnalyzeIntegralApi.m */; };
 		AE78C0DB2906AB4A006A70A3 /* NSArray+QYZYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AE78C0DA2906AB4A006A70A3 /* NSArray+QYZYAdd.m */; };
-		AE9FB1AC29064A4300B2033A /* QYZYAnalyzeHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9FB1AB29064A4300B2033A /* QYZYAnalyzeHeaderFooterView.m */; };
-		AE9FB1AE29064A5600B2033A /* QYZYAnalyzeHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE9FB1AD29064A5600B2033A /* QYZYAnalyzeHeaderFooterView.xib */; };
-		AE9FB1B9290656A800B2033A /* QYZYIntegralHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9FB1B8290656A800B2033A /* QYZYIntegralHeaderView.m */; };
 		B14A63BD28EAF05700476EAE /* QYZYMineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B14A63BC28EAF05700476EAE /* QYZYMineModel.m */; };
 		B189E9CE28ED556F00F17247 /* question.json in Resources */ = {isa = PBXBuildFile; fileRef = B189E9CD28ED556F00F17247 /* question.json */; };
 		B189E9DD28ED5EA800F17247 /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B189E9DC28ED5EA800F17247 /* NSString+Category.m */; };
@@ -257,11 +209,6 @@
 		5506E31229078A7C00246492 /* QYZYMatchAnalyzeRankModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYMatchAnalyzeRankModel.m; sourceTree = "<group>"; };
 		5506E3142907C62F00246492 /* QYZYFutureRecordsApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYFutureRecordsApi.h; sourceTree = "<group>"; };
 		5506E3152907C62F00246492 /* QYZYFutureRecordsApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYFutureRecordsApi.m; sourceTree = "<group>"; };
-		5552ABFC28F935BD00285B25 /* QYZYMatchAnalyzeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYMatchAnalyzeViewController.h; sourceTree = "<group>"; };
-		5552ABFD28F935BD00285B25 /* QYZYMatchAnalyzeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYMatchAnalyzeViewController.m; sourceTree = "<group>"; };
-		5552ABFF28F9363F00285B25 /* QYZYAnalyzeSubViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYAnalyzeSubViewController.h; sourceTree = "<group>"; };
-		5552AC0028F9363F00285B25 /* QYZYAnalyzeSubViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYAnalyzeSubViewController.m; sourceTree = "<group>"; };
-		5552AC0128F9363F00285B25 /* QYZYAnalyzeSubViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QYZYAnalyzeSubViewController.xib; sourceTree = "<group>"; };
 		5552AC0428F9393200285B25 /* QYZYAnalyzeHistoryApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYAnalyzeHistoryApi.h; sourceTree = "<group>"; };
 		5552AC0528F9393200285B25 /* QYZYAnalyzeHistoryApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYAnalyzeHistoryApi.m; sourceTree = "<group>"; };
 		5552AC0728F960A200285B25 /* QYZYAnalyzeRecentApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYAnalyzeRecentApi.h; sourceTree = "<group>"; };
@@ -302,9 +249,6 @@
 		55A532072905454E0008C110 /* QYZYMatchEventApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYMatchEventApi.m; sourceTree = "<group>"; };
 		55A53209290545F90008C110 /* QYZYMatchEventModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYMatchEventModel.h; sourceTree = "<group>"; };
 		55A5320A290545F90008C110 /* QYZYMatchEventModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYMatchEventModel.m; sourceTree = "<group>"; };
-		55A5320C290551480008C110 /* QYZYMatchOverEventCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYMatchOverEventCell.h; sourceTree = "<group>"; };
-		55A5320D290551480008C110 /* QYZYMatchOverEventCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYMatchOverEventCell.m; sourceTree = "<group>"; };
-		55A5320E290551480008C110 /* QYZYMatchOverEventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QYZYMatchOverEventCell.xib; sourceTree = "<group>"; };
 		55B04A4F28E574CA00A82F1F /* BaseDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseDefine.h; sourceTree = "<group>"; };
 		55B04A6528E593CB00A82F1F /* JXPagerSmoothView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagerSmoothView.h; sourceTree = "<group>"; };
 		55B04A6628E593CB00A82F1F /* JXPagerListContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerListContainerView.m; sourceTree = "<group>"; };
@@ -329,14 +273,6 @@
 		55E0D50828F8050E00DDAAB6 /* QYZYMatchDetailApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYMatchDetailApi.m; sourceTree = "<group>"; };
 		55E0D50D28F806DA00DDAAB6 /* QYZYMatchMainModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYMatchMainModel.h; sourceTree = "<group>"; };
 		55E0D50E28F806DA00DDAAB6 /* QYZYMatchMainModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYMatchMainModel.m; sourceTree = "<group>"; };
-		55E0D51528F826A500DDAAB6 /* QYZYMatchOverHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYMatchOverHeaderView.h; sourceTree = "<group>"; };
-		55E0D51628F826A500DDAAB6 /* QYZYMatchOverHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYMatchOverHeaderView.m; sourceTree = "<group>"; };
-		55E0D51A28F8289400DDAAB6 /* QYZYMatchOverViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYMatchOverViewController.h; sourceTree = "<group>"; };
-		55E0D51B28F8289400DDAAB6 /* QYZYMatchOverViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYMatchOverViewController.m; sourceTree = "<group>"; };
-		55E0D51C28F8289400DDAAB6 /* QYZYMatchOverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QYZYMatchOverViewController.xib; sourceTree = "<group>"; };
-		55E0D51F28F831D400DDAAB6 /* QYZYMatchOverCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYMatchOverCell.h; sourceTree = "<group>"; };
-		55E0D52028F831D400DDAAB6 /* QYZYMatchOverCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYMatchOverCell.m; sourceTree = "<group>"; };
-		55E0D52128F831D400DDAAB6 /* QYZYMatchOverCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QYZYMatchOverCell.xib; sourceTree = "<group>"; };
 		55E0D52428F8379800DDAAB6 /* QYZYMatchOverPhraseApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYMatchOverPhraseApi.h; sourceTree = "<group>"; };
 		55E0D52528F8379800DDAAB6 /* QYZYMatchOverPhraseApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYMatchOverPhraseApi.m; sourceTree = "<group>"; };
 		55E0D52A28F8386400DDAAB6 /* QYZYMatchOverModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYMatchOverModel.h; sourceTree = "<group>"; };
@@ -351,88 +287,14 @@
 		55EADDBC28E6EEEA008324AE /* UIViewController+Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Extensions.m"; sourceTree = "<group>"; };
 		55EADDC828E70391008324AE /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IJKMediaFramework.framework; sourceTree = "<group>"; };
 		55EADDCE28E70863008324AE /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		9B89964229077EDB007D3A79 /* QYZYPlayerDataCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYPlayerDataCollectionCell.h; sourceTree = "<group>"; };
-		9B89964329077EDB007D3A79 /* QYZYPlayerDataCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYPlayerDataCollectionCell.m; sourceTree = "<group>"; };
-		9B89964529077EF2007D3A79 /* QYZYPlayerDataHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYPlayerDataHeaderCell.h; sourceTree = "<group>"; };
-		9B89964629077EF2007D3A79 /* QYZYPlayerDataHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYPlayerDataHeaderCell.m; sourceTree = "<group>"; };
-		9B89964829077FB5007D3A79 /* QYZYPlayerTitleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYPlayerTitleCell.h; sourceTree = "<group>"; };
-		9B89964929077FB5007D3A79 /* QYZYPlayerTitleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYPlayerTitleCell.m; sourceTree = "<group>"; };
-		9B89964B2907884E007D3A79 /* QYZYPlayerInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYPlayerInfoModel.h; sourceTree = "<group>"; };
-		9B89964C2907884E007D3A79 /* QYZYPlayerInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYPlayerInfoModel.m; sourceTree = "<group>"; };
-		9B89964E29078E6E007D3A79 /* QYZYPlayerContentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYPlayerContentCell.h; sourceTree = "<group>"; };
-		9B89964F29078E6E007D3A79 /* QYZYPlayerContentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYPlayerContentCell.m; sourceTree = "<group>"; };
 		9B9A771728E99AF900809C8D /* QYZYCustomNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYCustomNavigationController.h; sourceTree = "<group>"; };
 		9B9A771828E99AF900809C8D /* QYZYCustomNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYCustomNavigationController.m; sourceTree = "<group>"; };
-		9BC0D55E290639FD0063BCC7 /* QYZYBasketballOverviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYBasketballOverviewController.h; sourceTree = "<group>"; };
-		9BC0D55F290639FD0063BCC7 /* QYZYBasketballOverviewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYBasketballOverviewController.m; sourceTree = "<group>"; };
-		9BC0D56329063F8E0063BCC7 /* QYZYTeamDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYTeamDataViewController.h; sourceTree = "<group>"; };
-		9BC0D56429063F8E0063BCC7 /* QYZYTeamDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYTeamDataViewController.m; sourceTree = "<group>"; };
-		9BC0D56629063F9D0063BCC7 /* QYZYPlayerDataController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYPlayerDataController.h; sourceTree = "<group>"; };
-		9BC0D56729063F9D0063BCC7 /* QYZYPlayerDataController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYPlayerDataController.m; sourceTree = "<group>"; };
-		9BC0D56A290643040063BCC7 /* QYZYBasketballOverViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYBasketballOverViewCell.h; sourceTree = "<group>"; };
-		9BC0D56B290643040063BCC7 /* QYZYBasketballOverViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYBasketballOverViewCell.m; sourceTree = "<group>"; };
-		9BC0D592290665EB0063BCC7 /* QYZYBasketBallPointApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYBasketBallPointApi.h; sourceTree = "<group>"; };
-		9BC0D593290665EB0063BCC7 /* QYZYBasketBallPointApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYBasketBallPointApi.m; sourceTree = "<group>"; };
-		9BC0D595290668900063BCC7 /* QYZYPeriodModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYPeriodModel.h; sourceTree = "<group>"; };
-		9BC0D596290668900063BCC7 /* QYZYPeriodModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYPeriodModel.m; sourceTree = "<group>"; };
-		9BC0D59829066A7F0063BCC7 /* QYZYBasketballScoreView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYBasketballScoreView.h; sourceTree = "<group>"; };
-		9BC0D59929066A7F0063BCC7 /* QYZYBasketballScoreView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYBasketballScoreView.m; sourceTree = "<group>"; };
-		9BC0D59B29066EB60063BCC7 /* QYZYScoreCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYScoreCollectionViewCell.h; sourceTree = "<group>"; };
-		9BC0D59C29066EB60063BCC7 /* QYZYScoreCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYScoreCollectionViewCell.m; sourceTree = "<group>"; };
-		9BC0D59E290685360063BCC7 /* QYZYSituationFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYSituationFooterView.h; sourceTree = "<group>"; };
-		9BC0D59F290685360063BCC7 /* QYZYSituationFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYSituationFooterView.m; sourceTree = "<group>"; };
-		9BC0D5A229068E330063BCC7 /* QYZYTeamNameCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYTeamNameCell.h; sourceTree = "<group>"; };
-		9BC0D5A329068E330063BCC7 /* QYZYTeamNameCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYTeamNameCell.m; sourceTree = "<group>"; };
-		9BC0D5A52906961A0063BCC7 /* QYZYTeamDataStaticsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYTeamDataStaticsCell.h; sourceTree = "<group>"; };
-		9BC0D5A62906961A0063BCC7 /* QYZYTeamDataStaticsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYTeamDataStaticsCell.m; sourceTree = "<group>"; };
-		9BC0D5A829069BA70063BCC7 /* QYZYBasketballTeamStatApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYBasketballTeamStatApi.h; sourceTree = "<group>"; };
-		9BC0D5A929069BA70063BCC7 /* QYZYBasketballTeamStatApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYBasketballTeamStatApi.m; sourceTree = "<group>"; };
-		9BC0D5AB29069D8C0063BCC7 /* QYZYTeamStaticsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYTeamStaticsModel.h; sourceTree = "<group>"; };
-		9BC0D5AC29069D8C0063BCC7 /* QYZYTeamStaticsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYTeamStaticsModel.m; sourceTree = "<group>"; };
-		9BC0D5AE29069E860063BCC7 /* QYZYTeamStaticShowupModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYTeamStaticShowupModel.h; sourceTree = "<group>"; };
-		9BC0D5AF29069E860063BCC7 /* QYZYTeamStaticShowupModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYTeamStaticShowupModel.m; sourceTree = "<group>"; };
-		9BC0D5B42906AD140063BCC7 /* QYZYPlayersApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYPlayersApi.h; sourceTree = "<group>"; };
-		9BC0D5B52906AD140063BCC7 /* QYZYPlayersApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYPlayersApi.m; sourceTree = "<group>"; };
-		9BC0D5B82906B16C0063BCC7 /* QYZYPlayerDataCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYPlayerDataCell.h; sourceTree = "<group>"; };
-		9BC0D5B92906B16C0063BCC7 /* QYZYPlayerDataCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYPlayerDataCell.m; sourceTree = "<group>"; };
-		9BC0D5BB2906B1BE0063BCC7 /* QYZYPlayerDataHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYPlayerDataHeader.h; sourceTree = "<group>"; };
-		9BC0D5BC2906B1BE0063BCC7 /* QYZYPlayerDataHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYPlayerDataHeader.m; sourceTree = "<group>"; };
-		9BC0D5BF2906B50A0063BCC7 /* QYZYPlayerDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYPlayerDataModel.h; sourceTree = "<group>"; };
-		9BC0D5C02906B50A0063BCC7 /* QYZYPlayerDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYPlayerDataModel.m; sourceTree = "<group>"; };
 		9BD7B86E28ED2F5C00054799 /* QYZYBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYBaseViewController.h; sourceTree = "<group>"; };
 		9BD7B86F28ED2F5C00054799 /* QYZYBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYBaseViewController.m; sourceTree = "<group>"; };
-		AE65E0DD290780E00053CA49 /* QYZYMatchAnalyzeSuperCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYZYMatchAnalyzeSuperCell.h; sourceTree = "<group>"; };
-		AE65E0DE290780E00053CA49 /* QYZYMatchAnalyzeSuperCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYZYMatchAnalyzeSuperCell.m; sourceTree = "<group>"; };
-		AE65E0E0290781350053CA49 /* QYZYIntegralCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYIntegralCell.h; sourceTree = "<group>"; };
-		AE65E0E3290781A20053CA49 /* QYZYIntegralCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYZYIntegralCell.m; sourceTree = "<group>"; };
-		AE65E0E62907BF240053CA49 /* QYZYAnalyzeSectionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYAnalyzeSectionModel.h; sourceTree = "<group>"; };
-		AE65E0E72907BF240053CA49 /* QYZYAnalyzeSectionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYAnalyzeSectionModel.m; sourceTree = "<group>"; };
-		AE65E0E92907BFEB0053CA49 /* QYZYAnalyzeSectionTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYAnalyzeSectionTool.h; sourceTree = "<group>"; };
-		AE65E0EA2907BFEB0053CA49 /* QYZYAnalyzeSectionTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYAnalyzeSectionTool.m; sourceTree = "<group>"; };
-		AE65E0F12907DDBB0053CA49 /* QYZYMatchOverHelpView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYMatchOverHelpView.h; sourceTree = "<group>"; };
-		AE65E0F22907DDBB0053CA49 /* QYZYMatchOverHelpView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYMatchOverHelpView.m; sourceTree = "<group>"; };
-		AE65E0F42907E2A10053CA49 /* QYZYMatchOverHelpCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYMatchOverHelpCell.h; sourceTree = "<group>"; };
-		AE65E0F52907E2A10053CA49 /* QYZYMatchOverHelpCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYMatchOverHelpCell.m; sourceTree = "<group>"; };
-		AE65E0F62907E2A10053CA49 /* QYZYMatchOverHelpCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QYZYMatchOverHelpCell.xib; sourceTree = "<group>"; };
-		AE78C0B829067662006A70A3 /* QYZYHistoryHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYHistoryHeaderView.h; sourceTree = "<group>"; };
-		AE78C0B929067662006A70A3 /* QYZYHistoryHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYHistoryHeaderView.m; sourceTree = "<group>"; };
-		AE78C0BB29067678006A70A3 /* QYZYHistoryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYHistoryCell.h; sourceTree = "<group>"; };
-		AE78C0BC29067678006A70A3 /* QYZYHistoryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYHistoryCell.m; sourceTree = "<group>"; };
-		AE78C0BE29068B72006A70A3 /* QYZYMatchAnalyzeFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYMatchAnalyzeFooterView.h; sourceTree = "<group>"; };
-		AE78C0BF29068B72006A70A3 /* QYZYMatchAnalyzeFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYMatchAnalyzeFooterView.m; sourceTree = "<group>"; };
-		AE78C0C129068D1E006A70A3 /* QYZYMatchHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYMatchHeaderView.h; sourceTree = "<group>"; };
-		AE78C0C229068D1E006A70A3 /* QYZYMatchHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYMatchHeaderView.m; sourceTree = "<group>"; };
-		AE78C0C429068D39006A70A3 /* QYZYHostGuessMatchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYHostGuessMatchCell.h; sourceTree = "<group>"; };
-		AE78C0C529068D39006A70A3 /* QYZYHostGuessMatchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYHostGuessMatchCell.m; sourceTree = "<group>"; };
 		AE78C0C72906A384006A70A3 /* QYZYAnalyzeIntegralApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYAnalyzeIntegralApi.h; sourceTree = "<group>"; };
 		AE78C0C82906A384006A70A3 /* QYZYAnalyzeIntegralApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYAnalyzeIntegralApi.m; sourceTree = "<group>"; };
 		AE78C0D92906AB4A006A70A3 /* NSArray+QYZYAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+QYZYAdd.h"; sourceTree = "<group>"; };
 		AE78C0DA2906AB4A006A70A3 /* NSArray+QYZYAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+QYZYAdd.m"; sourceTree = "<group>"; };
-		AE9FB1AA29064A4300B2033A /* QYZYAnalyzeHeaderFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYAnalyzeHeaderFooterView.h; sourceTree = "<group>"; };
-		AE9FB1AB29064A4300B2033A /* QYZYAnalyzeHeaderFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYAnalyzeHeaderFooterView.m; sourceTree = "<group>"; };
-		AE9FB1AD29064A5600B2033A /* QYZYAnalyzeHeaderFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QYZYAnalyzeHeaderFooterView.xib; sourceTree = "<group>"; };
-		AE9FB1B7290656A800B2033A /* QYZYIntegralHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYIntegralHeaderView.h; sourceTree = "<group>"; };
-		AE9FB1B8290656A800B2033A /* QYZYIntegralHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYIntegralHeaderView.m; sourceTree = "<group>"; };
 		B14A63BB28EAF05700476EAE /* QYZYMineModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QYZYMineModel.h; sourceTree = "<group>"; };
 		B14A63BC28EAF05700476EAE /* QYZYMineModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QYZYMineModel.m; sourceTree = "<group>"; };
 		B189E9CD28ED556F00F17247 /* question.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = question.json; sourceTree = "<group>"; };
@@ -728,20 +590,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5552ABFB28F9353200285B25 /* Analyze */ = {
-			isa = PBXGroup;
-			children = (
-				AE65E0E52907BF070053CA49 /* Model */,
-				AE9FB1A12906466000B2033A /* View */,
-				5552ABFC28F935BD00285B25 /* QYZYMatchAnalyzeViewController.h */,
-				5552ABFD28F935BD00285B25 /* QYZYMatchAnalyzeViewController.m */,
-				5552ABFF28F9363F00285B25 /* QYZYAnalyzeSubViewController.h */,
-				5552AC0028F9363F00285B25 /* QYZYAnalyzeSubViewController.m */,
-				5552AC0128F9363F00285B25 /* QYZYAnalyzeSubViewController.xib */,
-			);
-			path = Analyze;
-			sourceTree = "<group>";
-		};
 		555CE93328F6B3020085F1D4 /* Match */ = {
 			isa = PBXGroup;
 			children = (
@@ -881,40 +729,8 @@
 				F37E5DC82BF77A550049FAE1 /* Standings */,
 				F37E5DC62BF77A480049FAE1 /* Chat */,
 				F37E5DC42BF77A360049FAE1 /* Bet */,
-				5552ABFB28F9353200285B25 /* Analyze */,
-				55E0D51028F822D900DDAAB6 /* OverView */,
 			);
 			path = Detail;
-			sourceTree = "<group>";
-		};
-		55E0D51028F822D900DDAAB6 /* OverView */ = {
-			isa = PBXGroup;
-			children = (
-				9BC0D55D290639CC0063BCC7 /* Basketball */,
-				9BC0D55C290639C20063BCC7 /* Football */,
-				55E0D51428F8268300DDAAB6 /* Views */,
-			);
-			path = OverView;
-			sourceTree = "<group>";
-		};
-		55E0D51428F8268300DDAAB6 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				55E0D51528F826A500DDAAB6 /* QYZYMatchOverHeaderView.h */,
-				55E0D51628F826A500DDAAB6 /* QYZYMatchOverHeaderView.m */,
-				55E0D51F28F831D400DDAAB6 /* QYZYMatchOverCell.h */,
-				55E0D52028F831D400DDAAB6 /* QYZYMatchOverCell.m */,
-				55E0D52128F831D400DDAAB6 /* QYZYMatchOverCell.xib */,
-				55A5320C290551480008C110 /* QYZYMatchOverEventCell.h */,
-				55A5320D290551480008C110 /* QYZYMatchOverEventCell.m */,
-				55A5320E290551480008C110 /* QYZYMatchOverEventCell.xib */,
-				AE65E0F12907DDBB0053CA49 /* QYZYMatchOverHelpView.h */,
-				AE65E0F22907DDBB0053CA49 /* QYZYMatchOverHelpView.m */,
-				AE65E0F42907E2A10053CA49 /* QYZYMatchOverHelpCell.h */,
-				AE65E0F52907E2A10053CA49 /* QYZYMatchOverHelpCell.m */,
-				AE65E0F62907E2A10053CA49 /* QYZYMatchOverHelpCell.xib */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		55E2395528E834D8003ED27E /* QYZYRCManager */ = {
@@ -962,149 +778,6 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
-		9BC0D55C290639C20063BCC7 /* Football */ = {
-			isa = PBXGroup;
-			children = (
-				55E0D51A28F8289400DDAAB6 /* QYZYMatchOverViewController.h */,
-				55E0D51B28F8289400DDAAB6 /* QYZYMatchOverViewController.m */,
-				55E0D51C28F8289400DDAAB6 /* QYZYMatchOverViewController.xib */,
-			);
-			path = Football;
-			sourceTree = "<group>";
-		};
-		9BC0D55D290639CC0063BCC7 /* Basketball */ = {
-			isa = PBXGroup;
-			children = (
-				9BC0D591290665AC0063BCC7 /* Apis */,
-				9BC0D58429065E370063BCC7 /* Tool */,
-				9BC0D58029065DEC0063BCC7 /* Model */,
-				9BC0D569290642E50063BCC7 /* Views */,
-				9BC0D56229063F750063BCC7 /* PlayerData */,
-				9BC0D56129063F6D0063BCC7 /* TeamData */,
-				9BC0D55E290639FD0063BCC7 /* QYZYBasketballOverviewController.h */,
-				9BC0D55F290639FD0063BCC7 /* QYZYBasketballOverviewController.m */,
-			);
-			path = Basketball;
-			sourceTree = "<group>";
-		};
-		9BC0D56129063F6D0063BCC7 /* TeamData */ = {
-			isa = PBXGroup;
-			children = (
-				9BC0D5A129068E140063BCC7 /* Views */,
-				9BC0D56329063F8E0063BCC7 /* QYZYTeamDataViewController.h */,
-				9BC0D56429063F8E0063BCC7 /* QYZYTeamDataViewController.m */,
-			);
-			path = TeamData;
-			sourceTree = "<group>";
-		};
-		9BC0D56229063F750063BCC7 /* PlayerData */ = {
-			isa = PBXGroup;
-			children = (
-				9BC0D5BE2906B4F80063BCC7 /* Model */,
-				9BC0D5B72906B14F0063BCC7 /* Views */,
-				9BC0D56629063F9D0063BCC7 /* QYZYPlayerDataController.h */,
-				9BC0D56729063F9D0063BCC7 /* QYZYPlayerDataController.m */,
-			);
-			path = PlayerData;
-			sourceTree = "<group>";
-		};
-		9BC0D569290642E50063BCC7 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				9BC0D56D290651260063BCC7 /* ScoreView */,
-				9BC0D56A290643040063BCC7 /* QYZYBasketballOverViewCell.h */,
-				9BC0D56B290643040063BCC7 /* QYZYBasketballOverViewCell.m */,
-				9BC0D59E290685360063BCC7 /* QYZYSituationFooterView.h */,
-				9BC0D59F290685360063BCC7 /* QYZYSituationFooterView.m */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		9BC0D56D290651260063BCC7 /* ScoreView */ = {
-			isa = PBXGroup;
-			children = (
-				9BC0D59829066A7F0063BCC7 /* QYZYBasketballScoreView.h */,
-				9BC0D59929066A7F0063BCC7 /* QYZYBasketballScoreView.m */,
-				9BC0D59B29066EB60063BCC7 /* QYZYScoreCollectionViewCell.h */,
-				9BC0D59C29066EB60063BCC7 /* QYZYScoreCollectionViewCell.m */,
-			);
-			path = ScoreView;
-			sourceTree = "<group>";
-		};
-		9BC0D58029065DEC0063BCC7 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				9BC0D595290668900063BCC7 /* QYZYPeriodModel.h */,
-				9BC0D596290668900063BCC7 /* QYZYPeriodModel.m */,
-				9BC0D5AB29069D8C0063BCC7 /* QYZYTeamStaticsModel.h */,
-				9BC0D5AC29069D8C0063BCC7 /* QYZYTeamStaticsModel.m */,
-				9BC0D5AE29069E860063BCC7 /* QYZYTeamStaticShowupModel.h */,
-				9BC0D5AF29069E860063BCC7 /* QYZYTeamStaticShowupModel.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		9BC0D58429065E370063BCC7 /* Tool */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Tool;
-			sourceTree = "<group>";
-		};
-		9BC0D591290665AC0063BCC7 /* Apis */ = {
-			isa = PBXGroup;
-			children = (
-				9BC0D592290665EB0063BCC7 /* QYZYBasketBallPointApi.h */,
-				9BC0D593290665EB0063BCC7 /* QYZYBasketBallPointApi.m */,
-				9BC0D5A829069BA70063BCC7 /* QYZYBasketballTeamStatApi.h */,
-				9BC0D5A929069BA70063BCC7 /* QYZYBasketballTeamStatApi.m */,
-				9BC0D5B42906AD140063BCC7 /* QYZYPlayersApi.h */,
-				9BC0D5B52906AD140063BCC7 /* QYZYPlayersApi.m */,
-			);
-			path = Apis;
-			sourceTree = "<group>";
-		};
-		9BC0D5A129068E140063BCC7 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				9BC0D5A229068E330063BCC7 /* QYZYTeamNameCell.h */,
-				9BC0D5A329068E330063BCC7 /* QYZYTeamNameCell.m */,
-				9BC0D5A52906961A0063BCC7 /* QYZYTeamDataStaticsCell.h */,
-				9BC0D5A62906961A0063BCC7 /* QYZYTeamDataStaticsCell.m */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		9BC0D5B72906B14F0063BCC7 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				9BC0D5B82906B16C0063BCC7 /* QYZYPlayerDataCell.h */,
-				9BC0D5B92906B16C0063BCC7 /* QYZYPlayerDataCell.m */,
-				9BC0D5BB2906B1BE0063BCC7 /* QYZYPlayerDataHeader.h */,
-				9BC0D5BC2906B1BE0063BCC7 /* QYZYPlayerDataHeader.m */,
-				9B89964229077EDB007D3A79 /* QYZYPlayerDataCollectionCell.h */,
-				9B89964329077EDB007D3A79 /* QYZYPlayerDataCollectionCell.m */,
-				9B89964529077EF2007D3A79 /* QYZYPlayerDataHeaderCell.h */,
-				9B89964629077EF2007D3A79 /* QYZYPlayerDataHeaderCell.m */,
-				9B89964829077FB5007D3A79 /* QYZYPlayerTitleCell.h */,
-				9B89964929077FB5007D3A79 /* QYZYPlayerTitleCell.m */,
-				9B89964E29078E6E007D3A79 /* QYZYPlayerContentCell.h */,
-				9B89964F29078E6E007D3A79 /* QYZYPlayerContentCell.m */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		9BC0D5BE2906B4F80063BCC7 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				9BC0D5BF2906B50A0063BCC7 /* QYZYPlayerDataModel.h */,
-				9BC0D5C02906B50A0063BCC7 /* QYZYPlayerDataModel.m */,
-				9B89964B2907884E007D3A79 /* QYZYPlayerInfoModel.h */,
-				9B89964C2907884E007D3A79 /* QYZYPlayerInfoModel.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		9BD7B86D28ED2F4200054799 /* BaseVc */ = {
 			isa = PBXGroup;
 			children = (
@@ -1112,43 +785,6 @@
 				9BD7B86F28ED2F5C00054799 /* QYZYBaseViewController.m */,
 			);
 			path = BaseVc;
-			sourceTree = "<group>";
-		};
-		AE65E0E52907BF070053CA49 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				AE65E0E62907BF240053CA49 /* QYZYAnalyzeSectionModel.h */,
-				AE65E0E72907BF240053CA49 /* QYZYAnalyzeSectionModel.m */,
-				AE65E0E92907BFEB0053CA49 /* QYZYAnalyzeSectionTool.h */,
-				AE65E0EA2907BFEB0053CA49 /* QYZYAnalyzeSectionTool.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		AE9FB1A12906466000B2033A /* View */ = {
-			isa = PBXGroup;
-			children = (
-				AE65E0E0290781350053CA49 /* QYZYIntegralCell.h */,
-				AE65E0E3290781A20053CA49 /* QYZYIntegralCell.m */,
-				AE65E0DD290780E00053CA49 /* QYZYMatchAnalyzeSuperCell.h */,
-				AE65E0DE290780E00053CA49 /* QYZYMatchAnalyzeSuperCell.m */,
-				AE9FB1AA29064A4300B2033A /* QYZYAnalyzeHeaderFooterView.h */,
-				AE9FB1AB29064A4300B2033A /* QYZYAnalyzeHeaderFooterView.m */,
-				AE9FB1AD29064A5600B2033A /* QYZYAnalyzeHeaderFooterView.xib */,
-				AE9FB1B7290656A800B2033A /* QYZYIntegralHeaderView.h */,
-				AE9FB1B8290656A800B2033A /* QYZYIntegralHeaderView.m */,
-				AE78C0BE29068B72006A70A3 /* QYZYMatchAnalyzeFooterView.h */,
-				AE78C0BF29068B72006A70A3 /* QYZYMatchAnalyzeFooterView.m */,
-				AE78C0B829067662006A70A3 /* QYZYHistoryHeaderView.h */,
-				AE78C0B929067662006A70A3 /* QYZYHistoryHeaderView.m */,
-				AE78C0BB29067678006A70A3 /* QYZYHistoryCell.h */,
-				AE78C0BC29067678006A70A3 /* QYZYHistoryCell.m */,
-				AE78C0C129068D1E006A70A3 /* QYZYMatchHeaderView.h */,
-				AE78C0C229068D1E006A70A3 /* QYZYMatchHeaderView.m */,
-				AE78C0C429068D39006A70A3 /* QYZYHostGuessMatchCell.h */,
-				AE78C0C529068D39006A70A3 /* QYZYHostGuessMatchCell.m */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		B189E9E728ED64CC00F17247 /* Toosl */ = {
@@ -2128,17 +1764,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5552AC0328F9363F00285B25 /* QYZYAnalyzeSubViewController.xib in Resources */,
-				AE65E0F82907E2A10053CA49 /* QYZYMatchOverHelpCell.xib in Resources */,
-				55E0D52328F831D400DDAAB6 /* QYZYMatchOverCell.xib in Resources */,
 				F58DF60728EB018300CFF18A /* qwty.html in Resources */,
-				55E0D51E28F8289400DDAAB6 /* QYZYMatchOverViewController.xib in Resources */,
 				F551040628E33798001E9BC5 /* LaunchScreen.storyboard in Resources */,
 				55B10194290151370056CF17 /* QYZYMatchHomeCell.xib in Resources */,
 				F551040328E33798001E9BC5 /* Assets.xcassets in Resources */,
-				AE9FB1AE29064A5600B2033A /* QYZYAnalyzeHeaderFooterView.xib in Resources */,
 				F303A17F2C1D59BE00230E25 /* ZFPlayer.bundle in Resources */,
-				55A53210290551480008C110 /* QYZYMatchOverEventCell.xib in Resources */,
 				555CE94F28F6D38C0085F1D4 /* QYZYMatchCell.xib in Resources */,
 				B189E9CE28ED556F00F17247 /* question.json in Resources */,
 			);
@@ -2212,14 +1842,10 @@
 			files = (
 				F303A0DD2C134DB300230E25 /* AXMatchAnalysisRivalryRecordModel.m in Sources */,
 				55A5320229052E3C0008C110 /* FSCalendarScrollView.m in Sources */,
-				55E0D51D28F8289400DDAAB6 /* QYZYMatchOverViewController.m in Sources */,
 				55E0D50F28F806DA00DDAAB6 /* QYZYMatchMainModel.m in Sources */,
-				9BC0D5BA2906B16C0063BCC7 /* QYZYPlayerDataCell.m in Sources */,
 				F37E5DFF2BF88F790049FAE1 /* AXMatchLineupPerformersCell.m in Sources */,
 				55B04A7028E593CB00A82F1F /* JXPagerMainTableView.m in Sources */,
-				9BC0D59D29066EB60063BCC7 /* QYZYScoreCollectionViewCell.m in Sources */,
 				55B04A7328E593CB00A82F1F /* JXPagerListRefreshView.m in Sources */,
-				AE65E0F32907DDBB0053CA49 /* QYZYMatchOverHelpView.m in Sources */,
 				F36D876B2C0DEEEC001F37F0 /* AXMatchListFilterCell.m in Sources */,
 				F303A1232C197B1800230E25 /* AXSwitchView.m in Sources */,
 				CB32C7AF2BF5FD9100B2E277 /* AXProfileViewController.m in Sources */,
@@ -2232,27 +1858,20 @@
 				F37E5E212BF9C6410049FAE1 /* AXMatchAnalysisTraditionalMatchScheduleView.m in Sources */,
 				F36D87682C0DDAD6001F37F0 /* AXMatchFilterTopView.m in Sources */,
 				55A5320429052E3C0008C110 /* FSCalendarHeaderView.m in Sources */,
-				9BC0D597290668900063BCC7 /* QYZYPeriodModel.m in Sources */,
-				AE9FB1AC29064A4300B2033A /* QYZYAnalyzeHeaderFooterView.m in Sources */,
-				AE65E0E4290781A20053CA49 /* QYZYIntegralCell.m in Sources */,
 				F55103F828E33795001E9BC5 /* AppDelegate.m in Sources */,
 				F303A1822C1D59BE00230E25 /* ZFSmallFloatControlView.m in Sources */,
 				F37E5DF82BF869AC0049FAE1 /* AXMatchStandingPBPSubCell.m in Sources */,
 				55A5320B290545F90008C110 /* QYZYMatchEventModel.m in Sources */,
-				9B89964729077EF2007D3A79 /* QYZYPlayerDataHeaderCell.m in Sources */,
 				F37E5DD92BF77BD60049FAE1 /* AXMatchChatViewController.m in Sources */,
 				F39766082BF3993A00E4C861 /* QYZYDataTools.m in Sources */,
 				F37E5DC12BF631DC0049FAE1 /* AXMatchSettingViewController.m in Sources */,
 				F303A1972C1D59BE00230E25 /* ZFLandscapeViewController_iOS15.m in Sources */,
-				9BC0D59A29066A7F0063BCC7 /* QYZYBasketballScoreView.m in Sources */,
 				F303A0D12C13446900230E25 /* AXMatchAnalysisRequest.m in Sources */,
 				F303A1962C1D59BE00230E25 /* ZFPortraitViewController.m in Sources */,
 				F37E5E1B2BF9AFE10049FAE1 /* AXMatchAnalysisTraditionalPerformanceView.m in Sources */,
 				F36D87652C0B8820001F37F0 /* AXRequest.m in Sources */,
 				F3F097662C1328B100BCEBA7 /* AXMatchLineupRequest.m in Sources */,
 				F303A1932C1D59BE00230E25 /* ZFFloatView.m in Sources */,
-				9BC0D5B029069E860063BCC7 /* QYZYTeamStaticShowupModel.m in Sources */,
-				9B89964429077EDB007D3A79 /* QYZYPlayerDataCollectionCell.m in Sources */,
 				5506E31329078A7C00246492 /* QYZYMatchAnalyzeRankModel.m in Sources */,
 				55E0D52C28F8386400DDAAB6 /* QYZYMatchOverModel.m in Sources */,
 				F303A18F2C1D59BE00230E25 /* ZFPersentInteractiveTransition.m in Sources */,
@@ -2269,28 +1888,19 @@
 				F3F0976F2C132B8500BCEBA7 /* AXMatchLineupModel.m in Sources */,
 				5552AC0928F960A200285B25 /* QYZYAnalyzeRecentApi.m in Sources */,
 				F37E5E2F2BFA2E3A0049FAE1 /* AXMatchListSettingCell.m in Sources */,
-				AE65E0DF290780E00053CA49 /* QYZYMatchAnalyzeSuperCell.m in Sources */,
 				CBFDA1BF2BF75CF000D80483 /* ORLineChartView.m in Sources */,
-				9BC0D5AA29069BA70063BCC7 /* QYZYBasketballTeamStatApi.m in Sources */,
 				55A531FF29052E3C0008C110 /* FSCalendarCell.m in Sources */,
 				F303A1862C1D59BE00230E25 /* ZFPortraitControlView.m in Sources */,
-				9BC0D5BD2906B1BE0063BCC7 /* QYZYPlayerDataHeader.m in Sources */,
 				F37E5E262BF9CCC50049FAE1 /* AXMatchAnalysisAdvancedQuaterCell.m in Sources */,
 				CBFDA1C12BF75CF000D80483 /* ORLineChartCell.m in Sources */,
-				9BC0D56829063F9D0063BCC7 /* QYZYPlayerDataController.m in Sources */,
-				55E0D51728F826A500DDAAB6 /* QYZYMatchOverHeaderView.m in Sources */,
 				F303A1892C1D59BE00230E25 /* ZFPlayerGestureControl.m in Sources */,
 				55E0D52628F8379800DDAAB6 /* QYZYMatchOverPhraseApi.m in Sources */,
 				F303A1922C1D59BE00230E25 /* ZFPresentTransition.m in Sources */,
-				5552ABFE28F935BD00285B25 /* QYZYMatchAnalyzeViewController.m in Sources */,
 				F37E5E022BF891610049FAE1 /* AXMatchLineupPerformersPlayerView.m in Sources */,
 				55B04A7128E593CB00A82F1F /* JXPagerView.m in Sources */,
-				AE78C0C029068B72006A70A3 /* QYZYMatchAnalyzeFooterView.m in Sources */,
 				55D2972328EAB86800C80738 /* QYZYIAPManager.m in Sources */,
-				9B89964D2907884F007D3A79 /* QYZYPlayerInfoModel.m in Sources */,
 				F303A19C2C1D59BE00230E25 /* UIViewController+ZFPlayerRotation.m in Sources */,
 				F37E5DDC2BF77BFD0049FAE1 /* AXMatchBetViewController.m in Sources */,
-				9BC0D56C290643040063BCC7 /* QYZYBasketballOverViewCell.m in Sources */,
 				F303A19A2C1D59BE00230E25 /* ZFReachabilityManager.m in Sources */,
 				9B9A771928E99AF900809C8D /* QYZYCustomNavigationController.m in Sources */,
 				F37E5E122BF8EA980049FAE1 /* AXMatchAnalysisTraditionalMatchView.m in Sources */,
@@ -2303,27 +1913,19 @@
 				55E0D52F28F83D6100DDAAB6 /* QYZYMatchOverEventApi.m in Sources */,
 				F303A19B2C1D59BE00230E25 /* ZFLandscapeRotationManager_iOS15.m in Sources */,
 				F37E5E362BFF80AA0049FAE1 /* AXMatchListApi.m in Sources */,
-				9BC0D5AD29069D8C0063BCC7 /* QYZYTeamStaticsModel.m in Sources */,
 				F36D87622C0B098D001F37F0 /* UIView+CSToast.m in Sources */,
-				AE65E0EB2907BFEB0053CA49 /* QYZYAnalyzeSectionTool.m in Sources */,
 				F37E5D9F2BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCellModel.m in Sources */,
 				F303A0EF2C13E9ED00230E25 /* AXMatchAnalysisAdvancedModel.m in Sources */,
 				55EADDBD28E6EEEA008324AE /* UIViewController+Extensions.m in Sources */,
-				AE65E0E82907BF240053CA49 /* QYZYAnalyzeSectionModel.m in Sources */,
 				55A5320129052E3C0008C110 /* FSCalendarCustomView.m in Sources */,
 				F36D875F2C0B045C001F37F0 /* UIView+AXToast.m in Sources */,
 				F303A1832C1D59BE00230E25 /* ZFPlayerStatusBar.m in Sources */,
-				AE9FB1B9290656A800B2033A /* QYZYIntegralHeaderView.m in Sources */,
-				AE78C0C629068D39006A70A3 /* QYZYHostGuessMatchCell.m in Sources */,
 				55A531FE29052E3C0008C110 /* FSCalendarDateModel.m in Sources */,
 				F3F097692C1328C000BCEBA7 /* AXMatchLineupApi.m in Sources */,
-				9BC0D594290665EB0063BCC7 /* QYZYBasketBallPointApi.m in Sources */,
 				F303A11F2C18775D00230E25 /* AXSlantedView.m in Sources */,
 				F303A0E62C135AA100230E25 /* AXMatchAnalysisTeamRecordApi.m in Sources */,
 				555CE94E28F6D38C0085F1D4 /* QYZYMatchCell.m in Sources */,
-				9BC0D56529063F8E0063BCC7 /* QYZYTeamDataViewController.m in Sources */,
 				F37E5DBA2BF630550049FAE1 /* AXMatchListSectionHeader.m in Sources */,
-				9BC0D5A72906961A0063BCC7 /* QYZYTeamDataStaticsCell.m in Sources */,
 				F560B58C28E6942A00989DE4 /* QYZYUserModel.m in Sources */,
 				F551040928E33798001E9BC5 /* main.m in Sources */,
 				F303A1942C1D59BE00230E25 /* ZFLandscapeRotationManager_iOS16.m in Sources */,
@@ -2333,9 +1935,7 @@
 				F37E5DA12BF4D7A10049FAE1 /* JXCategoryTitleBackgroundView.m in Sources */,
 				F37E5E922C022B3A0049FAE1 /* AXMatchStandingPolylineView.m in Sources */,
 				F551044628E40187001E9BC5 /* NSDate+Extensions.m in Sources */,
-				9B89964A29077FB5007D3A79 /* QYZYPlayerTitleCell.m in Sources */,
 				F551043928E3467F001E9BC5 /* NSString+Extensions.m in Sources */,
-				9B89965029078E6E007D3A79 /* QYZYPlayerContentCell.m in Sources */,
 				F303A1262C1B1CC900230E25 /* AXMatchBatchApi.m in Sources */,
 				F303A0E02C134DF000230E25 /* AXMatchAnalysisTeamRankApi.m in Sources */,
 				F560B59028E6A44100989DE4 /* QYZYUserManager.m in Sources */,
@@ -2368,29 +1968,21 @@
 				F303A17C2C1D59BE00230E25 /* ZFVolumeBrightnessView.m in Sources */,
 				55A5320329052E3C0008C110 /* NSDate+FSCalendar.m in Sources */,
 				555CE93728F6B7DA0085F1D4 /* QYZYMatchModel.m in Sources */,
-				AE78C0BA29067662006A70A3 /* QYZYHistoryHeaderView.m in Sources */,
 				F37E5E992C03064C0049FAE1 /* AXMatchTools.m in Sources */,
-				9BC0D560290639FD0063BCC7 /* QYZYBasketballOverviewController.m in Sources */,
-				5552AC0228F9363F00285B25 /* QYZYAnalyzeSubViewController.m in Sources */,
 				F36D87752C0F3AF6001F37F0 /* AXMatchFilterBottomView.m in Sources */,
-				9BC0D5C12906B50A0063BCC7 /* QYZYPlayerDataModel.m in Sources */,
 				F551044028E3FD96001E9BC5 /* NSArray+Extensions.m in Sources */,
 				CB08230A2BF5A9D100027C81 /* AXMatchListOddsCell.m in Sources */,
-				55E0D52228F831D400DDAAB6 /* QYZYMatchOverCell.m in Sources */,
 				F37E5EA52C03584F0049FAE1 /* AXMatchStandingApi.m in Sources */,
 				F37E5DA02BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCell.m in Sources */,
 				F303A1792C1D59BE00230E25 /* ZFIJKPlayerManager.m in Sources */,
 				5506E3162907C62F00246492 /* QYZYFutureRecordsApi.m in Sources */,
 				F37E5DD62BF77B9D0049FAE1 /* AXMatchStandingsViewController.m in Sources */,
-				9BC0D5B62906AD140063BCC7 /* QYZYPlayersApi.m in Sources */,
 				55D50B8928F7BD170043C3A3 /* QYZYSubMainViewController.m in Sources */,
-				AE78C0BD29067678006A70A3 /* QYZYHistoryCell.m in Sources */,
 				555CE94328F6BD8B0085F1D4 /* QYZYMatchViewController.m in Sources */,
 				B189E9DD28ED5EA800F17247 /* NSString+Category.m in Sources */,
 				55B04A7228E593CB00A82F1F /* JXPagerSmoothView.m in Sources */,
 				55A5320529052E3C0008C110 /* FSCalendarView.m in Sources */,
 				F37E5EAB2C04A92D0049FAE1 /* AXMatchListDateView.m in Sources */,
-				9BC0D5A429068E330063BCC7 /* QYZYTeamNameCell.m in Sources */,
 				F37E5E1E2BF9BB390049FAE1 /* AXMatchAnalysisTraditionalMatchHistoryView.m in Sources */,
 				F37E5DEF2BF781620049FAE1 /* AXMatchStandingPBPCell.m in Sources */,
 				CBFDA1C22BF75CF000D80483 /* ORLineChartValue.m in Sources */,
@@ -2399,7 +1991,6 @@
 				555CE94828F6C9E90085F1D4 /* QYZYMatchSubViewController.m in Sources */,
 				F37E5E0C2BF8E16C0049FAE1 /* AXMatchAnalysisTraditionalViewController.m in Sources */,
 				F37E5E7E2C0205ED0049FAE1 /* AXMatchListModel.m in Sources */,
-				AE65E0F72907E2A10053CA49 /* QYZYMatchOverHelpCell.m in Sources */,
 				F37E5E152BF8EC8C0049FAE1 /* AXMatchAnalysisTraditionalRankCell.m in Sources */,
 				F303A1982C1D59BE00230E25 /* ZFKVOController.m in Sources */,
 				F303A0E92C135B5100230E25 /* AXMatchAnalysisTeamRecordModel.m in Sources */,
@@ -2412,16 +2003,13 @@
 				F303A17A2C1D59BE00230E25 /* ZFUtilities.m in Sources */,
 				F5CB2BB428E9D31D00DD2AC8 /* UIView+Extensions.m in Sources */,
 				55A532082905454E0008C110 /* QYZYMatchEventApi.m in Sources */,
-				55A5320F290551480008C110 /* QYZYMatchOverEventCell.m in Sources */,
 				55E2395E28E83E60003ED27E /* QYZYRIMManager.m in Sources */,
 				F303A0F82C14297900230E25 /* AXMatchFilterRequest.m in Sources */,
 				F303A1952C1D59BE00230E25 /* ZFPlayerView.m in Sources */,
 				55E2396128E842E0003ED27E /* QYZYRIMModel.m in Sources */,
 				F37E5E182BF8ECBA0049FAE1 /* AXMatchAnalysisTraditionalMatchCell.m in Sources */,
-				AE78C0C329068D1E006A70A3 /* QYZYMatchHeaderView.m in Sources */,
 				F37E5DF52BF852A10049FAE1 /* AXMatchStandingPBPStatsView.m in Sources */,
 				F37E5DFB2BF876F80049FAE1 /* AXMatchStandingPBPStatsSubCell.m in Sources */,
-				9BC0D5A0290685360063BCC7 /* QYZYSituationFooterView.m in Sources */,
 				F303A1812C1D59BE00230E25 /* ZFPlayerControlView.m in Sources */,
 				F37E5E0F2BF8E1900049FAE1 /* AXMatchAnalysisAdvancedViewController.m in Sources */,
 				F37E5DDF2BF77C210049FAE1 /* AXMatchLineupViewController.m in Sources */,
