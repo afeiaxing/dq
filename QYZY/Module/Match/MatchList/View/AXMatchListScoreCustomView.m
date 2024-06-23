@@ -104,6 +104,11 @@
     self.awayScore.text = datas.lastObject;
 }
 
+- (void)setIsNeedHighlight:(BOOL)isNeedHighlight{
+    self.hostScore.textColor = isNeedHighlight ? rgb(17, 17, 17) : rgb(153, 153, 153);
+    self.awayScore.textColor = isNeedHighlight ? rgb(17, 17, 17) : rgb(153, 153, 153);
+}
+
 - (UILabel *)titleLabel{
     if (!_titleLabel) {
         _titleLabel = [UILabel new];

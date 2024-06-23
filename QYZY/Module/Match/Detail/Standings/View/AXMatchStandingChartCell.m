@@ -200,24 +200,29 @@
 
     q1View.datas = @[q1 && matchModel.homeScoreList.count > 0 ? matchModel.homeScoreList[0] : @"-",
                      q1 && matchModel.awayscoreList.count > 0 ? matchModel.awayscoreList[0] : @"-"];
+    q1View.isNeedHighlight = (matchModel.leaguesStatus.intValue == 2 || matchModel.leaguesStatus.intValue == 3);
     
     BOOL q2 = matchModel.leaguesStatus.intValue >= 4;
     q2View.datas = @[q2 && matchModel.homeScoreList.count > 1 ? matchModel.homeScoreList[1] : @"-",
                      q2 && matchModel.awayscoreList.count > 1 ? matchModel.awayscoreList[1] : @"-"];
+    q2View.isNeedHighlight = (matchModel.leaguesStatus.intValue == 4 || matchModel.leaguesStatus.intValue == 5);
     
     BOOL q3 = matchModel.leaguesStatus.intValue >= 6;
     q3View.datas = @[q3 && matchModel.homeScoreList.count > 2 ? matchModel.homeScoreList[2] : @"-",
                      q3 && matchModel.awayscoreList.count > 2 ? matchModel.awayscoreList[2] : @"-"];
+    q3View.isNeedHighlight = (matchModel.leaguesStatus.intValue == 6 || matchModel.leaguesStatus.intValue == 7);
     
     BOOL q4 = matchModel.leaguesStatus.intValue >= 8;
     q4View.datas = @[q4 && matchModel.homeScoreList.count > 3 ? matchModel.homeScoreList[3] : @"-",
                      q4 && matchModel.awayscoreList.count > 3 ? matchModel.awayscoreList[3] : @"-"];
+    q4View.isNeedHighlight = (matchModel.leaguesStatus.intValue == 8);
     
     BOOL ot = matchModel.leaguesStatus.intValue == 9 || matchModel.homeScoreList.count > 4;  // 当前为加时；或者是结束了加时有值
 
     otView.hidden = !ot;
     otView.datas = @[ot && matchModel.homeScoreList.count > 4 ? matchModel.homeScoreList[4] : @"-",
                      q4 && matchModel.awayscoreList.count > 4 ? matchModel.awayscoreList[4] : @"-"];
+    otView.isNeedHighlight = (matchModel.leaguesStatus.intValue == 9);
     
     // 重新布局比分
     int scoreViewCount = ot ? 6 : 5;

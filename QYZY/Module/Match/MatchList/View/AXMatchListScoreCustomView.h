@@ -29,6 +29,7 @@ typedef NS_ENUM(NSInteger ,AXMatchListScoreCustomMarketType) {
 @property (nonatomic, assign) AXMatchListScoreCustomViewType viewType;
 @property (nonatomic, assign) AXMatchListScoreCustomMarketType marketType;
 @property (nonatomic, strong) NSArray *datas;
+@property (nonatomic, assign) BOOL isNeedHighlight;
 
 - (instancetype)initWithHostscoreTopMargin: (CGFloat)hostscoreTopMargin;
 
