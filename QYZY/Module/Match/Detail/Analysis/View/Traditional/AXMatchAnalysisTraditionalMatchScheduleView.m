@@ -51,6 +51,7 @@
     
     for (int i = 0; i < self.titles.count; i++) {
         UILabel *label = [self getLabel];
+        label.font = AX_PingFangSemibold_Font(12);
         NSString *str = self.titles[i];
         label.text = str;
         label.backgroundColor = rgb(255, 247, 239);
@@ -68,7 +69,6 @@
     UILabel *label = [UILabel new];
     label.textAlignment = NSTextAlignmentCenter;
     label.numberOfLines = 2;
-    label.font = [UIFont systemFontOfSize:12];
     return label;
 }
 
@@ -95,6 +95,7 @@
         AXMatchAnalysisTeamRecordItemModel *model = scheduleMatchs[i];
         for (int j = 0; j < self.titles.count; j++) {
             UILabel *label = [self getLabel];
+            label.font = AX_PingFangMedium_Font(12);
             switch (j) {
                 case 0:
                     label.text = model.matchDate;
@@ -138,7 +139,7 @@
 - (UILabel *)scheduleTitleLabel {
     if (!_scheduleTitleLabel) {
         _scheduleTitleLabel = [[UILabel alloc] init];
-        _scheduleTitleLabel.font = [UIFont systemFontOfSize:16];
+        _scheduleTitleLabel.font = AX_PingFangSemibold_Font(16);
         _scheduleTitleLabel.textColor = rgb(17, 17, 17);
     }
     return _scheduleTitleLabel;

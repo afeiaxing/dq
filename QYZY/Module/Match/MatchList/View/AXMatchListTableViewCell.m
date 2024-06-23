@@ -334,7 +334,7 @@
 - (UILabel *)hostRank{
     if (!_hostRank) {
         _hostRank = [UILabel new];
-        _hostRank.font = [UIFont systemFontOfSize:16];
+        _hostRank.font = AX_PingFangSemibold_Font(16);
         _hostRank.textColor = rgb(130, 134, 163);
     }
     return _hostRank;
@@ -357,7 +357,7 @@
 - (UILabel *)awayRank{
     if (!_awayRank) {
         _awayRank = [UILabel new];
-        _awayRank.font = [UIFont systemFontOfSize:16];
+        _awayRank.font = AX_PingFangSemibold_Font(16);
         _awayRank.textColor = rgb(130, 134, 163);
     }
     return _awayRank;

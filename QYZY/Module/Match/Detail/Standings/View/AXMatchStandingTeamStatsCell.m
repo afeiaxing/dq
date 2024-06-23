@@ -527,7 +527,7 @@
 - (UILabel *)hostName {
     if (!_hostName) {
         _hostName = [[UILabel alloc] init];
-        _hostName.font = [UIFont systemFontOfSize:12];
+        _hostName.font = AX_PingFangMedium_Font(14);
         _hostName.textAlignment = NSTextAlignmentCenter;
         _hostName.textColor = rgb(17, 17, 17);
     }
@@ -537,7 +537,7 @@
 - (UILabel *)awayName {
     if (!_awayName) {
         _awayName = [[UILabel alloc] init];
-        _awayName.font = [UIFont systemFontOfSize:12];
+        _awayName.font = AX_PingFangMedium_Font(14);
         _awayName.textAlignment = NSTextAlignmentCenter;
         _awayName.textColor = rgb(17, 17, 17);
     }
@@ -557,7 +557,7 @@
 - (UILabel *)hostFouls {
     if (!_hostFouls) {
         _hostFouls = [[UILabel alloc] init];
-        _hostFouls.font = [UIFont systemFontOfSize:12];
+        _hostFouls.font = AX_PingFangSemibold_Font(16);
         _hostFouls.textColor = rgb(17, 17, 17);
     }
     return _hostFouls;
@@ -576,7 +576,7 @@
 - (UILabel *)awayFouls {
     if (!_awayFouls) {
         _awayFouls = [[UILabel alloc] init];
-        _awayFouls.font = [UIFont systemFontOfSize:12];
+        _awayFouls.font = AX_PingFangSemibold_Font(16);
         _awayFouls.textColor = rgb(17, 17, 17);
     }
     return _awayFouls;
@@ -595,7 +595,7 @@
 - (UILabel *)hostTimeout {
     if (!_hostTimeout) {
         _hostTimeout = [[UILabel alloc] init];
-        _hostTimeout.font = [UIFont systemFontOfSize:12];
+        _hostTimeout.font = AX_PingFangSemibold_Font(16);
         _hostTimeout.textColor = rgb(17, 17, 17);
     }
     return _hostTimeout;
@@ -614,7 +614,7 @@
 - (UILabel *)awayTimeout {
     if (!_awayTimeout) {
         _awayTimeout = [[UILabel alloc] init];
-        _awayTimeout.font = [UIFont systemFontOfSize:12];
+        _awayTimeout.font = AX_PingFangSemibold_Font(16);
         _awayTimeout.textColor = rgb(17, 17, 17);
     }
     return _awayTimeout;

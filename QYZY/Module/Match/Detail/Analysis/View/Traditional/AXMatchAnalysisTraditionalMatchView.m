@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UILabel *awayName;
 @property (nonatomic, strong) UILabel *hostFlagLabel;
 @property (nonatomic, strong) UILabel *awayFlagLabel;
+@property (nonatomic, strong) UILabel *vsLabel;
 
 @property (nonatomic, strong) AXMatchAnalysisTraditionalPerformanceView *performanceView;
 @property (nonatomic, strong) AXMatchAnalysisTraditionalMatchHistoryView *historyView;
@@ -52,6 +53,7 @@
     [self.hostFlagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.hostLogo);
         make.left.equalTo(self.hostLogo.mas_right).offset(15);
+        make.size.mas_equalTo(CGSizeMake(20, 20));
     }];
     
     [self addSubview:self.hostName];
@@ -61,30 +63,36 @@
         make.width.mas_equalTo(60);
     }];
     
-    [self addSubview:self.awayLogo];
-    [self.awayLogo mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.width.height.equalTo(self.hostLogo);
-        make.left.equalTo(self.hostLogo.mas_right).offset(78);
-    }];
-
-    [self addSubview:self.awayFlagLabel];
-    [self.awayFlagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.awayLogo);
-        make.left.equalTo(self.awayLogo.mas_right).offset(15);
+    [self addSubview:self.vsLabel];
+    [self.vsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.offset(0);
+        make.centerY.equalTo(self.hostLogo);
     }];
     
     [self addSubview:self.awayName];
     [self.awayName mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.awayLogo);
-        make.left.equalTo(self.awayLogo.mas_right).offset(12);
+        make.right.offset(-16);
+        make.centerY.equalTo(self.hostName);
         make.width.equalTo(self.hostName);
+    }];
+    
+    [self addSubview:self.awayFlagLabel];
+    [self.awayFlagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.awayName).offset(0);
+        make.width.height.centerY.equalTo(self.hostFlagLabel);
+    }];
+    
+    [self addSubview:self.awayLogo];
+    [self.awayLogo mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.width.height.equalTo(self.hostLogo);
+        make.right.equalTo(self.awayName.mas_left).offset(-12);
     }];
     
     [self addSubview:self.performanceView];
     [self.performanceView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.hostLogo.mas_bottom).offset(26);
         make.left.right.offset(0);
-        make.height.mas_equalTo(196);
+        make.height.mas_equalTo(216);
     }];
     
     [self addSubview:self.historyView];
@@ -191,7 +199,7 @@
 - (UILabel *)hostName {
     if (!_hostName) {
         _hostName = [[UILabel alloc] init];
-        _hostName.font = [UIFont systemFontOfSize:12];
+        _hostName.font = AX_PingFangSemibold_Font(14);
         _hostName.textColor = rgb(17, 17, 17);
     }
     return _hostName;
@@ -200,7 +208,7 @@
 - (UILabel *)awayName {
     if (!_awayName) {
         _awayName = [[UILabel alloc] init];
-        _awayName.font = [UIFont systemFontOfSize:12];
+        _awayName.font = AX_PingFangSemibold_Font(14);
         _awayName.textColor = rgb(17, 17, 17);
     }
     return _awayName;
@@ -209,11 +217,13 @@
 - (UILabel *)hostFlagLabel {
     if (!_hostFlagLabel) {
         _hostFlagLabel = [[UILabel alloc] init];
-        _hostFlagLabel.font = [UIFont systemFontOfSize:12];
+        _hostFlagLabel.font = AX_PingFangMedium_Font(12);
         _hostFlagLabel.textColor = AXSelectColor;
         _hostFlagLabel.backgroundColor = rgb(255, 247, 349);
         _hostFlagLabel.textAlignment = NSTextAlignmentCenter;
         _hostFlagLabel.text = @"H";
+        _hostFlagLabel.layer.cornerRadius = 4;
+        _hostFlagLabel.layer.masksToBounds = true;
     }
     return _hostFlagLabel;
 }
@@ -221,13 +231,25 @@
 - (UILabel *)awayFlagLabel {
     if (!_awayFlagLabel) {
         _awayFlagLabel = [[UILabel alloc] init];
-        _awayFlagLabel.font = [UIFont systemFontOfSize:12];
+        _awayFlagLabel.font = AX_PingFangMedium_Font(12);
         _awayFlagLabel.textColor = AXSelectColor;
         _awayFlagLabel.backgroundColor = rgb(255, 247, 349);
         _awayFlagLabel.textAlignment = NSTextAlignmentCenter;
         _awayFlagLabel.text = @"A";
+        _awayFlagLabel.layer.cornerRadius = 4;
+        _awayFlagLabel.layer.masksToBounds = true;
     }
     return _awayFlagLabel;
+}
+
+- (UILabel *)vsLabel{
+    if (!_vsLabel) {
+        _vsLabel = [[UILabel alloc] init];
+        _vsLabel.font = AX_PingFangSemibold_Font(16);
+        _vsLabel.textColor = rgb(17, 17, 17);
+        _vsLabel.text = @"VS";
+    }
+    return _vsLabel;
 }
 
 - (AXMatchAnalysisTraditionalPerformanceView *)performanceView{

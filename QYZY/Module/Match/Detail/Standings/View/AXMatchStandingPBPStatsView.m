@@ -112,7 +112,7 @@
 - (UILabel *)vsLabel {
     if (!_vsLabel) {
         _vsLabel = [[UILabel alloc] init];
-        _vsLabel.font = [UIFont systemFontOfSize:16];
+        _vsLabel.font = AX_PingFangSemibold_Font(16);
         _vsLabel.textColor = rgb(17, 17, 17);
         _vsLabel.text = @"VS";
     }
@@ -138,7 +138,7 @@
 - (UILabel *)hostName {
     if (!_hostName) {
         _hostName = [[UILabel alloc] init];
-        _hostName.font = [UIFont systemFontOfSize:12];
+        _hostName.font = AX_PingFangSemibold_Font(14);
         _hostName.textColor = rgb(17, 17, 17);
     }
     return _hostName;
@@ -147,7 +147,7 @@
 - (UILabel *)awayName {
     if (!_awayName) {
         _awayName = [[UILabel alloc] init];
-        _awayName.font = [UIFont systemFontOfSize:12];
+        _awayName.font = AX_PingFangSemibold_Font(14);
         _awayName.textColor = rgb(17, 17, 17);
     }
     return _awayName;

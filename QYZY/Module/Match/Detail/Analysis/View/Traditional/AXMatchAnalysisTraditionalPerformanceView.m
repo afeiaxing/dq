@@ -73,6 +73,46 @@
     }];
 }
 
+- (void)handleSetAttributedWithLabel: (UILabel *)label
+                                str1: (NSString *)str1
+                                str2: (NSString *)str2
+                                str3: (NSString *)str3{
+    // 创建NSMutableAttributedString
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] init];
+    
+    // 创建第一段文字的属性
+    NSString *firstString = str1;
+    NSDictionary *firstAttributes = @{
+        NSForegroundColorAttributeName: UIColor.blackColor,
+        NSFontAttributeName: AX_PingFangSemibold_Font(12)
+    };
+    NSAttributedString *firstAttributedString = [[NSAttributedString alloc] initWithString:firstString attributes:firstAttributes];
+    
+    // 创建第二段文字的属性
+    NSString *secondString = [NSString stringWithFormat:@"\n\n%@", str2];
+    NSDictionary *secondAttributes = @{
+        NSForegroundColorAttributeName: UIColor.blackColor,
+        NSFontAttributeName: AX_PingFangSemibold_Font(14)
+    };
+    NSAttributedString *secondAttributedString = [[NSAttributedString alloc] initWithString:secondString attributes:secondAttributes];
+    
+    // 创建第二段文字的属性
+    NSString *thirdString = [NSString stringWithFormat:@"\n\n%@", str3];
+    NSDictionary *thirdAttributes = @{
+        NSForegroundColorAttributeName: rgb(130, 134, 163),
+        NSFontAttributeName: AX_PingFangMedium_Font(12)
+    };
+    NSAttributedString *thirdAttributedString = [[NSAttributedString alloc] initWithString:thirdString attributes:thirdAttributes];
+    
+    // 将两段文字添加到NSMutableAttributedString中
+    [attributedString appendAttributedString:firstAttributedString];
+    [attributedString appendAttributedString:secondAttributedString];
+    [attributedString appendAttributedString:thirdAttributedString];
+    
+    // 将富文本赋值给UILabel
+    label.attributedText = attributedString;
+}
+
 // MARK: setter & getter
 - (void)setRivalryRecordModel:(AXMatchAnalysisRivalryRecordModel *)rivalryRecordModel{
     CGFloat winlostTotalWidth = ScreenWidth - 16 * 4 - 5;
@@ -93,10 +133,10 @@
     
     self.winLabel.text = rivalryRecordModel.win.intValue == 0 ? @"0" : [NSString stringWithFormat:@"%@ Win", rivalryRecordModel.win];
     self.loseLabel.text = rivalryRecordModel.lose.intValue == 0 ? @"0" :  [NSString stringWithFormat:@"%@ Lose", rivalryRecordModel.lose];
-    self.aveLabel.text = [NSString stringWithFormat:@"AVE \n\n %@ \n\n points", rivalryRecordModel.ave];
-    self.lLabel.text = [NSString stringWithFormat:@"AL \n\n %@ \n\n points", rivalryRecordModel.l];
-    self.moneylineLabel.text = [NSString stringWithFormat:@"Moneyline \n\n %@ \n\n home win", rivalryRecordModel.games];
-    self.ouLabel.text = [NSString stringWithFormat:@"O/U \n\n %@ \n\n Over", rivalryRecordModel.point];
+    [self handleSetAttributedWithLabel:self.aveLabel str1:@"AVE" str2:rivalryRecordModel.ave str3:@"points"];
+    [self handleSetAttributedWithLabel:self.lLabel str1:@"AL" str2:rivalryRecordModel.l str3:@"points"];
+    [self handleSetAttributedWithLabel:self.moneylineLabel str1:@"Moneyline" str2:rivalryRecordModel.games str3:@"home win"];
+    [self handleSetAttributedWithLabel:self.ouLabel str1:@"O/U" str2:rivalryRecordModel.point str3:@"Over"];
     _rivalryRecordModel = rivalryRecordModel;
 }
 
@@ -119,10 +159,10 @@
     
     self.winLabel.text = teamRecordModel.win.intValue == 0 ? @"0" : [NSString stringWithFormat:@"%@ Win", teamRecordModel.win];
     self.loseLabel.text = teamRecordModel.lose.intValue == 0 ? @"0" : [NSString stringWithFormat:@"%@ Lose", teamRecordModel.lose];
-    self.aveLabel.text = [NSString stringWithFormat:@"AVE \n\n %@ \n\n points", teamRecordModel.ave];
-    self.lLabel.text = [NSString stringWithFormat:@"AL \n\n %@ \n\n points", teamRecordModel.l];
-    self.moneylineLabel.text = [NSString stringWithFormat:@"Moneyline \n\n %@ \n\n home win", teamRecordModel.games];
-    self.ouLabel.text = [NSString stringWithFormat:@"O/U \n\n %@ \n\n Over", teamRecordModel.point];
+    [self handleSetAttributedWithLabel:self.aveLabel str1:@"AVE" str2:teamRecordModel.ave str3:@"points"];
+    [self handleSetAttributedWithLabel:self.lLabel str1:@"AL" str2:teamRecordModel.l str3:@"points"];
+    [self handleSetAttributedWithLabel:self.moneylineLabel str1:@"Moneyline" str2:teamRecordModel.games str3:@"home win"];
+    [self handleSetAttributedWithLabel:self.ouLabel str1:@"O/U" str2:teamRecordModel.point str3:@"Over"];
     _teamRecordModel = teamRecordModel;
 }
 
@@ -155,7 +195,7 @@
         _winLabel.backgroundColor = rgb(29, 209, 0);
         _winLabel.textColor = UIColor.whiteColor;
         _winLabel.textAlignment = NSTextAlignmentCenter;
-        _winLabel.font = [UIFont systemFontOfSize:12];
+        _winLabel.font = AX_PingFangSemibold_Font(12);
         _winLabel.layer.cornerRadius = 8;
         _winLabel.layer.maskedCorners = kCALayerMinXMinYCorner | kCALayerMinXMaxYCorner;
         _winLabel.layer.masksToBounds = true;
@@ -169,7 +209,7 @@
         _loseLabel.backgroundColor = rgb(209, 0, 0);
         _loseLabel.textColor = UIColor.whiteColor;
         _loseLabel.textAlignment = NSTextAlignmentCenter;
-        _loseLabel.font = [UIFont systemFontOfSize:12];
+        _loseLabel.font = AX_PingFangSemibold_Font(12);
         _loseLabel.layer.cornerRadius = 8;
         _loseLabel.layer.maskedCorners = kCALayerMaxXMinYCorner | kCALayerMaxXMaxYCorner;
         _loseLabel.layer.masksToBounds = true;

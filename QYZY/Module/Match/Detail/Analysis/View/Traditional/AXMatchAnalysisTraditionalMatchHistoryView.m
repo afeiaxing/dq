@@ -35,6 +35,7 @@
     
     for (int i = 0; i < self.titles.count; i++) {
         UILabel *label = [self getLabel];
+        label.font = AX_PingFangSemibold_Font(12);
         NSString *str = self.titles[i];
         label.text = str;
         label.backgroundColor = rgb(255, 247, 239);
@@ -52,7 +53,6 @@
     UILabel *label = [UILabel new];
     label.textAlignment = NSTextAlignmentCenter;
     label.numberOfLines = 2;
-    label.font = [UIFont systemFontOfSize:12];
     return label;
 }
 
@@ -130,6 +130,7 @@
         NSString *awayScore = scores.lastObject;
         for (int j = 0; j < self.titles.count; j++) {
             UILabel *label = [self getLabel];
+            label.font = AX_PingFangMedium_Font(12);
             switch (j) {
                 case 0:
                     label.text = [self handleGetDateString:model.matchDate];

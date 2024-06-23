@@ -84,6 +84,7 @@
         UILabel *rankTitleLabel = [self getLabel];
         rankTitleLabel.text = title;
         rankTitleLabel.backgroundColor = rgb(255, 247, 239);
+        rankTitleLabel.font = AX_PingFangSemibold_Font(12);
         [self.BgView addSubview:rankTitleLabel];
         [rankTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.rankTitleLabel.mas_bottom).offset(20);
@@ -97,6 +98,7 @@
     NSMutableArray *hostTemp = [NSMutableArray array];
     for (int i = 0; i < self.rankTitles.count; i++) {
         UILabel *rankHostLabel = [self getLabel];
+        rankHostLabel.font = AX_PingFangMedium_Font(12);
         [self.BgView addSubview:rankHostLabel];
         [hostTemp addObject:rankHostLabel];
         [rankHostLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -111,6 +113,7 @@
     NSMutableArray *awayTemp = [NSMutableArray array];
     for (int i = 0; i < self.rankTitles.count; i++) {
         UILabel *rankAwayLabel = [self getLabel];
+        rankAwayLabel.font = AX_PingFangMedium_Font(12);
         [self.BgView addSubview:rankAwayLabel];
         [awayTemp addObject:rankAwayLabel];
         [rankAwayLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -125,7 +128,6 @@
 - (UILabel *)getLabel{
     UILabel *label = [UILabel new];
     label.textAlignment = NSTextAlignmentCenter;
-    label.font = [UIFont systemFontOfSize:12];
     return label;
 }
 
@@ -178,7 +180,7 @@
 - (UILabel *)rankTitleLabel {
     if (!_rankTitleLabel) {
         _rankTitleLabel = [[UILabel alloc] init];
-        _rankTitleLabel.font = [UIFont systemFontOfSize:16];
+        _rankTitleLabel.font = AX_PingFangSemibold_Font(16);
         _rankTitleLabel.textColor = rgb(17, 17, 17);
         _rankTitleLabel.text = @"Team Ranking";
     }

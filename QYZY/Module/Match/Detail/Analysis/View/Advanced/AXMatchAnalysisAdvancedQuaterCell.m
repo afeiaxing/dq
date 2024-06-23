@@ -173,11 +173,11 @@
 
 - (UILabel *)getLabelWithText: (NSString *)text
                     TextColor: (UIColor *)textColor
-                     fontSize: (CGFloat)fontSize{
+                         font: (UIFont *)font{
     UILabel *label = [UILabel new];
     label.text = text;
     label.textColor = textColor;
-    label.font = [UIFont systemFontOfSize:fontSize];
+    label.font = font;
     label.textAlignment = NSTextAlignmentCenter;
     return label;
 }
@@ -196,6 +196,37 @@
         [label removeFromSuperview];
     }
     [array removeAllObjects];
+}
+
+
+- (void)handleSetAttributedWithLabel: (UILabel *)label
+                          playerName: (NSString *)playerName
+                            playerNo: (NSString *)playerNo{
+    // 创建NSMutableAttributedString
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] init];
+    
+    // 创建第一段文字的属性
+    NSString *firstString = playerName;
+    NSDictionary *firstAttributes = @{
+        NSForegroundColorAttributeName: rgb(130, 134, 163),
+        NSFontAttributeName: AX_PingFangSemibold_Font(8)
+    };
+    NSAttributedString *firstAttributedString = [[NSAttributedString alloc] initWithString:firstString attributes:firstAttributes];
+    
+    // 创建第二段文字的属性
+    NSString *secondString = [NSString stringWithFormat:@"%@", playerNo];
+    NSDictionary *secondAttributes = @{
+        NSForegroundColorAttributeName: rgb(130, 134, 163),
+        NSFontAttributeName: AX_PingFangSemibold_Font(14)
+    };
+    NSAttributedString *secondAttributedString = [[NSAttributedString alloc] initWithString:secondString attributes:secondAttributes];
+    
+    // 将两段文字添加到NSMutableAttributedString中
+    [attributedString appendAttributedString:firstAttributedString];
+    [attributedString appendAttributedString:secondAttributedString];
+    
+    // 将富文本赋值给UILabel
+    label.attributedText = attributedString;
 }
 
 // MARK: setter & getter
@@ -233,37 +264,37 @@
         
         if (i == 0) {
             // 平均得失分的Label，可以在这里创建，而不在init里创建，待优化
-            self.hostAverageScore.text = [NSString stringWithFormat:@"Average Score \n %@", homeAveModel.score];
-            self.hostAverageLoss.text = [NSString stringWithFormat:@"Average Loss \n %@", homeAlModel.score];
-            self.awayAverageScore.text = [NSString stringWithFormat:@"Average Score \n %@", awayAveModel.score];
-            self.awayAverageLoss.text = [NSString stringWithFormat:@"Average Loss \n %@", awayAlModel.score];
+            [self handleSetAttributedWithLabel:self.hostAverageScore playerName:@"Average Score\n" playerNo:homeAveModel.score];
+            [self handleSetAttributedWithLabel:self.hostAverageLoss playerName:@"Average Loss\n" playerNo:homeAlModel.score];
+            [self handleSetAttributedWithLabel:self.awayAverageScore playerName:@"Average Score\n" playerNo:awayAveModel.score];
+            [self handleSetAttributedWithLabel:self.awayAverageLoss playerName:@"Average Loss\n" playerNo:awayAlModel.score];
         } else {
             // title
-            UILabel *titleLabel = [self getLabelWithText:homeAlModel.name TextColor:rgb(130, 134, 163) fontSize:12];
+            UILabel *titleLabel = [self getLabelWithText:homeAlModel.name TextColor:rgb(130, 134, 163) font:AX_PingFangRegular_Font(10)];
             [self.scoreBGView addSubview:titleLabel];
             [self.titleLabels addObject:titleLabel];
             
             // host score
             NSString *hostScoreString = homeAveModel.score;
-            UILabel *hostScoreLabel = [self getLabelWithText:hostScoreString TextColor:rgb(130, 134, 163) fontSize:14];
+            UILabel *hostScoreLabel = [self getLabelWithText:hostScoreString TextColor:rgb(130, 134, 163) font:AX_PingFangMedium_Font(14)];
             [self.scoreBGView addSubview:hostScoreLabel];
             [self.hostScoreLabels addObject:hostScoreLabel];
             
             // host loss
             NSString *hostLossString = homeAlModel.score;
-            UILabel *hostLossLabel = [self getLabelWithText:hostLossString TextColor:rgb(130, 134, 163) fontSize:14];
+            UILabel *hostLossLabel = [self getLabelWithText:hostLossString TextColor:rgb(130, 134, 163) font:AX_PingFangMedium_Font(14)];
             [self.scoreBGView addSubview:hostLossLabel];
             [self.hostLossLabels addObject:hostLossLabel];
             
             // away score
             NSString *awayScoreString = awayAveModel.score;
-            UILabel *awayScoreLabel = [self getLabelWithText:awayScoreString TextColor:rgb(130, 134, 163) fontSize:14];
+            UILabel *awayScoreLabel = [self getLabelWithText:awayScoreString TextColor:rgb(130, 134, 163) font:AX_PingFangMedium_Font(14)];
             [self.scoreBGView addSubview:awayScoreLabel];
             [self.awayScoreLabels addObject:awayScoreLabel];
             
             // away loss
             NSString *awayLossString = awayAlModel.score;
-            UILabel *awayLossLabel = [self getLabelWithText:awayLossString TextColor:rgb(130, 134, 163) fontSize:14];
+            UILabel *awayLossLabel = [self getLabelWithText:awayLossString TextColor:rgb(130, 134, 163) font:AX_PingFangMedium_Font(14)];
             [self.scoreBGView addSubview:awayLossLabel];
             [self.awayLossLabels addObject:awayLossLabel];
         }
@@ -309,7 +340,7 @@
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
-        _titleLabel.font = [UIFont systemFontOfSize:16];
+        _titleLabel.font = AX_PingFangSemibold_Font(16);
         _titleLabel.textColor = rgb(17, 17, 17);
         _titleLabel.text = @"Single Quarter";
     }
@@ -396,7 +427,7 @@
 - (UILabel *)scoreHostName{
     if (!_scoreHostName) {
         _scoreHostName = [UILabel new];
-        _scoreHostName.font = [UIFont systemFontOfSize:14];
+        _scoreHostName.font = AX_PingFangSemibold_Font(14);
         _scoreHostName.textAlignment = NSTextAlignmentCenter;
         _scoreHostName.textColor = rgb(17, 17, 17);
     }
@@ -450,7 +481,7 @@
 - (UILabel *)scoreAwayName{
     if (!_scoreAwayName) {
         _scoreAwayName = [UILabel new];
-        _scoreAwayName.font = [UIFont systemFontOfSize:14];
+        _scoreAwayName.font = AX_PingFangSemibold_Font(14);
         _scoreAwayName.textAlignment = NSTextAlignmentCenter;
         _scoreAwayName.textColor = rgb(17, 17, 17);
     }

@@ -177,6 +177,8 @@
     
     self.polylineView.matchModel = matchModel;
     
+    self.scoreHostRanking.text = matchModel.homePosition;
+    self.scoreAwayRanking.text = matchModel.awayPosition;
     [self.hostLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.homeTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
     [self.awayLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.awayTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
     [self.scoreHostLogo sd_setImageWithURL:[NSURL URLWithString:matchModel.homeTeamLogo] placeholderImage:AXTeamPlaceholderLogo];
@@ -332,7 +334,7 @@
     if (!_scoreHostRanking) {
         _scoreHostRanking = [UILabel new];
         _scoreHostRanking.text = @"5";
-        _scoreHostRanking.font = [UIFont systemFontOfSize:16];
+        _scoreHostRanking.font = AX_PingFangSemibold_Font(16);
         _scoreHostRanking.textColor = AXUnSelectColor;
     }
     return _scoreHostRanking;
@@ -342,7 +344,7 @@
     if (!_scoreAwayRanking) {
         _scoreAwayRanking = [UILabel new];
         _scoreAwayRanking.text = @"2";
-        _scoreAwayRanking.font = [UIFont systemFontOfSize:16];
+        _scoreAwayRanking.font = AX_PingFangSemibold_Font(16);
         _scoreAwayRanking.textColor = AXUnSelectColor;
     }
     return _scoreAwayRanking;

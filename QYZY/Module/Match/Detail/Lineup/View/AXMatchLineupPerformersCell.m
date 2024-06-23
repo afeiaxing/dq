@@ -131,7 +131,7 @@
 - (UILabel *)statsTitleLabel {
     if (!_statsTitleLabel) {
         _statsTitleLabel = [[UILabel alloc] init];
-        _statsTitleLabel.font = [UIFont systemFontOfSize:16];
+        _statsTitleLabel.font = AX_PingFangSemibold_Font(16);
         _statsTitleLabel.textColor = rgb(17, 17, 17);
         _statsTitleLabel.text = @"Top Performers";
     }
@@ -157,7 +157,7 @@
 - (UILabel *)hostName {
     if (!_hostName) {
         _hostName = [[UILabel alloc] init];
-        _hostName.font = [UIFont systemFontOfSize:12];
+        _hostName.font = AX_PingFangSemibold_Font(14);
         _hostName.textAlignment = NSTextAlignmentCenter;
         _hostName.textColor = rgb(17, 17, 17);
     }
@@ -167,7 +167,7 @@
 - (UILabel *)awayName {
     if (!_awayName) {
         _awayName = [[UILabel alloc] init];
-        _awayName.font = [UIFont systemFontOfSize:12];
+        _awayName.font = AX_PingFangSemibold_Font(14);
         _awayName.textAlignment = NSTextAlignmentCenter;
         _awayName.textColor = rgb(17, 17, 17);
     }

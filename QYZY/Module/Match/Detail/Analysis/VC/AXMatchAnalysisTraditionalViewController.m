@@ -85,9 +85,9 @@
         return 181;
     } else {
         if (self.isRequest10) {
-            return self.matchRecordCellSelctIndex == 0 ? 913 : 1083; //713;  // 主客队交锋:913, 单队历史记录:1083
+            return self.matchRecordCellSelctIndex == 0 ? 933 : 1103; //733;  // 主客队交锋:933, 单队历史记录:1103
         } else {
-            return self.matchRecordCellSelctIndex == 0 ? 713 : 883; //713;  // 主客队交锋:713, 单队历史记录:883
+            return self.matchRecordCellSelctIndex == 0 ? 733 : 903; //733;  // 主客队交锋:733, 单队历史记录:903
         }
     }
 }

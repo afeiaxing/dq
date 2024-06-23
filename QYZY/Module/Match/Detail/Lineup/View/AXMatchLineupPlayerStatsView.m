@@ -161,6 +161,7 @@
         UILabel *statsTitleLabel = [self getLabel];
         statsTitleLabel.text = i == 0 ? @"Started" : [stat uppercaseString];
         statsTitleLabel.backgroundColor = rgb(255, 247, 239);
+        statsTitleLabel.font = AX_PingFangSemibold_Font(12);
         [self.containerView addSubview:statsTitleLabel];
         [statsTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.offset(0);
@@ -178,6 +179,7 @@
             } else {
                 statsDataLabel.text = [model valueForKey:stat];
             }
+            statsDataLabel.font = AX_PingFangMedium_Font(12);
             
             [self.containerView addSubview:statsDataLabel];
             [statsDataLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -196,7 +198,7 @@
         _playerTitleLabel = [UILabel new];
         _playerTitleLabel.text = @"Player";
         _playerTitleLabel.textAlignment = NSTextAlignmentCenter;
-        _playerTitleLabel.font = [UIFont systemFontOfSize:12];
+        _playerTitleLabel.font = AX_PingFangSemibold_Font(12);
         _playerTitleLabel.backgroundColor = rgb(255, 247, 239);
 //        _playerTitleLabel.layer.borderColor = rgb(180, 180, 180).CGColor;
 //        _playerTitleLabel.layer.borderWidth = 1;

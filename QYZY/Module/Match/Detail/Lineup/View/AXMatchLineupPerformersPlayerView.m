@@ -188,7 +188,7 @@
 - (UILabel *)hostPlayerName {
     if (!_hostPlayerName) {
         _hostPlayerName = [[UILabel alloc] init];
-        _hostPlayerName.font = [UIFont systemFontOfSize:12];
+        _hostPlayerName.font = AX_PingFangMedium_Font(12);
         _hostPlayerName.textColor = rgb(17, 17, 17);
     }
     return _hostPlayerName;
@@ -216,7 +216,7 @@
 - (UILabel *)awayPlayerName {
     if (!_awayPlayerName) {
         _awayPlayerName = [[UILabel alloc] init];
-        _awayPlayerName.font = [UIFont systemFontOfSize:12];
+        _awayPlayerName.font = AX_PingFangMedium_Font(12);
         _awayPlayerName.textColor = rgb(17, 17, 17);
     }
     return _awayPlayerName;
