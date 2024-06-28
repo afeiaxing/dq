@@ -6,13 +6,14 @@
 //
 
 #import "AXMatchAnalysisTraditionalPerformanceView.h"
+#import "AXMatchAnalysisSlantedView.h"
 
 @interface AXMatchAnalysisTraditionalPerformanceView()
 
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UILabel *winLabel;
-@property (nonatomic, strong) UILabel *loseLabel;
+@property (nonatomic, strong) AXMatchAnalysisSlantedView *winLabel;
+@property (nonatomic, strong) AXMatchAnalysisSlantedView *loseLabel;
 @property (nonatomic, strong) UILabel *aveLabel;
 @property (nonatomic, strong) UILabel *lLabel;
 @property (nonatomic, strong) UILabel *moneylineLabel;
@@ -59,7 +60,7 @@
     [self.loseLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.offset(-16);
         make.centerY.height.equalTo(self.winLabel);
-        make.left.equalTo(self.winLabel.mas_right).offset(5);
+        make.left.equalTo(self.winLabel.mas_right).offset(-5);
     }];
     
     [self.containerView addSubview:self.aveLabel];
@@ -128,11 +129,11 @@
     winPrecent = MAX(winPrecent, 0.1);
     
     [self.winLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(winlostTotalWidth * winPrecent);
+        make.width.mas_equalTo(winlostTotalWidth * winPrecent + 5);
     }];
     
-    self.winLabel.text = rivalryRecordModel.win.intValue == 0 ? @"0" : [NSString stringWithFormat:@"%@ Win", rivalryRecordModel.win];
-    self.loseLabel.text = rivalryRecordModel.lose.intValue == 0 ? @"0" :  [NSString stringWithFormat:@"%@ Lose", rivalryRecordModel.lose];
+    self.winLabel.title = rivalryRecordModel.win.intValue == 0 ? @"0" : [NSString stringWithFormat:@"%@ Win", rivalryRecordModel.win];
+    self.loseLabel.title = rivalryRecordModel.lose.intValue == 0 ? @"0" :  [NSString stringWithFormat:@"%@ Lose", rivalryRecordModel.lose];
     [self handleSetAttributedWithLabel:self.aveLabel str1:@"AVE" str2:rivalryRecordModel.ave str3:@"points"];
     [self handleSetAttributedWithLabel:self.lLabel str1:@"AL" str2:rivalryRecordModel.l str3:@"points"];
     [self handleSetAttributedWithLabel:self.moneylineLabel str1:@"Moneyline" str2:rivalryRecordModel.games str3:@"home win"];
@@ -154,11 +155,11 @@
     winPrecent = MAX(winPrecent, 0.1);
     
     [self.winLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(winlostTotalWidth * winPrecent);
+        make.width.mas_equalTo(winlostTotalWidth * winPrecent + 5);
     }];
     
-    self.winLabel.text = teamRecordModel.win.intValue == 0 ? @"0" : [NSString stringWithFormat:@"%@ Win", teamRecordModel.win];
-    self.loseLabel.text = teamRecordModel.lose.intValue == 0 ? @"0" : [NSString stringWithFormat:@"%@ Lose", teamRecordModel.lose];
+    self.winLabel.title = teamRecordModel.win.intValue == 0 ? @"0" : [NSString stringWithFormat:@"%@ Win", teamRecordModel.win];
+    self.loseLabel.title = teamRecordModel.lose.intValue == 0 ? @"0" : [NSString stringWithFormat:@"%@ Lose", teamRecordModel.lose];
     [self handleSetAttributedWithLabel:self.aveLabel str1:@"AVE" str2:teamRecordModel.ave str3:@"points"];
     [self handleSetAttributedWithLabel:self.lLabel str1:@"AL" str2:teamRecordModel.l str3:@"points"];
     [self handleSetAttributedWithLabel:self.moneylineLabel str1:@"Moneyline" str2:teamRecordModel.games str3:@"home win"];
@@ -189,30 +190,16 @@
     return _titleLabel;
 }
 
-- (UILabel *)winLabel{
+- (AXMatchAnalysisSlantedView *)winLabel{
     if (!_winLabel) {
-        _winLabel = [UILabel new];
-        _winLabel.backgroundColor = rgb(29, 209, 0);
-        _winLabel.textColor = UIColor.whiteColor;
-        _winLabel.textAlignment = NSTextAlignmentCenter;
-        _winLabel.font = AX_PingFangSemibold_Font(12);
-        _winLabel.layer.cornerRadius = 8;
-        _winLabel.layer.maskedCorners = kCALayerMinXMinYCorner | kCALayerMinXMaxYCorner;
-        _winLabel.layer.masksToBounds = true;
+        _winLabel = [[AXMatchAnalysisSlantedView alloc] initWithIsHost:true];
     }
     return _winLabel;
 }
 
-- (UILabel *)loseLabel{
+- (AXMatchAnalysisSlantedView *)loseLabel{
     if (!_loseLabel) {
-        _loseLabel = [UILabel new];
-        _loseLabel.backgroundColor = rgb(209, 0, 0);
-        _loseLabel.textColor = UIColor.whiteColor;
-        _loseLabel.textAlignment = NSTextAlignmentCenter;
-        _loseLabel.font = AX_PingFangSemibold_Font(12);
-        _loseLabel.layer.cornerRadius = 8;
-        _loseLabel.layer.maskedCorners = kCALayerMaxXMinYCorner | kCALayerMaxXMaxYCorner;
-        _loseLabel.layer.masksToBounds = true;
+        _loseLabel = [[AXMatchAnalysisSlantedView alloc] initWithIsHost:false];
     }
     return _loseLabel;
 }

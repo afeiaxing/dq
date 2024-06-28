@@ -83,7 +83,6 @@
 		F303A1022C1456F900230E25 /* AXMatchDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A1012C1456F900230E25 /* AXMatchDetailHeaderView.m */; };
 		F303A1182C17209A00230E25 /* AXDashedLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A1172C17209A00230E25 /* AXDashedLineView.m */; };
 		F303A11B2C173EF400230E25 /* UIColor+AXGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A11A2C173EF400230E25 /* UIColor+AXGradient.m */; };
-		F303A11F2C18775D00230E25 /* AXSlantedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A11E2C18775D00230E25 /* AXSlantedView.m */; };
 		F303A1232C197B1800230E25 /* AXSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A1222C197B1800230E25 /* AXSwitchView.m */; };
 		F303A1262C1B1CC900230E25 /* AXMatchBatchApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A1252C1B1CC900230E25 /* AXMatchBatchApi.m */; };
 		F303A1292C1D3BF800230E25 /* AXStreamDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A1282C1D3BF800230E25 /* AXStreamDetailViewController.m */; };
@@ -123,6 +122,7 @@
 		F303A19A2C1D59BE00230E25 /* ZFReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A1742C1D59BE00230E25 /* ZFReachabilityManager.m */; };
 		F303A19B2C1D59BE00230E25 /* ZFLandscapeRotationManager_iOS15.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A1762C1D59BE00230E25 /* ZFLandscapeRotationManager_iOS15.m */; };
 		F303A19C2C1D59BE00230E25 /* UIViewController+ZFPlayerRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F303A1772C1D59BE00230E25 /* UIViewController+ZFPlayerRotation.m */; };
+		F31EED432C2F0C4500795E37 /* AXMatchAnalysisSlantedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F31EED422C2F0C4500795E37 /* AXMatchAnalysisSlantedView.m */; };
 		F36D875C2C0B0383001F37F0 /* AXToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = F36D875B2C0B0383001F37F0 /* AXToastView.m */; };
 		F36D875F2C0B045C001F37F0 /* UIView+AXToast.m in Sources */ = {isa = PBXBuildFile; fileRef = F36D875E2C0B045C001F37F0 /* UIView+AXToast.m */; };
 		F36D87622C0B098D001F37F0 /* UIView+CSToast.m in Sources */ = {isa = PBXBuildFile; fileRef = F36D87602C0B098C001F37F0 /* UIView+CSToast.m */; };
@@ -352,8 +352,6 @@
 		F303A1172C17209A00230E25 /* AXDashedLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXDashedLineView.m; sourceTree = "<group>"; };
 		F303A1192C173EF400230E25 /* UIColor+AXGradient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+AXGradient.h"; sourceTree = "<group>"; };
 		F303A11A2C173EF400230E25 /* UIColor+AXGradient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AXGradient.m"; sourceTree = "<group>"; };
-		F303A11D2C18775D00230E25 /* AXSlantedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXSlantedView.h; sourceTree = "<group>"; };
-		F303A11E2C18775D00230E25 /* AXSlantedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXSlantedView.m; sourceTree = "<group>"; };
 		F303A1212C197B1800230E25 /* AXSwitchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXSwitchView.h; sourceTree = "<group>"; };
 		F303A1222C197B1800230E25 /* AXSwitchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXSwitchView.m; sourceTree = "<group>"; };
 		F303A1242C1B1CC900230E25 /* AXMatchBatchApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchBatchApi.h; sourceTree = "<group>"; };
@@ -434,6 +432,8 @@
 		F303A1762C1D59BE00230E25 /* ZFLandscapeRotationManager_iOS15.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFLandscapeRotationManager_iOS15.m; sourceTree = "<group>"; };
 		F303A1772C1D59BE00230E25 /* UIViewController+ZFPlayerRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ZFPlayerRotation.m"; sourceTree = "<group>"; };
 		F303A1782C1D59BE00230E25 /* ZFLandscapeRotationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFLandscapeRotationManager.h; sourceTree = "<group>"; };
+		F31EED412C2F0C4500795E37 /* AXMatchAnalysisSlantedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXMatchAnalysisSlantedView.h; sourceTree = "<group>"; };
+		F31EED422C2F0C4500795E37 /* AXMatchAnalysisSlantedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXMatchAnalysisSlantedView.m; sourceTree = "<group>"; };
 		F36D875A2C0B0383001F37F0 /* AXToastView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXToastView.h; sourceTree = "<group>"; };
 		F36D875B2C0B0383001F37F0 /* AXToastView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AXToastView.m; sourceTree = "<group>"; };
 		F36D875D2C0B045C001F37F0 /* UIView+AXToast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+AXToast.h"; sourceTree = "<group>"; };
@@ -974,15 +974,6 @@
 			path = AXDashedLineView;
 			sourceTree = "<group>";
 		};
-		F303A11C2C18774500230E25 /* AXSlantedView */ = {
-			isa = PBXGroup;
-			children = (
-				F303A11D2C18775D00230E25 /* AXSlantedView.h */,
-				F303A11E2C18775D00230E25 /* AXSlantedView.m */,
-			);
-			path = AXSlantedView;
-			sourceTree = "<group>";
-		};
 		F303A1202C197B0600230E25 /* AXSwitchView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1413,6 +1404,8 @@
 				F37E5E112BF8EA980049FAE1 /* AXMatchAnalysisTraditionalMatchView.m */,
 				F37E5E192BF9AFE10049FAE1 /* AXMatchAnalysisTraditionalPerformanceView.h */,
 				F37E5E1A2BF9AFE10049FAE1 /* AXMatchAnalysisTraditionalPerformanceView.m */,
+				F31EED412C2F0C4500795E37 /* AXMatchAnalysisSlantedView.h */,
+				F31EED422C2F0C4500795E37 /* AXMatchAnalysisSlantedView.m */,
 				F37E5E1C2BF9BB390049FAE1 /* AXMatchAnalysisTraditionalMatchHistoryView.h */,
 				F37E5E1D2BF9BB390049FAE1 /* AXMatchAnalysisTraditionalMatchHistoryView.m */,
 				F37E5E1F2BF9C6410049FAE1 /* AXMatchAnalysisTraditionalMatchScheduleView.h */,
@@ -1651,7 +1644,6 @@
 			isa = PBXGroup;
 			children = (
 				F303A1202C197B0600230E25 /* AXSwitchView */,
-				F303A11C2C18774500230E25 /* AXSlantedView */,
 				F303A1152C17208500230E25 /* AXDashedLineView */,
 				CB840B902C158FA700EE27AF /* AXMarqueeView */,
 				9BD7B86D28ED2F4200054799 /* BaseVc */,
@@ -1922,7 +1914,6 @@
 				F303A1832C1D59BE00230E25 /* ZFPlayerStatusBar.m in Sources */,
 				55A531FE29052E3C0008C110 /* FSCalendarDateModel.m in Sources */,
 				F3F097692C1328C000BCEBA7 /* AXMatchLineupApi.m in Sources */,
-				F303A11F2C18775D00230E25 /* AXSlantedView.m in Sources */,
 				F303A0E62C135AA100230E25 /* AXMatchAnalysisTeamRecordApi.m in Sources */,
 				555CE94E28F6D38C0085F1D4 /* QYZYMatchCell.m in Sources */,
 				F37E5DBA2BF630550049FAE1 /* AXMatchListSectionHeader.m in Sources */,
@@ -1976,6 +1967,7 @@
 				F37E5DA02BF4D7A10049FAE1 /* JXCategoryTitleBackgroundCell.m in Sources */,
 				F303A1792C1D59BE00230E25 /* ZFIJKPlayerManager.m in Sources */,
 				5506E3162907C62F00246492 /* QYZYFutureRecordsApi.m in Sources */,
+				F31EED432C2F0C4500795E37 /* AXMatchAnalysisSlantedView.m in Sources */,
 				F37E5DD62BF77B9D0049FAE1 /* AXMatchStandingsViewController.m in Sources */,
 				55D50B8928F7BD170043C3A3 /* QYZYSubMainViewController.m in Sources */,
 				555CE94328F6BD8B0085F1D4 /* QYZYMatchViewController.m in Sources */,
