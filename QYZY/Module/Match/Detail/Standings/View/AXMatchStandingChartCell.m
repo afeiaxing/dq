@@ -40,7 +40,7 @@
 #define kMatchStandingChartHeight 128
 
 // 比分
-#define kAXMatchScoreViewLeftMargin 126
+#define kAXMatchScoreViewLeftMargin 141
 #define kAXMatchScoreViewRightMargin 15
 
 @implementation AXMatchStandingChartCell
@@ -156,7 +156,7 @@
     CGFloat scoreViewW = (ScreenWidth - kAXMatchScoreViewLeftMargin - kAXMatchScoreViewRightMargin) / scoreViewCount;
     NSMutableArray *temp = [NSMutableArray array];
     for (int i = 0; i < scoreViewCount; i++) {
-        AXMatchListScoreCustomView *view = [[AXMatchListScoreCustomView alloc] initWithHostscoreTopMargin:25];
+        AXMatchListScoreCustomView *view = [[AXMatchListScoreCustomView alloc] initWithHostscoreTopMargin:15];
         view.viewType = (AXMatchListScoreCustomViewType)i;
         [self.scoreBGView addSubview:view];
         [temp addObject:view];

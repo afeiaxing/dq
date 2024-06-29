@@ -100,19 +100,6 @@
         make.size.mas_equalTo(CGSizeMake(24, 24));
     }];
     
-    [self.containerView addSubview:self.awayLiveFlag];
-    [self.awayLiveFlag mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.width.height.equalTo(self.hostLiveFlag);
-        make.top.equalTo(self.hostLiveFlag.mas_bottom).offset(14);
-    }];
-    
-    [self.containerView addSubview:self.awayRank];
-    [self.awayRank mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.hostRank);
-        make.top.equalTo(self.hostRank.mas_bottom).offset(19);
-        make.width.equalTo(self.hostRank);
-    }];
-    
     [self.containerView addSubview:self.awayLogo];
     [self.awayLogo mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.width.height.equalTo(self.hostLogo);
@@ -124,6 +111,19 @@
         make.centerY.equalTo(self.hostLogo);
         make.left.equalTo(self.hostLogo.mas_right).offset(8);
         make.width.mas_equalTo(72);
+    }];
+    
+    [self.containerView addSubview:self.awayRank];
+    [self.awayRank mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.hostRank);
+        make.centerY.equalTo(self.awayLogo);
+        make.width.equalTo(self.hostRank);
+    }];
+    
+    [self.containerView addSubview:self.awayLiveFlag];
+    [self.awayLiveFlag mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.width.height.equalTo(self.hostLiveFlag);
+        make.centerY.equalTo(self.awayLogo);
     }];
     
     [self.containerView addSubview:self.awayName];
@@ -346,7 +346,7 @@
         _hostLiveFlag.text = @"Live";
         _hostLiveFlag.textAlignment = NSTextAlignmentCenter;
         _hostLiveFlag.textColor = rgb(73, 210, 27);
-        _hostLiveFlag.font = [UIFont systemFontOfSize:8];
+        _hostLiveFlag.font = AX_PingFangMedium_Font(8);
         _hostLiveFlag.layer.cornerRadius = 11;
         _hostLiveFlag.layer.masksToBounds = true;
         _hostLiveFlag.backgroundColor = rgba(65, 187, 24, 0.05);
@@ -369,7 +369,7 @@
         _awayLiveFlag.text = @"Live";
         _awayLiveFlag.textAlignment = NSTextAlignmentCenter;
         _awayLiveFlag.textColor = rgb(73, 210, 27);
-        _awayLiveFlag.font = [UIFont systemFontOfSize:8];
+        _awayLiveFlag.font = AX_PingFangMedium_Font(8);
         _awayLiveFlag.layer.cornerRadius = 11;
         _awayLiveFlag.layer.masksToBounds = true;
         _awayLiveFlag.backgroundColor = rgba(65, 187, 24, 0.05);

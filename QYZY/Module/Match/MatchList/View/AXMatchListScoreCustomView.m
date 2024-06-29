@@ -39,9 +39,17 @@
     [self addSubview:self.hostScore];
     [self.hostScore mas_makeConstraints:^(MASConstraintMaker *make) {
         if (self.hostscoreTopMargin != 0) {
+            // 详情页
             make.top.equalTo(self.titleLabel.mas_bottom).offset(self.hostscoreTopMargin);
+            self.hostScore.font = AX_PingFangSemibold_Font(14);
+            self.awayScore.font = AX_PingFangSemibold_Font(14);
+            self.titleLabel.font = AX_PingFangRegular_Font(12);
         } else {
+            // 列表页
             make.top.equalTo(self.titleLabel.mas_bottom).offset(7);
+            self.hostScore.font = AX_PingFangSemibold_Font(12);
+            self.awayScore.font = AX_PingFangSemibold_Font(12);
+            self.titleLabel.font = AX_PingFangRegular_Font(8);
         }
         make.centerX.offset(0);
     }];
@@ -113,7 +121,6 @@
     if (!_titleLabel) {
         _titleLabel = [UILabel new];
         _titleLabel.textColor = rgb(153, 153, 153);
-        _titleLabel.font = [UIFont systemFontOfSize:8];
     }
     return _titleLabel;
 }
@@ -122,7 +129,6 @@
     if (!_hostScore) {
         _hostScore = [UILabel new];
         _hostScore.textColor = rgb(153, 153, 153);
-        _hostScore.font = AX_PingFangMedium_Font(12);
     }
     return _hostScore;
 }
@@ -131,7 +137,6 @@
     if (!_awayScore) {
         _awayScore = [UILabel new];
         _awayScore.textColor = rgb(153, 153, 153);
-        _awayScore.font = AX_PingFangMedium_Font(12);
     }
     return _awayScore;
 }

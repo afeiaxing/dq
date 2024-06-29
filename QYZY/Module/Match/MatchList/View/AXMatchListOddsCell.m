@@ -91,17 +91,17 @@
         make.size.mas_equalTo(CGSizeMake(24, 24));
     }];
     
-    [self.containerView addSubview:self.awayRank];
-    [self.awayRank mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.hostRank);
-        make.top.equalTo(self.hostRank.mas_bottom).offset(19);
-        make.width.equalTo(self.hostRank);
-    }];
-    
     [self.containerView addSubview:self.awayLogo];
     [self.awayLogo mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.width.height.equalTo(self.hostLogo);
         make.top.equalTo(self.hostLogo.mas_bottom).offset(12);
+    }];
+    
+    [self.containerView addSubview:self.awayRank];
+    [self.awayRank mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.hostRank);
+        make.centerY.equalTo(self.awayLogo);
+        make.width.equalTo(self.hostRank);
     }];
     
     [self.containerView addSubview:self.hostName];

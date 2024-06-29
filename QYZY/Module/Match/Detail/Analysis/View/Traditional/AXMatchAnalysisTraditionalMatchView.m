@@ -129,12 +129,15 @@
     _viewType = viewType;
     
     if (viewType == AXMatchAnalysisTraditionalMatchViewType_all) {
+        self.vsLabel.hidden = false;
         self.hostFlagLabel.text = @"H";
         // 设置1 = 主队，2 = 客队
     } else if (viewType == AXMatchAnalysisTraditionalMatchViewType_host) {
+        self.vsLabel.hidden = true;
         self.hostFlagLabel.text = @"H";
         // 设置1 = 主队，2 隐藏
     } else {
+        self.vsLabel.hidden = true;
         self.hostFlagLabel.text = @"A";
         // 设置1 = 客队，2 = 隐藏
     }

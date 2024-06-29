@@ -99,8 +99,8 @@
         _categoryView.titles = @[@"All",@"Live",@"Scheduled",@"Result"];
         _categoryView.titleColor = rgb(153, 153, 153);
         _categoryView.titleSelectedColor = rgb(255, 88, 0);
-        _categoryView.titleFont = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
-        _categoryView.titleSelectedFont = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
+        _categoryView.titleFont = AX_PingFangMedium_Font(14);
+        _categoryView.titleSelectedFont = AX_PingFangMedium_Font(14);
 //        _categoryView.cellWidth = JXCategoryViewAutomaticDimension;
         _categoryView.cellWidthIncrement = 20;
 //        _categoryView.contentEdgeInsetLeft = -5;

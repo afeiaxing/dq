@@ -219,7 +219,7 @@
     if (!_hostName) {
         _hostName = [[UILabel alloc] init];
         _hostName.textColor = UIColor.whiteColor;
-        _hostName.font = [UIFont fontWithName:@"PingFangSC-Regular" size:12];
+        _hostName.font = AX_PingFangMedium_Font(13);
         _hostName.numberOfLines = 2;
         _hostName.textAlignment = NSTextAlignmentCenter;
     }
@@ -230,7 +230,7 @@
     if (!_awayName) {
         _awayName = [[UILabel alloc] init];
         _awayName.textColor = UIColor.whiteColor;
-        _awayName.font = [UIFont fontWithName:@"PingFangSC-Regular" size:12];
+        _awayName.font = AX_PingFangMedium_Font(13);
         _awayName.numberOfLines = 2;
         _awayName.textAlignment = NSTextAlignmentCenter;
     }
