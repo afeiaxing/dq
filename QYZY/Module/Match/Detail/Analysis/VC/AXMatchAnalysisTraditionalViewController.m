@@ -84,11 +84,22 @@
     if (indexPath.row == 0) {
         return 181;
     } else {
+        // + 40
+        CGFloat height;
         if (self.isRequest10) {
-            return self.matchRecordCellSelctIndex == 0 ? 933 : 1103; //733;  // 主客队交锋:933, 单队历史记录:1103
+            height = self.matchRecordCellSelctIndex == 0 ? 933 : 1073;//733;  // 主客队交锋:933, 单队历史记录:1003
         } else {
-            return self.matchRecordCellSelctIndex == 0 ? 733 : 903; //733;  // 主客队交锋:733, 单队历史记录:903
+            height = self.matchRecordCellSelctIndex == 0 ? 733 : 873;//733;  // 主客队交锋:733, 单队历史记录:803
         }
+        
+        NSInteger matchCount = 0;
+        if (self.matchRecordCellSelctIndex == 1) {
+            matchCount = self.hostTeamRecordModel.homeSchedule.count;
+        } else if (self.matchRecordCellSelctIndex == 2) {
+            matchCount = self.awayTeamRecordModel.awaySchedule.count;
+        }
+        height += matchCount * 40;
+        return height;
     }
 }
 
